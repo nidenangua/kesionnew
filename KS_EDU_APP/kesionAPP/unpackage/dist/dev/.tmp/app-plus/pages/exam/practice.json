@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "练习中心",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-tabs": "/components/ks-components/tabs/tabs",
+    "ks-empty": "/components/ks-components/empty/empty",
+    "ks-sort": "/components/ks-components/sort/sort",
+    "uni-popup": "/components/uni/uni-popup/uni-popup"
+  }
+}

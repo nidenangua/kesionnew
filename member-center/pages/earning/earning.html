@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<div class="userearning">
+
+    <ks-title title="我要赚钱" />
+    <div class="userearning-list">
+
+        <el-row :gutter="40">
+            <el-col :span="12">
+                <div class="userearning-item">
+                    <div class="userearning-item__left">
+                        <p>推荐用户注册</p>
+                        <p style="color: #787C82;font-size:14px;margin-top: 20px;">注册成功获取收益</p>
+                    </div>
+                    <div class="userearning-item__right">
+                        <el-button type="warning" @click="openDialog(0)" plain>去推荐</el-button>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="12">
+                <div class="userearning-item">
+                    <div class="userearning-item__left">
+                        <p>课程分销</p>
+                        <p style="color: #787C82;font-size:14px;margin-top: 20px;">作为分销商，赚取佣金</p>
+                    </div>
+                    <div class="userearning-item__right">
+                        <el-button type="warning" @click="openDialog(1)" plain>去推荐</el-button>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="12">
+                <div class="userearning-item">
+                    <div class="userearning-item__left">
+                        <p>分享课程</p>
+                        <p style="color: #787C82;font-size:14px;margin-top: 20px;">分享网校课程赚收益</p>
+                    </div>
+                    <div class="userearning-item__right">
+                        <el-button type="warning" @click="openDialog(2)" plain>去推荐</el-button>
+                    </div>
+                </div>
+            </el-col>
+        </el-row>
+        <el-dialog  :title="title" :visible.sync="dialogVisible" width="400px">
+            <div class="dialog-box">
+                <div>请扫码进入手机版操作</div>
+                <div style="margin: 30px 0 20px 0">
+                    <img :src="url" />
+                </div>
+                <!-- <div v-if="title == '推荐用户注册'">
+                    <div>复制链接分享给好友</div>
+                    <div>{{url}}</div>
+                </div> -->
+            </div>
+        </el-dialog>
+    </div>
+</div>

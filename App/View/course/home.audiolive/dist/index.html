@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>音频直播-科汛V名师</title><meta name=keywords content=""><meta name=description content=""><link rel=stylesheet href="/Public/app/css/reset.css?<?php echoHash(); ?>"><script src=/Public/common/js/aliyun/alioss/lib/plupload-2.1.2/js/plupload.full.min.js></script><script src="/Public/common/js/aliyun/alioss/upload.js?<?php echoHash(); ?>"></script><script>var config = {
+  userid:"<?php echo $this->userid; ?>",
+  wxid:"<?php echo $this->wxid; ?>",
+  infoid:"<?php echo $id; ?>",
+  cid:"<?php echo $chapterid; ?>",
+  vs:"//<?php echo APP_DOMAIN.':'.SWOOLE_PORT?>",
+   avatar:"<?php echo $avatar; ?>",
+  name:"<?php echo $username; ?>",
+  title:"<?php echo $this->course['title']; ?>",
+  code:"<?php echo UOOT.'Images/QRcode/'.createQRcode(ROOT.'Images/QRcode/',MY_FULLDOMAIN.'/h5market/ktjshare?infoid='.$this->courseid.'&wxid='.$this->wxid.'&shareact=audioin&cid='.$chapterid,'L',4,'weimenhu');?>",
+  phoneUrl:"<?php echo M_URL($this->AppName.'/Index','share1',$id,GP(''));?>"
+}</script><link href=/App/View/course/home.audiolive/dist/static/css/app.ac842e02bd8f34af5f1c5b3404af7744.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/App/View/course/home.audiolive/dist/static/js/manifest.7110e904eb2a3fd20e64.js></script><script type=text/javascript src=/App/View/course/home.audiolive/dist/static/js/vendor.3e828033938be77a8a78.js></script><script type=text/javascript src=/App/View/course/home.audiolive/dist/static/js/app.a22cc3adae2c1000ffa4.js></script></body></html>

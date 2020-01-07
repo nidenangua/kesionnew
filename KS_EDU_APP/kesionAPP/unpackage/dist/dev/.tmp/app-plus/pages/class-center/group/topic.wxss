@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.topic-textarea textarea.data-v-1b71eacf {
+  height: 150px;
+  width: 100%;
+  padding: 12px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 14px;
+}
+.topic-textarea .tips-num.data-v-1b71eacf {
+  font-size: 12px;
+  color: #CCCCCC;
+  text-align: right;
+  padding: 10px 12px;
+}
+.overhide.data-v-1b71eacf {
+  overflow: hidden;
+}
+.overhide .topic-img.data-v-1b71eacf {
+    padding: 15px 12px 5px;
+    border-top: 1px solid #eee;
+    margin-right: -10px;
+}
+.overhide .topic-img .topic-img-list .uped-img.data-v-1b71eacf {
+      float: left;
+      width: 109px;
+      height: 109px;
+      position: relative;
+      margin-right: 10px;
+      margin-bottom: 10px;
+}
+.overhide .topic-img .topic-img-list .uped-img .ks-image.data-v-1b71eacf {
+        height: 100%;
+        width: 100%;
+}
+.overhide .topic-img .topic-img-list .uped-img .close-icon.data-v-1b71eacf {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        color: #fff;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABI0lEQVRYR+2XMQ7CMAxF/1/YgeNAbwJnYEJwBWDhDhyFchxgZzFK1UptgdoJCqpKOqZu/fztODHRs4c940EC0jLirZCIjAAcACwATD44uAM4AViTfGgQ9fchQEcAK6OTHcmt0bYwCwG6lspkJPN3zkRkDuAM4EZyGhtIikjIzmBExGTXhg1RyORo2EAi4vLv6iDmk5PMTCn7EdCF5EvQag2F1kI7cut/EpDWLoajUFn4rkE2dkrHuql/BSv0qUh9103bvm7k68DXPgFVCkTvQ76pSUBaav5SIXdFcSdB48QuG+O79biN0feiFD1lCai2a9SxR1NLRGYA3MikjkWWw9VnMNTY9iQ3XUYWoGp0XgIYax6/Ha1VoECA4M8SkCZd7xR6As57JjQ3lppjAAAAAElFTkSuQmCC) no-repeat center;
+        background-color: rgba(0, 0, 0, 0.5);
+        background-size: 18px;
+        width: 20px;
+        height: 20px;
+}
+.overhide .topic-img .up-img.data-v-1b71eacf {
+      width: 109px;
+      height: 109px;
+      float: left;
+      text-align: center;
+      color: #C7CBD1;
+      font-size: 12px;
+      padding-top: 67px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA2CAYAAACbZ/oUAAAEEklEQVRoQ+2bTWzcVBDH//OctEBEi4RKD7DZTdSNN/ZWcMihvZeqlTgUjghOwAHogVwK4oqEkEAFBK0qNVI5IkQLPVABTflQhEAiCErX+xEnm90GgVBB4iNRm3T9pvI2FVG6Sez37Dhs1sf1/GfmN/Nsv/fWJgAoFmeyMLzXGNgHYJv/Wxsd/xAwCs94ybJSLpXLVdMj8R2Ae9oIshXKXwbLPVSs1E4z8FibwzbxCDhDTqX2dxsO45X6N+sD89Kztpmhdur2cr4OcKfD//PxHdmQdty6RZKfZuAggL7FulQJ+JQFjdjZdHEj1Eob2HGcLdTVc5SBZwGIFaAkmE5u6xHDqVTqapLgWsA+LLp6PsHNGVmQ4ws05g7atr0QxDgOGy3gQqV2jIDnwiRGwDHLzBwOo4nSVhnYces2JF8EYIRMyIOgB+1s2gmpi8RcGbgwUX+TmF9QyYKJ3soPpIdVtLoaZWCnUisByCkmULbNzKCiVkumAzwPYIti9AXbzGxV1GrJkgKetc3M3VqZK4p1gHWGtGObmbxizloyZWC9mxa/nR/oU7rhadECUAYuFi/n2ZA/qTyWyBMPWVZvQTf5pfrx8fHuoaGh62v5VAb2HatMPBg4njczz6+VWJDzzEylifpTTHwETFkA/mL+HCDey5u937fyoQWc5NSyVPrlXikaIwAOtSwO42sQvWKb6QtLz2sB+46SWDxcqlZ3iuviSwABnuX8gcHGcC7X+2sz32U7Oso7Hv5Uk1k+Q0wHAPQD8BcINSYeFQ1jJKpr9uLk5H1dXpcPawUZ9os2V1jyk/nBvs8iAw4RXNl0ampq+7WGGANot4ITCcKLYLy+VKvcYYUEQkmY2ShN1D9m4JFQwjWMNyxwYaJ2nLi5yRDpsSGBC5XaYQLeiZR00Vko4OZjqfuux8H0BIAhAHeCMAfwH2BywfhRMo/Oz/35TZBJQSugS251v5DinMIEJ1B9AgM75ekDIPKrviuA598BOkWed8Ky+usB7JsmpdLMbim8MQDbg2rC2q0J7Lru1nnZfZRubtqF/VeiwcCHhqQ3BgfTP6yWXGFyZhd53lcA7g8LEcZ+VWDXdXcseN1nQdgbxmlrWx4Di3evzl75aPlwL5drfQ3CBfpvu1c/3AoeVgQuFqtpNsTnAAYijv4bAe+TNE7lcg8UCm79UcE4AWBHxHFaumsJ/HNlOmeARuMeXgCuAbhjPUBvxbgNmA0jux7X0npCrjrTAmgG4FRSCcUd97YOxx0waf8d4KQ7EHf8TofjrnDS/jsdTroDccfvdDjuCiftv9PhpDsQd/xOh+OucNL+N2WHN9frw5vuBfHF7ZxvN8MnAB54b3Pb1f/uQZJ4lYGHASTy8kmMN7N/CTgvWL6cy/VXbgBIDFSMC5KtVwAAAABJRU5ErkJggg==) no-repeat center 30px #F0F4F7;
+      background-size: 30px;
+      margin-bottom: 10px;
+}
+.join.data-v-1b71eacf {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.join .topic-btn.data-v-1b71eacf {
+    background: #2987EE;
+}
+.join-bg.data-v-1b71eacf {
+  height: 56px;
+}
+

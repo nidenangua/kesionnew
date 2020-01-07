@@ -1,0 +1,124 @@
+
+.plv-mp-chat-list-show-more.data-v-84940d92 {
+  padding: 20rpx 0 10rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #fff;
+}
+.plv-mp-chat-list-list.data-v-84940d92 {
+  padding: 16rpx;
+}
+.plv-mp-chat-list-item.data-v-84940d92 {
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.plv-mp-chat-list-user-avatar.data-v-84940d92 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+}
+.plv-mp-chat-list-user-info.data-v-84940d92 {
+  margin-left: 68rpx;
+  max-width: 70%;
+  font-size: 22rpx;
+  color: #848e99;
+  margin-bottom: 14rpx;
+}
+.plv-mp-chat-list-user-info__actor.data-v-84940d92 {
+  margin-right: 0.5em;
+  background: #2196f3;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+  color: #fff;
+  border-radius: 16rpx;
+}
+.plv-mp-chat-list-msg-content.data-v-84940d92 {
+  position: relative;
+  display: inline-block;
+  padding: 16rpx;
+  font-size: 26rpx;
+  max-width: 70%;
+  margin-left: 68rpx;
+}
+.plv-mp-chat-list-msg-other.data-v-84940d92 {
+  text-align: left;
+  color: #546e7a;
+}
+.plv-mp-chat-list-msg-other__actor.data-v-84940d92 {
+  color: #2196f3;
+}
+.plv-mp-chat-list-msg-other .plv-mp-chat-list-msg-content.data-v-84940d92 {
+  text-align: left;
+  background-color: #fff;
+  border-radius: 0 10rpx 10rpx;
+}
+.plv-mp-chat-list-msg-self.data-v-84940d92 {
+  text-align: right;
+  color: #fff;
+}
+.plv-mp-chat-list-msg-self .plv-mp-chat-list-msg-content.data-v-84940d92 {
+  max-width: 100%;
+  text-align: right;
+  background-color: #8bc34a;
+  border-radius: 10rpx 0 10rpx 10rpx;
+}
+.plv-mp-chat-list-msg-flower.data-v-84940d92 {
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+.plv-mp-chat-list-icon__flower.data-v-84940d92 {
+  display: inline-block;
+  width: 44rpx;
+  height: 44rpx;
+  vertical-align: middle;
+}
+.plv-mp-chat-list-msg-custom.data-v-84940d92 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+.plv-mp-chat-list-msg-custom__image.data-v-84940d92 {
+  margin-left: 12rpx;
+  width: 44rpx;
+  height: 44rpx;
+}
+.plv-mp-chat-list-msg-system.data-v-84940d92 {
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+.plv-mp-chat-list-reward-cash.data-v-84940d92 {
+  width: 46rpx;
+  height: 57rpx;
+  vertical-align: middle;
+  margin-top: -6rpx;
+}
+.plv-mp-skin__white .plv-mp-chat-list-show-more.data-v-84940d92 {
+  color: #757575;
+}
+.plv-mp-skin__white .plv-mp-chat-list-msg-flower.data-v-84940d92,
+.plv-mp-skin__white .plv-mp-chat-list-msg-system.data-v-84940d92 {
+  color: #000;
+}
+.plv-mp-skin__white .plv-mp-chat-list-msg-flower > view.data-v-84940d92 {
+  font-size: 26rpx;
+}
+.plv-mp-skin__white .plv-mp-chat-list-msg-custom.data-v-84940d92 {
+  color: #000;
+}
+

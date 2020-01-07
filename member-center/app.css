@@ -1,0 +1,190 @@
+[v-cloak] {
+  display: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f5f7fa;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  background-color: #f0f2f5;
+}
+
+.el-dialog {
+  max-height: 800px;
+  overflow: auto;
+}
+
+.el-tabs__nav-wrap {
+  padding-left: 40px;
+}
+
+.el-tabs__nav-wrap::after {
+  height: 1px;
+}
+
+.el-tabs__item {
+  height: 55px;
+  line-height: 55px;
+}
+
+.user {
+  width: 1180px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.user-left {
+  background: #f2f2f2;
+}
+
+.user-left__top {
+  padding-bottom: 15px;
+}
+
+.user-vip {
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+}
+
+.user-left__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.user-left__avatar .ks-image {
+  width: 100%;
+  height: 100%;
+}
+
+.user-left__name {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 23px;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 15px;
+  cursor: pointer;
+}
+
+.user-left__name img {
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  margin-bottom: -1.5px;
+}
+
+.user-left__score {
+  text-align: center;
+  color: #787c82;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.user-left__score .el-button {
+  padding: 5px 10px;
+  margin-left: 15px;
+}
+
+.user-left__score span i {
+  font-style: normal;
+  color: #2f3133;
+  margin-left: 10px;
+}
+
+.user-left__list {
+  padding: 10px 0;
+  background: #fff;
+}
+
+.user-left__title {
+  height: 44px;
+  line-height: 44px;
+  overflow: hidden;
+  padding: 0 20px;
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  box-sizing: border-box;
+}
+
+.user-left__title img {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  margin-bottom: -3px;
+}
+
+.user-left__menu {
+  background: #fff;
+}
+
+.user-left__menu li {
+  margin: 22px 0;
+  height: 22px;
+  line-height: 22px;
+  overflow: hidden;
+  padding: 0 48px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+}
+
+.user-left__menu li:hover {
+  color: #3c81f9;
+}
+
+.user-left__menu li.router-link-exact-active {
+  color: #3c81f9;
+  border-left: 2px solid #3c81f9;
+}
+
+.ks-mr36 {
+  margin-right: 36px;
+}
+
+.ks-fr {
+  float: right;
+}
+
+.ks-mt21 {
+  margin-top: 21px;
+}
+
+.ks-mr21 {
+  margin-right: 21px;
+}
+
+.menu-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  margin-top: -3px;
+}

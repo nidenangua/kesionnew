@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<div>
+    <div class="useraccount">
+        <ks-title title="升级VIP会员" />
+        <el-button class="useraccount-recharge__retrun" @click="retrunView">返回</el-button>
+        <div class="vip">
+            <div class="vip-title">
+                <span>当前身份级别：{{vipInitData.groupname}}</span>
+                <span>当前会员级别为：<i :style="{color: vipInitData.is_vip  == 1 ? '#E91C35' : '#787C82'}">{{vipInitData.level}}</i></span>
+                <span v-if="vipInitData.vip_enddate == '已过期'">已过期</span>
+                <span v-else>有效截止时间：<i style="color: #E91C35">{{vipInitData.vip_enddate == '' ? '无限制':vipInitData.vip_enddate}}</i></span>
+            </div>
+            <h1>选择会员类型：</h1>
+            <el-row :gutter="20">
+                <el-col :span='6' v-for="(item,i) in vipCardList" :key="i">
+                    <div class="vip-item" :class="{'active-vip':activeVip == i}" @click="changeVip(i)">
+                        <span>{{item.power_title}}</span>
+                        <p :style="{color: activeVip == i ?  '#3C81F9' : '#606367'}">￥{{item.power_money}}</p>
+                        <i v-if="activeVip == i"></i>
+                    </div>
+                </el-col>
+            </el-row>
+            <div class="vip-price">
+                <span>支付金额：</span>
+                <span style="color:#E91C35;font-size:24px;">￥{{price}}</span>
+            </div>
+            <h1>选择支付方式：</h1>
+            <div class="vip-pay__list">
+                <div class="vip-pay__item" :class="{'active-pay':activePay == -1}" @click="payType(-1)">
+                    <span>余额支付</span>
+                    <i v-if="activePay == -1"></i>
+                </div>
+                <div></div>
+                <div class="vip-pay__item" v-for="(item,i) in vipInitData.payment_list" :key="i" :class="{'active-pay':activePay == i}" @click="payType(i)">
+                    <img :src="item.logo" width="100" height="28"/>
+                    <i v-if="activePay == i"></i>
+                </div>
+            </div>
+            <div class="vip-used">可用余额￥{{userInfo.Money}}</div>
+            <div v-if="activePay == -1">
+                <span>余额支付:<i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{price}}</i>元</span>
+            </div>
+            <div v-else>
+                <span>余额支付</span>
+                <el-input size="medium" style="width: 80px;" v-model="money"></el-input>
+                <span>元,剩余</span>
+                <span>{{payId == 8 ? '支付宝支付' : '微信支付'}}：</span>
+                <span><i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{price - money}}</i>元</span>
+            </div>
+            <div class="vip-pay__btn">
+                <el-button type="warning" @click="pay">确认支付</el-button>
+            </div>
+        </div>
+    </div>
+    <div class="useraccount" style="margin-top: 20px;">
+        <ks-title title="升级明细" />
+        <div class="vip-detail__title">
+            <el-row>
+                <el-col :span="3"> <span>序号</span> </el-col>
+                <el-col :span="5"> <span>消费时间</span> </el-col>
+                <el-col :span="3"> <span>支出（元）</span> </el-col>
+                <el-col :span="3"> <span>摘要</span> </el-col>
+                <el-col :span="3"> <span>余额（元）</span> </el-col>
+                <el-col :span="7"> <span>备注</span> </el-col>
+            </el-row>
+        </div>
+        <div class="vip-detail__list">
+            <el-row type="flex" v-for="(item,i) in vipDetailList" :key="i">
+                <el-col :span="3" align="middle"> <span>{{i+1}}</span> </el-col>
+                <el-col :span="5" align="middle"> <span>{{item.paytime}}</span> </el-col>
+                <el-col :span="3" align="middle"> <span>{{item.expend}}</span> </el-col>
+                <el-col :span="3" align="middle"> <span>{{item.summary}}</span> </el-col>
+                <el-col :span="3" align="middle"> <span>{{item.currmoney}}</span> </el-col>
+                <el-col :span="7" style="text-align: left" align="middle"> <span>{{item.remark}}</span> </el-col>
+            </el-row>
+            <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserUpgradeVIPDetailList" v-if="pageCount > 0" />
+            <ks-empty msg="暂无升级明细记录" v-else />
+        </div>
+    </div>
+</div>

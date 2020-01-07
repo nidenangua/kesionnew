@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<div>
+  <div class="userexam-select" v-if="show">
+    <div class="userexam-select__title">
+      <p>选择考试分类</p>
+    </div>
+    <div style="width:100%;">
+      <div class="userexam-select__item" v-for="(item,i) in allClass" :key="i">
+        <div class="userexam-select__top">
+          <p>{{ item.categoryname }}</p>
+          <!-- <span></span> -->
+        </div>
+        <!-- <div class="userexam-select__bottom">
+          <a @click="setClasses(item.categoryid,item.categoryname,item.childs)">
+            <el-button
+              style="padding: 10px 34px;"
+              round
+              size="medium"
+              >全部</el-button>
+              
+          </a>
+          <a :class="{userexamActive:active==child.categoryid}"
+            v-for="(child,n) in item.childs"
+            :key="n"
+            @click="setClasses(child.categoryid,child.categoryname,child.childs)"
+            >
+            <el-button
+            round
+            size="medium"
+            >{{ child.categoryname }}<i v-if="child.childs&&child.childs.length"></i></el-button>
+            
+            <div class="third-class" v-if="child.childs&&child.childs.length">
+              <div class="third-class-box">
+                <el-button
+                round
+                size="medium"
+                :class="{userexamActive:active==tchild.categoryid}"
+                v-for="(tchild,i) in child.childs"
+                :key="i"
+                @click="setClasses(tchild.categoryid,tchild.categoryname,tchild.childs)"
+                >{{ tchild.categoryname }}</el-button>
+              </div>
+            </div>
+          </a>
+          
+        </div> -->
+        <div class="userexam-select__bottom">
+          <li class="clearfix">
+            <el-button
+              style="padding: 10px 34px;"
+              round
+              size="medium"
+              class="second-class fl"
+              type="text"
+               @click="setClasses(item.categoryid,item.categoryname,item.childs)">全部</el-button>
+              
+          </li>
+          <li :class="{userexamActive:active==child.categoryid}"
+            v-for="(child,n) in item.childs"
+            :key="n"
+             class="clearfix"
+            >
+            <el-button
+            round
+            size="medium"
+            class="second-class fl"
+            type="text"
+            @click="setClasses(child.categoryid,child.categoryname,child.childs)"
+            >{{ child.categoryname }}<i v-if="child.childs&&child.childs.length"></i></el-button>
+            
+            <div class="third-class" v-if="child.childs&&child.childs.length">
+              <div class="third-class-box">
+                <el-button
+                round
+                size="medium"
+                :class="{userexamActive:active==tchild.categoryid}"
+                v-for="(tchild,i) in child.childs"
+                :key="i"
+                
+                @click="setClasses(tchild.categoryid,tchild.categoryname,tchild.childs)"
+                >{{ tchild.categoryname }}</el-button>
+              </div>
+            </div>
+          </li>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

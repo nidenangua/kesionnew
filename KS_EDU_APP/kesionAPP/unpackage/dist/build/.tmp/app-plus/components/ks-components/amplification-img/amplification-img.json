@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image"
+  }
+}

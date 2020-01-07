@@ -1,0 +1,134 @@
+
+.van-icon-arrow-left.data-v-a1d2d426 {
+  color: #4d4c4c !important;
+}
+.active.data-v-a1d2d426 {
+  background: #fca492 !important;
+  color: #fff !important;
+}
+.navtitle ._img.data-v-a1d2d426 {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+}
+.examBank.data-v-a1d2d426 {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* 导航 */
+.examBank-nav.data-v-a1d2d426 {
+  border-bottom: 1px solid #ebebeb;
+  font-size: 14px;
+  /* font-family: PingFang-SC-Regular; */
+  font-weight: 400;
+  background: #f5f5f5;
+  width: 90%;
+  padding: 0 5% 10px 5%;
+}
+.examBank-nav text.data-v-a1d2d426 {
+  margin-right: 10px;
+  display: inline-block;
+  height: 28px;
+  width: 74px;
+  font-size: 14px;
+  /* font-family: PingFang-SC-Regular;
+font-weight: 400;
+color: #010c17; */
+  line-height: 28px;
+  text-align: center;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #fca492;
+  margin-top: 10px;
+}
+
+/* 考试题库列表 */
+.examBank-item.data-v-a1d2d426 {
+  padding: 0 15px;
+  background: #fff;
+}
+.examBank-box.data-v-a1d2d426 {
+  padding-top: 13px;
+  border-bottom: 1px solid #ebedef;
+}
+.examBank-box_top.data-v-a1d2d426 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.examBank-box_bottom.data-v-a1d2d426 {
+  margin-top: 6px;
+  width: 100%;
+  height: 31px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  font-size: 10px;
+  /* font-family: PingFangSC-Light;
+font-weight: 300; */
+  color: #999;
+}
+.examBank-box_title.data-v-a1d2d426 {
+  width: 75%;
+  font-size: 14px;
+  /* font-family: PingFang-SC-Medium;
+font-weight: 500; */
+  color: #333;
+  float: left;
+}
+.examBank-box_title ._ul ._li.data-v-a1d2d426 {
+  list-style: disc inside none;
+}
+.examBank-box_score.data-v-a1d2d426 {
+  /* display: inline-block; */
+  width: 25%;
+  line-height: 20px;
+  float: right;
+  text-align: right;
+}
+.examBank-box_difficulty.data-v-a1d2d426 {
+  width: 50%;
+  font-size: 10px;
+  color: #999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.examBank-box_again.data-v-a1d2d426 {
+  font-size: 12px;
+  /* font-family: PingFangSC-Semibold;
+font-weight: 600; */
+  color: #fff;
+  width: 65px;
+  height: 20px;
+  border-radius: 10px;
+  background: #2987ee;
+  text-align: center;
+  line-height: 20px;
+}
+.difficulty-flex.data-v-a1d2d426 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin-left: 20px;
+}
+.difficulty-flex text.data-v-a1d2d426 {
+  /* display: inline-block; */
+  float: left;
+}
+.uni-rate.data-v-a1d2d426 {
+  float: left;
+  margin-top: 1px;
+}
+

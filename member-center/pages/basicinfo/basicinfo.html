@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<div class="userbasicinfo">
+    <ks-title title="基本资料" :underline="false" />
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="个人信息" name="first">
+            <div class="userbasicinfo-user">
+                <div class="userbasicinfo-user__avatar">
+                    <ks-image :src="infoForm.UserFace + '?'+Math.ceil(Math.random()*9999999999)" type="user" />
+                    <div class="userbasicinfo-user__hover" @click="changeAvatar">修改头像</div>
+                    <input style="display: none;" type="file" ref="file_avatar" @change="uploadAvatar">
+                </div>
+                <div class="userbasicinfo-user__form">
+                    <el-form ref="infoForm" :model="infoForm" :rules="rules" status-icon label-width="111px">
+                        <el-form-item label="账号：">
+                            {{infoForm.UserName}}
+                        </el-form-item>
+                        <el-form-item label="真实姓名：" prop="RealName">
+                            <el-input v-model="infoForm.RealName" placeholder="请输入您的真实姓名" maxlength="5" show-word-limit></el-input>
+                        </el-form-item>
+                        <el-form-item label="性别：">
+                            <el-radio v-model="infoForm.Sex" label="男">男</el-radio>
+                            <el-radio v-model="infoForm.Sex" label="女">女</el-radio>
+                        </el-form-item>
+                        <el-form-item label="所在地区：">
+                            <el-select v-model="infoForm.province" placeholder="请选择省" @change="changeProvince" @visible-change="getProvinceList">
+                                <el-option v-for="item in provinceList" :key="item.id" :label="item.city" :value="item.id">
+                                </el-option>
+                            </el-select>
+                            <el-select v-model="infoForm.city" placeholder="请选择市" @change="changeCity" @visible-change="getCityList">
+                                <el-option v-for="item in cityList" :key="item.id" :label="item.city" :value="item.id">
+                                </el-option>
+                            </el-select>
+                            <el-select v-model="infoForm.county" placeholder="请选择区" @change="changeCounty" @visible-change="getAreaList">
+                                <el-option v-for="(item,i) in areaList" :key="item.id" :label="item.city" :value="i">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="电子邮箱：" prop="Email">
+                            <el-input v-model="infoForm.Email" placeholder="请输入您的邮箱地址" maxlength="30" show-word-limit></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="我的标签：">
+                            <el-button size="medium" round plain v-for="(item,i) in xztagsList" :key="i">{{item.key}}</el-button>
+                            <span style="color: #3C81F9;margin-left:20px;cursor: pointer;" @click="setLabel">设置我的标签</span>
+                        </el-form-item>
+                        <el-form-item :label="item.fieldalias+'：'" :prop="item.mustfillitem == 1 ? item.fieldid : ''" v-for="(item,i) in formList" :key="i">
+                            <el-input v-model="item.defaultvalue" :placeholder="'请输入您的'+item.fieldalias"></el-input>
+                        </el-form-item>
+                        <el-form-item label="个人空间：">
+                            <el-radio v-model="infoForm.open_space" :label="1">开通</el-radio>
+                            <el-radio v-model="infoForm.open_space" :label="0">关闭</el-radio>
+                        </el-form-item>
+                        <el-form-item label="个人空间：" v-if="infoForm.open_space==1">
+                            <el-input v-model="infoForm.space_name" placeholder="请输入您的空间名称" maxlength="50" show-word-limit style="width:300px;"></el-input>
+                            <a v-bind:href="infoForm.space_url" target="_blank">浏览</a>
+                        </el-form-item>
+
+                        <div class="userbasicinfo-user__formbtn">
+                            <el-button style="padding: 12px 45px;" type="primary" @click="onSubmit()" round>保存</el-button>
+                        </div>
+                    </el-form>
+                </div>
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="修改密码" name="second">
+            <div class="userbasicinfo-pass__form">
+                <el-form ref="passForm" :model="passForm" :rules="passRules" status-icon label-width="111px">
+                    <el-form-item label="旧密码：" prop="oldPass">
+                        <el-input type="password" v-model="passForm.oldPass" placeholder="请输入您现在的登录密码"></el-input>
+                    </el-form-item>
+                    <el-form-item label="新密码：" prop="passWord">
+                        <el-input type="password" v-model="passForm.passWord" placeholder="请输入您的新密码"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码：" prop="rePassword">
+                        <el-input type="password" v-model="passForm.rePassword" placeholder="请再次输入您的新密码"></el-input>
+                    </el-form-item>
+                    <el-form-item label="验证码：" prop="yzCode">
+                        <el-input style="width: 170px" type="text" v-model="passForm.yzCode" placeholder="请输入右边的验证码"></el-input>
+                        <canvas ref="canvasOne" id="canvasOne" width="88" height="36" @click="draw([],'canvasOne')"></canvas>
+                        <span style="color: #3C81F9;cursor: pointer;" @click="draw([],'canvasOne')">看不清，换一个</span>
+                    </el-form-item>
+                    <el-form-item label="">
+                        <el-button style="padding: 12px 31px;margin-right: 20px" type="primary" @click="savePass()" round>确认提交</el-button>
+                        <el-button style="padding: 12px 31px;" @click="clearForm('passForm')" round>重新填写</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </el-tab-pane>
+
+        <el-tab-pane label="账号安全" name="third">
+            <div class="userbasicinfo-safe__form">
+                <el-form ref="safeForm" :model="safeForm" :rules="safeRules" status-icon label-width="111px">
+                    <el-form-item label="登录密码：" prop="passWord">
+                        <el-input type="password" v-model="safeForm.passWord" placeholder="请输入您的登录密码"></el-input>
+                    </el-form-item>
+                    <el-form-item label="提示问题：" prop="question">
+                        <el-input type="text" v-model="safeForm.question" placeholder="请输入您的提示问题"></el-input>
+                        <div class="safe-form__tips">Tips：当密码忘记时，取回密码的提示问题</div>
+                    </el-form-item>
+                    <el-form-item label="问题答案：" prop="answer">
+                        <el-input type="text" v-model="safeForm.answer" placeholder="请输入提示问题的答案"></el-input>
+                        <div class="safe-form__tips">Tips：当密码忘记时，取回密码提示问题的答案</div>
+                    </el-form-item>
+                    <el-form-item label="验证码：" prop="yzCode">
+                        <el-input style="width: 170px" type="text" v-model="safeForm.yzCode" placeholder="请输入右边的验证码"></el-input>
+                        <canvas ref="canvasTwo" id="canvasTwo" width="80" height="30" @click="draw([],'canvasTwo')"></canvas>
+                        <span style="color: #3C81F9;cursor: pointer;" @click="draw([],'canvasTwo')">看不清，换一个</span>
+                    </el-form-item>
+                    <el-form-item label="">
+                        <el-button style="padding: 12px 31px;margin-right: 20px" type="primary" @click="saveSafe()" round>确认提交</el-button>
+                        <el-button style="padding: 12px 31px;" @click="clearForm('safeForm')" round>重新填写</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </el-tab-pane>
+
+        <el-tab-pane label="账号绑定" name="four">
+            <div class="userbasicinfo-bind__list">
+                <div class="userbasicinfo-bind__item" v-for="(item,i) in userBindList" :key="i">
+                    <img :src="item.defaultpic" />
+                    <span style="margin-right: 30px;width:96px">{{(item.id == 'mobilebind' && '手机绑定：') || (item.id == 'qq' && 'QQ绑定：') || (item.id == 'weixin' && '微信绑定：') || (item.id == 'sina' && '微博绑定：') || (item.id == 'alipay' && '支付宝绑定：') || (item.id == 'sj' && '手机绑定：')}}</span>
+                    <span style="margin-right: 20px">{{item.bind_status == 0 ?  '未绑定' : '已绑定'}}</span>
+                    <span v-if="item.bind_status == 0" style="color: #3C81F9;cursor: pointer;font-size: 14px;" @click="setBindUrl(item)">立即绑定>></span>
+                    <span v-else-if="item.bind_status == 1" style="color: #3C81F9;cursor: pointer;font-size: 14px;" @click="delBindUrl(item)">解除绑定>></span>
+                </div>
+
+            </div>
+        </el-tab-pane>
+
+        <el-tab-pane label="收货人地址" name="five">
+            <div class="userbasicinfo-address">
+                <div class="userbasicinfo-address__newBtn">
+                    <el-button type="primary" @click="addAddress">新增收货地址</el-button>
+                    <i>您已创建{{addressList.length}}个收货地址，最多可创建20个。</i>
+                </div>
+                <div class="userbasicinfo-address__title">
+                    <span style="margin-left: 40px;width:28px;">序号</span>
+                    <span style="width:175px">地址别名</span>
+                    <span style="width:calc(100% - 343px);text-align: left">地址信息</span>
+                    <span style="width:60px;margin-right:40px;">操作</span>
+                </div>
+                <div class="userbasicinfo-address__list">
+                    <div class="userbasicinfo-address__item" v-for="(item,i) in addressList" :key="i">
+                        <div class="userbasicinfo-address__index">{{i+1}}</div>
+                        <div class="userbasicinfo-address__name">{{item.title}}</div>
+                        <div class="userbasicinfo-address__info">
+                            <span>收货人：{{item.recive_name}}</span>
+                            <span>电话：{{item.mobile}}</span>
+                            <span>邮编：{{item.zipcode}}</span>
+                            <span>地址：{{item.address}}</span>
+                        </div>
+                        <div class="userbasicinfo-address__methods">
+                            <span @click="modifyAddress(item)">修改地址</span>
+                            <span @click="delAddress(item)">删除地址</span>
+                            <span style="color: #3C81F9;" v-if="item.isdefault == 0" @click="setDefault(item)">设为默认</span>
+                            <span style="color: #BCC3CC;" v-else-if="item.isdefault == 1">默认地址</span>
+                        </div>
+                    </div>
+                    <ks-empty msg="添加收货地址" v-if="addressList.length == 0" />
+                </div>
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="发票管理" name="six">
+            <div class="userbasicinfo-invoice">
+                <div class="userbasicinfo-invoice__newBtn">
+                    <el-button type="primary" @click="addInvoice">新增发票信息</el-button>
+                    <i>您已创建{{invoiceList.length}}个发票信息，最多可创建20个。</i>
+                </div>
+                <div class="userbasicinfo-invoice__title">
+                    <span style="margin-left: 40px;width:28px;">序号</span>
+                    <span style="width:calc(100% - 228px);text-align: left;margin-left:60px;">发票信息</span>
+                    <span style="width:60px;margin-right:40px;">操作</span>
+                </div>
+                <div class="userbasicinfo-invoice__list">
+                    <div class="userbasicinfo-invoice__item" v-for="(item,i) in invoiceList" :key="i">
+                        <div class="userbasicinfo-invoice__index">{{i+1}}</div>
+                        <div class="userbasicinfo-invoice__info">
+                            <span>发票开具方式：{{item.invoicetype_str}}</span>
+                            <span>单位名称：{{item.invoice_title == '个人'?item.invoice_title:item.companyname}}</span>
+                        </div>
+                        <div class="userbasicinfo-invoice__methods">
+                            <span @click="modifyUserInvoice(item)">修改发票</span>
+                            <span @click="delInvoice(item)">删除发票</span>
+                        </div>
+                    </div>
+                    <ks-empty msg="添加发票信息" v-if="invoiceList.length == 0" />
+                </div>
+            </div>
+        </el-tab-pane>
+    </el-tabs>
+    <!-- -----------------------------------------------------设置标签---------------------------------------------------- -->
+    <el-dialog title="设置标签" :visible.sync="dialogSetLabelVisible" width="800px">
+        <div>
+            <div class="setlabel-top">
+                已选标签：
+                <el-button type="primary" size="small" round v-for="(item,i) in xztagsList" :key="i">{{item.key}}<i style="margin-left: 5px;" class="el-icon-upload el-icon-close" @click="delTags(item)"></i></el-button>
+            </div>
+            <div class="setlabel-middle">
+                <el-button size="small" round v-for="(item,i) in tagsList" :key="i" @click="addTags(item)">{{item.key}}</el-button>
+            </div>
+            <div class="setlabel-btn">
+                <el-button type="primary" size="medium" @click="pushTags">确定</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <!-- -----------------------------------------------------绑定手机---------------------------------------------------- -->
+
+    <el-dialog title="手机绑定" :visible.sync="dialogBindVisible" width="600px">
+        <div class="userbasicinfo-bind__dialog">
+            <el-form ref="bindForm" :model="bindForm" :rules="bindRules" status-icon label-width="111px" style="padding: 40px 120px 40px 0;">
+                <el-form-item label="手机号码:" prop="phone">
+                    <el-input type="text" style="width: 300px;" v-model="bindForm.phone" placeholder="请输入您要绑定的手机号码 "></el-input>
+                </el-form-item>
+                <el-form-item label="验证码:" prop="dxCode">
+                    <el-input type="text" style="width: 180px;margin-right: 5px;" v-model="bindForm.dxCode" placeholder="请输入您收到的验证码 "></el-input>
+                    <el-button type="primary" @click="sendYzCode">获取验证码</el-button>
+                </el-form-item>
+            </el-form>
+            <div class="userbasicinfo-bind__btn">
+                <el-button style="padding: 12px 43px;" type="primary" @click="mobileBind">确定</el-button>
+            </div>
+        </div>
+    </el-dialog>
+
+    <!-- -----------------------------------------------------新增收货地址---------------------------------------------------- -->
+
+
+    <el-dialog title="收货地址" :visible.sync="dialogAddressVisible" width="920px">
+        <div class="userbasicinfo-address__dialog">
+            <el-form ref="addressForm" :model="addressForm" :rules="addressRules" status-icon label-width="111px">
+                <el-form-item label="收货地址：" prop="county">
+                    <el-select v-model="addressForm.province" placeholder="请选择省" @change="changeProvince" @visible-change="getProvinceList">
+                        <el-option v-for="item in provinceList" :key="item.id" :label="item.city" :value="item.id">
+                        </el-option>
+                    </el-select>
+                    <el-select v-model="addressForm.city" placeholder="请选择市" @change="changeCity" @visible-change="getCityList">
+                        <el-option v-for="item in cityList" :key="item.id" :label="item.city" :value="item.id">
+                        </el-option>
+                    </el-select>
+                    <el-select v-model="addressForm.county" placeholder="请选择区" @change="changeCounty" @visible-change="getAreaList">
+                        <el-option v-for="item in areaList" :key="item.id " :label="item.city" :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="地址：" prop="address">
+                    <el-input type="text" v-model="addressForm.address" placeholder="请输入地址"></el-input>
+                    只需填街道地址及门牌号
+                </el-form-item>
+                <el-form-item label="邮政编码：" prop="zipCode">
+                    <el-input type="text" v-model="addressForm.zipCode" placeholder="请输入邮政编码"></el-input>
+                </el-form-item>
+                <el-form-item label="收货人：" prop="realName">
+                    <el-input type="text" v-model="addressForm.realName" placeholder="请输入真实姓名"></el-input>
+                    请填写真实姓名，以免延误收货
+                </el-form-item>
+                <el-form-item label="手机号码：" prop="phone">
+                    <el-input type="text" v-model="addressForm.phone" placeholder="请输入手机号"></el-input>
+                </el-form-item>
+                <el-form-item label="电子邮箱：" prop="email">
+                    <el-input type="text" v-model="addressForm.email" placeholder="请输入常用邮箱"></el-input>
+                    为了方便方便跟踪订单状态通知，建议输入您的常用邮箱
+                </el-form-item>
+                <el-form-item label="地址别名：" prop="name">
+                    <el-input type="text" v-model="addressForm.name" placeholder="请输入地址别名"></el-input>
+                    设置一个易记的名称，如：“送到家里”、“送到公司”等。
+                </el-form-item>
+                <el-form-item label="设置默认：">
+                    <el-checkbox v-model="addressForm.default"></el-checkbox>
+                </el-form-item>
+                <el-form-item>
+                    <el-button style="padding: 12px 31px;margin-right: 20px " type="primary" @click="saveAddress(addressForm.id) " round>确认提交</el-button>
+                    <el-button style="padding: 12px 31px; " @click="addressForm = []" round>重新填写</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </el-dialog>
+
+    <!-- -----------------------------------------------------新增发票---------------------------------------------------- -->
+    <el-dialog title="发票信息" :visible.sync="dialogInvoiceVisible" width="920px ">
+        <div class="userbasicinfo-invoice__dialog ">
+            <el-form ref="invoiceForm" :model="invoiceForm" :rules="invoiceRules" status-icon label-width="140px">
+                <el-form-item label="发票开具方式：">
+                    <el-radio v-model="invoiceRadio" label="1">普通发票（纸质）</el-radio>
+                    <el-radio v-model="invoiceRadio" label="2">增值税发票</el-radio>
+                </el-form-item>
+                <div v-if="invoiceRadio==1">
+                    <el-form-item label="发票抬头：">
+                        <el-radio v-model="invoiceTypeRadio" label="1">个人</el-radio>
+                        <el-radio v-model="invoiceTypeRadio" label="2">单位</el-radio>
+                    </el-form-item>
+                    <div v-if="invoiceTypeRadio==2">
+                        <el-form-item label="单位名称：" prop="company">
+                            <el-input type="text" v-model="invoiceForm.company" placeholder="请输入单位名称"></el-input>
+                        </el-form-item>
+                        <el-form-item label="纳税人识别号：" prop="code">
+                            <el-input type="text" v-model="invoiceForm.code" placeholder="请输入纳税人识别号"></el-input>
+                        </el-form-item>
+                        <el-form-item label="电子邮箱：" prop="email">
+                            <el-input type="text" v-model="invoiceForm.email" placeholder="请输入电子邮箱"></el-input>
+                        </el-form-item>
+                    </div>
+                </div>
+                <div v-else-if="invoiceRadio==2">
+                    <el-form-item label="单位名称：" prop="company">
+                        <el-input type="text" v-model="invoiceForm.company" placeholder="请输入单位名称"></el-input>
+                    </el-form-item>
+                    <el-form-item label="纳税人识别号：" prop="code">
+                        <el-input type="text" v-model="invoiceForm.code" placeholder="请输入纳税人识别号"></el-input>
+                    </el-form-item>
+                    <el-form-item label="注册地址：" prop="zcAddress">
+                        <el-input type="text " v-model="invoiceForm.zcAddress" placeholder="请输入注册地址"></el-input>
+                    </el-form-item>
+                    <el-form-item label="注册电话：" prop="zcPhone">
+                        <el-input type="text" v-model="invoiceForm.zcPhone" placeholder="请输入注册电话"></el-input>
+                    </el-form-item>
+                    <el-form-item label="开户银行： " prop="bank">
+                        <el-input type="text" v-model="invoiceForm.bank" placeholder="请输入开户银行"></el-input>
+                    </el-form-item>
+                    <el-form-item label="银行帐户：" prop="account">
+                        <el-input type="text" v-model="invoiceForm.account" placeholder="请输入银行帐户"></el-input>
+                    </el-form-item>
+                    <el-form-item label="电子邮箱：" prop="email">
+                        <el-input type="text" v-model="invoiceForm.email" placeholder="请输入电子邮箱"></el-input>
+                    </el-form-item>
+                    <el-form-item label="收票人姓名：" prop="name">
+                        <el-input type="text" v-model="invoiceForm.name" placeholder="请输入收票人姓名"></el-input>
+                    </el-form-item>
+                    <el-form-item label="收票人手机：" prop="mobile">
+                        <el-input type="text" v-model="invoiceForm.mobile" placeholder="请输入收票人手机"></el-input>
+                    </el-form-item>
+                    <el-form-item label="收票人地区：" prop="county">
+                        <el-select v-model="invoiceForm.province" placeholder="请选择省" @change="changeProvince" @visible-change="getProvinceList">
+                            <el-option v-for="item in provinceList" :key="item.id" :label="item.city" :value="item.id">
+                            </el-option>
+                        </el-select>
+                        <el-select v-model="invoiceForm.city" placeholder="请选择市" @change="changeCity" @visible-change="getCityList">
+                            <el-option v-for="item in cityList" :key="item.id" :label="item.city" :value="item.id">
+                            </el-option>
+                        </el-select>
+                        <el-select v-model="invoiceForm.county" placeholder="请选择区" @change="changeCounty" @visible-change="getAreaList">
+                            <el-option v-for="item in areaList" :key="item.id" :label="item.city" :value="item.id">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="收票人地址：" prop="address">
+                        <el-input type="text" v-model="invoiceForm.address" placeholder="请输入收票人地址"></el-input>
+                        只需填街道地址及门牌号
+                    </el-form-item>
+                </div>
+                <el-form-item style="padding-top: 40px">
+                    <el-button style="padding: 12px 31px;" type="primary" @click="saveInvoice(invoiceForm.id)" round>保存发票信息</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </el-dialog>
+
+</div>

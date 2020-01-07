@@ -1,0 +1,103 @@
+
+.margintop10.data-v-2720ec2d{
+	margin-top: 10px;
+}
+.font16.data-v-2720ec2d{
+	color:#1A1A1A;font-size: 16px;
+}
+.tabs.data-v-2720ec2d{
+	border-bottom: 1px solid #eee;position: fixed;top: 0;width: 100%;z-index: 100;
+}
+.top.data-v-2720ec2d{
+	margin: 54px 10px 0 10px;
+	padding: 0 10px;
+	background:rgba(255,255,255,1);
+	border-radius:8px;
+}
+.top-list.data-v-2720ec2d{
+	padding: 25px 0 20px 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.border-bottom.data-v-2720ec2d{
+	border-bottom: 1px solid #eee;
+}
+.top-item.data-v-2720ec2d{
+	text-align: center;
+	font-size: 12px;
+	color: #888888;
+}
+/*  */
+.list.data-v-2720ec2d{
+	padding: 0 10px;
+}
+.item.data-v-2720ec2d{
+	padding: 10px;
+	border-radius:8px;
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	margin-top: 10px;
+}
+.width-33.data-v-2720ec2d{
+	width: calc(100% /3);
+}
+.width-50.data-v-2720ec2d{
+	width: 50%;
+}
+.item-top.data-v-2720ec2d{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.ks-image.data-v-2720ec2d{
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 10px;
+}
+.name.data-v-2720ec2d{
+	font-size:12px;
+	color:rgba(136,136,136,1);
+}
+.username.data-v-2720ec2d{
+	margin-right: 5px;font-size: 16px;color:#1A1A1A;
+}
+.site.data-v-2720ec2d{
+	width: calc(100% / 3);
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	font-size:16px;
+	font-weight:500;
+	color:rgba(26,26,26,1);
+	margin-top: 15px;
+}
+.box-flex.data-v-2720ec2d{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;-webkit-flex-wrap: wrap;flex-wrap: wrap;
+}
+.site-text.data-v-2720ec2d{
+	font-size:12px;
+	color:rgba(136,136,136,1);
+	margin-top: 7px;
+}
+

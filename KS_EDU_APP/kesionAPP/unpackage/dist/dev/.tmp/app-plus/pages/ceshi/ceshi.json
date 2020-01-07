@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "测试",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "comment-list": "/components/ks-components/comment-list/comment-list",
+    "course-notes": "/components/ks-components/course-notes/course-notes",
+    "course-exam": "/components/ks-components/course-exam/course-exam"
+  }
+}

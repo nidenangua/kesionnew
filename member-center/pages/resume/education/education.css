@@ -1,0 +1,36 @@
+.education-title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.education-dialog .el-input {
+    width: 350px;
+}
+
+.education-list {
+    padding-bottom: 20px;
+}
+
+.education-list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 20px 0;
+}
+
+.education-list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

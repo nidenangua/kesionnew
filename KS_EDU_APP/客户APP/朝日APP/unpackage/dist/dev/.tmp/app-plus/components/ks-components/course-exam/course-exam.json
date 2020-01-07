@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ks-empty": "/components/ks-components/empty/empty"
+  }
+}

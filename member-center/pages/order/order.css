@@ -1,0 +1,561 @@
+.userorder {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px 40px 20px;
+}
+
+/* 顶部选择器 */
+
+.sort {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  z-index: 999;
+  line-height: 55px;
+}
+
+.sort .el-select {
+  width: 110px;
+}
+
+.userorder-sort {
+  overflow: hidden;
+  padding-bottom: 16px;
+}
+
+.userorder-sort .el-select {
+  width: 100px;
+  float: left;
+}
+
+.input {
+  float: left;
+  margin-left: 10px;
+}
+
+.input .el-input {
+  width: 400px;
+}
+
+/*  */
+
+.userorder-courseorderitem {
+  border: 1px solid #e6e9ed;
+  margin-bottom: 20px;
+}
+
+.userorder-courseorderitem__title {
+  border-bottom: 1px solid #e6e9ed;
+}
+
+.userorder-courseorderitem__title span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 30px;
+  margin-right: 25px;
+  margin-left: 10px;
+}
+
+.order-list .el-row {
+  text-align: center;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  padding: 20px 0;
+  border-bottom: 1px solid #e6e9ed;
+}
+
+.order-list .el-row .el-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-image .ks-image {
+  width: 100px;
+  height: 65px;
+  margin: 15px 0;
+}
+.userorder-courseorderitem__word {
+  text-align: left;
+  padding: 10px 20px 10px 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+.userorder-courseorderitem__word h2 {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 20px;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  cursor: pointer;
+}
+
+.userorder-courseorderitem__word span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 18px;
+}
+
+.userorder-courseorderitem__price span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 21px;
+  display: block;
+}
+
+.userorder-courseorderitem__price span i {
+  font-size: 14px;
+  color: #e91c35;
+  font-style: normal;
+}
+
+.userorder-courseorderitem__deliver p {
+  width: 42px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 21px;
+}
+.userorder-courseorderitem__button {
+  text-align: center;
+}
+.userorder-courseorderitem__button span {
+  display: block;
+  cursor: pointer;
+}
+
+.userorder-courseorderitem__button .el-button {
+  padding: 10px 15px;
+}
+
+.userorder-courseorderitem__detail span {
+  display: block;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 21px;
+}
+
+/* 拼团 */
+
+.userorder-assemblelist {
+  padding-bottom: 20px;
+}
+
+.userorder-assembleitem {
+  padding: 20px 20px 20px 0;
+  overflow: hidden;
+  border-bottom: 1px solid #e6e9ed;
+}
+
+.userorder-assembleitem .ks-image {
+  width: 180px;
+  height: 108px;
+  float: left;
+}
+
+.userorder-assembleitem__word {
+  float: left;
+  margin-left: 8px;
+}
+
+.userorder-assembleitem__word h2 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+
+  cursor: pointer;
+  line-height: 20px;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.userorder-assembleitem__word span {
+  display: block;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 21px;
+  margin-top: 10px;
+}
+
+.userorder-assembleitem__right {
+  float: right;
+}
+
+.userorder-assembleitem__right h2 {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 21px;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.userorder-assembleitem__right i {
+  color: #e91c35;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.userorder-assembleitem__button {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.userorder-assembleitem__button p {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  line-height: 46px;
+  float: right;
+  margin-right: 20px;
+}
+
+.userorder-assembleitem__button .el-button {
+  float: right;
+  padding: 10px 18px;
+}
+
+/* 订单详情 */
+
+.userorder-detail__retrun {
+  padding: 7px 15px;
+  border-radius: 15px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.userorder-detailinfo {
+  padding-top: 30px;
+}
+
+.userorder-detail__title {
+  padding-left: 10px;
+  border-left: 2px solid #488bff;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 21px;
+}
+
+.userorder-detail__content {
+  padding: 10px 20px 0 10px;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 30px;
+}
+
+.detail-content__left {
+  float: left;
+}
+.detail-content__left span{
+  display: block;
+}
+.userorder-detail__contentbox span{
+  display: block;
+}
+.userorder-detail__content span{
+  display: block;
+}
+.detail-content__right {
+  float: right;
+}
+
+.detail-table__title {
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  background: #f5f7fa;
+  margin-top: 20px;
+  text-align: center;
+}
+.detail-table__wltitle {
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  background: #f5f7fa;
+  margin-top: 20px;
+  text-align: center;
+}
+.detail-table__wltitle span {
+  float: left;
+}
+.detail-table__content {
+  padding: 20px 10px;
+}
+
+.detail-table__image .ks-image {
+  height: 65px;
+  width: 100px;
+}
+.detail-table__course {
+  text-align: left;
+  width: 100%;
+}
+.detail-table__course h2 {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 20px;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  cursor: pointer;
+}
+.camp-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 16px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.detail-table__price {
+  font-size: 14px;
+  color: #e91c35;
+}
+
+.detail-table__count {
+  font-size: 14px;
+  color: #e91c35;
+}
+
+.detail-table__data {
+  font-size: 14px;
+  color: #e91c35;
+}
+
+.detail-table__tax {
+  font-size: 14px;
+  color: #e91c35;
+}
+
+.detail-table__pay {
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+.detail-table__paybox span {
+  display: block;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 30px;
+}
+
+.detail-table__paybox span i {
+  display: inline-block;
+  width: 100px;
+  font-style: normal;
+}
+
+.detail-table__btn {
+  margin-top: 30px;
+}
+
+.detail-table__btn .el-button {
+  margin-left: 20px;
+}
+
+.detail-table__site {
+  padding: 17px 0;
+  text-align: center;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  border-bottom: 1px solid #e6e9ed;
+  height: 19px;
+}
+
+.detail-table__time {
+  width: 200px;
+  padding-left: 20px;
+  float: left;
+  height: 100%;
+}
+
+.detail-table__info {
+  width: 300px;
+  float: left;
+  height: 100%;
+}
+
+.detail-table__man {
+  width: 100px;
+  float: left;
+  height: 100%;
+}
+
+.detail-table__detail {
+  width: 100px;
+  float: left;
+  height: 100%;
+}
+
+.userorder .el-dialog__body {
+  padding: 20px 30px 40px 30px;
+}
+
+.detail-dialog .el-form {
+  border-top: 1px solid #e6e9ed;
+  border-bottom: 1px solid #e6e9ed;
+  padding-top: 20px;
+  padding-right: 80px;
+}
+
+.userorder-detail__refunditem {
+  padding: 10px 20px 0 10px;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 30px;
+  border-bottom: 1px solid #e6e9ed;
+}
+
+.userorder-detail__refunditem span {
+  display: block;
+}
+
+/* 支付 */
+
+.ks-pay {
+  padding: 20px 20px 0 20px;
+  border-top: 1px solid #e6e9ed;
+}
+
+.ks-pay h1 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 20px;
+}
+
+.ks-pay__row p {
+  display: block;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 40px;
+}
+
+.ks-pay__list {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.ks-pay__item {
+  width: 145px;
+  height: 48px;
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 48px;
+  float: left;
+  border: 1px solid #bcc3cc;
+  font-size: 20px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(53, 53, 53, 1);
+}
+
+.ks-pay__item i {
+  width: 16px;
+  height: 16px;
+  background: url(/ks_inc/member-center/images/account/active.png);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.active-pay {
+  border: 1px solid #3c81f9;
+}
+
+.ks-used {
+  width: 145px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(136, 136, 136, 1);
+}
+
+.ks-pay__text {
+  margin-top: 15px;
+  border: 1px solid #e6e9ed;
+  max-height: 200px;
+  min-height: 100px;
+  overflow: auto;
+  padding: 10px;
+}
+
+.ks-checkbox {
+  margin-top: 30px;
+}
+
+.ks-pay__btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.userorder-comment {
+  padding: 40px 100px 100px 40px;
+  color: #606367;
+  font-size: 16px;
+}
+
+.userorder-comment__item {
+  line-height: 40px;
+  overflow: hidden;
+}

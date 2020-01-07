@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"van-icon-arrow-left.",[1],"data-v-3070496e { color: #4d4c4c !important; }\n.",[1],"analysis-contianer.",[1],"data-v-3070496e { background: #fff; padding: 0 15px; }\n",],undefined,{path:"./pages/exam/analysis.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/exam/analysis.wxml') } }));

@@ -1,0 +1,28 @@
+
+.plv-mp-chatroom-wrap.data-v-8bfe7070 {
+  height: 100%;
+  position: relative;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+  background: #44434f;
+}
+.plv-mp-chatroom-scroll-view.data-v-8bfe7070 {
+  height: 100%;
+}
+.plv-mp-chatroom-more.data-v-8bfe7070 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  color: #fff;
+  font-size: 26rpx;
+  background: #6ebbf7;
+  text-align: center;
+}
+.plv-mp-skin__white.data-v-8bfe7070 {
+  background: #f5f9fa;
+}
+
+

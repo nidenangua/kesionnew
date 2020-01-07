@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "我的提问",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-tabs": "/components/ks-components/tabs/tabs",
+    "ks-empty": "/components/ks-components/empty/empty",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

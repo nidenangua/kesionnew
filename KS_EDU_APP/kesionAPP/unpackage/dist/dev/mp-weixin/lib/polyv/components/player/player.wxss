@@ -1,0 +1,26 @@
+
+.plv-player.data-v-159ea5cc,
+.plv-player-live.data-v-159ea5cc,
+.plv-player-live__player.data-v-159ea5cc {
+  width: 100%;
+  height: 100%;
+}
+.plv-player-live__player__tips.data-v-159ea5cc {
+  position: absolute;
+  bottom: 20rpx;
+  left: 10rpx;
+  font-size: 14px;
+}
+.plv-player-vod.data-v-159ea5cc {
+  width: 100%;
+  display: none;
+}
+video.data-v-159ea5cc {
+  width: 100%;
+}
+.plv-mp-vod-player-box.data-v-159ea5cc,
+.plv-mp-vod-player-box-video.data-v-159ea5cc {
+  width: 100%;
+  height: 100%;
+}
+

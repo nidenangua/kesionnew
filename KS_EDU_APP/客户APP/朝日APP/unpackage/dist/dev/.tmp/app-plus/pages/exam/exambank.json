@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "套卷练习",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-empty": "/components/ks-components/empty/empty",
+    "uni-rate": "/components/uni/uni-rate/uni-rate",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

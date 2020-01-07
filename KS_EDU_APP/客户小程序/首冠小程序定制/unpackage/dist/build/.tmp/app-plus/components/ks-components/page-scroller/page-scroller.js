@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/ks-components/page-scroller/page-scroller"],{"0334":function(t,e,n){"use strict";n.r(e);var a=n("7644"),r=n.n(a);for(var o in a)"default"!==o&&function(t){n.d(e,t,function(){return a[t]})}(o);e["default"]=r.a},"0daa":function(t,e,n){},7644:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var a={name:"ks-page-scroller",props:{page:Number,pageCount:Number,height:{type:String,default:"100%"},refreshStatus:Boolean},data:function(){return{y:-49,refreshing:!1,touchFlag:!0}},watch:{refreshStatus:function(t){t||(this.y=-49,this.refreshing=!1)}},methods:{onTouchStart:function(t){this.refreshing?this.touchFlag=!1:(this.touchFlag=!0,this.startPageY=t.changedTouches[0].pageY)},onTouchMove:function(t){if(this.touchFlag){var e=t.changedTouches[0].pageY,n=e-this.startPageY-49;n=Math.min(n,0),n=Math.max(n,-49),this.y=n}},onTouchEnd:function(t){this.touchFlag?0===this.y?(this.refreshing=!0,this.$emit("update:refreshStatus",!0),this.$emit("refresh")):this.y=-49:this.touchFlag=!0},onScrollToLower:function(){this.$emit("scrolltolower")}}};e.default=a},e5a6:function(t,e,n){"use strict";var a=n("0daa"),r=n.n(a);r.a},f277:function(t,e,n){"use strict";var a=function(){var t=this,e=t.$createElement;t._self._c},r=[];n.d(e,"a",function(){return a}),n.d(e,"b",function(){return r})},fc64:function(t,e,n){"use strict";n.r(e);var a=n("f277"),r=n("0334");for(var o in r)"default"!==o&&function(t){n.d(e,t,function(){return r[t]})}(o);n("e5a6");var u=n("2877"),s=Object(u["a"])(r["default"],a["a"],a["b"],!1,null,"53fd02da",null);e["default"]=s.exports}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/ks-components/page-scroller/page-scroller-create-component',
+    {
+        'components/ks-components/page-scroller/page-scroller-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("fc64"))
+        })
+    },
+    [['components/ks-components/page-scroller/page-scroller-create-component']]
+]);                

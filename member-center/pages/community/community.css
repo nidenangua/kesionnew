@@ -1,0 +1,261 @@
+.usercommunity {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+}
+
+.usercommunity-sort {
+    overflow: hidden;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed #E6E9ED;
+    padding-right: 20px;
+}
+
+.usercommunity-sort span {
+    float: right;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    line-height: 36px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+
+/* 搜索框 */
+
+.el-input {
+    width: 240px;
+    float: left;
+}
+
+
+/* 选择器 */
+
+.el-select {
+    float: right;
+}
+
+.el-select>.el-input {
+    width: 110px;
+}
+
+
+/* 社群列表样式 */
+
+.usercommunity-communitylist {
+    padding-bottom: 20px;
+}
+
+.usercommunity-communityitem {
+    padding: 20px;
+    border-bottom: 1px dashed #E6E9ED;
+    overflow: hidden;
+}
+
+.usercommunity-communityitem .ks-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 2px;
+    float: left;
+    cursor: pointer;
+}
+
+.usercommunity-communityitem__word {
+    float: left;
+    margin-left: 20px;
+}
+
+.usercommunity-communityitem__word h2 {
+    font-size: 16px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(47, 49, 51, 1);
+    line-height: 45px;
+    cursor: pointer;
+}
+
+.usercommunity-communityitem__word span {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(188, 195, 204, 1);
+    line-height: 45px;
+    display: block;
+}
+
+.usercommunity-communityitem__word span i {
+    margin: 0 5px;
+    font-style: normal;
+    color: #3C81F9;
+}
+
+.usercommunity-communityitem__word p {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(60, 129, 249, 1);
+    line-height: 45px;
+}
+
+.usercommunity-communityitem__word p i {
+    color: #606367;
+    font-style: normal;
+    margin-right: 66px;
+}
+
+.usercommunity-communityitem__btn {
+    padding-right: 25px;
+    float: right;
+}
+
+.usercommunity-communityitem__btn h3 {
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.usercommunity-communityitem__btn .el-button {
+    border-radius: 15px;
+    padding: 2px 16px;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 22px;
+    margin-top: 45px;
+    cursor: pointer;
+}
+
+
+/* 帖子列表样式 */
+
+.usercommunity-postlist {
+    padding-bottom: 20px;
+}
+
+.usercommunity-postitem {
+    padding: 17px 20px;
+    overflow: hidden;
+    border-bottom: 1px dashed #E6E9ED;
+}
+
+.usercommunity-postitem__left {
+    float: left;
+}
+
+.usercommunity-postitem__top i {
+    color: #606367;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.usercommunity-postitem__top span {
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(164, 170, 178, 1);
+    margin-right: 40px;
+}
+
+.usercommunity-postitem__bottom {
+    margin-top: 15px;
+    overflow: hidden;
+    margin-left: 24px;
+}
+
+.usercommunity-postitem__bottom span {
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(164, 170, 178, 1);
+    float: left;
+    line-height: 21px;
+}
+
+.usercommunity-postitem__bottom p {
+    width: 680px;
+    max-height: 33px;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    line-height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+}
+
+.usercommunity-postitem__right {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(60, 129, 249, 1);
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+
+/* 我参与的话题 */
+
+.usercommunity-topicList {
+    padding-bottom: 20px;
+}
+
+.usercommunity-topicitem {
+    padding: 17px 20px;
+    overflow: hidden;
+    border-bottom: 1px dashed #E6E9ED;
+}
+
+.usercommunity-topicitem__left {
+    float: left;
+}
+
+.usercommunity-topicitem__top i {
+    color: #606367;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.usercommunity-topicitem__top span {
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(164, 170, 178, 1);
+    margin-right: 40px;
+}
+
+.usercommunity-topicitem__bottom {
+    margin-top: 5px;
+    overflow: hidden;
+    margin-left: 24px;
+}
+
+.usercommunity-topicitem__bottom span {
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(164, 170, 178, 1);
+    float: left;
+    line-height: 21px;
+}
+
+.usercommunity-topicitem__bottom p {
+    width: 680px;
+    max-height: 33px;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    line-height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+}

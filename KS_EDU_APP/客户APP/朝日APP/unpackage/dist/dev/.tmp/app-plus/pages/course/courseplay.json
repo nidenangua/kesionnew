@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "课程播放",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-tabs": "/components/ks-components/tabs/tabs",
+    "polyv-chatroom": "/lib/polyv/components/chatroom/chatroom",
+    "polyv-player": "/lib/polyv/components/player/player",
+    "comment-list": "/components/ks-components/comment-list/comment-list",
+    "course-exam": "/components/ks-components/course-exam/course-exam",
+    "course-notes": "/components/ks-components/course-notes/course-notes"
+  }
+}

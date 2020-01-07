@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "营销卡详情",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "uni-popup": "/components/uni/uni-popup/uni-popup"
+  }
+}

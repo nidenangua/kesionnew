@@ -1,0 +1,52 @@
+
+.van-tab--active.data-v-ee90d792 {
+  color: #ff4444;
+}
+.van-tabs__line.data-v-ee90d792 {
+  height: 2px;
+}
+.van-list.data-v-ee90d792 {
+  margin: 0 0.75rem 0 0.75rem;
+}
+.error-item.data-v-ee90d792 {
+  padding: 1rem 0 1rem 1rem;
+  border-left: 1px solid rgb(196, 219, 232);
+}
+.error-date.data-v-ee90d792 {
+  padding: 0.5rem 0;
+  color: #787c82;
+  font-size: 0.7rem;
+  position: relative;
+}
+.error-dot.data-v-ee90d792 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(196, 219, 232);
+  position: absolute;
+  left: -24.5px;
+  top: 50%;
+  margin-top: -4px;
+}
+.error-box.data-v-ee90d792 {
+  background: #fff;
+  border-radius: 4px;
+  padding: 0.5rem 0.5rem 0.75rem 0.5rem;
+}
+.error-status.data-v-ee90d792 {
+  border: 1px solid rgb(49, 118, 16);
+  width: 45px;
+  text-align: center;
+  height: 15px;
+  line-height: 17px;
+  font-size: 12px;
+  border-radius: 2px;
+  float: left;
+}
+.error-type.data-v-ee90d792 {
+  float: right;
+}
+.error-type ._span.data-v-ee90d792 {
+  color: #787c82;
+}
+

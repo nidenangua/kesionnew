@@ -1,0 +1,43 @@
+.userearning {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+}
+
+/* 优惠管理 */
+
+.userearning-list {
+  padding: 0 20px 40px 20px;
+}
+
+.userearning-item {
+  margin-top: 40px;
+  height: 110px;
+  border: 1px solid #e6e9ed;
+}
+
+.userearning-item__left {
+  float: left;
+  margin: 20px 0 0 20px;
+}
+
+.userearning-item__left p {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+}
+
+.userearning-item__right {
+  float: right;
+}
+
+.userearning-item__right .el-button {
+  padding: 10px 22px;
+  border-radius: 18px;
+  margin-top: 37px;
+  margin-right: 20px;
+}
+.dialog-box {
+  text-align: center;
+}

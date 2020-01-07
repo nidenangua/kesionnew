@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<div style="width: 100%;">
+    <!-- 考试记录列表 -->
+    <div class="package-exam__item">
+        <div class="package-exam__nav">
+            <span :class="{active:typeId==0}" @click="slideTab(0)">全部试卷</span>
+            <span :class="{active:typeId==site.typeid}" v-for="(site,n) in typeData" :key="n" @click="slideTab(site.typeid)">{{site.typename}}</span>
+        </div>
+        <div class="package-exam__item-title">
+            <p>试卷名称</p>
+            <span>最新得分</span>
+        </div>
+    </div>
+
+    <div v-if="showList" class="package-exam__show">
+        <div class="package-exam__showbox">
+            <div class="package-exam__box" v-for="(item,i) in allData" :key="i">
+                <div class="package-exam__left">
+                    <div class="package-exam__title">
+                        <span></span>{{item.title}}
+                    </div>
+                    <div class="package-exam__text">
+                        <span>{{item.studentcount}}人参加</span>
+                        <span>考试时间：{{item.exam_time}}分钟</span>
+                        <span>总分：{{item.paper_sumscore}}分</span>
+                        <div class="package-exam__difficulty">
+                            难度:
+                            <i class="package-exam__star" :style="{width:(item.paper_level==0&&13+'px')||(item.paper_level==1&&26+'px')||(item.paper_level==2&&50+'px')}"></i>
+                            <i class="package-exam__star-bg"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="package-exam__right">
+                    <div class="package-exam__score" v-if="item.sumscore!=-1"><i>{{item.sumscore}}</i>分</div>
+                    <div class="package-exam__score" v-else>&nbsp;&nbsp;- -</div>
+                    <div>
+                        <el-button type="primary" size="medium" round v-if="item.is_repractice==-1" @click="openExam(item.paperid,item.get_viewurl)">开始做题</el-button>
+                        <el-button disabled size="medium" round v-else-if="item.is_repractice==0">重新做题</el-button>
+                        <el-button size="medium" round v-else-if="item.is_repractice==1" @click="openExam(item.paperid,item.get_viewurl)">重新做题</el-button>
+                        <el-button type="primary" plain size="medium" round v-else-if="item.is_repractice==2" @click="againExam(item.paperid,item.get_viewurl)">继续做题</el-button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="package-exam__pagination">
+            <el-pagination style="text-align: center" :current-page="currentPage" @current-change="getPaperList" background layout="prev, pager, next" :total="pageCount">
+            </el-pagination>
+        </div>
+    </div>
+    <!-- 无数据提示 -->
+    <div class="package-exam__noShow" v-if="showNodata">
+        <ks-empty msg="暂无试卷" />
+    </div>
+    <!-- <exam-sort v-if='showSort' @close="closeSort" @openExam="openExam"></exam-sort> -->
+</div>

@@ -1,0 +1,201 @@
+{
+  "@platforms": [
+    "android",
+    "iPhone",
+    "iPad"
+  ],
+  "id": "__UNI__AF6B13C",
+  "name": "欣程网校",
+  "version": {
+    "name": "2.0.0",
+    "code": 200
+  },
+  "description": "",
+  "launch_path": "__uniappview.html",
+  "developer": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "permissions": {
+    "Payment": {},
+    "VideoPlayer": {},
+    "UniNView": {
+      "description": "UniNView原生渲染"
+    }
+  },
+  "plus": {
+    "useragent": {
+      "value": "uni-app",
+      "concatenate": true
+    },
+    "splashscreen": {
+      "autoclose": false,
+      "waiting": true,
+      "delay": 0
+    },
+    "popGesture": "close",
+    "launchwebview": {
+      "id": "1",
+      "kernel": "WKWebview",
+      "uni-app": "auto"
+    },
+    "statusbar": {
+      "immersed": "supportedDevice",
+      "style": "dark",
+      "background": "#F0F4F7"
+    },
+    "softinputMode": "adjustResize",
+    "runmode": "liberate",
+    "usingComponents": true,
+    "permissions": {
+      "Downloader": {
+        "description": "文件下载，管理文件下载任务"
+      },
+      "File": {
+        "description": "文件系统"
+      }
+    },
+    "distribute": {
+      "icons": {
+        "android": {
+          "hdpi": "unpackage/res/icons/72x72.png",
+          "xhdpi": "unpackage/res/icons/96x96.png",
+          "xxhdpi": "unpackage/res/icons/144x144.png",
+          "xxxhdpi": "unpackage/res/icons/192x192.png"
+        },
+        "ios": {
+          "appstore": "unpackage/res/icons/1024x1024.png",
+          "ipad": {
+            "app": "unpackage/res/icons/76x76.png",
+            "app@2x": "unpackage/res/icons/152x152.png",
+            "notification": "unpackage/res/icons/20x20.png",
+            "notification@2x": "unpackage/res/icons/40x40.png",
+            "proapp@2x": "unpackage/res/icons/167x167.png",
+            "settings": "unpackage/res/icons/29x29.png",
+            "settings@2x": "unpackage/res/icons/58x58.png",
+            "spotlight": "unpackage/res/icons/40x40.png",
+            "spotlight@2x": "unpackage/res/icons/80x80.png"
+          },
+          "iphone": {
+            "app@2x": "unpackage/res/icons/120x120.png",
+            "app@3x": "unpackage/res/icons/180x180.png",
+            "notification@2x": "unpackage/res/icons/40x40.png",
+            "notification@3x": "unpackage/res/icons/60x60.png",
+            "settings@2x": "unpackage/res/icons/58x58.png",
+            "settings@3x": "unpackage/res/icons/87x87.png",
+            "spotlight@2x": "unpackage/res/icons/80x80.png",
+            "spotlight@3x": "unpackage/res/icons/120x120.png"
+          }
+        }
+      },
+      "splashscreen": {
+        "android": {
+          "hdpi": "unpackage/res/splashscreen/480x762.png",
+          "xhdpi": "unpackage/res/splashscreen/720x1242.png",
+          "xxhdpi": "unpackage/res/splashscreen/1080x1882.png"
+        }
+      },
+      "google": {
+        "permissions": [
+          "<uses-feature android:name=\"android.hardware.camera\"/>",
+          "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+          "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+          "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+          "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+          "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+          "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+          "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+          "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+          "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+        ]
+      },
+      "apple": {
+        "idfa": false
+      },
+      "plugins": {
+        "payment": {
+          "appleiap": {},
+          "weixin": {
+            "appid": "wx35b71b4ab182afe5",
+            "UniversalLinks": "https://www.xkvo.net/ulink"
+          },
+          "alipay": {}
+        },
+        "audio": {
+          "mp3": {
+            "description": "Android平台录音支持MP3格式文件"
+          }
+        }
+      }
+    },
+    "allowsInlineMediaPlayback": true,
+    "safearea": {
+      "background": "#FFFFFF",
+      "bottom": {
+        "offset": "auto"
+      }
+    },
+    "uni-app": {
+      "compilerVersion": "2.4.6",
+      "control": "v8",
+      "nvueCompiler": "uni-app",
+      "renderer": "auto",
+      "nvue": {
+        "flex-direction": "column"
+      }
+    },
+    "tabBar": {
+      "color": "#8E8E93",
+      "selectedColor": "#2987EE",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "static/tabbar/nav_icon_index_n@2x.png",
+          "selectedIconPath": "static/tabbar/nav_icon_index_s@2x.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/course/courselist",
+          "iconPath": "static/tabbar/nav_icon_class_n@2x.png",
+          "selectedIconPath": "static/tabbar/nav_icon_class_s@2x.png",
+          "text": "课程"
+        },
+        {
+          "pagePath": "pages/class-center/index",
+          "iconPath": "static/tabbar/nav_icon_rest_n@2x.png",
+          "selectedIconPath": "static/tabbar/nav_icon_rest_s@2x.png",
+          "text": "课间"
+        },
+        {
+          "pagePath": "pages/learn-record/index",
+          "iconPath": "static/tabbar/nav_icon_learnrecord_n@2x.png",
+          "selectedIconPath": "static/tabbar/nav_icon_learnrecord_s@2x.png",
+          "text": "学习记录"
+        },
+        {
+          "pagePath": "pages/user/index",
+          "iconPath": "static/tabbar/nav_icon_me_n@2x.png",
+          "selectedIconPath": "static/tabbar/nav_icon_me_s@2x.png",
+          "text": "我的"
+        }
+      ],
+      "borderStyle": "rgba(0,0,0,0.4)",
+      "height": "50px"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+.recommend-title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.recommend-dialog .el-input {
+    width: 350px;
+}
+
+.recommend-list {
+    padding-bottom: 20px;
+}
+
+.recommend-list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 20px 0;
+}
+
+.recommend-list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.recommend-sort {
+    overflow: hidden;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed #E6E9ED;
+}
+
+.recommend-sort span {
+    float: right;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    line-height: 36px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.recommend-list .el-row .el-checkbox__label {
+    display: none;
+}
+
+.recommend-list__pldelete {
+    padding: 20px 43px;
+    overflow: hidden;
+}
+
+.recommend-list__pldelete .el-button {
+    margin-left: 10px;
+}
+
+
+/* 搜索框 */
+
+.recommend-sort .el-input {
+    width: 240px;
+    float: left;
+}
+
+
+/* 选择器 */
+
+.recommend-sort .el-select {
+    float: right;
+}
+
+.recommend-sort .el-select>.el-input {
+    width: 130px;
+}

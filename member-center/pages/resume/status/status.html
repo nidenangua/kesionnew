@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<div>
+    <div class="status">
+        <el-form ref="form" style="padding-bottom:20px;" :model="form" label-width="200px">
+            <el-form-item label="简历状态：">
+                <span :style="{color:form.status == 0 ? '#e91c35' : ''}">{{form.status_str}}</span>
+            </el-form-item>
+            <el-form-item label="收到的面试通知：">
+                <span><i style="color: #3c81f9;font-size:24px;font-style:normal;margin: 5px;">{{form.audition_total}}</i>封邮件</span>
+            </el-form-item>
+            <el-form-item label="职位申请记录：">
+                <span><i style="color: #3c81f9;font-size:24px;font-style:normal;margin: 5px;">{{form.look_total}}</i>条</span>
+            </el-form-item>
+            <el-form-item label="被企业查询记录：">
+                <span><i style="color: #3c81f9;font-size:24px;font-style:normal;margin: 5px;">{{form.eplook_total}}</i>条</span>
+            </el-form-item>
+            <el-form-item label="简历完成状态：">
+                <div class="status-list">
+                    <span>基本信息：<i :style="{color:form.basicinfo_status == '未完成' ? '#e91c35' : ''}">{{form.basicinfo_status}}</i><i style="color: #3c81f9;cursor: pointer;" @click="open('ResumePersonal')">编辑</i></span>
+                    <span>教育背景：<i :style="{color:form.educate_status == '未完成' ? '#e91c35' : ''}">{{form.educate_status}}</i><i style="color: #3c81f9;cursor: pointer;" @click="open('ResumeEducation')">编辑</i></span>
+                    <span>培训经历：<i :style="{color:form.training_status == '未完成' ? '#e91c35' : ''}">{{form.training_status}}</i><i style="color: #3c81f9;cursor: pointer;" @click="open('ResumeTrain')">编辑</i></span>
+                    <span>工作经历：<i :style="{color:form.experience_status == '未完成' ? '#e91c35' : ''}">{{form.experience_status}}</i ><i style="color: #3c81f9;cursor: pointer;" @click="open('ResumeExperience')">编辑</i></span>
+                    <span>上传照片：<i :style="{color:form.uploadphoto_status == '未完成' ? '#e91c35' : ''}">{{form.uploadphoto_status}}</i><i style="color: #3c81f9;cursor: pointer;" @click="open('ResumePersonal')">编辑</i></span>
+                    <span>求职意向：<i :style="{color:form.jobintension_status == '未完成' ? '#e91c35' : ''}">{{form.jobintension_status}}</i><i style="color: #3c81f9;cursor: pointer;" @click="open('ResumeIntention')">编辑</i></span>
+                </div>
+            </el-form-item>
+            <el-form-item label="简历保密状态：">
+                <p v-if="form.resume_status_str">当前简历处于<i style="color: #3c81f9;font-size:18px;font-style:normal;margin:0 5px;">{{form.resume_status_str}}</i>状态</p>
+                <el-button size="medium" @click="setPass" :disabled="!form.resume_status_str">保密设置</el-button>
+            </el-form-item>
+            <el-form-item label="简历被查看：">
+                <span><i style="color: #3c81f9;font-size:24px;font-style:normal;margin: 5px;">{{form.resume_hits}}</i>次</span>
+            </el-form-item>
+            <el-form-item label="简历更新时间：">
+                <p>{{form.adddate}}</p>
+                <el-button size="medium" @click="refresh" :disabled="!form.adddate">刷新简历</el-button>
+            </el-form-item>
+            <el-form-item label="查看我的简历">
+                <el-button size="medium" @click="openView(form.view_url)" :disabled="!form.view_url">点击查看</el-button>
+            </el-form-item>
+        </el-form>
+        <div v-if="dataList.length > 0">
+            <div style="padding-top: 40px;border-top: 1px solid #E6E9ED;">
+                （根据您的求职意愿进行推荐） 修改求职意愿
+            </div>
+            <div class="status-title">
+                <el-row>
+                    <el-col :span="4"><span>职位名称</span></el-col>
+                    <el-col :span="6"><span>公司名称</span></el-col>
+                    <el-col :span="4"><span>薪水</span></el-col>
+                    <el-col :span="5"><span>地点</span></el-col>
+                    <el-col :span="5"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="status-form__list">
+                <el-row type="flex" v-for="(item,i) in dataList" :key="i">
+                    <el-col :span="4" align="middle">
+                        {{item.jobtitle}}
+                    </el-col>
+                    <el-col :span="6" align="middle"> <span @click="openView(item.company_url)">{{item.company}}</span></el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.salary}}</span> </el-col>
+                    <el-col :span="5" align="middle"> <span>{{item.place}}</span> </el-col>
+                    <el-col :span="5" align="middle">
+                        <div style="cursor: pointer;color: #488eff">
+                            <span @click="openView(item.view_url)">查看</span>
+                            <span @click="collect(item)">收藏</span>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+
+    </div>
+    <el-dialog title="保密设置" :visible.sync="dialogVisible" width="800px">
+        <div class="status-dialog">
+            <el-form label-width="114px">
+                <el-form-item label="身份证保密：">
+                    <span>当前状态为：<i style="color: #3c81f9;font-size:18px;font-style:normal">{{passData.idcard_status_str}}</i></span>
+                    <div>
+                        <el-radio v-model="passData.idcard_status" :label="1">完全公开</el-radio>
+                        <el-radio v-model="passData.idcard_status" :label="0">不公开我的身份证 (即：屏蔽身份证的显示)</el-radio>
+                    </div>
+                </el-form-item>
+                <el-form-item label="个人照片保密：">
+                    <span>当前状态为：<i style="color: #3c81f9;font-size:18px;font-style:normal">{{passData.photo_status_str}}</i></span>
+                    <div>
+                        <el-radio v-model="passData.photo_status" :label="1">照片完全公开</el-radio>
+                        <el-radio v-model="passData.photo_status" :label="0">不公开我的照片 (即：屏蔽照片的显示)</el-radio>
+                    </div>
+                </el-form-item>
+                <el-form-item label="联系方式保密：">
+                    <span>当前状态为：<i style="color: #3c81f9;font-size:18px;font-style:normal">{{passData.contact_status_str}}</i></span>
+                    <div>
+                        <el-radio v-model="passData.contact_status" :label="1">联系方式完全公开</el-radio>
+                        <el-radio v-model="passData.contact_status" :label="0">不公开联系方式 (使所有企业都查看不到我的联系方式)</el-radio>
+                    </div>
+                </el-form-item>
+                <el-form-item label="简历公开设置:">
+                    <div>
+                        <el-radio v-model="passData.resume_status" :label="0">保密（任何人都无法查看到您的简历，建议不要选此项）</el-radio>
+                    </div>
+                    <div>
+                        <el-radio v-model="passData.resume_status" :label="1">完全公开（最大程度增加简历人气）</el-radio>
+                    </div>
+                    <div>
+                        <el-radio v-model="passData.resume_status" :label="3"> 只限制企业浏览（您的简历只有企业才可以浏览）</el-radio>
+                    </div>
+                </el-form-item>
+
+            </el-form>
+            <div style="text-align: center">
+                <el-button type=primary round size="medium" @click="savePass">修改提交</el-button>
+                <el-button style="padding: 10px 34px;" round size="medium" @click="dialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

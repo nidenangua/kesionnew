@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "登录",
+  "navigationBarBackgroundColor": "#ff663d",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image"
+  }
+}

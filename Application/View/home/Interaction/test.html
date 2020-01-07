@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script>
+		/*
+			方法名称：isShell()
+			功能描述：返回调用方浏览器是否为客户端程序
+			返回类型：boolean
+			返回描述：true-客户端 false-非客户端程序
+		*/
+		function isShell(){
+			try {
+				return window.isShell();
+			} catch (e) {
+				return false;
+			}
+		}
+		
+		/*
+			方法名称：shellVersion()
+			功能描述：用于返回客户端版本号
+			返回类型：字符串
+		*/	
+		function shellVersion() {
+			try {
+				return window.shellVersion(); 
+			}
+			} catch (e) {
+				alert("非IE外壳客户端"); 
+				return ""; 
+			}
+		}
+		
+		/*
+			方法名称：sendMsg()
+			功能描述：通知宿主客户端发送信令
+			参数描述: doc - 字符串
+			返回类型：JSON字串
+			返回描述：在返回的JSON对象中会返回至少包含result、errmsg两个字段
+				result 数值型，等于0表示成功，小于0错误，大于0错误或警告由用户定义
+				errmsg 字符串，用于返回执行结果描述，非0时表示错误或警告文本
+		*/	
+  		function sendMsg(var doc ) {
+			try {
+				window.sendMsg(doc); 
+			} catch (e) {
+				alert("notify error"); 
+			}
+		}
+		
+		/*
+			方法名称： appendSignalInfo()
+		*/
+        function appendSignalInfo(info) {
+            var $ta_info = $("#ta_info");
+            var date = Date();
+            var str_date = date;
+            $ta_info.text($ta_info.text() + "[" + str_date + "]:" + info + "\n");
+        }
+
+        function sendSignalMsg() {
+            var $ta_msg = $("#ta_msg");
+            //alert($ta_msg.val());
+			
+			// 向客户端发送信令
+			notify($ta_msg.val());
+        }
+
+        $(function () {
+            $("#btn_send").click(function () {
+                sendSignalMsg();
+            });
+
+            $("#btn_send_clear").click(function () {
+                sendSignalMsg();
+                $("#ta_msg").val("");
+            });
+        });
+    </script>
+</head>
+<script type="text/javascript">
+	 window.onload = function() {
+		//
+		// 重要： 向客户端注册HTML中的信令回掉JS方法
+		// window.registerSignalCallback() 扩展API 用于注册客户端接收到信令后向HTML交互的回调接口
+		// 入参： 字符串 回掉的JS方法名称。 回掉JS接口原型参考appendSignalInfo() 方法
+		//
+		if (isShell()) {
+			window.registerSignalCallback('appendSignalInfo');
+		}
+	 }
+</script>
+<body>
+<table width="90%" style="margin-left: auto;margin-right:auto;">
+    <tr>
+        <td>
+            接受信令信息:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <textarea id="ta_info" style="width: 90%;" rows="8"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            发送信息:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <textarea id="ta_msg" style="width: 90%;" rows="8"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="btn_send">发送</button>
+            <button id="btn_send_clear">发送并清理</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

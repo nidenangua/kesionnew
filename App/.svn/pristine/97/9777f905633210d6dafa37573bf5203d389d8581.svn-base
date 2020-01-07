@@ -1,0 +1,37 @@
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+input,textarea,select,button{ outline: none; }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+html{font-size: 20px;}
+a{
+  text-decoration: none;
+}
+body {
+  font-size: 12px;
+  line-height: 1.8;
+  background:#fff;
+  color:#222;
+  font-family: Optima,hiragino sans gb,microsoft yahei,simsun,sans-serif
+}
+ol, ul, li {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+i{font-style: normal;}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ input:-webkit-autofill {
+     -webkit-box-shadow: 0 0 0px 1000px white inset;
+   }

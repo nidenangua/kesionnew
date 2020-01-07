@@ -1,0 +1,82 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*题目标题*/
+.question-title.data-v-24405ae8 {
+    font-size: 16px;
+    color: #3e4754;
+    line-height: 1.6;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
+}
+.question-title__type.data-v-24405ae8{
+      display: inline-block;
+      padding:1px 6px;
+      height: 16px;
+      line-height: 16px;
+      font-size: 10px;
+      overflow: hidden;
+      position: relative;
+      top:4px;
+      margin-right: 10px;
+      background: #80c269;
+      border-radius: 20px 20px 0 20px;
+      color:#fff;
+}
+.question-title__cont.data-v-24405ae8{
+      display: inline-block;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+              flex: 1
+}
+.question-title__cont ._img.data-v-24405ae8{
+      max-width:100% !important;
+}
+

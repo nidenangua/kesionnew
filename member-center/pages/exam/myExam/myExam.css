@@ -1,0 +1,177 @@
+.myexam {
+    width: 100%;
+    position: relative;
+    height: 155px;
+}
+
+.myexam-position {
+    position: absolute;
+    top: 57px;
+    width: 100%;
+}
+
+.myexam-box {
+    width: 100%;
+    height: 836px;
+    background-color: #ffffff;
+    border: solid 1px #ebebeb;
+    margin-top: 20px;
+}
+
+
+/* 进度条 */
+
+.myexam-progress {
+    width: 100%;
+    height: 142px;
+    background: #fff;
+    margin-top: 20px;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.myexam-progress__left {
+    float: left;
+}
+
+.myexam-progress__item {
+    padding: 12px 0;
+    height: 18px;
+}
+
+.myexam-progress__item span {
+    display: inline-block;
+    width: 122px;
+}
+
+.myexam-progress__left h1 {
+    width: 90px;
+    font-size: 14px;
+    color: #333;
+    text-align: right;
+    float: left;
+    font-weight: normal;
+}
+
+.myexam-progress__box {
+    width: 400px;
+    height: 10px;
+    border-radius: 5px;
+    float: left;
+    margin: 4px 8px 0 4px;
+    position: relative;
+}
+.myexam-progress__box  .el-progress-bar__outer{
+    height: 10px !important;
+}
+
+.myexam-progress__left span {
+    font-size: 12px;
+    color: #999;
+    float: left;
+}
+
+.myexam-progress__right {
+    float: right;
+}
+
+.myexam-progress__right span {
+    display: block;
+    width: 1px;
+    height: 120px;
+    background: #eee;
+    float: right;
+}
+
+.myexam-progress__btn {
+    width: 200px;
+    height: 36px;
+    background-color: #488BFF;
+    border-radius: 18px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 36px;
+    margin: 45px 40px 0 40px;
+    float: right;
+    cursor: pointer;
+}
+
+.myexam-progress__btn img {
+    width: 12px;
+    height: 14px;
+    margin: 0 4px -2px 0;
+}
+
+
+/* 学习情况文字 */
+
+.myexam-record {
+    padding: 20px 0 20px 17px;
+    height: 122px;
+    border-bottom: solid 1px #ebebeb;
+    width: 100%;
+}
+
+.myexam-record__item {
+    width: calc(20% - 24px);
+    height: 120px;
+    border-radius: 6px;
+    border: solid 1px #ebebeb;
+    margin-right: 18px;
+    float: left;
+    text-align: center;
+}
+
+.myexam-record__text {
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.myexam-record__text span {
+    font-size: 40px;
+    color: #333;
+    font-weight: bold;
+}
+
+.myexam-record__item p {
+    font-size: 14px;
+    color: #7f7f7f;
+}
+
+
+/* 学习图表 */
+
+.myexam-chart {
+    width: calc(100% - 155px);
+    height: 473px;
+    margin: 20px auto 0 auto;
+}
+
+
+/* 加载中 */
+
+#divprogressbar {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 999;
+    text-align: center;
+}
+
+#divprogressbar img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    height: 40px;
+    width: 40px;
+    line-height: 30px;
+    margin-top: -20px;
+    color: #333;
+    font-size: 20px;
+    letter-spacing: 5px;
+}

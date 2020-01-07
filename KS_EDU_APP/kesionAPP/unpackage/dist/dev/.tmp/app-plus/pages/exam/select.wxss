@@ -1,0 +1,12 @@
+
+.van-icon-arrow-left.data-v-9f445af2 {
+  color: #4d4c4c !important;
+}
+.van-sidebar-item.data-v-9f445af2 {
+  background-color: rgb(245, 245, 245);
+}
+.van-sidebar-item--select.data-v-9f445af2 {
+  background-color: #fff;
+  border-color: #fff;
+}
+

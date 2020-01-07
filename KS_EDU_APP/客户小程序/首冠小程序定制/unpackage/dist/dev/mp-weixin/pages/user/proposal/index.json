@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "举报/建议",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "mpvue-picker": "/components/uni/mpvue-picker/mpvue-picker"
+  }
+}

@@ -1,0 +1,134 @@
+.useraccount {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+}
+
+.userdiscount {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+    margin-top: 16px;
+}
+
+.useraccount-info {
+    padding: 35px 0;
+    overflow: hidden;
+}
+
+.useraccount-info__item {
+    width: calc(100% / 3);
+    height: 100px;
+    float: left;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.useraccount-info__box {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.useraccount-info__box p {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    line-height: 21px;
+}
+
+.useraccount-info__box i {
+    font-style: normal;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    margin-left: 5px;
+}
+
+
+/* 优惠管理 */
+
+.userdiscount-list {
+    padding: 0 20px 40px 20px;
+}
+
+.userdiscount-item {
+    margin-top: 40px;
+    height: 110px;
+    border: 1px solid #E6E9ED;
+}
+
+.userdiscount-item__left {
+    float: left;
+    margin: 20px 0 0 20px;
+}
+
+.userdiscount-item__left p {
+    font-size: 16px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(47, 49, 51, 1);
+}
+
+.userdiscount-item__right {
+    float: right;
+}
+
+.userdiscount-item__right .el-button {
+    padding: 10px 29px;
+    border-radius: 18px;
+    margin-top: 37px;
+    margin-right: 20px;
+}
+
+
+/* 账户明细 */
+
+.useraccount-account__retrun {
+    padding: 7px 15px;
+    border-radius: 15px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.useraccount-account__title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+}
+
+.useraccount-account__list {
+    padding-bottom: 20px;
+}
+
+.useraccount-account__list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 10px 0;
+}
+
+.useraccount-account__list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+

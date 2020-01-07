@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "uni-audio": "/components/uni/uni-audio/uni-audio"
+  },
+  "component": true
+}

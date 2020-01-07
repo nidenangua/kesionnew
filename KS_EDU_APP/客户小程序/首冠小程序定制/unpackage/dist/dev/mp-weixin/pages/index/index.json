@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-course-list": "/components/ks-components/course-list/course-list",
+    "uni-rate": "/components/uni/uni-rate/uni-rate"
+  }
+}

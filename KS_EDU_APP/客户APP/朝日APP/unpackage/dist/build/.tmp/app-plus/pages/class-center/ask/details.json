@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "问答详情",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-empty": "/components/ks-components/empty/empty",
+    "ks-collect": "/components/ks-components/collect/collect",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

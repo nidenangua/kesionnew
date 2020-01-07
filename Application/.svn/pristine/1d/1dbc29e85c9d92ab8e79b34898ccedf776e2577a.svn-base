@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>优惠券详情</title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/home.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/myvoucher.css" rel="stylesheet">
+    <script>
+    	var uoot = '<?php echo UOOT ?>';	
+    </script> 
+    <style>
+        body{
+            background:#F7FCFF
+        }
+        .voucher-detail .container .title{
+            white-space: nowrap;
+            overflow: hidden;;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div id="voucher-detail" class="voucher-detail" v-cloak>
+        
+        <div class="top">
+            <img src="<?php echo UOOT ?>Public/wechat/images/voucher/discount_bg_content.png" alt="">
+            <div class="container" v-if="info">
+                <div class="time-info">
+                    <div class="time">{{info.addtime}}</div>
+                    <div v-if="info.isuse==0" class="status" style="color:#EC3619">领用中</div>
+                    <div v-else-if="info.isuse==1" class="status" style="color:#37a7ed">已领完</div>
+                    <div v-else class="status" style="color:#999">已过期</div>
+                </div>
+                <div class="title">{{info.title}}<span style="color: #999;margin-left: 5px">({{info.infotitle}})</span></div>
+                <div class="title2">{{satisfy(info.term)}}</div>
+                <div class="times-info">
+                    <div class="time">{{vouchertime(info.awarddate,info.time)}}</div>
+                    <div class="copybtn" @click="copy(info.isuse,info.url,$event)" :data-clipboard-action="copyed" :data-clipboard-text="info.url">复制链接</div>
+                </div>
+                <div class="voucher-money">优惠券金额:<span>￥{{info.money}}</span></div>
+                <div class="voucher-numbers">已领取数量:<span style="color:#37a7ed;margin-left: 5px">{{info.counts}}</span>/<span style="color:#999">{{info.number}}</span></div>
+                <div class="bottominfo">
+                    <div class="back btn" @click="back">返回</div>
+                    <div class="edit btn" @click="edit(info.edit)">编辑</div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-title">领取列表</div>
+        <div v-show="renderFlag">
+            <template v-if="datalist.length>0">
+                <div class="bottom-wrap">
+                    <div class="item line" v-for="(item,index) of datalist" :key="index">
+                        <img :src="item.headimg" alt="">
+                        <div class="name">{{item.username}}</div>
+                        <div v-if="item.isuse==0" class="status" style="color:#EC3619">{{item.mark}}</div>
+                        <div v-else-if="item.isuse==1" class="status" style="color:#37a7ed">{{item.mark}}</div>
+                        <div v-else class="status" style="color:#999">{{item.mark}}</div>
+                        <div class="time">{{item.addtime}}</div>
+                    </div>
+                </div>
+            </template>
+            <template v-else><div class="nodata"></div></template>
+            <div class="nomore" v-show="limit">我们是有底线的~</div>
+        </div>
+        <div class="loadings" v-show="loadingFlag"></div>	
+        <div class="masked" v-show="visible"></div>
+         <!--选择数量-->
+         <div class="number-wrap" v-if="numberFlag">
+            <div class="number-header line">用户领取</div>
+            <div class="number-body">
+                <div class="item">
+                    <span>优惠券数量: </span>
+                    <input type="number" v-model="voucherNumber">
+                    张
+                </div>
+            </div>
+            <div class="number-bottom">
+                    <div class="btn cancel" @click="numberBack">返回</div>
+                    <div class="btn sure" @click="numberSure">确定</div>
+            </div>
+        </div>
+    </div>
+    <script src="<?php echo UOOT;?>Public/common/js/voucher.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+	<script>
+		module.import('vouderdetail');
+		
+	</script>
+</body>
+</html>

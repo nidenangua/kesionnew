@@ -1,0 +1,13 @@
+
+.item.data-v-68aebf7a{
+	padding: 10px 20px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.ks-image.data-v-68aebf7a{
+	width: 120px;
+	height: 80px;
+	margin-right: 20px;
+}
+

@@ -1,0 +1,459 @@
+/*重置属性*/
+
+* {
+    margin: 0;
+    padding: 0;
+    word-break: break-all
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: #f5f6f9;
+    font-size: 12px;
+    min-height: 100%;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+em {
+    font-style: normal
+}
+
+a {
+    text-decoration: none;
+}
+
+body,
+a,
+input,
+select,
+textarea {
+    color: #424242;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+input,
+select,
+textarea {
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+}
+
+li {
+    list-style: none
+}
+
+li,
+dt,
+input,
+a,
+div {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0)
+}
+img{
+    max-width: 100%;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+/*通用*/
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.clearfix {
+    display: block;
+    *zoom: 1
+}
+/*重置编辑器样式*/
+body .edui-default .edui-toolbar{
+    line-height: 1;
+}
+body .edui-default .edui-editor-toolbarboxouter{
+    border-bottom: 1px solid #EBEEF5;
+    background-color: #F6F8F9;
+}
+body .edui-default .edui-editor{
+    border:1px solid #E4E7ED;
+}
+/*重置element-ui样式*/
+body .el-tab-pane {
+    padding: 20px;
+}
+
+body .el-input,
+body .el-textarea {
+    max-width: 600px;
+}
+
+body .el-table__header tr th,
+body .el-alert--info {
+    background: #F6F8F9;
+}
+
+body .el-table th.is-leaf {
+    border-bottom: 0px;
+}
+
+body .el-textarea__inner {
+    height: 100px;
+}
+
+body .el-form-item__label {
+    padding-right: 20px;
+}
+
+body .el-card {
+    overflow: inherit
+}
+
+body .el-input .el-input__count .el-input__count-inner {
+    line-height: 1;
+}
+
+body .el-button--primary:focus,
+.el-button--primary:hover {
+    border-color: #3e84fb;
+    background: #3e84fb;
+}
+
+body .el-input--band-unit .el-input__inner {
+    padding-right: 55px;
+}
+
+body .el-input__inner {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/*共用小样式*/
+
+.ks-tips {
+    color: #999;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.ks-tips i {
+    font-size: 14px;
+    color: #fdbb57;
+    margin-right: 10px;
+}
+
+.ks-fl {
+    float: left
+}
+
+.ks-fr {
+    float: right
+}
+
+.ks-mr5 {
+    margin-right: 5px;
+}
+
+.ks-mr10 {
+    margin-right: 10px;
+}
+
+.ks-mr15 {
+    margin-right: 15px;
+}
+
+.ks-mr20 {
+    margin-right: 20px;
+}
+
+.ks-mr30 {
+    margin-right: 30px;
+}
+
+.ks-ml5 {
+    margin-left: 5px;
+}
+
+.ks-ml10 {
+    margin-left: 10px;
+}
+
+.ks-ml15 {
+    margin-left: 15px;
+}
+
+.ks-ml20 {
+    margin-left: 20px;
+}
+
+.ks-mt5 {
+    margin-top: 5px;
+}
+
+.ks-mt10 {
+    margin-top: 10px;
+}
+
+.ks-mt15 {
+    margin-top: 15px;
+}
+
+.ks-mt20 {
+    margin-top: 20px;
+}
+
+.ks-mt25 {
+    margin-top: 25px;
+}
+
+.ks-mt30 {
+    margin-top: 30px;
+}
+
+.ks-mb0 {
+    margin-bottom: 0 !important;
+}
+
+.ks-pd10 {
+    padding-bottom: 10px;
+}
+
+.ks-pd20 {
+    padding-bottom: 20px;
+}
+
+.ks-pd30 {
+    padding-bottom: 30px;
+}
+
+.ks-pt10 {
+    padding-top: 10px;
+}
+
+.ks-pt20 {
+    padding-top: 20px;
+}
+
+.ks-pt30 {
+    padding-top: 30px;
+}
+
+.ks-pl5 {
+    padding-left: 5px;
+}
+
+.ks-pl10 {
+    padding-left: 10px;
+}
+
+.ks-pl15 {
+    padding-left: 15px;
+}
+
+.ks-pl20 {
+    padding-left: 20px;
+}
+
+.ks-fz12 {
+    font-size: 12px
+}
+
+.ks-fz14 {
+    font-size: 14px
+}
+
+.ks-fz16 {
+    font-size: 16px
+}
+
+.ks-fz18 {
+    font-size: 18px
+}
+
+.ks-cursor-pointer {
+    cursor: pointer;
+}
+
+.ks-color-link {
+    color: #49a0f5
+}
+
+.ks-color-primary {
+    color: #488bff
+}
+.ks-color-success{
+    color:#58c581
+}
+.ks-color-red {
+    color: #FF3B30;
+}
+
+.ks-color-info {
+    color: #999;
+}
+
+.ks-color-warning {
+    color: #faa82c
+}
+
+.ks-bg-warning {
+    background-color: #faa82c;
+}
+
+.ks-copy-link {
+    height: 0px;
+    border: 0px;
+}
+
+.ks-max-w-fit {
+    max-width: 300px;
+}
+
+.ks-text-nowrap {
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block
+}
+
+.ks-hide {
+    display: none
+}
+
+.ks-emotion {
+    width: 22px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 1px;
+}
+
+.ks-select-mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+}
+
+.ks-select-mask i {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    color: #fff;
+    text-align: center;
+    line-height: 80px;
+    font-size: 60px;
+}
+
+.ks-empty {
+    text-align: center;
+    padding: 240px 0px 40px 0px;
+    color: #ccc;
+    font-size: 14px;
+    background: url(./empty.png) center 60px no-repeat;
+}
+
+.ks-nopower {
+    text-align: center;
+    width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    font-size: 16px;
+    margin-top: 60px;
+    color: #999;
+    position: relative;
+    padding: 140px 0 30px 0;
+}
+
+.ks-nopower::before {
+    content: '';
+    width: 90px;
+    height: 90px;
+    background: url(./icon-wraning.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -45px;
+}
+
+.ks-breadcrumb {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.ks-blue-btn {
+    background: #fff;
+    border: 1px solid #488BFF;
+    color: #488bff;
+}
+
+.ks-normal-btn {
+    padding: 0 10px;
+    height: 34px;
+    font-size: 14px;
+    line-height: 32px;
+    min-width: 88px;
+}
+
+/*动画*/
+.fade-enter-active, .fade-leave-active ,
+.fade-left-enter-active, .fade-left-leave-active,
+.fade-up-enter-active, .fade-up-leave-active,
+.fade-down-enter-active, .fade-down-leave-active,
+.slide-in-up-active, .slide-in-up-leave-active,
+.slide-left-enter-active, .slide-left-leave-active {
+    transition: .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.fade-up-enter, .fade-up-leave-to {
+    opacity: 0;
+    transform: translateY(-15px);
+}
+.fade-left-enter, .fade-left-leave-to {
+    opacity: 0;
+    transform: translateX(-15px);
+}
+.fade-down-enter, .fade-down-leave-to {
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.slide-in-up-enter,
+.slide-in-up-leave-to {
+    opacity: 0;
+    transform: translateY(150px);
+}
+
+.slide-left-enter, .slide-left-leave-to {
+    transform: translateX(100%);
+}

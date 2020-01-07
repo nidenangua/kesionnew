@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "机构详情",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-collect": "/components/ks-components/collect/collect",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more",
+    "class-list": "/pages/school/class-list",
+    "teacher-list": "/pages/school/teacher-list",
+    "course-list": "/pages/school/course-list",
+    "news-list": "/pages/school/news-list",
+    "school-index": "/pages/school/home"
+  }
+}

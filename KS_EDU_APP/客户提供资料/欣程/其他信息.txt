@@ -1,0 +1,7 @@
+com.xincheng.xkvo  APP包名 别名xincheng 证书密码551377
+
+wx35b71b4ab182afe5 微信支付id
+
+微信开放平台 账号 385915260@qq.com      xc110585
+
+腾讯应用宝开放平台 账号 385915260@qq.com      wrj110585a

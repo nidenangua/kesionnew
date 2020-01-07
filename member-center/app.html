@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心主页</title>
+    <!-- common style -->
+    <link href="{$GetTemplateDir}/images/common/common.css?{$GetHash}" rel="stylesheet" />
+    <link rel="stylesheet" href="//unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="/ks_inc/member-center/js/element/style/theme/index.css">
+    <link rel="stylesheet" href="/ks_inc/member-center/app.css">
+    <link rel="stylesheet" href="/ks_inc/member-center/components/ui.css">
+    <script>
+        if (!window.Promise) {
+            document.write('<script src="//cdn.jsdelivr.net/npm/es6-promise@4.1.1/dist/es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>')
+        }
+        var HASH = "20192kf827f01";
+        var examImg = "/ks_inc/member-center/images/common/shijuan.png";
+        var hash = Math.ceil(Math.random() * 9999999999);
+    </script>
+</head>
+<body>
+    <div id="app" class="user" v-cloak>
+        <el-row :gutter="40">
+            <el-col :span="5">
+                <div class="user-left">
+                    <div class="user-left__top">
+                        <div class="user-vip" :style="{color:userInfo.isvip == 0 ? '#BCC3CC' : 'F5891E'}">
+                            <img :src="(userInfo.isvip == 0 ) ? '/ks_inc/member-center/images/common/me_icon_vip_n.png' : '/ks_inc/member-center/images/common/me_icon_vip.png'" />
+                            <span style="color: #BCC3CC;cursor: pointer;" @click="$router.push({name:'AccountVip'})">{{(userInfo.isvip == 0 ) ? '普通会员' : '黄金会员'}}</span>
+                        </div>
+                        <div class="user-left__avatar">
+                            <ks-image type="user" :src="userInfo.UserFace+ '?'+Math.ceil(Math.random()*9999999999)" @click="$router.push({name:'UserBasicinfo'})" />
+                        </div>
+                        <div class="user-left__name"><span>{{userInfo.RealName}}</span><img @click="$router.push({name:'UserBasicinfo'})" src="/ks_inc/member-center/images/home/me_btn_edit@2x.png" /></div>
+                        <div class="user-left__score" v-if="userInfo.score_data">
+                            <span v-if="userInfo.score_data.is_showscore">{{userInfo.score_data.score_name}}<i>{{userInfo.Score}}</i></span>
+                            <el-button v-if="userInfo.sign_data.is_showsign && userInfo.sign_data.sign_status == 0" @click="sign">签到</el-button>
+                            <el-button type="primary" v-else-if="userInfo.sign_data.is_showsign && userInfo.sign_data.sign_status == 1" @click="open('/user/signrecord')">签到记录</el-button>
+                        </div>
+                    </div>
+                    <div class="user-left__list">
+                        <el-menu :default-openeds="openeds" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+                            <div v-for="(item,i) in menuNameList" :key="item.key">
+                                <el-menu-item :index="'1'+i" @click="open('/')" v-if="item.key == 'index'">
+                                    <i>
+                                        <img class="menu-icon" src="/ks_inc/member-center/images/home/me_icon_main@2x.png" />
+                                    </i>
+                                    <span>{{item.menu_name}}</span>
+                                </el-menu-item>
+                                <el-submenu :index="'1'+i" v-else>
+                                    <template slot="title">
+                                        <i>
+                                            <img class="menu-icon" src="/ks_inc/member-center/images/home/me_icon_class@2x.png" v-if="item.key == 'course'" />
+                                            <img class="menu-icon" src="/ks_inc/member-center/images/home/me_main_btn_exercise@2x.png" v-else-if="item.key == 'exam'" />
+                                            <img class="menu-icon" src="/ks_inc/member-center/images/home/me_icon_account@2x.png" v-else-if="item.key == 'money'" />
+                                            <img class="menu-icon" src="/ks_inc/member-center/images/home/me_icon_infor@2x.png" v-else-if="item.key == 'ohter'" />
+                                            <img class="menu-icon" src="/ks_inc/member-center/images/home/me_icon_activity@2x.png" v-else-if="item.key == 'activitygroup'" />
+                                        </i>
+                                        <span>{{item.menu_name}}</span>
+                                    </template>
+                                    <el-menu-item :index="i + '-' + c" v-for="(child,c) in item.childs" :key="c" @click="open(
+                                        (child.menu_name == '我的课程' && '/user/course') || 
+                                        (child.menu_name == '我的班级' && '/user/class') || 
+                                        (child.menu_name == '我的训练营' && '/user/train') ||
+                                        (child.menu_name == '我的专栏' && '/user/column') ||
+                                        (child.menu_name == '我的考核' && '/user/kaohe') ||
+                                        (child.menu_name == '我的考试' && '/user/examcategory') ||
+                                        (child.menu_name == '考试套餐包' && '/user/package') ||
+                                        (child.menu_name == '试题纠错' && '/user/correction') ||
+                                        (child.menu_name == '我的订单' && '/user/order') ||
+                                        (child.menu_name == '我的活动' && '/user/activity') ||
+                                        (child.menu_name == '我的社群' && '/user/community') ||
+                                        (child.menu_name == '我的账户' && '/user/account') ||
+                                        (child.menu_name == '我要赚钱' && '/user/earning') ||
+                                        (child.menu_name == '基本资料' && '/user/basicinfo') ||
+                                        (child.menu_name == '站内消息' && '/user/message') ||
+                                        (child.menu_name == '问题互动' && '/user/interaction') ||
+                                        (child.menu_name == '我的评价' && '/user/comment') ||
+                                        (child.menu_name == '我的点赞' && '/user/givezan') ||
+                                        (child.menu_name == '我的收藏' && '/user/collect') ||
+                                        (child.menu_name == '我的文章' && '/user/article') ||
+                                        (child.menu_name == '求职管理' && '/user/resume/personal') ||
+                                        (child.menu_name == '我的表单' && '/user/myform')
+                                    )">{{child.menu_name}}</el-menu-item>
+                                </el-submenu>
+                            </div>
+                        </el-menu>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="19" class="user-right" id="userRight">
+                <keep-alive>
+                    <router-view />
+                </keep-alive>
+            </el-col>
+        </el-row>
+    </div>
+    <script src="/ks_inc/member-center/js/vue.min.js"></script>
+    <script src="/ks_inc/member-center/js/print.js"></script>
+    <script src="/ks_inc/member-center/js/index.js"></script>
+    <script src="//unpkg.com/vue-router/dist/vue-router.js "></script>
+    <script src="//unpkg.com/axios/dist/axios.min.js "></script>
+    <script src="//unpkg.com/element-ui/lib/index.js "></script>
+    <script src="//echarts.baidu.com/dist/echarts.min.js"></script>
+    <script src="//unpkg.com/vuex"></script>
+    <script type=text/javascript charset=utf-8 src=/ks_inc/ueditor/ueditor.config.js></script>
+    <script type=text/javascript charset=utf-8 src=/ks_inc/ueditor/ueditor.all.js></script>
+    <script type=text/javascript charset=utf-8 src=/ks_inc/ueditor/lang/zh-cn/zh-cn.js></script>
+    <script src="./components/ui.js "></script>
+    <script src="./api/user.js "></script>
+    <script src="./store/index.js"></script>
+    <script src="./app.js "></script>
+</body>
+
+</html>

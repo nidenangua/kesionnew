@@ -1,0 +1,4 @@
+<setting>
+	<item name="name" title="name"  type="input">红包活动</item>
+	<item name="ico" title="ICO" type="input"></item>
+</setting>

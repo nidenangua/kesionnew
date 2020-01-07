@@ -1,0 +1,39 @@
+.form {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+}
+
+.active-msg {
+  background: #409eff;
+  color: #fff;
+}
+
+.detail{
+  padding: 20px 0;
+  line-height: 30px;
+  font-size: 14px;
+}
+
+.detail-inner{
+  background: #f5f7fa;
+  padding: 20px 0;
+}
+
+.detail .detail__left-name{
+  font-weight: bold;
+  color: #333;
+}
+
+.detail-item{
+  margin-bottom: 10px;
+}
+
+.red-font{
+  color: crimson;
+}
+
+.green-font{
+  color:green;
+}

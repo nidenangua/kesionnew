@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<div class="comment">
+    <ks-title title="我的评价" :underline="false" />
+    <div class="comment-sort">
+        <span>类型：</span>
+        <el-select v-model="flag" placeholder="请选择" size="medium" @change="changeSelect">
+            <el-option v-for="item in flagList" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+    </div>
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="我的评价" name="first">
+            <div class="comment-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="2" style="text-align: left"><span>类型</span></el-col>
+                    <el-col :span="9" style="text-align: left"><span>评价内容</span></el-col>
+                    <el-col :span="4"><span>评价时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="comment-list">
+                <el-row type="flex" v-for="(item,i) in commentList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="2" align="middle" style="text-align: left"> <span>{{item.flag_str}}</span> </el-col>
+                    <el-col :span="9" align="middle" style="text-align: left">
+                        <div style="overflow: hidden;cursor: pointer;" v-html="item.content" @click="open(item.view_url)"></div>
+                        <div class="interaction-list__word" v-if="item.flag == 1">
+                            <p>班级名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="item.star" disabled show-score text-color="#ff9900" score-template="{item.star}">
+                                </el-rate>
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 2">
+                            <p>课程名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="item.star" disabled show-score text-color="#ff9900" score-template="{item.star}">
+                                </el-rate>
+
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 3">
+                            <p>教师名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="item.star" disabled show-score text-color="#ff9900" score-template="{item.star}">
+                                </el-rate>
+
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 4">
+                            <p>商品名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}">
+                                </el-rate>
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 5">
+                            <p>文章标题：{{item.title}}</p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 6">
+                            <p>文件名称：{{item.title}}</p>
+                        </div>
+                    </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span :style="{color:item.status == 1 ? '#606367' : '#E91C35'}">{{item.status == 1 ? '已审核' : '未审核'}}</span> </el-col>
+                    <el-col :span="3">
+                        <span style="cursor: pointer;" @click="deleteUserComment(item.id)">删除</span>
+                    </el-col>
+                </el-row>
+                <div class="comment-list__pldelete" v-if="commentList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserComment(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserCommentList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="我收到的评价" name="second">
+            <div class="comment-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="2" style="text-align: left"><span>类型</span></el-col>
+                    <el-col :span="9" style="text-align: left"><span>评价内容</span></el-col>
+                    <el-col :span="4"><span>评价时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="comment-list">
+                <el-row type="flex" v-for="(item,i) in commentList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="2" align="middle" style="text-align: left"> <span>{{item.flag_str}}</span> </el-col>
+                    <el-col :span="9" align="middle" style="text-align: left">
+                        <div style="overflow: hidden;cursor: pointer;" v-html="item.content" @click="open(item.view_url)"></div>
+                        <div class="interaction-list__word" v-if="item.flag == 1">
+                            <p>班级名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="item.star" disabled show-score text-color="#ff9900" score-template="{item.star}">
+                                </el-rate>
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 2">
+                            <p>课程名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="item.star" disabled show-score text-color="#ff9900" score-template="{item.star}">
+                                </el-rate>
+
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 3">
+                            <p>教师名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="item.star" disabled show-score text-color="#ff9900" score-template="{item.star}">
+                                </el-rate>
+
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 4">
+                            <p>商品名称：{{item.title}}</p>
+                            <p>
+                                评价星级：
+                                <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}">
+                                </el-rate>
+                            </p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 5">
+                            <p>文章标题：{{item.title}}</p>
+                        </div>
+                        <div class="interaction-list__word" v-else-if="item.flag == 6">
+                            <p>文件名称：{{item.title}}</p>
+                        </div>
+                    </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span :style="{color:item.status == 1 ? '#606367' : '#E91C35'}">{{item.status == 1 ? '已审核' : '未审核'}}</span> </el-col>
+                    <el-col :span="3">
+                        <span style="cursor: pointer;" @click="deleteUserComment(item.id)">删除</span>
+                    </el-col>
+                </el-row>
+                <div class="comment-list__pldelete" v-if="commentList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserComment(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserCommentList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+    </el-tabs>
+</div>

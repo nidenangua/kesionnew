@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#ff663d",
+  "backgroundColor": "#ffffff",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "ks-collect": "/components/ks-components/collect/collect",
+    "uni-rate": "/components/uni/uni-rate/uni-rate"
+  }
+}

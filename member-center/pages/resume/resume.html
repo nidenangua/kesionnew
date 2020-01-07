@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<div class="resume">
+    <ks-title title="求职管理" :underline="false" />
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="基本资料" name="first">
+            <!-- 子页面 -->
+
+            <keep-alive v-if="activeName == 'first'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+        <el-tab-pane label="求职意向" name="second">
+
+            <keep-alive v-if="activeName == 'second'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+        <el-tab-pane label="工作经验" name="third">
+
+            <keep-alive v-if="activeName == 'third'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+        <el-tab-pane label="教育背景" name="four">
+
+            <keep-alive v-if="activeName == 'four'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+        <el-tab-pane label="培训经历" name="five">
+
+            <keep-alive v-if="activeName == 'five'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+        <el-tab-pane label="求职记录" name="six">
+
+            <keep-alive v-if="activeName == 'six'">
+                <router-view></router-view>
+            </keep-alive>
+        </el-tab-pane>
+        <el-tab-pane label="简历状态" name="seven">
+
+            <keep-alive v-if="activeName == 'seven'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+        <el-tab-pane label="职位收藏/推荐" name="eight">
+
+            <keep-alive v-if="activeName == 'eight'">
+                <router-view></router-view>
+            </keep-alive>
+
+        </el-tab-pane>
+
+    </el-tabs>
+
+</div>

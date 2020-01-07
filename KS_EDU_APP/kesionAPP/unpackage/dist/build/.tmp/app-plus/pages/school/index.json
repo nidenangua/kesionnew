@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "机构列表",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-empty": "/components/ks-components/empty/empty",
+    "ks-filter": "/components/ks-components/filter/filter",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more",
+    "uni-icons": "/components/uni/uni-icons/uni-icons"
+  }
+}

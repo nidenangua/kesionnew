@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-empty": "/components/ks-components/empty/empty",
+    "uni-popup": "/components/uni/uni-popup/uni-popup",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

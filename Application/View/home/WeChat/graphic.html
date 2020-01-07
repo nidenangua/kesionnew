@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>图文</title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/home.css" rel="stylesheet">
+    <link href="<?php echo UOOT;?>Public/app/fonts/iconfont.css?<?php echoHash(); ?>" rel="stylesheet" />
+    <link href="<?php echo UOOT ?>Public/wechat/css/intention.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/graphic.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo UOOT ?>Public/wechat/css/campus.css"/>
+    <script>
+    	var uoot = '<?php echo UOOT ?>';
+    	
+    </script>
+    <style type="text/css">
+    	[v-cloak] {
+		  display: none;
+		}
+		body{
+			padding-bottom: 2.45rem;
+		}
+
+		.confirm .title {
+			height: 8rem;
+		    display: table-cell;
+		    vertical-align: middle;
+		    text-align: center;
+		    padding: 1rem;
+		    font-size: 0.7rem;
+		}
+		.confirm .title  a{
+			display: block;
+			color: #37a7ed;
+			font-size: 0.75rem;
+		}
+
+    </style>
+    <body>
+    	<div id="graphic" class="wrap" v-cloak>
+    		<div class="graphic-item" v-if="campusArr.length>0">
+	    		<div class="graphic-item" v-for="(item,index) of campusArr" :key="item.courseid" >
+	    			<div class="graphic-item-t" @click="open(item.homeurl)">
+	    				<div class="img-wrap">
+	    					<img :src="item.defaultpic" alt="" />
+	    				</div>
+	    				<div class="info">
+	    					<div class="title">{{item.title}}</div>
+	    					<div class="price-wrap">
+	    						<div class="price-type active" v-if="item.status==2">已上架</div>
+	    						<div class="price-type" v-if="item.status==0 ||item.status==1">已下架</div>
+	    						<div class="price" v-if="item.chargetype==0">免费</div>
+	    						<div class="price" v-else-if="item.chargetype==1">{{item.price}}</div>
+	    						<div class="price" v-else-if="item.chargetype==2">打赏</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="graphic-item-b">
+	    				<div class="item" v-if="item.status==0 ||item.status==1" @click="shelf(item.courseid,index,1)">上架</div>
+	    				<div class="item" v-if="item.status==2" @click="shelf(item.courseid,index,2)">下架</div>
+	    				<div class="item" @click="share(item.courseid,index)">分享</div>
+	    				<!--<a class="item" :href="'<?php echo UOOT ?>'+item.url">生成海报</a>-->
+	    			</div>
+	    		</div>
+	    	</div>
+    		<div v-else class="nodata"></div>  
+    		<!--全局确认框-->
+			<div class="confirm" v-show="confirmFlag">
+				<div class="confirm-header">提示</div>
+				<div class="confirm-content">
+					确定执行此操作
+				</div>
+				<div class="confirm-btn-wrap">
+					<div class="btn cancel" @click="cancel">取消</div>
+					<div class="btn sur" @click="sure">确定</div>
+				</div>
+			</div>
+			<div class="masked" v-show="shareFlag"></div>
+			<div class="confirm" v-show="shareFlag" style="width: 95%;">
+				<div class="confirm-header">分享设置</div>
+				<div class="share-content">
+					<div class="title2">分享标题</div>
+					<input type="text" class="input" v-model="shareInfo.sharetitle"/>
+					<div class="title2">分享封面</div>
+					<div class="cover-wrap">
+						<div class="img-wrap">
+							<img :src="shareInfo.sharepic" alt="" />
+						</div>
+						<div class="info">
+							<div class="tips">图片要求300*300以上,方形像素</div> 
+							<label class="btn" for="file">修改封面</label>
+							<input type="file" id="file" @change="inchangeCover" style="display: none;"/>
+						</div>
+					</div>
+					<div class="title2">分享说明</div>
+					<textarea class="explain" v-model="shareInfo.shareintr"></textarea>
+				</div>
+				<div class="confirm-btn-wrap">
+					<div class="btn cancel" @click="shareCancel">取消</div>
+					<div class="btn sur" @click="shareSure">确定</div>
+				</div>
+			</div>
+		<!-- 全局提示框 -->
+		    <div v-show="visible" class="dialog-tips dialog-center">
+		          <div>{{message}}</div>
+		    </div>
+		    
+		    <!--添加知识点-->
+    	 <div class="add" @click="openLink(1)">
+				<img src="<?php echo UOOT ?>Public/wechat/images/add.png">
+		 </div>
+		 
+		 <!--提示内容-->
+		 <div class="mask" v-if="del==1" style="display: block;"></div>
+
+			<div class="confirm" id="confirm" v-if="del==1" style="display: block;" >
+				<div class="title">
+										
+						添加图文商品需用电脑登录科汛V名师管理后台（store.kesion.com）进行操作。
+						<a href="<?php echo UOOT ?>h5market/directories?id=7687#2185">如何创建该商品</a>
+
+				</div>										
+				<div class="item-b">
+					<div class="item-inner" @click="openLink(0)">知道了</div>
+					
+				</div>
+			</div>
+		   
+    	</div>
+    	
+
+		 
+		 
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="<?php echo UOOT ?>Public/wechat/js/share.js" type="text/javascript"></script>
+	<script src="<?php echo UOOT ?>Public/common/js/currency/gate.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		module.import('graphic');
+	</script>
+	
+	
+    </body>
+</html>

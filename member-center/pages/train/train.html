@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<div class="usertrain">
+    <div v-if="listFalg == true">
+        <ks-title title="我的训练营" />
+        <!-- 排序和搜索 -->
+        <div class="usertrain-sort">
+            <el-input style="width: 240px;float:left;" placeholder="请输入想要搜索的训练营" size="medium" v-model="key" @change="changeInput">
+                <i slot="suffix" class="el-input__icon el-icon-search" @click="changeInput"></i>
+            </el-input>
+            <el-select v-model="from" placeholder="请选择" size="medium" @change="changeSelect">
+                <el-option v-for="item in fromList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <span>来源：</span>
+            <el-select v-model="sort" placeholder="请选择" size="medium" @change="changeSelect">
+                <el-option v-for="item in sortList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <span>排序：</span>
+        </div>
+        <!-- 训练营列表 -->
+        <div class="usertrain-list">
+            <div class="usertrain-item" v-for="(item,i) in trainList" :key="i">
+                <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                <div class="usertrain-item__word">
+                    <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                    <p>已购{{item.alllearnnum}}期&nbsp;|&nbsp;共{{item.camp_count}}期</p>
+                    <span>分类：{{item.classname}}</span>
+                    <span>总学分：{{item.sum_credit}}</span>
+                    <span>通过学分：{{item.pass_credit}}</span>
+                    <span>已得学分：{{item.has_credit}}</span>
+                    <span :style="{color:item.is_pass == 1 ? '#3c91f9' : '#e91c35'}">{{item.is_pass == 1 ? '已通过' : '未通过'}}</span>
+                </div>
+                <div class="usertrain-item__btn">
+                    <!-- <h3>有效期：永久</h3> -->
+                    <el-button style="padding: 7px 16px;" @click="openDetail(item)" round size="medium">查看更多</el-button>
+                </div>
+            </div>
+            <el-pagination style="text-align: center;margin-top: 20px;" @current-change="getUserTrainList" :current-page="currentPage" background layout="prev, pager, next" :total="pageCount" v-if="pageCount>0">
+            </el-pagination>
+            <ks-empty msg="您还没有加入训练营" v-else />
+        </div>
+    </div>
+
+    <!-- 详情页 -->
+    <div style="position:relative" v-else>
+        <ks-title :title="initDetailData.name" />
+        <el-button class="usertrain-detail__retrun" @click="listFalg = true">返回</el-button>
+        <el-row>
+            <el-col :span="12">
+                <div class="usertrain-detail">
+                    <ks-image :src="initDetailData.photourl" @click="open(initDetailData.view_url)" />
+                    <div class="usertrain-detail__word">
+                        <h1 @click="open(initDetailData.view_url)">{{initDetailData.name}}</h1>
+                        <span>已购{{initDetailData.alllearnnum}}期 | 共{{initDetailData.campnum}}期</span>
+                        <p>分类：{{initDetailData.classname}}</p>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="12">
+                <!-- <div class="usertrain-detail__item">
+                    <p>学员</p>
+                    <span>{{initDetailData.student_num}}</span>
+                </div> -->
+                <div class="usertrain-detail__item">
+                    <p>状态</p>
+                    <span>{{initDetailData.is_pass == 1 ?'已通过':'未通过'}}</span>
+                </div>
+                <div class="usertrain-detail__item">
+                    <p>已得学分</p>
+                    <span>{{initDetailData.has_credit}}</span>
+                </div>
+                <div class="usertrain-detail__item">
+                    <p>通过学分</p>
+                    <span>{{initDetailData.pass_credit}}</span>
+                </div>
+                <div class="usertrain-detail__item">
+                    <p>总学分</p>
+                    <span>{{initDetailData.sum_credit}}</span>
+                </div>
+                <div class="usertrain-detail__item">
+                    <p>已购营期</p>
+                    <span>{{initDetailData.alllearnnum}}</span>
+                </div>
+            </el-col>
+        </el-row>
+        <div class="usertrain-swiper">
+            <div class="swiper" :style="{marginLeft: mlCount * 160 + 'px'}">
+                <div class="usertrain-swiper__item" :class="{'swiper-active':i==swiperNum}" :style="{marginLeft: 160 * i + 'px'}" v-for="(item,i) in campList" :key="i" @click="slideSwiper(i,item)">
+                    <div style="position: relative">
+                        <div class="usertrain-swiper__campname">{{item.campname}}</div>
+                        <div class="usertrain-swiper__status" :style="{background:item.is_joinlearn == 1 ? '#3c81f9' : ''}">{{item.is_joinlearn == 0 ? '未加入' : '已加入'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="usertrain-detail__bottom">
+            <div class="usertrain-info">
+                <ks-image :src="campDetail.photourl" @click="open(campDetail.view_url)" />
+                <div class="usertrain-info__word">
+                    <h2 @click="open(campDetail.view_url)">{{campDetail.campname}}<i>{{campDetail.learn_status == 0 ? '未学习':'学习中'}}</i></h2>
+                    <p>开课时间：{{campDetail.begintime}} ~ {{campDetail.endtime}}</p>
+                    <span>{{campDetail.studentcount}}人正在学习</span><span>总学分：{{campDetail.sum_credit}}</span><span>通过学分：{{campDetail.pass_credit}}</span><span>已得学分：{{campDetail.has_credit}}</span><span>状态：{{campDetail.is_pass == 1 ?'已通过':'未通过'}}</span>
+                </div>
+            </div>
+            <div class="usertrain-detaillist">
+                <div class="usertrain-detailitem" v-for="(item,i) in campDetail.cataloguelist" :key="i">
+                    <div class="usertrain-detailitem__top">
+                        {{item.periodname}}
+                    </div>
+                    <div class="usertrain-detailitem__bottom" v-for="(child,c) in item.child" :key="c" @click="open(child.task_url)">
+                        <div class="usertrain-detailitem__bg"><i></i><span></span></div>
+                        <div class="usertrain-detailitem__left">
+                            <p>{{child.type_name}}</p>
+                            <span style="cursor: pointer;">{{child.title}}</span>
+                            <span v-if="child.try_it" style="color: #E91C35;font-size:12px">（必修）</span>
+                        </div>
+                        <div class="usertrain-detailitem__right">
+                            <span style="margin-right: 10px;" v-if="child.credit != 0">（{{child.credit}}学分）</span>
+                            <span :style="{color: (child.learn == 1 && '#3c91f9') || (child.learn == 2 && '#E6E9ED')}">{{(child.learn == 0 && '未学习') || (child.learn == 1 && '正在学习') || (child.learn == 2 && '已学习')}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

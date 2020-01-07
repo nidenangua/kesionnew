@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "写评价",
+  "navigationBarBackgroundColor": "#2987EE",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#ffffff",
+  "usingComponents": {
+    "sunui-star": "/components/uni/sunui-star/sunui-star"
+  }
+}

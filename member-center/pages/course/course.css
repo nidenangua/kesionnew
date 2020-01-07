@@ -1,0 +1,166 @@
+.usercourse {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+}
+
+/* 多选框 */
+
+.usercourse-checkbox {
+  float: right;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  line-height: 55px;
+}
+
+.usercourse-sort {
+  overflow: hidden;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #e6e9ed;
+}
+
+.usercourse-sort span {
+  float: right;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 36px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+/* 搜索框 */
+
+.usercourse-sort .el-input {
+  width: 240px;
+  float: left;
+}
+
+/* 选择器 */
+
+.usercourse-sort .el-select {
+  float: right;
+}
+
+.usercourse-sort .el-select > .el-input {
+  width: 130px;
+}
+
+/* 课程列表 */
+
+.usercourse-item {
+  height: 78px;
+  padding: 20px 0;
+  border-bottom: 1px dashed #e6e9ed;
+}
+
+.usercourse-item__image {
+  width: 140px;
+  height: 78px;
+  float: left;
+  position: relative;
+}
+
+.usercourse-item__image span {
+  display: block;
+  position: absolute;
+  top: 10px;
+  width: 45px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0px 12px 12px 0px;
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 24px;
+  text-align: center;
+}
+
+.usercourse-item__image .ks-image {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.usercourse-item__word {
+  float: left;
+  margin-left: 20px;
+}
+
+.usercourse-item__word h2 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 500px;
+}
+
+.usercourse-item__word span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 24px;
+  margin-top: 10px;
+  display: inline-block;
+  margin-right: 36px;
+}
+
+.usercourse-item__word span i {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(60, 129, 249, 1);
+  line-height: 24px;
+  font-style: normal;
+}
+
+.usercourse-item__word p {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 24px;
+}
+
+.usercourse-item__keshi {
+  line-height: 18px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.el-progress {
+  width: 300px;
+  float: left;
+  margin-top: 6px;
+  margin-right: 6px;
+}
+
+.usercourse-item__btn {
+  padding-right: 45px;
+  float: right;
+  position: relative;
+  line-height: 78px;
+}
+
+.usercourse-item__btn h3 {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 6px;
+}

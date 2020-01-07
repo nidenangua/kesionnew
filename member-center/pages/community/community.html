@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<div class="usercommunity">
+    <ks-title title="我的社群" :underline="false" />
+    <div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我的社群" name="first">
+                <!-- 排序和搜索 -->
+                <div class="usercommunity-sort">
+                    <el-input placeholder="请输入想要搜索的社群" size="medium" v-model="keyWord" @change="change">
+                        <i slot="suffix" class="el-input__icon el-icon-search" @click="change"></i>
+                    </el-input>
+                    <!-- <el-select v-model="value" placeholder="请选择" size="medium">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                    <span>排序：</span> -->
+                </div>
+                <div class="usercommunity-communitylist">
+                    <div class="usercommunity-communityitem" v-for="(item,i) in communityList" :key="i">
+                        <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                        <div class="usercommunity-communityitem__word">
+                            <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                            <span>最新话题：<i>{{item.new_topic_list.content}}</i></span>
+                            <p>{{item.studentnum}}<i>人加入</i>{{item.topicnum}}<i>个帖子</i></p>
+                        </div>
+                        <div class="usercommunity-communityitem__btn">
+                            <!-- <h3>有效期：永久</h3> -->
+                            <el-button @click="open(item.view_url)" type="primary" round sizi="medium">进入社群</el-button>
+                        </div>
+                    </div>
+                </div>
+                <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="communityPageCount" @current-change="getUserCommunityList" v-if="communityPageCount > 0" />
+                <ks-empty msg="您还没有社群" v-else />
+            </el-tab-pane>
+
+            <el-tab-pane label="我的帖子" name="second">
+                <div class="usercommunity-postlist">
+                    <div class="usercommunity-postitem" v-for="(item,i) in postList" :key="i">
+                        <div class="usercommunity-postitem__left">
+                            <div class="usercommunity-postitem__top">
+                                <i>{{i+1}}、</i>
+                                <span style="cursor: pointer;" @click="open(item.view_url)">社群：{{item.boardname}}</span>
+                                <span>发表时间：{{item.adddate}}</span>
+                                <span>审核状态：<i :style=" {color:item.verify == 1 ? '#2BC152' : '#E91C35'}">{{item.verify == 1 ? '已审核' : '未审核'}}</i></span>
+                                <span>回复数：{{item.postnum}}</span>
+                                <span>浏览数：{{item.hits}}</span>
+                            </div>
+                            <div class="usercommunity-postitem__bottom">
+                                <span>话题内容：</span>
+                                <p>{{item.content}}</p>
+                            </div>
+                        </div>
+                        <div class="usercommunity-postitem__right" @click="delUserPost(item)">
+                            删除
+                        </div>
+                    </div>
+                </div>
+                <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="postPageCount" @current-change="getUserPostList" v-if="postPageCount > 0" />
+                <ks-empty msg="您还没有帖子" v-else />
+            </el-tab-pane>
+            <el-tab-pane label="我参与的话题" name="third">
+                <div class="usercommunity-topiclist">
+                    <div class="usercommunity-topicitem" v-for="(item,i) in topicList" :key="i">
+                        <div class="usercommunity-topicitem__left">
+                            <div class="usercommunity-topicitem__top">
+                                <i>{{i+1}}、</i>
+                                <span style="cursor: pointer;" @click="open(item.view_url)">社群：{{item.boardname}}</span>
+                                <span>回复数：{{item.postnum}}</span>
+                                <span>浏览数：{{item.hits}}</span>
+                            </div>
+                            <div class="usercommunity-topicitem__bottom">
+                                <span>话题内容：</span>
+                                <p>{{item.title}}</p>
+                            </div>
+                            <div class="usercommunity-topicitem__bottom">
+                                <span>我的回复：</span>
+                                <p>{{item.reply_content}}</p>
+                            </div>
+                            <div class="usercommunity-topicitem__bottom">
+                                <span style="margin-left: 60px;margin-right: 20px;">{{item.adddate}}</span>
+                                <span @click="delUserTopic(item)" style="color: #3C81F9;cursor: pointer;">删除我的回复</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="topicPageCount" @current-change="getUserTopicList" v-if="topicPageCount > 0" />
+                <ks-empty msg="您还没有参与话题" v-else />
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>

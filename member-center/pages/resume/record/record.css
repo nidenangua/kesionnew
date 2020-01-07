@@ -1,0 +1,158 @@
+.record {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+    position: relative;
+}
+
+.record-sort {
+    width: 297px;
+    height: 30px;
+    border: 1px solid rgba(188, 195, 204, 1);
+    border-radius: 4px;
+    margin-left: 20px;
+    color: rgba(120, 124, 130, 1);
+    border-right: none;
+    overflow: hidden;
+}
+
+.record-sort span {
+    width: calc(100% / 3 - 1px);
+    height: 100%;
+    float: left;
+    border-right: 1px solid rgba(188, 195, 204, 1);
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.active-msg {
+    background: #409eff;
+    color: #fff;
+}
+
+.record-title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.record-list {
+    padding-bottom: 20px;
+}
+
+.record-list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 20px 0;
+}
+
+.record-list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.record-list .el-row .el-checkbox__label {
+    display: none;
+}
+
+.record-list__pldelete {
+    padding: 20px 43px;
+    overflow: hidden;
+}
+
+.record-list__pldelete .el-button {
+    margin-left: 10px;
+}
+
+.record .el-dialog__body {
+    padding: 10px 20px 30px 20px;
+}
+
+.record-msg {
+    border-top: 1px solid #E6E9ED;
+}
+
+.record-msg__btn {
+    text-align: center;
+}
+
+.record .el-form {
+    margin-top: 20px;
+    padding-right: 100px;
+}
+
+.consultation-sort {
+    overflow: hidden;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed #E6E9ED;
+}
+
+.consultation-sort span {
+    float: right;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    line-height: 36px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+
+/* 搜索框 */
+
+.consultation-sort .el-input {
+    width: 240px;
+    float: left;
+}
+
+
+/* 选择器 */
+
+.consultation-sort .el-select {
+    float: right;
+}
+
+.consultation-sort .el-select>.el-input {
+    width: 130px;
+}
+
+.record-comment__sort {
+    width: 198px;
+    height: 30px;
+    border: 1px solid rgba(188, 195, 204, 1);
+    border-radius: 4px;
+    margin-left: 20px;
+    color: rgba(120, 124, 130, 1);
+    border-right: none;
+    overflow: hidden;
+}
+
+.record-comment__sort span {
+    width: calc(100% / 2 - 1px);
+    height: 100%;
+    float: left;
+    border-right: 1px solid rgba(188, 195, 204, 1);
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}

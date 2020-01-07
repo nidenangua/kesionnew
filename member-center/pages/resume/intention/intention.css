@@ -1,0 +1,26 @@
+.intention {
+    padding: 20px 40px;
+}
+
+.intention-dialog .el-row .el-col {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    line-height: 40px;
+    text-align: right;
+    margin-top: 30px;
+}
+
+.intention-dialog .el-form-item {
+    padding-right: 80px;
+}
+
+.intention-dialog__city .el-select {
+    width: 130px;
+    margin-right: 5px;
+}
+
+.intention-dialog__btn {
+    text-align: center;
+}

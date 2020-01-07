@@ -1,0 +1,46 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.2",
+	"appid": "wxd44fb4a78de460f9",
+	"projectname": "科汛课堂",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"name": "xiazai",
+					"query": {
+						"courseid": "150",
+						"periodids": "234"
+					},
+					"id": 0,
+					"pathName": "pages/user/local/index?courseid=150&periodids=234"
+				}
+			]
+		}
+	}
+}

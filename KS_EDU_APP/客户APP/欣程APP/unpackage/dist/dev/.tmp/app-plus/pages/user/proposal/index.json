@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "举报/建议",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-cell-group": "/components/ks-components/cell-group/cell-group",
+    "ks-cell": "/components/ks-components/cell/cell",
+    "mpvue-picker": "/components/uni/mpvue-picker/mpvue-picker"
+  }
+}

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>音频直播</title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/home.css" rel="stylesheet">
+    <link href="<?php echo UOOT;?>Public/app/fonts/iconfont.css?<?php echoHash(); ?>" rel="stylesheet" />
+    <link href="<?php echo UOOT ?>Public/wechat/css/intention.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/graphic.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo UOOT ?>Public/wechat/css/campus.css"/>
+    <script>
+    	var uoot = '<?php echo UOOT ?>';	
+    </script> 	
+    <style type="text/css">
+    	body{
+    		padding-top:0.5rem;
+    	}
+    	[v-cloak]{
+			display: none;
+		}
+		.graphic-item-t .img-wrap {
+			width: 5rem
+		}
+		.confirm .title {
+			height: 8rem;
+		    display: table-cell;
+		    vertical-align: middle;
+		    text-align: center;
+		    padding: 1rem;
+		    font-size: 0.7rem;
+		}
+		.confirm .title  a{
+			display: block;
+			color: #37a7ed;
+			font-size: 0.75rem;
+		}
+		.graphic-item-t .info .title {
+			font-size: 0.8rem
+		}
+		.price-type-box {
+			color: #888;
+			font-size: 0.7rem
+		}
+		.price-type-box .price-type1{
+			color:#37a7ed;
+		}
+		.price-type-box .price-price {
+			color: #e64a3b;
+			float: right;
+		}
+		.confirm-list li {
+			height: 2.5rem;
+			line-height: 2.5rem;
+			border-bottom:0.5px solid #ccc;
+			text-align: center;
+			font-size: 0.8rem
+		}
+    </style>
+</head>
+	<body>
+    	<div id="audioLive" class="wrap" >
+    	
+	    		<div class="graphic-item"  >
+	    			<div class="graphic-item-t" >
+	    				<div class="img-wrap">
+								<img src="https://store.kesion.com/Images/admin/course.jpg" alt="">
+	    				</div>
+	    				<div class="info">
+	    					<div class="title">
+								写给策划看的最简版UE入门
+							</div>
+	    					<div class="price-wrap1">
+	    						<div class="price-type-box">最新直播：2018.8.6.03 18:00:00</div>
+								<div class="price-type-box">
+										<span class="price-type1" >已上架</span>	
+										<span class="price-price" >￥0.01</span>	
+								</div>
+								
+	    						
+	    					
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="graphic-item-b">
+	    				<div class="item">进入直播</div>
+	    				<div class="item" >更多操作</div>
+	    			
+	    			</div>
+				</div>
+				
+				<div class="graphic-item"  >
+						<div class="graphic-item-t" >
+							<div class="img-wrap">
+									<img src="https://store.kesion.com/Images/admin/course.jpg" alt="">
+							</div>
+							<div class="info">
+								<div class="title">
+									写给策划看的最简版UE入门
+								</div>
+								<div class="price-wrap1">
+									<div class="price-type-box">最新直播：2018.8.6.03 18:00:00</div>
+									<div class="price-type-box">
+											<span class="price-type1" >已上架</span>	
+											<span class="price-price" >￥0.01</span>	
+									</div>
+									
+									
+								
+								</div>
+							</div>
+						</div>
+						<div class="graphic-item-b">
+							<div class="item">进入直播</div>
+							<div class="item" >更多操作</div>
+						
+						</div>
+					</div>
+    		
+    	<div class="nodata"></div> 
+    		<!--全局确认框-->
+			<div class="masked" style="display:none" ></div>
+			<div class="confirm"style="width: 95%;display:none" >
+				<div class="confirm-list">
+					<ul>
+						<li>编辑</li>
+						<li>下架</li>
+						<li>分享</li>
+						<li>生成海报</li>
+						<li>删除</li>
+					</ul>
+				</div>
+			</div>
+		<!-- 全局提示框 -->
+		    <div v-show="visible" class="dialog-tips dialog-center" style="display: none">
+		          <div></div>
+		    </div>
+    	
+	
+		
+		   <!--添加知识点-->
+    	 <div class="add" >
+			 <a href="<?php echo M_URL('WeChat','editaudioLive')?>">
+				<img src="<?php echo UOOT ?>Public/wechat/images/add.png">
+			</a>
+		 </div>
+		 <!--提示内容-->
+		 <div class="mask" ></div>
+
+			<div class="confirm" id="confirm" style="display:none" >
+				<div class="title">
+										
+						添加图文商品需用电脑登录科汛V名师管理后台（store.kesion.com）进行操作。
+						<a href="<?php echo UOOT ?>h5market/directories?id=7687#2186">如何创建商品</a>
+
+				</div>										
+				<div class="item-b">
+					<div class="item-inner">知道了</div>
+					
+				</div>
+			</div>
+		</div>   
+		
+	</body>
+  
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="<?php echo UOOT ?>Public/wechat/js/share.js" type="text/javascript"></script>
+	<script src="<?php echo UOOT ?>Public/common/js/currency/gate.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		module.add('audioLive',{
+				el:'#audioLive',
+				data:{
+					p:1,
+					maxperpage:5,
+					classArr:[],
+					jsonUrl:uoot + 'Json/index.php',
+					noData:false,
+					search:'',
+					visible:false,
+					message:'',
+					confirmFlag:false,
+					id:-1,
+					index:-1,
+					type:1,
+					loadFlag:false,//加载状态
+					loadMoreFlag:true,//加载开关
+					shareFlag:false,
+					shareId:-1,
+					shareIndex:-1,
+					shareInfo:{},
+					shelfed:-1,
+					shelfIndex:-1,
+					shelfId:-1, 
+					courseType:-1,
+					del:0,
+				},
+				created:function(){
+					var that = this;
+					this.courseType = getParam('coursetype')
+					console.log(this.courseType)
+					that.getdata() 
+					$_monitor.scroll.bottom(window,function(){
+						that.getdata()
+					})
+					
+				},
+				methods:{
+					open:function(__url){
+						location.href = __url
+					},
+					getdata:function(){
+						if(this.loadMoreFlag){
+							this.loadFlag = true;
+							var that = this;
+							var newData = {};
+							newData.p = this.p;
+							newData.maxperpage = this.maxperpage;
+							newData.name = this.search;
+							newData.type = this.type;
+							$post(this.jsonUrl+'?act=Microportal.allList',newData,function(res){
+								console.log(res)
+								that.loadFlag = false;
+								//如果没有数据的话
+								if(res.allList.page.total_pages==0){
+									that.loadMoreFlag = false;
+									return false
+								}
+								var datas = res.allList.list;
+								var datalength = datas.length;
+								
+								for(var i=0;i<datalength;i++){
+									that.classArr.push(datas[i])
+								}
+								that.p++;
+								if(datas<that.maxperpage || datas==0){
+									that.loadMoreFlag = false;
+									return false
+								}
+								
+								console.log(that.classArr)
+							},'json')	
+						}
+					},
+					share:function(id,index){
+						this.shareFlag = true;
+						this.index = index;
+						this.id = id;
+						var newData = {};
+						newData.id = id;
+						var that = this;
+						$post(this.jsonUrl+'?act=Microportal.shareClassInfo',newData,function(res){
+							that.shareInfo = res.shareClassInfo.msg;
+							
+						},'json')
+					},
+					shareSure:function(){
+						var that = this;
+						this.shareInfo.thisUrl = location.href;
+						$post(this.jsonUrl+'?act=Microportal.saveClassShare',this.shareInfo,function(res){
+							if(res.saveClassShare.errCode==10000){
+								that.shareFlag = false;
+								var dataed = {}
+								dataed.appId = res.saveClassShare.signPackage.appId;
+								dataed.nonceStr = res.saveClassShare.signPackage.nonceStr;
+								dataed.signature = res.saveClassShare.signPackage.signature;
+								dataed.timestamp = res.saveClassShare.signPackage.timestamp;
+								dataed.basicinfo = that.shareInfo;
+								dataed.url =res.saveClassShare.link;
+								onshare(dataed)
+								that.visible = true;
+									that.message = '设置分享成功,请通过右上角分享';
+									setTimeout(function(){
+										that.visible = false;
+									},1500)
+							}else{
+								alert('修改失败')
+							}
+						},'json')
+					},
+					shareCancel:function(){
+						this.shareFlag = false;
+					},
+					//添加知识点
+					openLink:function(i){
+						this.del=i;
+					},
+					//改变封面主函数
+					inchangeCover:function(e){
+						 var files = e.target.files || e.dataTransfer.files;
+						  if (!files.length)
+						   return;
+						   this.createImage(files[0]);
+						console.log(1)
+					},
+					//预览图片
+					createImage:function(file){
+						var image = new Image();
+						var reader = new FileReader();
+						var that = this
+						reader.readAsDataURL(file)
+						reader.onloadend = function (e) {
+							that.shareInfo.sharepic = e.target.result;
+						}
+						
+					},
+					//触发confirm函数
+					shelf:function(id,index,shelfFlag){
+						this.confirmFlag = true;
+						this.shelfIndex = index;
+						this.shelfId= id;
+						this.shelfed = shelfFlag;
+					},
+					//confirm确认事件
+					sure:function(){
+						this.onShelf()
+					},
+					//confirm取消事件
+					cancel:function(){
+						this.confirmFlag = false;
+					},
+					//上下架事件
+					onShelf:function(){
+						this.confirmFlag = false;
+						var newData = {};
+						newData.id = this.shelfId;
+						newData.stauts = this.shelfed;
+						var that = this;
+						if(this.shelfed==2){
+							$post(this.jsonUrl+'?act=Microportal.changeClass',newData,function(res){
+								if(res.changeClass){
+									that.visible = true;
+									that.message = '上架成功';
+									//更新数组
+									Vue.set(that.classArr[that.shelfIndex],'status',2)
+									setTimeout(function(){
+										that.visible = false;
+									},1500)
+								}else{
+									that.visible = true;
+									that.message = '上架失败';
+									setTimeout(function(){
+										that.visible = false;
+									},1500)
+								}
+							},'json')	
+						}else if( this.shelfed==0){
+							$post(this.jsonUrl+'?act=Microportal.changeClass',newData,function(res){
+								if(res.changeClass){
+									that.visible = true;
+									that.message = '下架成功';
+									//更新数组
+									console.log(that.classArr[that.shelfIndex],'status',0)
+									Vue.set(that.classArr[that.shelfIndex],'status',0)
+									setTimeout(function(){
+										that.visible = false;
+									},1500)
+								}else{
+									that.visible = true;
+									that.message = '下架失败';
+									setTimeout(function(){
+										that.visible = false;
+									},1500)
+								}
+							},'json')
+						}
+					}
+				},
+				
+			})
+
+		module.import('audioLive')
+	</script>
+	
+</html>

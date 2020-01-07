@@ -1,0 +1,1 @@
+<view class="ks-cell-group data-v-0802e4e5"><block wx:if="{{title}}"><view class="ks-cell-group__title data-v-0802e4e5">{{''+title+''}}</view></block><view class="ks-cell-group__body data-v-0802e4e5"><slot></slot></view></view>

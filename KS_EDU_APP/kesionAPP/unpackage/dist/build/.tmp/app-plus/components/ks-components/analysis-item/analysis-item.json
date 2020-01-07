@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "question-title": "/components/ks-components/question-title/question-title",
+    "multiple-choice": "/components/ks-components/multiple-choice/multiple-choice",
+    "analysis-info": "/components/ks-components/analysis-info/analysis-info"
+  },
+  "component": true
+}

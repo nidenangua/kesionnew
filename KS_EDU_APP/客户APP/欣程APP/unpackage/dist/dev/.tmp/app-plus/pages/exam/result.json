@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "查看结果",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "paper-medal": "/components/ks-components/paper-medal/paper-medal"
+  }
+}

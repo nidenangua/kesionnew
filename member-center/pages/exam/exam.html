@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<div style="width: 100%;position:relative">
+  <div class="exam">
+    <!------------------------------------考试标题 ------------------------------- -->
+    <div class="exam-title">
+      <div class="exam-title__title" @click="showSubtitle">
+        <p>
+          {{ classes }}<i v-if="name">-{{ name }}</i>
+        </p>
+        <img src="/ks_inc/member-center/images/exam/test_btn_down@2x.png" />
+        <span></span>
+        <div class="exam-title__item-box" @click="showExamSelect">
+          <img
+            src="/ks_inc/member-center/images/exam/me_test_btn_change@2x.png"
+          />
+          切换考试
+        </div>
+      </div>
+    </div>
+    <div class="exam-title__subtitle" @mouseleave="colseSubtitle" v-show="isSubtitle">
+      <div class="exam-title__item">
+        <el-button size="medium" round type="primary">{{ classes }}</el-button>
+        <!-- <div class="exam-title__item-box" @click="showExamSelect">
+          <img
+            src="/ks_inc/member-center/images/exam/me_test_btn_change@2x.png"
+          />
+          切换考试
+        </div> -->
+      </div>
+      <div
+        class="exam-title__list"
+        v-for="(item,i) in childsClass"
+        :key="i"
+        @click="setClass(i,item.categoryid,item.categoryname)"
+      >
+        <span :class="{'active-title':title==item.categoryid}">{{
+          item.categoryname
+        }}</span>
+        <img
+          v-if="title==item.categoryid"
+          src="/ks_inc/member-center/images/exam/me_test_icon_select@2x.png"
+        />
+      </div>
+    </div>
+    <!------------------------------------考试标签页 ------------------------------- -->
+    <div class="exam-tabs">
+      <div class="exam-tab__item" @click="changeTab('MyExam')">
+        <img
+          v-if="$route.name == 'MyExam'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon1_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon1_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'MyExam'}">考试报告</p>
+      </div>
+      <div class="exam-tab__item" @click="changeTab('Practice')">
+        <img
+          v-if="$route.name == 'Practice'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon2_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon2_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'Practice'}">练习中心</p>
+      </div>
+      <div class="exam-tab__item" @click="changeTab('PackageExam')">
+        <img
+          v-if="$route.name == 'PackageExam'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon3_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon3_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'PackageExam'}">套卷练习</p>
+      </div>
+      <div class="exam-tab__item" @click="changeTab('PracticeRecord')">
+        <img
+          v-if="$route.name == 'PracticeRecord'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon4_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon4_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'PracticeRecord'}">练习记录</p>
+      </div>
+      <div class="exam-tab__item" @click="changeTab('ExamRecord')">
+        <img
+          v-if="$route.name == 'ExamRecord'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon5_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon5_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'ExamRecord'}">考试记录</p>
+      </div>
+      <div
+        class="exam-tab__item"
+        v-if="showError"
+        @click="changeTab('ErrorBank')"
+      >
+        <img
+          v-if="$route.name == 'ErrorBank'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon6_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon6_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'ErrorBank'}">错题练习</p>
+      </div>
+      <div
+        class="exam-tab__item"
+        v-if="showCollect"
+        @click="changeTab('CollectBank')"
+      >
+        <img
+          v-if="$route.name == 'CollectBank'"
+          src="/ks_inc/member-center/images/exam/me_nav_icon7_s.png"
+        />
+        <img
+          v-else
+          src="/ks_inc/member-center/images/exam/me_nav_icon7_n.png"
+        />
+        <p :class="{'active-tab':$route.name == 'CollectBank'}">收藏练习</p>
+      </div>
+    </div>
+    <!------------------------------------考试分类列表 ------------------------------- -->
+    <el-dialog title="选择考试分类" :visible.sync="isExamSelect" width="1000px">
+      <div class="exam-select__box">
+        <div class="exam-select__top">
+          <p>已选分类：</p>
+          <el-button type="primary" size="medium" round>{{
+            classes
+          }}</el-button>
+        </div>
+        <div class="exam-select__item" v-for="(item,i) in allClass" :key="i">
+          <div class="exam-select__left">{{ item.categoryname }}：</div>
+          <div class="exam-select__right">
+            <a @click="setClasses(item.categoryid,item.categoryname,item.childs)">
+                <el-button
+                size="medium"
+                round
+                style="padding: 10px 34px;"
+                >全部</el-button
+              >
+            </a>
+            
+            <a v-for="(child,n) in item.childs"
+            :key="n">
+              <el-button
+              size="medium"
+              round
+              @click="setClasses(child.categoryid,child.categoryname,child.childs)"
+              >{{ child.categoryname }}<i v-if="child.childs&&child.childs.length"></i></el-button>
+            
+              <div class="third-class" v-if="child.childs&&child.childs.length">
+              
+                <div class="third-class-box">
+                  <el-button
+                  round
+                  size="medium"
+                  :class="{userexamActive:$route.query.categoryid==tchild.categoryid}"
+                  v-for="(tchild,i) in child.childs"
+                  :key="i"
+                  @click="setClasses(tchild.categoryid,tchild.categoryname,tchild.childs)"
+                  >{{ tchild.categoryname }}</el-button>
+                </div>
+              </div>
+            </a>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+    </el-dialog>
+  </div>
+  <!-- 子页面 -->
+  <div>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title><?php echo $info['title']; ?></title>
+	<link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+	<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js?99999"></script>
+	<script src="<?php echo UOOT; ?>/Public/wechat/js/share.js?99999" type="text/javascript"></script>
+	<link href="<?php echo UOOT ?>Public/wechat/css/spread.css" rel="stylesheet">
+	<style>
+	p {
+    text-indent: 0;
+	}
+
+
+	img {max-width:100%}
+		.spread-content {
+			padding:20px;
+			background: #fff
+		}
+		.spread-title1 {
+			font-size:21px;
+			
+		}
+		.spread-time {
+			margin:0.5rem
+		}
+		
+		.spread-time span {
+			font-size:14px;
+			color:#888
+		}
+		.spread-time .edit {
+			font-size:16px;
+			color: #37A7ED;
+			padding-right:15px
+		}
+		
+		.spread-link {
+			text-align:center
+		}
+		.spread-link .spread-img {
+			width:132px;
+			padding: 10px;
+			background: #fff;
+			display: inline-block;
+			box-sizing: border-box;
+			margin-top: 30px
+		}
+		.spread-link .spread-img  img,.spread-logo img {
+			max-width:100%
+		}
+			
+		.spread-logo img  {
+			display:inline-block;
+			max-width: 65px		
+		}
+		.spread-net {
+			font-size:14px;
+			color:#37a7ed
+		}
+		.spread-s-title {
+			font-size:18px;
+			text-align: center;
+			margin:0.5rem;
+		}
+		.spread-intro {
+			font-size: 14px;
+			line-height: 1.8;
+			color: #666;
+			text-indent: 2em
+			
+		}
+		.cash-btn-box .spread-btn {
+			position: fixed;
+    		bottom: 0;
+			width:95%
+		}
+    </style>
+    <?php 
+		if(!empty(KS_G('get.userid'))){
+			$userid = KS_G('get.userid');
+		}elseif(isset($_SEESION['fxuserid'])){
+			$userid = $_SEESION['fxuserid'];
+		}else{ $userid = 0;} 
+	?>
+    <script>
+    var uoot = '<?php echo UOOT ?>';
+    var conf  = {};
+	conf.basicinfo = {};
+
+	conf.appId = "<?php echo $signPackage['appId']; ?>";
+	conf.timestamp = "<?php echo $signPackage['timestamp']; ?>";
+	conf.nonceStr = "<?php echo $signPackage['nonceStr']; ?>";
+	conf.signature = "<?php echo $signPackage['signature']; ?>";
+	conf.url = "<?php echo 'http://store.kesion.com/h5market/ktjshare?wxid=1&shareact=spreadnew&id='.KS_G('get.id').'&userid='.$userid; ?>";
+	
+	conf.basicinfo.sharetitle = "<?php echo $info['title']; ?>";
+	conf.basicinfo.shareintr =  "<?php echo $info['abstract']; ?>";
+	conf.basicinfo.defaultpic = "<?php echo Img($info['defaultpic']); ?>";
+
+	onshare(conf);
+	console.log(conf);
+    </script>
+</head>
+<body style="background: #F7FCFF;padding-bottom: 3rem">
+	<div class="spread-content" id="spread-content" >
+		<div class="spread-title1">
+			<?php echo $info['title']; ?>
+		</div>
+		<div class="spread-time">
+			<span class="edit">科汛V名师</span><span><?php echo date('Y-m-d H:i:s',$info['adddate']); ?></span>
+		</div>
+		
+		<div class="spread-intro">
+			<?php echo $info['content']; ?>
+		</div>
+
+	</div>
+	
+	<div class="spread-link">
+		<div class="spread-img">
+			
+			<img src="<?php echo UOOT.'Images/QRcode/'.createQRcode(ROOT.'Images/QRcode/','http://store.kesion.com/h5market/ktjshare?wxid=1&shareact=spreadnew&id='.KS_G('get.id').'&userid='.$userid,'L',4,'qrcode');?>">
+		</div>
+		<div class="spread-logo">
+			<img src="<?php echo UOOT; ?>/Public/app/images/login/logo.png"">
+		</div>
+		<div class="spread-net">
+			www.ketagjie.com
+		</div>
+	</div>
+	<div class="cash-btn-box">
+		<?php if(is_weixin()){ ?>
+		<button class="spread-btn" onclick="window.location.href='https://store.kesion.com/h5market/inpay?doreg=1'">
+			马上注册赚钱
+		</button>
+		<?php }else{ ?>
+		<button class="spread-btn" onclick="window.location.href='https://store.kesion.com/home.html/default/WeChat/reg'">
+			马上注册赚钱
+		</button>
+		<?php }?>
+	</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "子分销商",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

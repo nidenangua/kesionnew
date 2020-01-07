@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<div class="experience">
+    <div style="text-align: right">
+        <el-button style="margin-right:20px;margin-top:10px;" type="primary" size="medium" @click='dialogVisible = true,status = 1,form = []'>添加工作经验</el-button>
+    </div>
+    <div style="padding-bottom: 20px;">
+        <div class="experience-title">
+            <el-row>
+                <el-col :span="3"><span>编号</span></el-col>
+                <el-col :span="6"><span>起止时间</span></el-col>
+                <el-col :span="6"><span>公司名称</span></el-col>
+                <el-col :span="3"><span>部门</span></el-col>
+                <el-col :span="3"><span>职位</span></el-col>
+                <el-col :span="3"><span>操作</span></el-col>
+            </el-row>
+        </div>
+        <div class="experience-list">
+            <el-row type="flex" v-for="(item,i) in experienceList" :key="i">
+                <el-col :span="3" align="middle">
+                    {{item.orderid}}
+                </el-col>
+                <el-col :span="6" align="middle"> <span @click="open(item.view_url)">{{item.begindate}}-{{item.enddate}}</span></el-col>
+                <el-col :span="6" align="middle"> <span>{{item.company}}</span></el-col>
+                <el-col :span="3" align="middle"> <span>{{item.department}}</span> </el-col>
+                <el-col :span="3" align="middle"> <span>{{item.position_category}}</span> </el-col>
+                <el-col :span="3">
+                    <div>
+                        <span style="cursor: pointer;margin: 0 5px;" @click="modify(item)">编辑</span>
+                        <span style="cursor: pointer;margin: 0 5px;" @click="deleteExperience(item.id)">删除</span>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+        <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :total="pageCount" @current-change="getUserJobExperienceList" v-if="pageCount > 0" />
+        <ks-empty msg="该分类下暂无内容" v-else />
+    </div>
+    <el-dialog :title="status == 1 ? '添加工作经验' : '修改工作经验'" :visible.sync="dialogVisible" width="800px">
+        <div class="experience-dialog">
+            <el-form style="padding-left: 60px;" label-width="114px">
+                <el-form-item label="编号：">
+                    <el-input style="width: 400px;" v-model="form.orderid" placeholder="请输入编号"></el-input>
+                </el-form-item>
+                <el-form-item label="起止时间：">
+                    <el-date-picker v-model="form.date" value-format="yyyy-M" type="monthrange" range-separator="至" start-placeholder="开始月份" end-placeholder="结束月份">
+                    </el-date-picker>
+                </el-form-item>
+                <el-form-item label="公司名称：">
+                    <el-input style="width: 400px;" v-model="form.company" placeholder="请输入公司"></el-input>
+                </el-form-item>
+                <el-form-item label="公司行业：">
+                    <el-cascader v-model="form.indId" :options="industryList" :props="{ expandTrigger: 'hover',children:'childs',label:'name',value:'id',checkStrictly: true}" :show-all-levels="false" @change="handleChange" filterable></el-cascader>
+                </el-form-item>
+                <el-form-item label="公司规模：">
+                    <el-select v-model="form.scale" placeholder="请选择" @change="" @visible-change="">
+                        <el-option v-for="item in sizeList" :key="item.name" :label="item.name" :value="item.name">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="公司地址:">
+                    <el-input style="width: 400px;" v-model="form.companyaddress" placeholder="请输入公司地址"></el-input>
+                </el-form-item>
+                <el-form-item label="部门:">
+                    <el-input style="width: 400px;" v-model="form.department" placeholder="请输入部门"></el-input>
+                </el-form-item>
+
+                <el-form-item label="职位:">
+                    <el-cascader v-model="form.posId" :options="positionList" :props="{ expandTrigger: 'hover',children:'childs',label:'name',value:'id',checkStrictly: true}" :show-all-levels="false" @change="handleChange" filterable></el-cascader>
+                </el-form-item>
+                <el-form-item label="工作描述:">
+                    <el-input style="width: 400px" v-model="form.description" type="textarea" :autosize="{ minRows: 4, maxRows: 6}" placeholder="请输入工作描述"></el-input>
+                    <p>强调参与哪些重要项目/事务,突出个人工作业绩</p>
+                </el-form-item>
+                <el-form-item label="离职原因:">
+                    <el-input style="width: 400px;" v-model="form.leaving" placeholder="请输入离职原因"></el-input>
+                    <p>简明扼要地阐述离职原因</p>
+                </el-form-item>
+            </el-form>
+            <div style="text-align: center">
+                <el-button type=primary round size="medium" @click="save">{{status == 1 ? '保存提交' : '修改提交'}}</el-button>
+                <el-button style="padding: 10px 34px;" round size="medium" @click="dialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

@@ -1,0 +1,398 @@
+/*ketangjie-ui.css*/
+
+@import url('//at.alicdn.com/t/font_1563178_949xi7c58kf.css');
+
+/*组件共用小样式*/
+
+body .ks-fl {
+    float: left
+}
+
+body .ks-fr {
+    float: right;
+}
+
+body .ks-pr-10{
+    padding-right: 10px;
+}
+
+body .ks-pt10 {
+    padding-top: 10px;
+}
+
+body .ks-pt15 {
+    padding-top: 15px;
+}
+
+body .ks-pt20 {
+    padding-top: 20px;
+}
+
+body .ks-ml5 {
+    margin-left: 5px;
+}
+
+body .ks-ml10 {
+    margin-left: 10px;
+}
+
+body .ks-mt10 {
+    margin-top: 10px
+}
+
+body .ks-mt15 {
+    margin-top: 15px
+}
+
+body .ks-mt20 {
+    margin-top: 20px
+}
+
+body .ks-mt30 {
+    margin-top: 30px
+}
+
+body .ks-blank10 {
+    height: 10px;
+    overflow: hidden;
+}
+
+body .ks-none {
+    display: none
+}
+
+body .ks-nomore {
+    text-align: center;
+    line-height: 40px;
+    color: #b5b5b5
+}
+
+body .ks-text-center {
+    text-align: center;
+}
+
+body .ks-bg-primary {
+    background-color: var(--primary-color);
+}
+
+body .ks-color-primary,
+body .ks-color-error {
+    color: var(--primary-color);
+}
+
+body .ks-color-success {
+    color: #36b04e;
+}
+
+body .ks-color-link {
+    color: #4995e3
+}
+
+body .ks-color-info {
+    color: #888f9d
+}
+
+body .ks-fz14 {
+    font-size: 14px;
+}
+
+body .ks-fz16 {
+    font-size: 16px;
+}
+
+body .ks-fz18 {
+    font-size: 18px;
+}
+
+body .ks-fz22 {
+    font-size: 22px;
+}
+
+body .ks-bg-white {
+    background-color: #fff
+}
+
+.ks-nowrap {
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+
+/*内容*/
+
+.ks-content,
+.ks-content div,
+.ks-content p,
+.ks-content span {
+    font-size: 15px !important;
+    color: var(--secondary_text-color) !important;
+    line-height: 2 !important;
+}
+
+.ks-content img {
+    max-width: 100%;
+    height: auto !important;
+}
+
+.ks-content table {
+    max-width: 100%;
+    overflow-x: auto;
+    border-spacing: 0px;
+}
+
+.ks-content table td {
+    border-color: #ddd;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.ks-tag {
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    padding: 0 5px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.ks-input {
+    height: 20px;
+    line-height: 20px;
+    padding: 7px 0;
+    border: 0px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.ks-alert {
+    padding: 10px;
+    background: #f9f9f9;
+    line-height: 22px;
+    color: #666;
+}
+
+.ks-masked {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+
+/*通用*/
+
+.ks-line {
+    position: relative;
+}
+
+.ks-line::after {
+    display: block;
+    content: " ";
+    height: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.ks-line--top::after {
+    top: 0;
+    bottom: inherit;
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+
+/*组件补充*/
+
+.ks-list-item__num {
+    padding: 0 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #fff;
+    background: var(--primary-color);
+    height: 20px;
+    line-height: 20px;
+    min-width: 10px;
+    text-align: center;
+}
+
+
+
+/*layout布局*/
+
+.ks-row::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.ks-col-1 {
+    width: 4.16667%;
+}
+
+.ks-col-2 {
+    width: 8.33333%;
+}
+
+.ks-col-3 {
+    width: 12.5%;
+}
+
+.ks-col-4 {
+    width: 16.66667%;
+}
+
+.ks-col-5 {
+    width: 20.83333%;
+}
+
+.ks-col-6 {
+    width: 25%;
+}
+
+.ks-col-7 {
+    width: 29.16667%;
+}
+
+.ks-col-8 {
+    width: 33.33333%;
+}
+
+.ks-col-9 {
+    width: 37.5%;
+}
+
+.ks-col-10 {
+    width: 41.66667%;
+}
+
+.ks-col-11 {
+    width: 45.83333%;
+}
+
+.ks-col-12 {
+    width: 50%;
+}
+
+.ks-col-13 {
+    width: 54.16667%;
+}
+
+.ks-col-14 {
+    width: 58.33333%;
+}
+
+.ks-col-15 {
+    width: 62.5%;
+}
+
+.ks-col-16 {
+    width: 66.66667%;
+}
+
+.ks-col-17 {
+    width: 70.83333%;
+}
+
+.ks-col-18 {
+    width: 75%;
+}
+
+.ks-col-19 {
+    width: 79.16667%;
+}
+
+.ks-col-20 {
+    width: 83.33333%;
+}
+
+.ks-col-21 {
+    width: 87.5%;
+}
+
+.ks-col-22 {
+    width: 91.66667%;
+}
+
+.ks-col-23 {
+    width: 95.83333%;
+}
+
+.ks-col-24 {
+    width: 100%;
+}
+
+[class*=ks-col-] {
+    float: left;
+    box-sizing: border-box;
+}
+
+.ks-form .ks-form-item:last-child::after {
+    display: none;
+}
+
+
+/*动画*/
+.fade-enter-active,
+.fade-leave-active {
+    transition: .5s;
+}
+
+.fade-up-enter-active,
+.fade-up-leave-active,
+.fade-down-enter-active,
+.fade-down-leave-active,
+.slide-in-up-active,
+.slide-in-up-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+    transition: .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-up-enter,
+.fade-up-leave-to {
+    opacity: 0;
+    transform: translateY(-15px);
+}
+
+.fade-down-enter,
+.fade-down-leave-to {
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.slide-in-up-enter,
+.slide-in-up-leave-to {
+    opacity: 0;
+    transform: translateY(150px);
+}
+.slide-left-enter,
+.slide-left-leave-to {
+    transform: translateX(100%);
+}
+
+

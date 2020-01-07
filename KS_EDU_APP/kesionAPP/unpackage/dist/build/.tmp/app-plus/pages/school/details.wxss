@@ -1,0 +1,219 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.filter.data-v-1513bf0e {
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 50px;
+  line-height: 50px;
+}
+.filter .filter-view-item.data-v-1513bf0e {
+    display: inline-block;
+    text-align: center;
+    margin: 0px 22px 0px 12px;
+    font-size: 14px;
+}
+.filter .on.data-v-1513bf0e {
+    color: #007AFF;
+    border-bottom: 1px solid #007AFF;
+}
+.school-details-top.data-v-1513bf0e {
+  position: relative;
+  height: 176px;
+}
+.school-details-top .school-img.data-v-1513bf0e {
+    height: 176px;
+}
+.school-details-top .school-info.data-v-1513bf0e {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 20px 12px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.school-details-top .school-info .school__img.data-v-1513bf0e {
+      width: 70px;
+      height: 70px;
+      float: left;
+      margin-right: 10px;
+}
+.school-details-top .school-info .school-info__right .school-h3.data-v-1513bf0e {
+      color: #fff;
+      font-size: 16px;
+}
+.school-details-top .school-info .school-info__right .school-h3 .rz__img.data-v-1513bf0e {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+}
+.school-details-top .school-info .school-info__right .info-con.data-v-1513bf0e {
+      margin-top: 10px;
+      line-height: 12px;
+      padding-bottom: 3px;
+}
+.school-details-top .school-info .school-info__right .info-con .ScXyd.data-v-1513bf0e {
+        display: inline-block;
+        width: 100px;
+        height: 20px;
+        background-size: cover;
+        vertical-align: middle;
+}
+.school-details-top .school-info .school-info__right .info-con .ScVip.data-v-1513bf0e {
+        width: 13px;
+        display: inline-block;
+        padding-left: 13px;
+        color: #f8eb2a;
+        display: inline-block;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD+klEQVRoQ71ZTXLTMBSWXLJo6wztDLhL0l0dFqQnIJyAcgLgBPQGlBNQTkA5AeUEhBO0WdBk13SZlJmWqUtmCEQ8uTFJZVl6T7LrTX8s6enTp/fp0zNn8CSj5hH8aMnfq3gEnz6rP+x3dGNf/4h3xJR/9ovLt/kMiPAbyNx7qTbdXF7vD3StrobNPc7ZW5/4YXTCeTJ63BJsus8Zf+ozmK6vYOKb/H896rWLxvYFImPI8VNGskeCYkwcwN9PXEAJwd5xzg/D6PuxS//ZNtuzxYc4X4IlcbCyNO7w9cGljHULiPyHuGisJZPlATB0nzIZUx6QxoH417+XjxnnjzT9urBNd3TbNAdEdibTLcRZuNFrUCZsalsQv7ta+9XOGFD7a4HMtphUMtST7VNUY0Sj5DzeZYK/z5rC+D/v1USrSDC0W2ueL020kkHDy3p0so6YI6qJyojMvfrGicydwkfLiGwNZ4tMWHTSSwlEzdLS6CZHV05hsLW0KXLbFga/GsUdiiSbzgoKwHx+TF+HUf/ANkYxEOJBVYZq5dhgrAtMoxyHYWttvWIs+Ghbifl73MpR1IqyOMWMnG+1uQi+YoFgEtI0lsoGVQkLgciBrycrF1ggkJWfwqgHLLo9+dzg2xSHYFQaUC6CBN94HhcY44utxp9JcPRfqRwWxQiEolw+Z0kyikGV+MtsEVwU0Axk2DwEi/0cu8ouZ4lk4+8kOM1iuOaaDQjprkBRmWziwAYICk+3pLQiYW3cKPJTpgU1AqHe3nggXqw+6B1iGbxSlNGVDRnPzEjFErzIBtaKFC2S1R9RlAs2xweQ4F0MI8lIPXD9DlQrEFCuS+wli3KIJcP4FC5PjRlotBVxZoQiwbA9BnDB2rQxkrtvGKostrGy91ZGVI23DWyTYF8r4s4I0QWDfhitha8VcQdCVC6TBKuHn68/WwSF2FppiQh/fzdcS8uwIs6MyI5ECda64DIPPx0YKyMpkGE8KKgz5cYskuCyrIgXIxQJ1rlg1er4WBEvILCa+6BGb2zSm71XJfjW4YesimBjoc+RdGspBTNbkEUXnO/rZ0W8GFET1QYkk2Cfqogthvoelex5/TeHyXIgVzEswYp4MeIiwau18e5ixZBiKKlsyPYoRmZA0CXU9AOP4J3bX6JoVREqGDQQigTnJ+FXKsKAwgMhm8d5eJeqCGbyi23QQPI3OlyoKg4/Z4siO1IlWPbxqYrglmneCs0IvYQqP23YP9BQJ+wtv2QJrsiKlAKEplzVWJFygOBLqN5VEeqWQ+dImvBICXYpnVIn7uS1sk6YEmrVVqScrYUqRFRrRUoBYleu6q1IaUBMJdS7sCJlAtF+f7/Lw08H5h/6UFyKqnzl8gAAAABJRU5ErkJggg==) no-repeat left center;
+        background-size: auto 100%;
+        height: 13px;
+        font-size: 12px;
+        margin-left: 4px;
+        vertical-align: middle;
+}
+.school-details-bottom.data-v-1513bf0e {
+  padding: 10px 12px 0;
+}
+.school-details-bottom .con.data-v-1513bf0e {
+    font-size: 14px;
+    line-height: 23px;
+    color: #1A1A1A;
+    padding-bottom: 10px;
+}
+.school-details-bottom .notice.data-v-1513bf0e {
+    padding: 11px 0;
+    font-size: 14px;
+    color: #666666;
+    border-top: 1px solid #eee;
+}
+.school-tab.data-v-1513bf0e {
+  border-bottom: 1px solid #F0F4F7;
+}
+.school-tab .item.data-v-1513bf0e {
+    font-size: 16px;
+    padding: 14px 0;
+    text-align: center;
+    width: 50%;
+    float: left;
+}
+.school-tab .on.data-v-1513bf0e {
+    color: #2987EE;
+}
+.schoollist .withe-bg.data-v-1513bf0e {
+  padding: 0 15px;
+}
+.schoollist .schoollist-item.data-v-1513bf0e {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.schoollist .schoollist-item .img.data-v-1513bf0e {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.schoollist .schoollist-item .schoollist_info.data-v-1513bf0e {
+    margin-bottom: 10px;
+}
+.schoollist .schoollist-item .schoollist_info .name.data-v-1513bf0e {
+      font-size: 14px;
+      color: #1A1A1A;
+      line-height: 14px;
+      margin-bottom: 4px;
+}
+.schoollist .schoollist-item .schoollist_info .time.data-v-1513bf0e {
+      font-size: 12px;
+      color: #888888;
+}
+.schoollist .schoollist-item .intro.data-v-1513bf0e {
+    font-size: 16px;
+    color: #1A1A1A;
+    line-height: 24px;
+}
+.schoollist .schoollist-item .imglist .imglist_item.data-v-1513bf0e {
+    width: 100%;
+}
+.schoollist .schoollist-item .info.data-v-1513bf0e {
+    margin-top: 15px;
+}
+.schoollist .schoollist-item .info .browse.data-v-1513bf0e {
+      font-size: 12px;
+      line-height: 18px;
+      color: #888888;
+}
+.schoollist .schoollist-item .info .info__num.data-v-1513bf0e {
+      text-align: right;
+      line-height: 18px;
+      height: 18px;
+}
+.schoollist .schoollist-item .info .info__num .zannum.data-v-1513bf0e, .schoollist .schoollist-item .info .info__num .comment.data-v-1513bf0e {
+        display: inline-block;
+        font-size: 14px;
+        color: #666666;
+        margin-left: 12px;
+        padding-left: 23px;
+}
+.schoollist .schoollist-item .info .info__num .zannum.data-v-1513bf0e {
+        background: url(/static/class-center/topic_btn_like_n@2x.png) no-repeat center left;
+        background-size: 18px;
+}
+.schoollist .schoollist-item .info .info__num .comment.data-v-1513bf0e {
+        background: url(/static/class-center/topic_btn_comment@2x.png) no-repeat center left;
+        background-size: 18px;
+}
+.schoollist .schoollist-item.data-v-1513bf0e:last-child {
+  border-bottom: 0;
+}
+.join.data-v-1513bf0e {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.join .join-btn.data-v-1513bf0e {
+    background: #2987EE;
+    font-size: 16px;
+}
+.topic-btn.data-v-1513bf0e {
+  background: #2987EE;
+}
+.reply-show.data-v-1513bf0e {
+  bottom: 0;
+}
+.scroll-view_H.data-v-1513bf0e {
+  white-space: nowrap;
+  width: 100%;
+}
+

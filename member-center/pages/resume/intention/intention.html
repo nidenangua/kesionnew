@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<div class="intention">
+  <el-form label-width="111px">
+    <el-form-item label="工作性质：">
+      <span>{{ data.jobtype_str }}</span>
+    </el-form-item>
+    <el-form-item label="职位名称：">
+      <span>{{ data.jobposition }}</span>
+    </el-form-item>
+    <el-form-item label="行业类别：">
+      <span>{{ data.industry_category }}</span>
+    </el-form-item>
+    <el-form-item label="职位类别：">
+      <span>{{ data.position_category }}</span>
+    </el-form-item>
+    <el-form-item label="工作地点：">
+      <span>{{ data.current_residence }}</span>
+    </el-form-item>
+    <el-form-item label="期望月薪：">
+      <span>{{ data.salary }}</span>
+    </el-form-item>
+    <el-form-item label="">
+      <el-button type="primary" size="medium" @click="dialogVisible = true"
+        >修改设置</el-button
+      >
+    </el-form-item>
+  </el-form>
+  <el-dialog title="修改求职意向" :visible.sync="dialogVisible" width="800px">
+    <div class="intention-dialog">
+      <el-form ref="form" :model="form" label-width="114px">
+        <el-form-item label="工作性质：">
+          <el-radio v-model="form.jobtype" :label="1">全职</el-radio>
+          <el-radio v-model="form.jobtype" :label="2">兼职</el-radio>
+        </el-form-item>
+        <el-form-item label="职位名称：">
+          <el-input placeholder="请输入内容" v-model="form.msgTitle"></el-input>
+          <span>填写要应聘的职位名称，如有多个请用逗号“，”隔开</span>
+        </el-form-item>
+        <el-form-item label="行业类别：">
+          <el-cascader
+            v-model="form.industry_category"
+            :options="industryList"
+            :props="{ expandTrigger: 'hover',children:'childs',label:'name',value:'id',checkStrictly: true}"
+            :show-all-levels="false"
+            @change="handleChange"
+            filterable
+          ></el-cascader>
+        </el-form-item>
+        <el-form-item label="职位类别：">
+          <el-cascader
+            v-model="form.position_category"
+            :options="positionList"
+            :props="{ expandTrigger: 'hover',children:'childs',label:'name',value:'id',checkStrictly: true}"
+            :show-all-levels="false"
+            @change="handleChange"
+            filterable
+          ></el-cascader>
+        </el-form-item>
+        <el-form-item label="工作地点：">
+          <div class="intention-dialog__city">
+            <el-select
+              v-model="form.province"
+              placeholder="请选择省"
+              @change="changeProvince"
+              @visible-change="getProvinceList"
+            >
+              <el-option
+                v-for="item in provinceList"
+                :key="item.id"
+                :label="item.city"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+            <el-select
+              v-model="form.city"
+              placeholder="请选择市"
+              @change="changeCity"
+              @visible-change="getCityList"
+            >
+              <el-option
+                v-for="item in cityList"
+                :key="item.id"
+                :label="item.city"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+            <el-select
+              v-model="form.county"
+              placeholder="请选择区"
+              @change="changeCounty"
+              @visible-change="getAreaList"
+            >
+              <el-option
+                v-for="item in areaList"
+                :key="item.id"
+                :label="item.city"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+          </div>
+        </el-form-item>
+        <el-form-item label="期望月薪：">
+          <el-select
+            v-model="form.salary"
+            placeholder="请选择"
+            @change=""
+            @visible-change=""
+          >
+            <el-option
+              v-for="item in salaryList"
+              :key="item.name"
+              :label="item.name"
+              :value="item.name"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div class="intention-dialog__btn">
+        <el-button round type="primary" size="medium" @click="save"
+          >确定修改</el-button
+        >
+        <el-button
+          style="padding: 10px 34px;"
+          round
+          size="medium"
+          @click="dialogVisible = false"
+          >返回</el-button
+        >
+      </div>
+    </div>
+  </el-dialog>
+</div>

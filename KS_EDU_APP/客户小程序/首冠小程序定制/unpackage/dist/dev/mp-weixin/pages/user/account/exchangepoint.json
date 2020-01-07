@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的点券",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

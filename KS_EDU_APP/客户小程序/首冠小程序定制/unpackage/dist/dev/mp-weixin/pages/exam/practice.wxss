@@ -1,0 +1,202 @@
+
+.van-tab.data-v-ce55242a,
+  .van-tag--large.data-v-ce55242a {
+    font-size: 16px;
+}
+.van-icon-arrow-left.data-v-ce55242a {
+    color: #4d4c4c !important;
+}
+.uni-popup__wrapper.data-v-ce55242a{
+		border-radius: 20px;
+}
+.contianer.data-v-ce55242a {
+    width: 100%;
+    min-height: 100vh;
+    /* background: #f5f4f9; */
+}
+
+  /* 顶部导航 */
+.top-nav.data-v-ce55242a {
+    font-weight: bold;
+}
+.navtitle ._img.data-v-ce55242a {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+}
+
+  /* 章节分类列表 */
+.exam-box.data-v-ce55242a {
+    width: 100%;
+    min-height: 89vh;
+}
+
+  /* 章 */
+.chaptersBox.data-v-ce55242a {
+    width: 33%;
+    min-height: 89vh;
+    float: left;
+}
+.chaptersList.data-v-ce55242a {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    border-bottom: 1px solid #ebedef;
+}
+.chaptersList-title.data-v-ce55242a {
+    color: #333;
+    font-size: 11px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    padding-top: 12px;
+}
+.chaptersList text.data-v-ce55242a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #999;
+    /* font-size: 10px;
+  font-family: PingFang-SC-Regular; */
+    font-weight: 400;
+	font-size: 12px;
+}
+.activeChapter.data-v-ce55242a {
+    background: #fff;
+}
+
+  /* 节 */
+.sectionsBox.data-v-ce55242a {
+    width: 67%;
+    min-height: 89vh;
+    background: #fff;
+    float: right;
+}
+.sectionsList.data-v-ce55242a {
+    width: 90%;
+    padding: 0 5%;
+    float: right;
+    background: #fff;
+}
+.sectionsList-title.data-v-ce55242a {
+    width: 100%;
+    height: 40px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    border-bottom: 1px solid #ebedef;
+    /* color: #333; */
+    font-size: 14px;
+    /* font-family: PingFang-SC-Medium; */
+    font-weight: 500;
+}
+.sectionsList-text.data-v-ce55242a {
+    width: 100%;
+    height: 50px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    border-bottom: 1px solid #ebedef;
+    color: #999;
+    font-size: 11px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.sectionsList-text text.data-v-ce55242a {
+    color: #ff663d;
+}
+.examRecord-item.data-v-ce55242a {
+    width: 90%;
+    margin: 0 auto;
+    padding: 13px 5% 0 5%;
+    background: #fff;
+}
+.examRecord-box.data-v-ce55242a {
+    margin-bottom: 13px;
+    border-bottom: 1px solid #ebedef;
+}
+.examRecord-box_top.data-v-ce55242a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    margin-top: 3px;
+}
+.examRecord-box_top text.data-v-ce55242a {
+    font-size: 14px;
+    color: #ff795c;
+}
+.examRecord-box_title.data-v-ce55242a {
+    width: 75%;
+    font-size: 14px;
+    color: #333;
+    float: left;
+}
+.examRecord-box_title ._ul ._li.data-v-ce55242a {
+    list-style: disc inside none;
+}
+.examRecord-box_top text.data-v-ce55242a {
+    width: 25%;
+    float: right;
+    text-align: right;
+}
+.examRecord-box_bottom.data-v-ce55242a {
+    margin-top: 6px;
+    width: 100%;
+    height: 32px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.examRecord-box_type.data-v-ce55242a {
+    width: 75%;
+    font-size: 10px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: #999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.examRecord-box_see.data-v-ce55242a {
+    font-size: 12px;
+    color: #fff;
+    width: 65px;
+    height: 20px;
+    border-radius: 10px;
+    background: #ff663d;
+    text-align: center;
+    line-height: 20px;
+}
+.sort-box.data-v-ce55242a {
+    text-align: center;
+}
+.sort-box text.data-v-ce55242a {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    background: #fb6e52;
+    border-radius: 4px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    line-height: 40px;
+    text-align: center;
+    margin: 45px 30px 0 30px;
+}
+

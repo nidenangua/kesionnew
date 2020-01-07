@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "chat-list": "/lib/polyv/components/chat-list/chat-list",
+    "chat-edit": "/lib/polyv/components/chat-edit/chat-edit"
+  },
+  "component": true
+}

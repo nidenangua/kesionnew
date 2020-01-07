@@ -1,0 +1,68 @@
+.personal {
+  padding-bottom: 30px;
+}
+
+.personal-user {
+  padding: 0 110px 0 50px;
+}
+
+.personal-user__avatar {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  margin: 30px auto 50px auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.personal-user__hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 120px;
+  display: none;
+}
+
+.personal-user__avatar:hover .personal-user__hover {
+  display: block;
+}
+
+.personal-user__avatar .ks-image {
+  width: 100%;
+  height: 100%;
+}
+
+.personal-user__form {
+  width: 50%;
+  float: left;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.personal-user__form .el-row .el-col {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 40px;
+  text-align: right;
+  margin-top: 30px;
+}
+
+.personal .el-form .el-form-item .el-select {
+  width: 130px;
+  margin-right: 5px;
+}
+
+.personal-user__formbtn {
+  width: 120px;
+  margin: 0 auto;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="keywords" content="科汛在线网校系统、科汛在线课堂、科汛在线教育解决方案">
+    <meta name="description"
+          content="厦门科汛软件有限公司(KESION Inc.)专注一站式提供在线教育解决方案。专业开发在线网校系统、在线教育系统、在线商城系统、在线考试系统、微分销系统及CMS网站管理系统。公司拥有自主知识产权品牌产品KesionCMS、KesionEShop、KesionEDU、KesionICMS、KesionIMALL及KesionIExam等系统。">
+    <meta name="format-detection" content="telephone=no">
+
+  
+    <script>
+    		var uoot = '<?php echo UOOT ?>';
+    </script>
+</head>
+<body>
+	
+<div id="newpost">
+<header class="header header_teacher" id="header">
+    <div class="box">
+        <div class="backicon" id="header-back"></div>
+        <div class="text" id="header-title">
+            <ul>
+                <li class="on" onclick="location.href=''">全部订单</li>
+                <li onclick="location.href=''">今日订单</li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="orders_teach">
+    <ul>
+    	
+        <li >
+            <div class="order_time">
+                下单时间：2018/10/27 11:45:30
+                <span class="Spend">已付款</span>
+
+            </div>
+            <div class="text">
+                <h2>初中地理辅导七年级下册 </h2>
+                <p>
+                    共4门课程
+                </p>
+                <p>购买账号：sky1011</p>
+                <p>订单号：F:2018102711453051</p>
+                <p>订单金额：<span>￥150.00</span></p>
+            </div>
+        </li>
+       
+    </ul>
+</div>
+</div>
+<script src="<?php echo UOOT ?>Public/common/js/currency/gate.js" type="text/javascript"></script>
+<script>
+	module.add('newpost'{
+	el'#newpost',
+	jsonUrl:uoot + 'Json/index.php',
+	data{
+		dataArr:[],
+	},
+	created:function(){
+		var that = this;
+		getdata()
+		$_monitor.scroll.bottom(window,function(){
+			getdata()
+		
+		}
+	}
+	methods:function(){
+		getdata:function(){
+			$post(this.jsonUrl+'?act=Microportal.'+isurl,newData,function(res){
+				console.log(res)
+				
+			})
+		}
+		
+	}
+	
+})
+		
+	
+</script>
+</body>
+</html>

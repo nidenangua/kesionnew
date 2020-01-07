@@ -1,0 +1,106 @@
+.disabled {
+  background-color: #f5f7fa !important;
+  color: #c0c4cc !important;
+  border: 1px solid #e4e7ed !important;
+  cursor: not-allowed !important;
+}
+
+.practice-record {
+  width: 100%;
+  position: relative;
+  height: 155px;
+}
+
+.practice-record__position {
+  position: absolute;
+  top: 57px;
+  width: 100%;
+}
+
+/* 练习记录列表 */
+
+.practice-record__item {
+  margin-top: 20px;
+  width: 100%;
+  height: 460px;
+  background: #fff;
+  border: solid 1px #ebebeb;
+  border-bottom: none;
+}
+
+.practice-record__box {
+  height: 85px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.practice-record__box:hover {
+  background: #f0f2f5;
+}
+
+.practice-record__left {
+  float: left;
+}
+
+.practice-record__title {
+  font-size: 14px;
+  color: #333;
+  margin: 17px 0 0 20px;
+}
+
+.practice-record__title span {
+  color: #488bff;
+}
+
+.practice-record__text {
+  font-size: 12px;
+  color: #999;
+  margin: 14px 0 0 20px;
+}
+
+.practice-record__text span {
+  margin-right: 20px;
+}
+
+.practice-record__right {
+  float: right;
+  margin: 25px 22px 0 0;
+}
+
+.practice-record__answer {
+  font-size: 12px;
+  color: #999;
+  line-height: 36px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.practice-record__right p {
+  width: 100px;
+  height: 36px;
+  border-radius: 18px;
+  border: solid 1px #488bff;
+  font-size: 14px;
+  color: #488bff;
+  text-align: center;
+  line-height: 36px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.practice-record__pagination {
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-top: none;
+  box-sizing: content-box;
+}
+
+.practice-record__noShow {
+  height: 450px;
+  padding-top: 100px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-top: none;
+  box-sizing: content-box;
+}

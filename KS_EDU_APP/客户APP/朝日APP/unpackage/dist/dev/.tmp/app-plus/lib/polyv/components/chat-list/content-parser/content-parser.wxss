@@ -1,0 +1,14 @@
+
+.plv-mp-chat-msg-content.data-v-761736ec {
+  text-align: left;
+  word-break: break-all;
+  font-size: 0;
+  min-height: 36rpx;
+}
+.plv-mp-chat-msg-content-title.data-v-761736ec {
+  font-size: 26rpx;
+}
+.plv-mp-chat-msg-img.data-v-761736ec {
+  background-color: #ddd;
+}
+

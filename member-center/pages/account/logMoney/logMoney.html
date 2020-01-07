@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<!--------------------------------- 账户明细 ------------------------------------->
+<div class="useraccount" style="position: relative;">
+    <ks-title title="账户明细" :underline="false" />
+    <el-button class="useraccount-account__retrun" @click="retrunView">返回</el-button>
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane :label="'所有记录（'+totalNum+'）'" name="first">
+            <div class="useraccount-account__title">
+                <el-row>
+                    <el-col :span="2"><span>序号</span></el-col>
+                    <el-col :span="4"><span>消费时间</span></el-col>
+                    <el-col :span="3"><span>收入（元）</span></el-col>
+                    <el-col :span="3"><span>支出（元）</span></el-col>
+                    <el-col :span="2"><span>摘要</span></el-col>
+                    <el-col :span="3"><span>余额（元）</span></el-col>
+                    <el-col :span="7" style="text-align: left"><span>备注</span></el-col>
+                </el-row>
+            </div>
+            <div class="useraccount-account__list">
+                <el-row type="flex" v-for="(item,i) in moneyList" :key="i">
+                    <el-col :span="2" align="middle"><span>{{i+1}}</span></el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.paytime}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.income}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.expend}}</span> </el-col>
+                    <el-col :span="2" align="middle"> <span>{{item.operate_type_name}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.curr_money}}</span> </el-col>
+                    <el-col :span="7" style="text-align: left" align="middle"> <span>{{item.remark}}</span> </el-col>
+                </el-row>
+                <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserLogMoneyList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane :label="'收入记录（'+incomeNum+'）'" name="second">
+            <div class="useraccount-account__title">
+                <el-row>
+                    <el-col :span="2"> <span>序号</span> </el-col>
+                    <el-col :span="4"> <span>消费时间</span> </el-col>
+                    <el-col :span="3"> <span>收入（元）</span> </el-col>
+                    <el-col :span="3"> <span>支出（元）</span> </el-col>
+                    <el-col :span="2"> <span>摘要</span> </el-col>
+                    <el-col :span="3"> <span>余额（元）</span> </el-col>
+                    <el-col :span="7" style="text-align: left"> <span>备注</span> </el-col>
+                </el-row>
+            </div>
+            <div class="useraccount-account__list">
+                <el-row type="flex" v-for="(item,i) in moneyList" :key="i">
+                    <el-col :span="2" align="middle"> <span>{{i+1}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.paytime}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.income}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.expend}}</span> </el-col>
+                    <el-col :span="2" align="middle"> <span>{{item.operate_type_name}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.curr_money}}</span> </el-col>
+                    <el-col :span="7" style="text-align: left" align="middle"> <span>{{item.remark}}</span> </el-col>
+                </el-row>
+                <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserLogMoneyList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane :label="'支出记录（'+expendNum+'）'" name="third">
+            <div class="useraccount-account__title">
+                <el-row>
+                    <el-col :span="2"> <span>序号</span> </el-col>
+                    <el-col :span="4"> <span>消费时间</span> </el-col>
+                    <el-col :span="3"> <span>收入（元）</span> </el-col>
+                    <el-col :span="3"> <span>支出（元）</span> </el-col>
+                    <el-col :span="2"> <span>摘要</span> </el-col>
+                    <el-col :span="3"> <span>余额（元）</span> </el-col>
+                    <el-col :span="7" style="text-align: left"> <span>备注</span> </el-col>
+                </el-row>
+            </div>
+            <div class="useraccount-account__list">
+                <el-row type="flex" v-for="(item,i) in moneyList" :key="i">
+                    <el-col :span="2" align="middle"> <span>{{i+1}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.paytime}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.income}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.expend}}</span> </el-col>
+                    <el-col :span="2" align="middle"> <span>{{item.operate_type_name}}</span> </el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.curr_money}}</span> </el-col>
+                    <el-col :span="7" style="text-align: left" align="middle"> <span>{{item.remark}}</span> </el-col>
+                </el-row>
+                <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserLogMoneyList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+    </el-tabs>
+</div>

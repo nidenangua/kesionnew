@@ -1,0 +1,136 @@
+{
+    "common": [{
+            "text": "首页",
+            "url": "#/"
+        },
+        {
+            "text": "发现",
+            "url": "#/course"
+        },
+        {
+            "text": "图文列表",
+            "url": "#/course?coursetype=4"
+        },
+        {
+            "text": "音频列表",
+            "url": "#/course?coursetype=3"
+        },
+        {
+            "text": "点播列表",
+            "url": "#/course?coursetype=1"
+        },
+        {
+            "text": "老师列表",
+            "url": "#/teacher"
+        },
+        {
+            "text": "资料列表",
+            "url": "#/data"
+        },
+        {
+            "text": "考试主页",
+            "url": "#/exam"
+        },
+        {
+            "text": "直播列表",
+            "url": "#/course?coursetype=2"
+        },
+        {
+            "text": "专栏列表",
+            "url": "#/column"
+        },
+        {
+            "text": "社群列表",
+            "url": "#/group"
+        },
+        {
+            "text": "新闻列表",
+            "url": "#/news"
+        },
+        {
+            "text": "领券中心",
+            "url": "#/user/getVouceher"
+        },
+        {
+            "text": "我的分销",
+            "url": "#/user/distribution"
+        },
+        {
+            "text": "我的已购",
+            "url": "#/user/course"
+        },
+        {
+            "text": "活动列表",
+            "url": "#/course?coursetype=6"
+        },
+        {
+            "text": "面授列表",
+            "url": "#/course?coursetype=5"
+        },
+        {
+            "text": "朋友圈",
+            "url": "#/friend"
+        },
+        {
+            "text": "答疑",
+            "url": "#/mentoring"
+        },
+        {
+            "text": "教辅周边",
+            "url": "#/mallindex"
+        },
+        {
+            "text": "关注公众号",
+            "url": "ks:concernWeiXinPublicNo"
+        },
+        {
+            "text": "关注班主任",
+            "url": "ks:concernHeadTeacher"
+        }
+    ],
+    "user": [{
+            "text": "个人设置",
+            "url": "#/user/setting"
+        },
+        {
+            "text": "我的订单",
+            "url": "#/user/order"
+        },
+        {
+            "text": "赠送记录",
+            "url": "#/user/giftrecode"
+        },
+        {
+            "text": "折扣卡",
+            "url": "#/user/mycard"
+        },
+        {
+            "text": "升级会员",
+            "url": "#/user/uservip"
+        },
+        {
+            "text": "领券中心",
+            "url": "#/user/getVouceher"
+        },
+        {
+            "text": "我的优惠券",
+            "url": "#/user/vouceher"
+        },
+        {
+            "text": "我的分销",
+            "url": "#/user/distribution"
+        },
+        {
+            "text": "我的社群",
+            "url": "#/user/group"
+        },
+        {
+            "text": "我的消息",
+            "url": "#/user/notice"
+        },
+        {
+            "text": "我的已购",
+            "url": "#/user/course"
+        }
+    ]
+}

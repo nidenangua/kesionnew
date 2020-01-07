@@ -1,0 +1,113 @@
+
+.order-item.data-v-0bf0545b{
+	margin-top: 10px;
+	background: #fff;
+	padding: 0 10px 10px 10px;
+}
+.order-id.data-v-0bf0545b{
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid #EEE;
+	font-size:12px;
+	color:rgba(102,102,102,1);
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap:break-word;
+	text-overflow: ellipsis;
+}
+.order-image.data-v-0bf0545b{
+	padding: 15px 10px 15px 130px;
+	position: relative;
+	min-height: 80px;
+	border-radius:4px;
+}
+.order-image .ks-image.data-v-0bf0545b{
+	position: absolute;
+	top:15px;
+	left: 0;
+	height: 80px;
+	width: 120px;
+}
+.course-costype.data-v-0bf0545b{	
+	font-size:14px;
+	color:rgba(136,136,136,1);
+}
+.course-price.data-v-0bf0545b{
+	font-size:14px;
+	color:rgba(26,26,26,1);
+}
+uni-button[type=warn].data-v-0bf0545b{
+	background-color: #FF9500;
+}
+.item-bottom.data-v-0bf0545b{
+	padding-top: 10px;
+	border-top: 1px solid #eee;
+	font-size:14px;
+	color:rgba(26,26,26,1);
+}
+/***************/
+.popup.data-v-0bf0545b {
+  font-size: 0.7rem;
+  color: #273035;
+}
+.popup-title.data-v-0bf0545b {
+  text-align: center;
+  font-size: 0.8rem;
+}
+.popup-item.data-v-0bf0545b {
+  color: #787c82;
+  border-bottom: 1px solid #eee;
+  padding: 1vh 0;
+}
+.vip-money.data-v-0bf0545b {
+  text-align: center;
+  font-size: 20px;
+  color: rgb(255, 102, 61);
+  margin-top: 10px;
+}
+.money-pay.data-v-0bf0545b {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.money-pay input.data-v-0bf0545b {
+  background: none;
+  outline: none;
+}
+.pay-left.data-v-0bf0545b {
+  width: 30vw;
+  text-align: right;
+  font-size: 0.8rem;
+}
+.pay-right.data-v-0bf0545b {
+  width: 60vw;
+  padding-left: 10vw;
+  color: #787c82;
+  font-size: 0.7rem;
+}
+.pay-item.data-v-0bf0545b {
+  width: 150px;
+  height: 2.2rem;
+  border: 2px solid #bbbbbb;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.curr-pay.data-v-0bf0545b {
+  border: 2px solid rgb(255, 102, 61);
+}
+.pay-btnbox.data-v-0bf0545b {
+  margin: 1rem 1rem 0 1rem;
+  padding: 1rem;
+  border-top: 1px solid #e6e9e6;
+}
+.pay-btn.data-v-0bf0545b {
+  height: 2.2rem;
+  border-radius: 0.2rem;
+  line-height: 2.2rem;
+  font-size: 0.8rem;
+  text-align: center;
+  background: #ff663d;
+    color: #fff ;
+    border: 1px solid #ff663d;
+}
+

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.topic-top.data-v-4fb52d9d {
+  padding: 15px 12px;
+}
+.topic-top .img.data-v-4fb52d9d {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.topic-top .topiclist_info.data-v-4fb52d9d {
+    margin-bottom: 10px;
+}
+.topic-top .topiclist_info .name.data-v-4fb52d9d {
+      font-size: 14px;
+      color: #1A1A1A;
+      line-height: 14px;
+      margin-bottom: 4px;
+}
+.topic-top .topiclist_info .time.data-v-4fb52d9d {
+      font-size: 12px;
+      color: #888888;
+}
+.topic-top .intro.data-v-4fb52d9d {
+    font-size: 16px;
+    color: #1A1A1A;
+    line-height: 24px;
+}
+.topic-top .info.data-v-4fb52d9d {
+    margin-top: 15px;
+}
+.topic-top .info .browse.data-v-4fb52d9d {
+      font-size: 12px;
+      line-height: 18px;
+      color: #888888;
+}
+.topic-top .info .info__num.data-v-4fb52d9d {
+      text-align: right;
+      line-height: 18px;
+      height: 18px;
+}
+.topic-top .info .info__num .zannum.data-v-4fb52d9d, .topic-top .info .info__num .comment.data-v-4fb52d9d {
+        display: inline-block;
+        font-size: 14px;
+        color: #666666;
+        margin-left: 12px;
+        padding-left: 23px;
+}
+.topic-top .info .info__num .zannum.data-v-4fb52d9d {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAADJklEQVRYR+2XSWgUURCG/+p0CBhUopGIERVUPCgiqCjo0YPivuTicsjQXZ1F9CQKiiuoByVoJJlXfQkktyhGcUFcjh4EES/iQVyiogcxomhMJjMlDzIyxkk64tiTg+/UzavX9fVf71XVI4yxQWOMB/+BoiJSMIVqa2unlJaWXgEwH8BxETkb5TzffMGAmLkdwM5BJ+o4zuJkMvnoT6EKAsTMswE8BZACcBnAdgAnReRgsYDOAdgD4AIR3VTV6wCui8i62IESicR413W7AUwkogXpdNp1HOexqj4Iw3BZ7EC+7x8momNEdMsYs9rzvIUWiIgeGmOWxApUV1dXnclkngCYoKorwjC87/v+ViK6CKBLRDbHBsTM4wDcA2DD0iEiu6zzIAg6VHUHgL0icj4WIM/zljuO0wpgEYBn/f39S9va2j41NDRMHRgYeDUIUS0iH/4aiJkrAYQA7AlxReRnamDmawDmAZgz6OiJ4zhrk8nkS/vOzKcAHADwEcDdEWBSRHTHGNMGQHPtfstDzGyz7QYAvQC+i8ik7AJmzi5+b6HLy8tPNTU1WTvU19dXpNPpF/a0jVYVIjpujDkSBfTdwvT29k5vb2//mmucBerp6XE7OzvTuXN2g6vqykwmo0T0y1/nAawC0GyVFJHJUUD2Y90iMnPoh7JAuWHM48yqPiJQIpGY5rruWwDvRGTavwaKjFgQBOtV9Wq+bJ5vD/2tQpFAzGz3zVEAJ0TkcNEV8n2/i4g2AtgsIl1FB2LmNwCqAcwUEVsHf47YQ+Z5XpXjODZtfBCRKUPjGzuQ7/triOhGthgXHSgIgkOqemK4Bi52hZj5EoAtqrotDEP7/MsoBpAtL7NKSkpmt7a2Pi8qUGNj4+RUKmU7gJ7cGlm0U+b7/ioium07ARFZlS+DxhqyIAj2q+ppIjpjjNk3WqAvANJlZWUzmpubP+er9hHFNW/pqKmpKamoqLCtzVoi2mWM6RgtkL1XbQLQB+DbMP1QZL0awaDPdd25LS0tr0cLVElEoqq2Yywd0jFG9TlRoM9UdXcYhreGMyzIzTWK4k/m/wNFqTXmFPoBq/WXNNEqUWYAAAAASUVORK5CYII=) no-repeat center left;
+        background-size: 18px;
+}
+.topic-top .info .info__num .comment.data-v-4fb52d9d {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAADH0lEQVRYR+2XTWgTQRTH/2+2EVoPNmqtET0IXvSgiHjQm0UKoqIWgmCNErs7LQp6UlArBCxi60nBNju7sWgUkYIfBQ8qfp08eBAVD+LBg2KoUduDUmy6OzIlLSVNOmmaQoXMbXlfv/m/2Z23hHm2aJ7xoAKk68j/o1BbW9tGz/NOElEDgHrdzoq0DwB4zhjrisfjb/LF5FXIsqwjRBQHECiy0EzdMlLKNsdxruUGTgGyLGszEb0CwIjoiud5l13X/TzTivn8TdNcbRjGCSnlcQC+lHKL4zivJ/tOAWptbb0rpdwH4JIQ4lQ5QHJzcM67AKjjcM+27aZpgTjnPwAs8X1/leu6X+cCyDTNlYyxLwB+CiGW6oCkchBCzOkbyDnPW2dK0UKO5VaqAqRTdFYKcc53AkgAGGGMHYrH4y9UQc55gIhuSin3EtF9KeVBIURG2UzTbGCM3QBQBaBFCPFwMuRsgb4BCGUTvhNCbMgCHQBwa7yQAnIcZ+yZc/4WwPqsLSWEWDGfgAaEEMvLBmRZ1i4iUp/5v4yxSL6WAXgAoDmnZb0AqgFEy9oy3QEtxT6rM1RKQV1MBaicCg0CqM1kMst6e3vTusSl2KPRaF0gEPgOYEgIEdRdro8ANBLROdu2O0opqIvhnJ8F0CGlfOI4TqMOaBuAp2qAAnBmeHj4ajKZ/KMrUow9EoksrK6uPgbgghoAfd/f7rrus2mBsl9ZNZhdBMZ+k0YAqFl47EoYX0R0JxQKtcdiMQU+sWKxGEulUmr3+3Mg1TisZvMFACQRnbZtuzN3IwVnHs65alu7lHIrAKOAAv1VVVXN3d3dv5VdKVBTU5PMTpz5QjwAajw+L4R4nM9BO4SFw+EFdXV19VLKiYF/dHR0HRFdB7AYwHvf9/coBQ3DUBfsJgCDRHSYMfZhkqKZdDo90NfXpxQvuLRAhSJbWlrWGIbRD2AtAPU2qpaqC/STYRi7e3p6PhZzropuWTHJOOeLANwGsCPr/9LzvKZEIvGrmPiSWqZLHA6HjWAw2CmlrB0aGjqqa4kuX8kt0yUu1V4B0ilXUUin0D9H6Hw0OtIbHAAAAABJRU5ErkJggg==) no-repeat center left;
+        background-size: 18px;
+}
+.topic-title.data-v-4fb52d9d {
+  padding: 15px 12px 10px;
+  font-size: 16px;
+  color: #1A1A1A;
+  line-height: 16px;
+}
+.topiclist .withe-bg.data-v-4fb52d9d {
+  padding: 0 15px;
+}
+.topiclist .topiclist-item.data-v-4fb52d9d {
+  padding: 15px 0 0;
+}
+.topiclist .topiclist-item .img.data-v-4fb52d9d {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.topiclist .topiclist-item .topiclist_info.data-v-4fb52d9d {
+    margin-bottom: 12px;
+}
+.topiclist .topiclist-item .topiclist_info .name.data-v-4fb52d9d {
+      font-size: 14px;
+      color: #1A1A1A;
+      line-height: 14px;
+      margin-bottom: 4px;
+}
+.topiclist .topiclist-item .topiclist_info .time.data-v-4fb52d9d {
+      font-size: 12px;
+      color: #888888;
+}
+.topiclist .topiclist-item .intro.data-v-4fb52d9d {
+    font-size: 16px;
+    color: #1A1A1A;
+    line-height: 24px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.topiclist .topiclist-item:last-child .intro.data-v-4fb52d9d {
+  border-bottom: 0;
+}
+.reply-box.data-v-4fb52d9d {
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0px;
+  padding: 5px 10px;
+  height: 46px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  z-index: 101;
+}
+.reply-box .reply-button.data-v-4fb52d9d {
+    display: inline-block;
+    width: 20%;
+    height: 36px;
+    line-height: 36px;
+    background: #2987EE;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.reply-box .reply-text.data-v-4fb52d9d {
+    height: 36px;
+    display: inline-block;
+    width: 77%;
+    margin-right: 3%;
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius: 3px;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.join-bg.data-v-4fb52d9d {
+  height: 56px;
+}
+

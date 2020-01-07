@@ -1,0 +1,520 @@
+.userclass {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+}
+
+.userclass-sort {
+  overflow: hidden;
+  padding: 14px 0;
+  border-bottom: 1px dashed #e6e9ed;
+}
+
+.userclass-sort span {
+  float: right;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 36px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+/* 搜索框 */
+
+.userclass-sort .el-input {
+  width: 240px;
+  float: left;
+}
+
+/* 选择器 */
+
+.userclass-sort .el-select {
+  float: right;
+}
+
+.userclass-sort .el-select > .el-input {
+  width: 130px;
+}
+
+/* 班级列表 */
+
+.userclass-list {
+  padding-bottom: 20px;
+}
+
+.userclass-item {
+  height: 78px;
+  padding: 20px 0;
+  border-bottom: 1px dashed #e6e9ed;
+}
+
+.userclass-item .ks-image {
+  width: 140px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+}
+
+.userclass-item__word {
+  float: left;
+  margin-left: 20px;
+}
+
+.userclass-item__word h2 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.userclass-item__word span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 24px;
+  margin-top: 10px;
+  display: block;
+}
+
+.userclass-item__word span i {
+  margin: 0 5px;
+  font-style: normal;
+}
+
+.userclass-item__word p {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 24px;
+}
+
+.userclass-item__btn {
+  padding-right: 25px;
+  float: right;
+  line-height: 78px;
+}
+
+.userclass-item__btn h3 {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+/* 详情页 */
+
+.userclass-detail {
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.userclass-look {
+  overflow: hidden;
+  padding: 18px 0;
+  border-bottom: 1px solid #e6e9ed;
+  cursor: pointer;
+}
+
+.userclass-look p {
+  float: left;
+  font-size: 18px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  max-width: 50%;
+}
+
+.userclass-look span {
+  float: left;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.4;
+  border-radius: 12px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  padding: 0 10px;
+  font-size: 14px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+
+.userclass-look span i {
+  float: left;
+  font-style: normal;
+  line-height: 24px;
+}
+
+.userclass-look__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 20px;
+  max-width: 300px;
+}
+
+.userclass-detail .ks-image {
+  width: 160px;
+  height: 90px;
+  float: left;
+  margin-right: 20px;
+}
+
+.userclass-detail__retrun {
+  padding: 7px 15px;
+  border-radius: 15px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.userclass-detail__word {
+  float: left;
+}
+
+.userclass-detail__word h1 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 300px;
+}
+
+.userclass-detail__word span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 24px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.userclass-detail__word p {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 24px;
+}
+
+.userclass-detail__item {
+  width: calc(100% / 6);
+  float: right;
+  text-align: center;
+}
+
+.userclass-detail__item p {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 24px;
+  margin: 35px 0 10px 0;
+}
+
+.userclass-detail__item span {
+  font-size: 24px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(60, 129, 249, 1);
+  line-height: 24px;
+}
+
+/* 课程 */
+
+.userclass-detaillist {
+  padding-bottom: 40px;
+}
+
+.userclass-detaillist .el-button {
+  float: right;
+  padding: 7px 16px;
+  border-radius: 15px;
+  margin-top: 24px;
+  margin-right: 20px;
+}
+
+.userclass-workitem .el-button {
+  margin-top: 16px;
+  margin-left: 20px;
+}
+
+.userclass-coursesort {
+  padding: 10px;
+}
+
+.userclass-coursesort__box {
+  overflow: hidden;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  width: 108px;
+  color: rgba(120, 124, 130, 1);
+}
+
+.userclass-coursesort span {
+  width: 50%;
+  height: 24px;
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+
+.active-course {
+  background: #3c81f9;
+  color: #fff;
+}
+
+.userclass-courseitem {
+  height: 78px;
+  padding: 20px 0;
+  border-bottom: 1px dashed #e6e9ed;
+}
+
+.userclass-courseitem .ks-image {
+  width: 140px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+}
+
+.userclass-courseitem__word {
+  float: left;
+  margin-left: 20px;
+}
+
+.userclass-courseitem__word h2 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 300px;
+}
+
+.userclass-courseitem__word span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+  line-height: 24px;
+  margin-top: 10px;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.userclass-courseitem__word p {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+  line-height: 24px;
+}
+
+.userclass-courseitem__word p i {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(60, 129, 249, 1);
+  font-style: normal;
+  margin-left: 5px;
+}
+
+/* 作业 和 公告样式*/
+
+.userclass-workitem {
+  height: 62px;
+  border-bottom: 1px dashed #e6e9ed;
+  line-height: 62px;
+}
+
+.userclass-workitem h2 {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  margin-left: 10px;
+  float: left;
+}
+
+.userclass-workitem p {
+  float: right;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+}
+.dialog-title {
+  overflow: hidden;
+  height: 40px;
+  line-height: 40px;
+  background: #f5f7fa;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  margin-top: 20px;
+}
+
+.dialog-list {
+  padding-bottom: 20px;
+}
+
+.dialog-list .el-row {
+  border-bottom: 1px solid #e6e9ed;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  padding: 10px 0;
+}
+
+.dialog-list .el-row .el-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* 训练营 */
+
+.userclass-trainitem {
+  height: 78px;
+  padding: 20px 0;
+  border-bottom: 1px dashed #e6e9ed;
+}
+
+.userclass-trainitem .ks-image {
+  width: 140px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+}
+
+.userclass-trainitem__word {
+  float: left;
+  margin-left: 20px;
+}
+
+.userclass-trainitem__word h2 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  line-height: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 300px;
+}
+
+.userclass-trainitem__word span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+  line-height: 24px;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.userclass-trainitem__word p {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+  line-height: 24px;
+  margin-top: 10px;
+}
+
+.userclass-trainitem__word i {
+  font-style: normal;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(233, 28, 53, 1);
+  line-height: 24px;
+}
+
+/* 问答 */
+
+.userclass-askitem__userinfo {
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.userclass-askitem__userinfo .ks-image {
+  float: left;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-top: 3px;
+}
+
+.userclass-askitem__nickname {
+  float: left;
+  margin-left: 10px;
+}
+
+.userclass-askitem__nickname span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 21px;
+}
+
+.userclass-askitem__nickname p {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+  line-height: 21px;
+}
+
+.userclass-askitem__comment {
+  margin-left: 46px;
+  height: 51px;
+  line-height: 51px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(47, 49, 51, 1);
+  border-bottom: 1px solid #e6e9ed;
+}
+
+.userclass .el-dialog__body {
+  padding: 10px 30px 20px;
+}
+
+.noticedetail-title {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.userclass-noticedetail {
+  border-top: 1px solid #e6e9ed;
+}

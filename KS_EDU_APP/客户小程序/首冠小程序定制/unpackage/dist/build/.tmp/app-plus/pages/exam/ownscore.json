@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "自己评分",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-empty": "/components/ks-components/empty/empty",
+    "analysis-item": "/components/ks-components/analysis-item/analysis-item"
+  }
+}

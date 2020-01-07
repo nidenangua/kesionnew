@@ -1,0 +1,36 @@
+
+朝日日语
+应用市场	登录地址	登录账号	密码	
+华为	http://developer.huawei.com/consumer/cn/devunion/ui/index.html	18516655037	bide1#moser#2Rig	
+vivo	https://id.vivo.com.cn/	liwenhan@china-asahi.com	bide1#moser#2Rig	asahiedu
+小米	https://dev.mi.com/	18516655037	bide#moser#2Rig	
+阿里应用分发平台	http://aliapp.open.uc.cn/app/mng/index	kevy_kk@hotmail.com	bide#moser#2Rig	豌豆荚、阿里九游、PP助手、UC应用商店、神马搜索，YunOS
+oppo	https://open.oppomobile.com	asahiedu@sina.com	5uGYOt0P	
+腾讯开放平台	op.open.qq.com	2253226535	TrGe@CcZ#NVvm	
+微信开放平台	https://open.weixin.qq.com/	kevy_kk@hotmail.com	TrGe@CcZ#NVvm	
+QQ互联	https://connect.qq.com/index.html	2253226535	TrGe@CcZ#NVvm	
+苹果开发者		asahiedu@sina.com	5uGYOt0P	
+新浪邮箱		asahiedu@sina.com	5uGYOt0P	
+360	http://dev.360.cn/mod3/mobilenavs/index	asahiedu@sina.com	bide#moser#2Rig	18516655037
+极光推送		asahiedu@sina.com	5uGYOt0P	
+mobshareSDK		asahiedu@sina.com	5uGYOt0P	
+支付宝		pay@china-asahi.com	Jikei538210	
+微信支付		1356854802@1356854802	Asahi9609
+保利威视		zack@china-asahi.com     oygETN81%^
+微信支付商户号  1494889272
+商户平台登录帐号  1494889272@1494889272
+商户平台登录密码    149793
+申请对应的应用  朝日日语
+应用APPID    wx1d8f8968c78fb2e2
+后台：
+账号：admin
+密码：Asahi2016@qwe 
+验证  Asahi
+
+应用包名 com.zhaoririyu.netschool
+
+安卓别名 zhaori
+
+安卓证书密码123456
+
+ios证书密码 zhaori123456

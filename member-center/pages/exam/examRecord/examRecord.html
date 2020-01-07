@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<div style="width: 100%;">
+
+    <!-- 考试记录列表 -->
+    <div class="exam-record__item">
+        <div class="exam-record__item-title">
+            <p>考试记录</p>
+            <span>得分</span>
+        </div>
+    </div>
+    <div v-if="showList" class="exam-record__show">
+        <div class="exam-record__showbox">
+            <div class="exam-record__box" v-for="(item,i) in allData" :key="i">
+                <div class="exam-record__left">
+                    <div class="exam-record__title">
+                        <span>[{{item.type_name}}]</span>{{item.title}}({{item.adddate_mm}})
+                    </div>
+                    <div class="exam-record__text">
+                        <span>练习时间:{{item.adddate}}</span>
+                        <span>用时：{{Math.floor(item.time/60)>=10?Math.floor(item.time/60):'0'+Math.floor(item.time/60)}}分{{item.time%60>=10?item.time%60:'0'+item.time%60}}秒</span>
+                        <span>总分：{{item.paper_sumscore}}分</span>
+                        <div class="exam-record__difficulty">
+                            难度:
+                            <i class="exam-record__star" :style="{width:(item.paper_level==0&&13+'px')||(item.paper_level==1&&26+'px')||(item.paper_level==2&&50+'px')}"></i>
+                            <i class="exam-record__star-bg"></i>
+                            <p v-if="item.paper_level==2">难</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="exam-record__right">
+                    <div class="exam-record__score" v-if="item.batch==1">
+                            <div v-if="item.iscorrect==0">待批卷</div>
+                            <div v-else-if="item.is_publish==0">待公布</div>
+                        <div v-else><i>{{item.sumscore}}</i>分</div>
+                    </div>
+                    <div class="exam-record__score" v-else-if="item.batch==0">- -</div>
+                    <el-button size="medium" round type="primary" plain v-if="item.is_delrecord==1" @click="deletePaperRecord(item.id)">删除</el-button>
+                    <el-button size="medium" plain type="info" round v-if="item.is_repractice==0" disabled>重新做题</el-button>
+                    <el-button size="medium" round v-else-if="item.is_repractice==1" @click="openExam(item.paperid,item.get_viewurl)">重新做题</el-button>
+                    <el-button size="medium" round v-else-if="item.is_repractice==2" @click="againExam(item.paperid,item.get_viewurl)">继续做题</el-button>
+                    <p v-if="item.batch==1 && item.show_analysis" @click="openAnswer(item.get_viewurl,item.id,item.title,item.dt_num,item.paper_exam_time,item.xt_num,item.paperid,item.paper_sumscore)">查看解析</p>
+                    <p v-if="item.batch==0">未完成</p>
+                </div>
+            </div>
+        </div>
+        <div class="exam-record__pagination">
+            <el-pagination style="text-align: center" :current-page="currentPage" @current-change="getPaperRecordList" background layout="prev, pager, next" :total="pageCount">
+            </el-pagination>
+        </div>
+    </div>
+    <!-- 无数据提示 -->
+    <div class="exam-record__noShow" v-if="showNodata">
+        <ks-empty msg="暂无考试记录" />
+    </div>
+
+</div>

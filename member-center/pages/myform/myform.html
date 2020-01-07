@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<div class="form" style=" padding-bottom: 20px;">
+    <div class="clearfix">
+        <div class="form-sort">
+            <span>类型：</span>
+            <el-select v-model="flag" placeholder="请选择" size="medium" @change="changeSelect">
+                <el-option v-for="item in flagList" :key="item.formid" :label="item.title" :value="item.formid">
+                </el-option>
+            </el-select>
+        </div>
+        <ks-title title="我的表单" :underline="true" />
+    </div>
+    <el-table :data="formList" style="width: 100%;margin-bottom:20px; margin-top: 20px;" header-row-class-name="form-title">
+        <el-table-column label="序号" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span class="class-id">{{(currentPage-1)*10+scope.$index+1}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="提交时间" :show-overflow-tooltip="true" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span class="class-id">{{scope.row.adddate}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="状态" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span :class="scope.row.status==0?'red-font':'green-font'">{{scope.row.status==0?'未启用':'启用'}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="回复时间" :show-overflow-tooltip="true" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span class="class-id">{{scope.row.replytime}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="回复人" :show-overflow-tooltip="true" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span class="class-id">{{scope.row.replyuser}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="回复内容" :show-overflow-tooltip="true" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span class="class-id">{{scope.row.replycontent}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="是否回复" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <span :class="scope.row.isreply==0?'red-font':'green-font'">{{scope.row.isreply==0?'未回复':'已回复'}}</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="操作" align="center" label-class-name="th-title">
+            <template slot-scope="scope">
+                <el-button size="mini" @click="readFormRecord(scope.row.formid,scope.row.recordid)">详情</el-button>
+                <el-button size="mini" style="margin-left: 0; margin-top: 10px;" @click="delFormRecord(scope.row.recordid)">删除</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+    <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="myFormList" v-if="pageCount > 0" />
+    
+</div>

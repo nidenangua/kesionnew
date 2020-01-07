@@ -1,0 +1,175 @@
+.useraccount {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+    position: relative;
+}
+
+.useraccount-recharge__retrun {
+    padding: 7px 15px;
+    border-radius: 15px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.vip {
+    padding: 0 20px;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+}
+
+.vip-title {
+    line-height: 70px;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+}
+
+.vip-title span {
+    margin-right: 40px;
+}
+
+.vip-title span i {
+    font-style: normal;
+}
+
+.vip h1 {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+}
+
+.vip .el-row .el-col {
+    width: 20%;
+}
+
+.vip-item {
+    height: 90px;
+    border: 1px solid rgba(188, 195, 204, 1);
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.vip-item span {
+    display: block;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    margin-top: 15px;
+}
+
+.vip-item p {
+    color: #606367;
+    font-size: 24px;
+    margin-top: 13px;
+}
+
+.vip-item i {
+    width: 16px;
+    height: 16px;
+    background: url(/ks_inc/member-center/images/account/active.png);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.active-vip {
+    border: 1px solid #3C81F9;
+    box-shadow: 1px 6px 10px 0px rgba(6, 17, 36, 0.15);
+}
+
+.vip-price {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    line-height: 80px;
+}
+
+.vip-pay__list {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.vip-pay__item {
+    width: 145px;
+    height: 48px;
+    position: relative;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 48px;
+    float: left;
+    border: 1px solid #BCC3CC;
+    font-size: 20px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(53, 53, 53, 1);
+}
+
+.vip-pay__item i {
+    width: 16px;
+    height: 16px;
+    background: url(/ks_inc/member-center/images/account/active.png);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.active-pay {
+    border: 1px solid #3C81F9;
+}
+
+.vip-used {
+    width: 145px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(136, 136, 136, 1);
+}
+
+.vip-pay__btn {
+    padding: 20px 0;
+    border-top: 1px solid #E6E9ED;
+    margin-top: 30px;
+}
+
+.vip-detail__title {
+    height: 40px;
+    background: #F5F7FA;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+}
+
+.vip-detail__list {
+    padding-bottom: 20px;
+}
+
+.vip-detail__list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 10px 0;
+}
+
+.vip-detail__list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -1,0 +1,106 @@
+
+.paddingtop17.data-v-612233da{
+	padding-top: 17px;
+}
+.main.data-v-612233da{
+	min-height: 100vh;
+	background: #fff;
+	padding: 0 20px;
+}
+.title.data-v-612233da{
+	font-size:16px;
+	font-weight:500;
+	color:rgba(26,26,26,1);
+	padding-top: 30px;
+}
+.item.data-v-612233da{
+	padding:12px 0;
+	border-bottom: 1px solid #D9D9D9;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	line-height: 1;
+}
+.left.data-v-612233da{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.right.data-v-612233da{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	text-align: right;
+	color:#ff663d;
+}
+.money.data-v-612233da{
+	min-width: 100px;
+	max-width: 160px;
+	font-size:30px;
+	font-weight:500;
+	color:rgba(178,178,178,1);
+	height: 36px;
+	line-height: 36px;
+}
+.symbol.data-v-612233da{
+	font-size:18px;
+	font-weight:500;
+	color:rgba(26,26,26,1);
+}
+.tips.data-v-612233da{
+	font-size:12px;
+	color:rgba(102,102,102,1);
+	margin-top: 5px;
+}
+.left-image.data-v-612233da{
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+}
+.right-image.data-v-612233da{
+	width: 18px;
+	height: 18px;
+}
+.card.data-v-612233da{
+	height:80px;
+	background:#ff663d;
+	border-radius:4px;
+	margin: 20px 0 50px 0;
+	padding: 0 15px;
+	font-size:14px;
+	color:rgba(255,255,255,1);
+}
+.btn.data-v-612233da {
+	width: calc(100% - 20px);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 5px 10px;
+	background: #fff;
+	z-index: 99;
+}
+.btn-buttons.data-v-612233da{
+	background:#FF9500;color:#fff;
+}
+.btn-buttonn.data-v-612233da{
+	background:#B2B2B2;color:#fff;
+}
+button.data-v-612233da::after {
+	border: 1px solid rgba(255, 255, 255, 1);
+}
+.card-bottom.data-v-612233da{
+	margin-top: 10px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.cardid.data-v-612233da{
+	text-align: right;-webkit-box-flex: 1;-webkit-flex: 1;flex: 1;
+}
+

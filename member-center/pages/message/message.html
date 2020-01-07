@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<div class="message">
+    <ks-title title="站内消息" :underline="false" />
+    <el-button style="position: absolute;right:40px;z-index: 10;" size="medium" type="primary" @click="sendDialogVisible = true , form = {}" plain>发送消息</el-button>
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="我收到的消息" name="first">
+            <div class="message-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="3" style="text-align: left"><span>发送人</span></el-col>
+                    <el-col :span="8" style="text-align: left"><span>标题</span></el-col>
+                    <el-col :span="4"><span>时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="message-list">
+                <el-row type="flex" v-for="(item,i) in msgList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="3" align="middle" style="text-align: left"> <span>{{item.fromusername}}</span> </el-col>
+                    <el-col :span="8" align="middle" style="text-align: left"> <span>{{item.msgtitle}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.readtf_str}}</span> </el-col>
+                    <el-col :span="3"><span style="color:#3C81F9;cursor: pointer;" @click="openMsgDetail(0,item)">查看详情</span></el-col>
+                </el-row>
+                <div class="message-list__pldelete" v-if="msgList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="doUserSiteMsg(0,'delete')" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                    <el-button size="medium" @click="doUserSiteMsg(0,'deletetf')" v-if='checkList.length > 0'>转为垃圾消息</el-button>
+                    <el-button size="medium" disabled v-else>转为垃圾消息</el-button>
+                    <el-button size="medium" @click="doUserSiteMsg(0,'readtf')" v-if='checkList.length > 0'>设为已读</el-button>
+                    <el-button size="medium" disabled v-else>设为已读</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="changeMsg" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="我发送的消息" name="second">
+            <div class="message-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="3" style="text-align: left"><span>收件人</span></el-col>
+                    <el-col :span="8" style="text-align: left"><span>标题</span></el-col>
+                    <el-col :span="4"><span>时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="message-list">
+                <el-row type="flex" v-for="(item,i) in msgList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="3" align="middle" style="text-align: left"> <span>{{item.tousername}}</span> </el-col>
+                    <el-col :span="8" align="middle" style="text-align: left"> <span>{{item.msgtitle}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.readtf_str}}</span> </el-col>
+                    <el-col :span="3"><span style="color:#3C81F9;cursor: pointer;" @click="openMsgDetail(1,item)">查看详情</span></el-col>
+                </el-row>
+                <div class="message-list__pldelete" v-if="msgList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="doUserSiteMsg(1,'delete')" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="changeMsg" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="垃圾消息" name="third">
+            <div class="message-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="3" style="text-align: left"><span>发送人</span></el-col>
+                    <el-col :span="8" style="text-align: left"><span>标题</span></el-col>
+                    <el-col :span="4"><span>时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="message-list">
+                <el-row type="flex" v-for="(item,i) in msgList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="3" align="middle" style="text-align: left"> <span>{{item.fromusername}}</span> </el-col>
+                    <el-col :span="8" align="middle" style="text-align: left"> <span>{{item.msgtitle}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.readtf_str}}</span> </el-col>
+                    <el-col :span="3"><span style="color:#3C81F9;cursor: pointer;" @click="openMsgDetail(2,item)">查看详情</span></el-col>
+                </el-row>
+                <div class="message-list__pldelete" v-if="msgList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="doUserSiteMsg(2,'delete')" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                    <el-button size="medium" @click="setUserMessageGarbage()" v-if='checkList.length > 0'>转回收到消息</el-button>
+                    <el-button size="medium" disabled v-else>转回收到消息</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="changeMsg" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+
+    </el-tabs>
+    <el-dialog title="消息详情" :visible.sync="msgDialogVisible" width="800px">
+        <div class="message-msg">
+            <el-form label-width="114px">
+                <el-form-item label="主题：">
+                    {{msgDetailData.msgTitle}}
+                </el-form-item>
+                <el-form-item label="来自：">
+                    {{msgDetailData.fromUserName}}
+                </el-form-item>
+                <el-form-item label="时间：">
+                    {{msgDetailData.addDate}}
+                </el-form-item>
+                <el-form-item label="内容：">
+                    <span v-html="msgDetailData.msgContent"></span>
+                </el-form-item>
+            </el-form>
+            <div class="message-msg__btn">
+                <el-button style="padding: 10px 34px;" round size="medium" @click="msgDialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <el-dialog title="发送消息" :visible.sync="sendDialogVisible" width="800px">
+        <div class="message-msg">
+            <el-form ref="form" :model="form" label-width="114px">
+                <el-form-item label="收件人：">
+                    <el-input placeholder="请输入收件人" v-model="form.toUserName"></el-input>
+                </el-form-item>
+                <el-form-item label="标题：">
+                    <el-input placeholder="请输入标题" v-model="form.msgTitle"></el-input>
+                </el-form-item>
+                <el-form-item label="内容：">
+                    <el-input :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="请输入内容" v-model="form.msgContent"></el-input>
+                </el-form-item>
+            </el-form>
+            <div class="message-msg__btn">
+                <el-button round type="primary" size="medium" @click="sendMsg">发送消息</el-button>
+                <el-button style="padding: 10px 34px;" round size="medium" @click="sendDialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

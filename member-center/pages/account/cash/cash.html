@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<div class="useraccount">
+    <ks-title title="课程返现" :underline="false" />
+    <el-button class="useraccount-cash__retrun" @click="retrunView">返回</el-button>
+    <div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="所有" name="first">
+                <div class="useraccount-cash__title">
+                    <el-row>
+                        <el-col :span="2">选择</el-col>
+                        <el-col :span="8" style="text-align: left">返现课程</el-col>
+                        <el-col :span="2">类型</el-col>
+                        <el-col :span="3">返现金额</el-col>
+                        <el-col :span="4">有效时间</el-col>
+                        <el-col :span="3">使用情况</el-col>
+                        <el-col :span="2">操作</el-col>
+                    </el-row>
+                </div>
+                <div class="useraccount-cash__list">
+                    <el-row type="flex" v-for="(item,i) in cashList" :key="i">
+                        <el-col :span="2" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.id" :key="item.id" :disabled="item.checkbox_status=='disabled'? true :false"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="8" align="middle" style="text-align: left">
+                            {{item.cosname}}
+                        </el-col>
+                        <el-col :span="2" align="middle"> {{item.costype_str}} </el-col>
+                        <el-col :span="3" align="middle"> {{item.money}} </el-col>
+                        <el-col :span="4" align="middle"> {{item.end_date}} </el-col>
+                        <el-col :span="3" align="middle"> {{item.use_status_str}} </el-col>
+                        <el-col :span="2" align="middle">
+                            <span v-if="item.del_button" style="color: #3C81F9;cursor: pointer;" @click="deleteUserCash(item.id)">删除</span>
+                            <span v-else>-&nbsp;-</span>
+                        </el-col>
+                    </el-row>
+                    <div class="useraccount-list__pldelete" v-if="cashList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+
+                        <el-button size="medium" @click="deleteUserCash(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserCashAllList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="未使用" name="second">
+                <div class="useraccount-cash__title">
+                    <el-row>
+                        <el-col :span="2">选择</el-col>
+                        <el-col :span="8" style="text-align: left">返现课程</el-col>
+                        <el-col :span="2">类型</el-col>
+                        <el-col :span="3">返现金额</el-col>
+                        <el-col :span="4">有效时间</el-col>
+                        <el-col :span="3">使用情况</el-col>
+                        <el-col :span="2">操作</el-col>
+                    </el-row>
+                </div>
+                <div class="useraccount-cash__list">
+                    <el-row type="flex" v-for="(item,i) in cashNotUsedList" :key="i">
+                        <el-col :span="2" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.id" :key="item.id" :disabled="item.checkbox_status=='disabled'"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="8" align="middle" style="text-align: left">
+                            {{item.cosname}}
+                        </el-col>
+                        <el-col :span="2" align="middle"> {{item.costype_str}} </el-col>
+                        <el-col :span="3" align="middle"> {{item.money}} </el-col>
+                        <el-col :span="4" align="middle"> {{item.end_date}} </el-col>
+                        <el-col :span="3" align="middle"> {{item.use_status_str}} </el-col>
+                        <el-col :span="2" align="middle">
+                            <span style="color: #3C81F9;cursor: pointer;" @click="deleteUserCash(item.id)">删除</span>
+                        </el-col>
+                    </el-row>
+                    <div class="useraccount-list__pldelete" v-if='cashList.length > 0'>
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                        <el-button size="medium" @click="deleteUserCash(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserCashAllList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="已使用" name="third">
+                <div class="useraccount-cash__title">
+                    <el-row>
+                        <el-col :span="8" style="text-align: left">
+                            <p style="padding-left: 20px;">返现课程</p>
+                        </el-col>
+                        <el-col :span="3">类型</el-col>
+                        <el-col :span="3">返现金额</el-col>
+                        <el-col :span="4">有效时间</el-col>
+                        <el-col :span="3">使用情况</el-col>
+                        <el-col :span="3">操作</el-col>
+                    </el-row>
+                </div>
+                <div class="useraccount-cash__list">
+                    <el-row type="flex" v-for="(item,i) in cashUsedList" :key="i">
+                        <el-col :span="8" align="middle" style="text-align: left">
+                            <p style="padding-left: 20px;">{{item.cosname}}</p>
+                        </el-col>
+                        <el-col :span="3" align="middle"> {{item.costype_str}} </el-col>
+                        <el-col :span="3" align="middle"> {{item.money}} </el-col>
+                        <el-col :span="4" align="middle"> {{item.end_date}} </el-col>
+                        <el-col :span="3" align="middle"> {{item.use_status_str}} </el-col>
+                        <el-col :span="3" align="middle">
+                            <span>-&nbsp;-</span>
+                        </el-col>
+                    </el-row>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserCashUsedList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>

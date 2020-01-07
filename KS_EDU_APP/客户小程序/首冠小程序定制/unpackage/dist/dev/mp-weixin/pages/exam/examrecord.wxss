@@ -1,0 +1,104 @@
+
+.van-icon-arrow-left.data-v-921e9540 {
+  color: #4d4c4c !important;
+}
+.contianer.data-v-921e9540 {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+/* 间距 */
+.margin20.data-v-921e9540 {
+  width: 100%;
+  height: 0.5rem;
+  background: #f5f5f5;
+}
+/* 考试记录列表 */
+.examRecord-item.data-v-921e9540 {
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+}
+.examRecord-box.data-v-921e9540 {
+	padding-top: 13px;
+  border-bottom: 1px solid #ebedef;
+}
+.examRecord-box_top.data-v-921e9540 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-top: 3px;
+}
+.examRecord-box_top text.data-v-921e9540 {
+  font-size: 14px;
+  color: #ff663d;
+}
+.examRecord-box_title.data-v-921e9540 {
+  width: 75%;
+  font-size: 14px;
+  color: #333;
+  float: left;
+}
+.examRecord-box_title ._ul ._li.data-v-921e9540 {
+  list-style: disc inside none;
+}
+.examRecord-box_top text.data-v-921e9540 {
+  width: 25%;
+  float: right;
+  text-align: right;
+}
+.examRecord-box_bottom.data-v-921e9540 {
+  margin-top: 6px;
+  width: 100%;
+  height: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.examRecord-box_type.data-v-921e9540 {
+  width: 40%;
+  font-size: 10px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: #999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.examRecord-box_method.data-v-921e9540 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
+}
+.examRecord-box_see.data-v-921e9540 {
+  font-size: 12px;
+  color: #fff;
+  width: 65px;
+  height: 20px;
+  border-radius: 10px;
+  background: #ff663d;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 10px;
+}
+.type-flex.data-v-921e9540 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+

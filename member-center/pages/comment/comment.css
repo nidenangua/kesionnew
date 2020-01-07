@@ -1,0 +1,95 @@
+.comment {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+}
+
+.active-msg {
+  background: #409eff;
+  color: #fff;
+}
+
+.comment-title {
+  overflow: hidden;
+  height: 40px;
+  line-height: 40px;
+  background: #f5f7fa;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.comment-list {
+  padding-bottom: 20px;
+}
+
+.comment-list .el-row {
+  text-align: center;
+  border-bottom: 1px solid #e6e9ed;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  padding: 20px 0;
+}
+
+.comment-list .el-row .el-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.comment-list .el-row .el-checkbox__label {
+  display: none;
+}
+
+.comment-list__pldelete {
+  padding: 20px 43px;
+  overflow: hidden;
+}
+
+.comment-list__pldelete .el-button {
+  margin-left: 10px;
+}
+
+.comment .el-dialog__body {
+  padding: 10px 20px 30px 20px;
+}
+
+.comment-msg {
+  border-top: 1px solid #e6e9ed;
+}
+
+.comment-msg__btn {
+  text-align: center;
+}
+
+.comment .el-form {
+  margin-top: 20px;
+  padding-right: 100px;
+}
+
+.comment-sort {
+  position: absolute;
+  right: 40px;
+  z-index: 10;
+  line-height: 55px;
+}
+
+.comment-sort span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 36px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.comment-sort .el-select > .el-input {
+  width: 130px;
+}

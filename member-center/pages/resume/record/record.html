@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<div class="record">
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="申请记录" name="first">
+            <div class="record-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="3"><span>应聘职位</span></el-col>
+                    <el-col :span="8"><span>招聘单位</span></el-col>
+                    <el-col :span="4"><span>应聘时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="record-list">
+                <el-row type="flex" v-for="(item,i) in dataList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="3" align="middle"> <span @click="open(item.view_url)">{{item.jobtitle}}</span> </el-col>
+                    <el-col :span="8" align="middle"> <span @click="open(item.company_url)">{{item.company}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.readtf == 1 ? '已读' : '未读'}}</span> </el-col>
+                    <el-col :span="3"><span style="color:#3C81F9;cursor: pointer;" @click="openDetail(item)">查看详情</span></el-col>
+                </el-row>
+                <div class="record-list__pldelete" v-if="dataList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserJobApply()" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserJobdataList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="面试通知" name="second">
+            <div class="record-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="3"><span>应聘职位</span></el-col>
+                    <el-col :span="8"><span>招聘单位</span></el-col>
+                    <el-col :span="4"><span>面试时间</span></el-col>
+                    <el-col :span="3"><span>状态</span></el-col>
+                    <el-col :span="3"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="record-list">
+                <el-row type="flex" v-for="(item,i) in dataList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="3" align="middle"> <span @click="open(item.view_url)">{{item.jobtitle}}</span> </el-col>
+                    <el-col :span="8" align="middle"> <span @click="open(item.company_url)">{{item.company}}</span> </el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.interviewdate}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.status == 1 ? '已读' : '未读'}}</span> </el-col>
+                    <el-col :span="3"><span style="color:#3C81F9;cursor: pointer;" @click="openInterview(item)">查看详情</span></el-col>
+                </el-row>
+                <div class="record-list__pldelete" v-if="dataList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserJobApply()" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserJobInterviewNoticeList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="浏览记录" name="third">
+            <div class="record-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="5"><span>招聘职位</span></el-col>
+                    <el-col :span="10"><span>公司名称</span></el-col>
+                    <el-col :span="6"><span>浏览时间</span></el-col>
+
+                </el-row>
+            </div>
+            <div class="record-list">
+                <el-row type="flex" v-for="(item,i) in dataList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="5" align="middle"> <span @click="open(item.view_url)">{{item.jobtitle}}</span> </el-col>
+                    <el-col :span="10" align="middle"> <span @click="open(item.company_url)">{{item.company}}</span> </el-col>
+                    <el-col :span="6" align="middle"> <span>{{item.adddate}}</span></el-col>
+                </el-row>
+                <div class="record-list__pldelete" v-if="dataList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserJobHasLook()" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserJobHasLookList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="被查看记录" name="four">
+            <div class="record-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="8"><span @click="open(item.company_url)">公司名称</span></el-col>
+                    <el-col :span="7"><span>查看次数</span></el-col>
+                    <el-col :span="6"><span>最后查看时间</span></el-col>
+                </el-row>
+            </div>
+            <div class="record-list">
+                <el-row type="flex" v-for="(item,i) in dataList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="8" align="middle"> <span>{{item.company}}</span> </el-col>
+                    <el-col :span="7" align="middle"> <span>{{item.count}}</span> </el-col>
+                    <el-col :span="6" align="middle"> <span>{{item.adddate}}</span></el-col>
+                </el-row>
+                <div class="record-list__pldelete" v-if="dataList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserJobHasLook()" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserJobHasEnterpriseLookList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+
+    </el-tabs>
+    <el-dialog title="应聘信息" :visible.sync="dialogVisible" width="800px">
+        <div class="record-msg">
+            <el-form label-width="114px">
+                <el-form-item label="姓名：">
+                    {{detailData.realname}}
+                </el-form-item>
+                <el-form-item label="性别：">
+                    {{detailData.sex}}
+                </el-form-item>
+                <el-form-item label="应聘者学历：">
+                    {{detailData.qualifications}}
+                </el-form-item>
+                <el-form-item label="应聘职位：">
+                    <span v-html="detailData.jobtitle"></span>
+                </el-form-item>
+                <el-form-item label="应聘时间：">
+                    <span v-html="detailData.adddate"></span>
+                </el-form-item>
+                <el-form-item label="个人备注：">
+                    <span v-html="detailData.remark"></span>
+                </el-form-item>
+                <el-form-item label="企业回复：">
+                    <span v-html="detailData.reply"></span>
+                </el-form-item>
+            </el-form>
+            <div class="record-msg__btn">
+                <el-button style="padding: 10px 34px;" round size="medium" @click="dialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <el-dialog title="面试通知" :visible.sync="interviewDialogVisible" width="800px">
+        <div class="record-msg">
+            <el-form label-width="114px">
+                <el-form-item label="姓名：">
+                    {{detailData.realname}}
+                </el-form-item>
+                <el-form-item label="性别：">
+                    {{detailData.sex}}
+                </el-form-item>
+                <el-form-item label="面试者学历：">
+                    {{detailData.qualifications}}
+                </el-form-item>
+                <el-form-item label="面试职位：">
+                    <span v-html="detailData.jobtitle"></span>
+                </el-form-item>
+                <el-form-item label="面试时间：">
+                    <span v-html="detailData.interviewdate"></span>
+                </el-form-item>
+                <el-form-item label="个人备注：">
+                    <span v-html="detailData.remark"></span>
+                </el-form-item>
+            </el-form>
+            <div class="record-msg__btn">
+                <el-button style="padding: 10px 34px;" round size="medium" @click="interviewDialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

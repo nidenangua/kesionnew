@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<div>
+    <div class="useraccount">
+        <ks-title title="充值余额" />
+        <el-button class="useraccount-recharge__retrun" @click="retrunView">返回</el-button>
+        <div class="useraccount-recharge__info">
+            <el-form ref="form" :model="form" label-width="140px">
+                <el-form-item label="当前余额：">
+                    <span><i>{{initData.money}}</i>{{initData.money_unit}}</span>
+                </el-form-item>
+                <el-form-item label="本次充值：" required>
+                    <el-input style="width: 100px;margin-right: 10px;" type="number" placeholder="输入充值金额" v-model="form.rechargeMoney"></el-input><span>元</span>
+                </el-form-item>
+                <el-form-item label="选择支付平台：">
+                    <div class="useraccount-recharge__pay" v-for="(item,i) in initData.payment_list" :key="i" :class="{'active-pay':activePay == i}" @click="payType(i)">
+                        <img style="object-fit: contain;width:100%;height:100%;" :src="item.logo" />
+                        <i v-if="activePay == i"></i>
+                    </div>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" size="medium" @click="recharge">充值</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </div>
+    <div class="useraccount" style="margin-top: 20px;">
+        <ks-title title="历史充值记录" />
+        <div class="useraccount-recharge__title">
+            <el-row>
+                <el-col :span="2"> 序号 </el-col>
+                <el-col :span="4"> 充值单号 </el-col>
+                <el-col :span="4"> 时间 </el-col>
+                <el-col :span="3"> 充值金额 </el-col>
+                <el-col :span="2"> 实收</el-col>
+                <el-col :span="3"> 支付平台 </el-col>
+                <el-col :span="2"> 状态 </el-col>
+                <el-col :span="4"> 操作 </el-col>
+            </el-row>
+        </div>
+        <div class="useraccount-recharge__list">
+            <el-row v-for="(item,i) in rechargeList" :key="i">
+                <el-col :span="2"> {{i+1}} </el-col>
+                <el-col :span="4"> {{item.orderid}} </el-col>
+                <el-col :span="4"> {{item.adddate}} </el-col>
+                <el-col :span="3"> {{item.paymoney}} </el-col>
+                <el-col :span="2"> {{item.realmoney}} </el-col>
+                <el-col :span="3"> {{item.platname}} </el-col>
+                <el-col :span="2" :style="{color: item.payStatus == 0 ? '#E91C35' : '#2BC152'}">
+                    {{(item.payStatus == 0 && '未支付') || (item.payStatus == 1 && '已入账') || (item.payStatus == 2 && '待入账')}}
+                </el-col>
+                <el-col :span="4">
+                    <span v-if="item.payStatus == 0" style="color: #3C81F9;cursor: pointer;" @click="open(item.payUrl)">支付</span>
+                    <span v-if="item.payStatus == 0 && item.del_button" style="margin: 0 5px;cursor: pointer;">|</span>
+                    <span v-if="item.del_button" @click="deleteRecharge(item)">删除</span>
+                    <span v-if="!item.del_button && item.payStatus != 0"></span>
+                </el-col>
+            </el-row>
+            <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getRechargeList" v-if="pageCount > 0" />
+            <ks-empty msg="暂无充值记录" v-else />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*题目解析项*/
+.analysis-item.data-v-5d612164 {
+    padding:15px 0
+}
+.analysis-item__title.data-v-5d612164 {
+    font-size: 14px;
+    color: #3e4754;
+    line-height: 24px;
+}
+.analysis-item__body.data-v-5d612164 {
+    padding-top: 15px;
+}
+.analysis-subjective.data-v-5d612164 {
+    border: 1px solid #e6e6e6;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.analysis-subjective.data-v-5d612164,
+  .analysis-fill-blank.data-v-5d612164 {
+    color: #666;
+}
+.analysis-fill-blank.data-v-5d612164 {
+    line-height: 24px;
+    font-size: 14px;
+}
+.analysis-fill-blank ._p.data-v-5d612164 {
+    padding-top: 5px;
+}
+.analysis-score.data-v-5d612164 {
+    line-height: 34px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.analysis-item .uncorrected.data-v-5d612164 {
+    color: #ff663d;
+}
+

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "留言",
+  "navigationBarBackgroundColor": "#2987EE",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

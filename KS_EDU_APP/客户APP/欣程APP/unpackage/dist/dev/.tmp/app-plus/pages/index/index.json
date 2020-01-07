@@ -1,0 +1,20 @@
+{
+  "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "titleNView": {
+    "type": "float",
+    "searchInput": {
+      "backgroundColor": "#f7f7f7",
+      "borderRadius": "12px",
+      "placeholder": "请输入搜索内容",
+      "placeholderColor": "#888888"
+    }
+  },
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-box": "/components/ks-components/box/Box",
+    "ks-service": "/components/ks-components/service/service",
+    "ks-course-list": "/components/ks-components/course-list/course-list"
+  }
+}

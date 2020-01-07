@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "正在做题",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "question-title": "/components/ks-components/question-title/question-title",
+    "paper-medal": "/components/ks-components/paper-medal/paper-medal",
+    "short-answer": "/components/ks-components/short-answer/short-answer",
+    "fill-blanks": "/components/ks-components/fill-blanks/fill-blanks",
+    "analysis-info": "/components/ks-components/analysis-info/analysis-info",
+    "answer-sheet": "/components/ks-components/answer-sheet/answer-sheet",
+    "uni-popup": "/components/uni/uni-popup/uni-popup",
+    "multiple-choice": "/components/ks-components/multiple-choice/multiple-choice"
+  }
+}

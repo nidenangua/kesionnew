@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title><?php if($id){echo '编辑'; }else{echo '添加';} ?><?php if($livetype == 0){ echo '视频直播';}else{ echo '音频直播'; } ?></title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/home.css" rel="stylesheet">
+    <link href="<?php echo UOOT;?>Public/app/fonts/iconfont.css?<?php echoHash(); ?>" rel="stylesheet" />
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo UOOT ?>Public/wechat/css/campus.css"/>
+    <link href="<?php echo UOOT ?>Public/wechat/css/model.css?<?php echo time();?>" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/lCalendar.css" rel="stylesheet">
+    <script>
+    	var uoot = '<?php echo UOOT ?>';	
+ 		 var id= <?php echo $id;?>;
+    </script> 	
+ 
+</head>
+<body>
+	
+    <div class="add-mode-box" id="editaudioLive" v-cloak>
+    	
+       <div class="addaudio add-po" style="min-height:3rem;"  id="container">
+
+            
+			<a id="selectfiles" href="javascript:void(0);"></a>
+            <div class="add-name" >封面管理</div>
+            <div class="add-input" >
+            <div class="loadings-groop" v-show="loadings">正在上传中...</div>
+            <div class="imgSrc" :style="{backgroundImage:'url('+courseInfo.defaultpic+')'}"> </div>
+            </div>
+                
+        </div>    
+        
+    	
+    
+          <div class="addaudio add-po" >
+                <div class="add-name" >
+                    	课程名称
+                </div>  
+              
+                <div class="add-input">
+                     <input type="text"  class="add-title2"  placeholder="请输入课程标题" v-model="title"  ref="count" style="padding-right: 50px;">
+                    <div  class="number1"><font  v-html="number1"></font>/ 30</div>	
+                </div>
+                
+        	</div>    
+        
+        
+      
+        <div class="addaudio add-po">
+            <div class="add-name">直播时间</div>  
+            <div class="add-input">
+                <div class="item-time "style="border: 0;">
+                    <div class="item-time-txt">{{courseInfo.begindate}}</div>
+                    <div class="item-time"  id="hideTime1" value=""/ style="border: 0;"></div>
+                </div>
+            </div>   
+        </div>
+        <div class="addaudio">
+        	<div class="add-name">课程介绍</div>
+        	<div class="add-input add-bo">
+        		<textarea id="content" placeholder="请输入课程介绍" class="add-input edit-txt" v-model="courseInfo.content"></textarea>
+        	</div>
+        </div>
+                    
+        
+        <div class="addaudio">
+            <div class="add-name">直播时长</div>  
+            <div class="add-input">
+                <select class="add-select" v-model="courseInfo.livehours">
+                	<option value="1">1小时</option>
+                	<option value="1.5">1.5小时</option>
+                	<option value="2">2小时</option>
+                	<option value="2.5" >2.5小时</option>
+                	<option value="3" >3小时</option>
+                	<option value="5" >5个小时</option>
+                	<option value="24" >1天</option>
+               	</select>
+            </div>
+                
+        </div>    
+        
+        <div class="addaudio">
+            <div class="add-name">收费方式 </div>  
+          
+            	<div class="add-input clearfix">
+	               <select class="add-select"   v-model="chargetype" id="charge">
+	               		<option v-for="item of couponList" :value="item.value">{{item.name}}</option>
+	               </select> 
+	            </div>      
+        </div> 
+     
+        <div class="addaudio add-po" v-show="chargetype == 1">
+            <div class="add-name">价格</div>  
+            <div class="add-input">
+                <input type="text" placeholder="请输入价格" style="width: 90%" v-model="price"> &nbsp; 元
+            </div>
+        </div>    
+		<div class="addaudio add-po" v-show="chargetype == 1">
+            <div class="add-name">划线价格</div>  
+            <div class="add-input">
+                <input type="text" placeholder="请输入价格" style="width: 90%" v-model="price_market"> &nbsp; 元
+            </div>
+        </div>
+           
+           
+           
+        <div class="add-btn-box" id="save" @click="save">
+            <button class="add-btn">保存</button>
+        </div>
+
+    </div>    
+	</body>
+   
+    <script src="<?php echo UOOT ?>Public/wechat/js/lCalendar.js?version=1.0"></script>
+    <script src="<?php echo UOOT ?>Public/common/js/currency/gate.js?201808291127" type="text/javascript"></script>
+    <script >
+        module.add('editaudioLive',{
+            el:'#editaudioLive',
+            data:{
+                 coursePrice:null,
+                 title:'',
+                 chargetype:null,
+                 price_market:null,
+                 price:null,
+                 livetype:-1,
+                jsonUrl:uoot+'Json/index.php',
+                
+                courseInfo:{                              
+	                livehours:1,	                
+	                content:'',
+	                fileUrl:'', 
+	                defaultpic:'https://store.kesion.com/Public/app/images/classIcon/cover_default.png',
+	                begindate:'',
+	                courseType:2,
+	                livetype:'<?php echo $livetype;?>',
+	                id:'<?php echo $id;?>'
+                },
+                loadings:false,
+                number1:0,
+	             couponList:[
+			        {
+			　　　　　　value:0,
+					   name:'免费'
+			　　　　},
+					{
+			　　　　　　value:1,
+					   name:'收费'
+			
+			　　　　},
+					{  value:2,
+			　　　　　　name: '打赏'
+			　　　　 }
+					],
+            },
+             created:function(){				
+					this.livetype = getParam('livetype');  
+					//this.id = getParam('id'); 		
+			},
+            mounted:function() {     
+                var that = this;
+                this.$nextTick(function(){
+	                new lCalendar().init({
+	                    trigger: '#hideTime1',
+	                    type: 'datetime',
+	                    callBack:function(){
+//	                        that.courseInfo.begindate = hideTime1.value;
+	                        var _Data = new Date(hideTime1.value).getTime();
+	                        var nowDate = Date.now();
+	                      	alert(_Data)
+	                        if(_Data < nowDate){
+	                        	
+	                        	toast2({
+	                        		content:'不能小于当前时间',
+	                        	})
+	                        }else{
+	                        	that.courseInfo.begindate = hideTime1.value
+	                        }
+	                    }
+	                })
+                })
+                loadAliyunJs(function(){
+	                ossWebUpload({
+	                    wxid:'<?php echo $this->wxid; ?>',
+	                    selectId:'selectfiles',
+	                    containerId:'container',
+	                    FilesAdded:function(){ 
+	                      that.loadings = true
+	                    },
+	                    FileUploaded:function(data){
+	                         that.courseInfo.defaultpic = data.defaultpic;
+	                         that.loadings = false
+	                         
+	                    }
+	                })              	                 
+              	})
+                var id = this.courseInfo.id;       
+                if(id!=0){
+                    this.getdata(id);
+                }else if(id==0){
+                    	this.chargetype = this.couponList[0].value
+                    }
+              },
+              
+              watch:{
+            	 title:{
+	                    handler:function(title){
+	                        var _this = this;
+	                        //console.log(_this.$refs)
+	                        var _sum = 30;
+	                        _this.$refs.count.setAttribute("maxlength",_sum);
+	                        _this.number1= _this.title.length;
+	                        console.log( _this.number1)
+	                    },
+	                    deep:true
+                	},
+                	price: function(v){
+                		this.jud(v,'price')
+                	},
+                	price_market:function(v){
+                		this.jud(v,'price_market')
+                	}
+              	
+              },
+             methods:{
+               
+                getdata:function(id){
+                    var newData = {
+                    	id:id
+                    	
+                    };
+                    var that = this;
+                    $post(this.jsonUrl+'?act=Microportal.getCourseDetail',newData,function(res){
+                    	var detail = res.getCourseDetail;
+                    	
+                        if(detail){
+                        	
+                            that.title = detail.title;
+                            that.courseInfo.begindate = detail.begindate;
+                            that.chargetype = detail.chargetype;
+                            that.courseInfo.defaultpic = detail.defaultpic
+                            that.price = detail.price;
+                            that.courseInfo.livehours = Number(detail.livehours);
+  							that.courseInfo.content = detail.content;
+                            that.price_market = detail.price_market;
+                            
+                        }else{
+                          toast2({
+                            content: '连载课程请前去电脑端修改',
+                            duration:2000,
+                            callback: function(){
+                              window.history.back(-1);
+                            }
+                          });
+                        }
+                       
+                    },'json')
+                },
+                 jud:function(val,key){
+               			
+               			var reg = val.match(/[0-9\.]+/g);
+               			var __value = '';
+               			if(reg){
+               			               			
+							for(var i=0;i<reg.length;i++){
+								reg[i] && (__value += reg[i])
+							}
+						}	
+						if(__value.indexOf('.')!==-1){
+							var v = __value.split('.');
+							__value = v[0];
+							__value += '.'+v[1].match(/\d{0,2}/)[0]
+							
+						}
+						
+						
+						this[key] = __value
+						
+               		},
+                save:function (){
+                     if(!!!this.courseInfo.begindate){
+							toast2({
+								content:'时间尚未选择'
+							})
+							return false
+                     }
+                      var dataArr = {};
+                    
+                    if(this.chargetype == 1 &&  Number(this.coursePrice) < 0 ){
+                        toast2({
+                        	content: '请不要输入小于0的值'
+                    	});
+                        this.coursePrice = null;
+						return false
+                    }
+      			
+      				 if(id!=0){
+                             dataArr.id =id;
+                        }
+      			
+      			
+  					 dataArr.title = this.title ; 
+  					 dataArr.begindate =this.courseInfo.begindate;
+  					 dataArr.chargetype=this.chargetype;
+  					 dataArr.defaultpic=this.courseInfo.defaultpic;
+  					 dataArr.price =this.price;
+  					 dataArr.price_market = this.price_market
+  					 dataArr.livehours=this.courseInfo.livehours;
+  					
+  					 dataArr.content= this.courseInfo.content ;
+  					 dataArr.courseType=2;
+      				 dataArr.livetype =this.livetype;
+                    $post(this.jsonUrl+'?act=Microportal.doaddcourse',dataArr,function(res){
+   						 save.disabled=true;
+                        if(res.doaddcourse.result=='ok'){
+                            toast2({
+	                            content: '保存成功',
+	                            callback: function() {
+	                            	
+	                              window.history.back(-1);
+	                            }
+                          	});
+                        }else {
+                        	 save.disabled=false;
+                            toast2({
+                            content: res.doaddcourse.msg,
+                          });
+                        }
+                    },'json')
+                }
+            } 
+        })
+        
+		module.import('editaudioLive')
+		
+        </script>
+    
+
+	
+</html>

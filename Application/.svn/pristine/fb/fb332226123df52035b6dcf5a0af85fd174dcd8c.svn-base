@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<meta name=viewport content="width=device-width,initial-scale=1">
+		<title>微门户编辑</title>
+		<link href="<?php echo MY_FULLDOMAIN;?>/Public/app/css/reset.css" rel="stylesheet">
+		<link href="<?php echo MY_FULLDOMAIN;?>/Public/app/css/form.css" rel="stylesheet">
+		<link href="<?php echo MY_FULLDOMAIN;?>/Public/app/css/style.css" rel="stylesheet">
+		<script src="<?php echo MY_FULLDOMAIN;?>/Public/ueditor/ueditor.config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="<?php echo MY_FULLDOMAIN;?>/Public/ueditor/ueditor.all.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="<?php echo MY_FULLDOMAIN;?>/Public/ueditor/lang/zh-cn/zh-cn.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		var config = {
+        frameUrl:'/h5market/Miindex?drag-on',
+        siteUrl:'/',
+        apiUrl:'/Json/index.php?act=',
+        wxid:'<?php echo $this->wxid; ?>',
+        selectImgUrl:'/home.html/default/Index/imageslist?appid-6,courseType-4,name-defaultpic,type-fn',
+        selectIconUrl:'/home.html/default/Index/icolist?nowdir-Ico,name-defaultpic,type-fn,chektype-1,courseid-0',
+        selectImgBoxArea:['1000px','640px'],
+        system:[
+          {
+            url:'/h5market/Micourse#0',
+            title:'图文列表'
+          },
+          {
+            url:'/h5market/Micourse#1',
+            title:'音频列表'
+          },
+          {
+            url:'/h5market/Micourse#2',
+            title:'点播列表'
+          },
+          {
+            url:'/h5market/Micourse#3',
+            title:'直播列表'
+          },
+          {
+            url:'/h5market/Micourse#4',
+            title:'互动班级'
+          },
+          {
+            url:'/h5market/Micourse#5',
+            title:'考试列表'
+          },
+          {
+            url:'/h5market/Minewslist',
+            title:'新闻列表'
+          },
+          {
+            url:'/h5market/myCouse',
+            title:'我的课程'
+          },
+          {
+            url:'/h5market/myPaper',
+            title:'我的试卷'
+          },
+          {
+            url:'/h5market/myList',
+            title:'我的订单'
+          },
+          {
+            url:'/h5market/MyVoucherlist',
+            title:'我的优惠券'
+          },
+          {
+            url:'/h5market/giftrecord',
+            title:'赠送记录'
+          },
+          {
+            url:'/h5market/myMsg',
+            title:'消息'
+          }          
+        ]
+      }
+      function Alert(msg,type){
+        top.Alert(msg,type)
+      }
+	</script><style>#edui1_iframeholder{min-height: 500px;}</style><link href=/Application/View/home/Portaldecoration/dist/static/css/app.bcdc7c030b9c0144c27c84eee51c80a4.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/Application/View/home/Portaldecoration/dist/static/js/manifest.a68337e5bcf54d332be5.js></script><script type=text/javascript src=/Application/View/home/Portaldecoration/dist/static/js/vendor.eba122416ac8aabbfa0f.js></script><script type=text/javascript src=/Application/View/home/Portaldecoration/dist/static/js/app.8e0c5983414feb88f73b.js></script></body></html>

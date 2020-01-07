@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<div class="form">
+    <ks-title title="表单详情" :underline="true" />
+    <div class="detail">
+        <div class="detail-inner">
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    用户：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.username}}
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    提交时间：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.adddate}}
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    用户IP：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.userip}}
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    价格：
+                </el-col>
+                <el-col :span="21" align="left">
+                    <span class="green-font" v-if="formData.ispay==0">免费</span>
+                    <span v-else class="red-font">￥{{formData.paymoney}}</span>
+                </el-col>
+            </el-row>
+            <el-row type="flex" v-if="formData.ispay==1" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    付款时间：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.paytime}}
+                </el-col>
+            </el-row>
+            <div v-if="formData.paramlist && formData.paramlist.length">
+                <el-row type="flex" class="detail-item" v-for="item in formData.paramlist" :key="item.nameid">
+                    <el-col :span="3" align="right" class="detail__left-name">
+                        {{item.name}}：
+                    </el-col>
+                    <el-col :span="21" align="left" v-if="item.filetype==9">
+                        <a :href="item.fileurl" target="_blank">下载文件</a>
+                    </el-col>
+                    <el-col :span="21" align="left" v-else>
+                        {{item.content}}
+                    </el-col>
+                </el-row>
+            </div>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    备注：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.remark}}
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    是否回复：
+                </el-col>
+                <el-col :span="21" align="left">
+                    <span :class="formData.isreply==0?'red-font':'green-font'">{{formData.isreply==0?'未回复':'已回复'}}</span>
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    回复人：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.replyuser}}
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    回复时间：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.replytime}}
+                </el-col>
+            </el-row>
+            <el-row type="flex" class="detail-item">
+                <el-col :span="3" align="right" class="detail__left-name">
+                    回复内容：
+                </el-col>
+                <el-col :span="21" align="left">
+                    {{formData.replycontent}}
+                </el-col>
+            </el-row>
+        </div>
+
+        
+    </div>
+    
+</div>

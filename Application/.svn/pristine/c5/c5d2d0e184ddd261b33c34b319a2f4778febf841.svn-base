@@ -1,0 +1,139 @@
+/*重置属性*/
+
+* {
+    margin: 0;
+    padding: 0;
+    word-break: break-all
+}
+
+html {
+    font-size: 20px;
+    height: 100%;
+}
+
+body {
+    background: var(--background-color);
+    font-size: 12px;
+    max-width: 480px;
+    min-height: 100%;
+    margin: 0 auto !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+body,
+a,
+input,
+select,
+textarea {
+    color: var(--primary_text-color);
+    font-family: 'PingFang SC', Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+input,
+select,
+textarea {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+li {
+    list-style: none
+}
+
+li,
+dt,
+input,
+a,
+div {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0)
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::placeholder {
+    color: var(--prompt-color);
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.clearfix {
+    display: block;
+    *zoom: 1
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+@media screen and (min-width:384px) {
+    html {
+        font-size: 20.48px
+    }
+}
+
+@media screen and (min-width:400px) {
+    html {
+        font-size: 21.3333333333333px
+    }
+}
+
+@media screen and (min-width:412px) {
+    html {
+        font-size: 21.9733333333333px
+    }
+}
+
+@media screen and (min-width:414px) {
+    html {
+        font-size: 22.08px
+    }
+}
+
+@media screen and (min-width:424px) {
+    html {
+        font-size: 22.6133333333333px
+    }
+}
+
+@media screen and (min-width:480px) {
+    html {
+        font-size: 25.6px
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background: #fff !important;
+}

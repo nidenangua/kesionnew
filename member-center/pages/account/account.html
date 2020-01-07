@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<div>
+    <div>
+        <div class="useraccount">
+            <ks-title title="我的账户" />
+            <div class="useraccount-info">
+                <div class="useraccount-info__item" style="border-right: 1px solid #E6E9ED">
+                    <div class="useraccount-info__box">
+                        <p>账户余额</p>
+                        <p style="color: #3C81F9;font-size:22px;">{{userInfo.Money}}<i>元</i></p>
+                    </div>
+                    <div class="useraccount-info__box">
+                        <el-button style="padding: 7px 22px;" type="primary" @click="openView('/user/account/recharge')">充值</el-button>
+                        <el-button style="padding: 7px 8px;margin: 0" type="primary" plain @click="openView('/user/account/money')">账户明细</el-button>
+                    </div>
+                </div>
+                <div class="useraccount-info__item" style="border-right: 1px solid #E6E9ED" v-if="userInfo.point_data && userInfo.point_data.is_showpoint">
+                    <div class="useraccount-info__box">
+                        <p>{{userInfo.point_data.point_name}}</p>
+                        <p style="color: #3C81F9;font-size:24px;">{{userInfo.Point}}<i>{{userInfo.point_data.point_name}}</i></p>
+                    </div>
+                    <div class="useraccount-info__box">
+                        <el-button style="padding: 7px 22px;" type="primary" @click="openView('/user/account/exchangepoint')">兑换</el-button>
+                        <el-button style="padding: 7px 8px;margin: 0" type="primary" @click="openView('/user/account/point')" plain>{{userInfo.point_data.point_name}}明细</el-button>
+                    </div>
+                </div>
+                <div class="useraccount-info__item" v-if="userInfo.score_data && userInfo.score_data.is_showscore">
+                    <div class="useraccount-info__box">
+                        <p>{{userInfo.score_data.score_name}}</p>
+                        <p style="color: #3C81F9;font-size:24px;">{{userInfo.Score}}<i>{{userInfo.score_data.score_name}}</i></p>
+                    </div>
+                    <div class="useraccount-info__box">
+                        <el-button style="padding: 7px 8px;margin: 0" type="primary" @click="openView('/user/account/score')" plain>{{userInfo.score_data.score_name}}明细</el-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="userdiscount">
+            <ks-title title="优惠管理" />
+            <div class="userdiscount-list">
+                <el-row :gutter="40">
+                    <el-col :span="12">
+                        <div class="userdiscount-item">
+                            <div class="userdiscount-item__left">
+                                <p>我的营销卡</p>
+                                <p style="color: #787C82;font-size:14px;margin-top: 20px;">管理/购买我的套餐卡/充值卡</p>
+                            </div>
+                            <div class="userdiscount-item__right">
+                                <el-button type="primary" plain @click="$router.push('/user/account/feepackage')">查看</el-button>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col :span="12">
+                        <div class="userdiscount-item">
+                            <div class="userdiscount-item__left">
+                                <p>课程返现</p>
+                                <p style="color: #787C82;font-size:14px;margin-top: 20px;">可用于支付金额时抵扣</p>
+                            </div>
+                            <div class="userdiscount-item__right">
+                                <el-button type="primary" plain @click="$router.push('/user/account/cash')">查看</el-button>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col :span="12">
+                        <div class="userdiscount-item">
+                            <div class="userdiscount-item__left">
+                                <p>红包/优惠券</p>
+                                <p style="color: #787C82;font-size:14px;margin-top: 20px;">领取/添加的红包/优惠券</p>
+                            </div>
+                            <div class="userdiscount-item__right">
+                                <el-button type="primary" plain @click="$router.push('/user/account/coupon')">查看</el-button>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col :span="12">
+                        <div class="userdiscount-item">
+                            <div class="userdiscount-item__left">
+                                <p>升级VIP会员</p>
+                                <p style="color: #787C82;font-size:14px;margin-top: 20px;">升级VIP，畅享更多优惠</p>
+                            </div>
+                            <div class="userdiscount-item__right">
+                                <el-button type="primary" plain @click="$router.push('/user/account/vip')">查看</el-button>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+    </div>
+</div>

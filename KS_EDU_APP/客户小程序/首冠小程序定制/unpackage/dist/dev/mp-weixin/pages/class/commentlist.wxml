@@ -1,0 +1,1 @@
+<view style="background:#fff;height:100vh;" class="data-v-f7105eb4"><comment-list vue-id="1" proid="{{roomid}}" flag="{{1}}" channelid="{{10001}}" class="data-v-f7105eb4" bind:__l="__l"></comment-list></view>

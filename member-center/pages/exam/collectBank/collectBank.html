@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<div style="width: 100%;">
+    <div class="collect-bank__item" v-if="allData!=null">
+        <div class="collect-bank__head">
+            <div class="collect-bank__head-left">
+                <div class="collect-bank__head-box">
+                    <p><i>{{allData.collect_num}}</i>题</p>
+                    <span>收藏总数</span>
+                </div>
+                <div class="collect-bank__head-box">
+                    <p><i>{{allData.today_collect}}</i>题</p>
+                    <span>今日收藏</span>
+                </div>
+            </div>
+            <div class="collect-bank__head-right">
+                <i></i>
+                <!-- <div class="collect-bank__head-btn1">查看收藏</div> -->
+                <el-button type="primary" size="medium" round @click="openSort(allData.get_viewurl,0)" v-if="allData.collect_num>0"><img src="/ks_inc/member-center/images/exam/kaoshi.png" />收藏重做</el-button>
+                <el-button plain type="info" size="medium" round disabled v-else><img src="/ks_inc/member-center/images/exam/kaoshi1.png" />收藏重做</el-button>
+            </div>
+        </div>
+        <div class="collect-bank__main">
+            <div class="collect-bank__main-title">收藏情况</div>
+            <div class="collect-bank__main-subtitle">
+                <p>题型</p>
+                <span>收藏数</span>
+            </div>
+            <div class="collect-bank__main-list" v-for="(item,i) in allDataList" :key="i">
+                <div class="collect-bank__main-left">{{item.tktype_name}}</div>
+                <div class="collect-bank__main-right">
+                    <p>{{item.collect_num}}</p>
+                    <el-button type="primary" size="medium" round @click="openSort(item.get_viewurl,item.tktype)" v-if="item.collect_num>0">收藏重做</el-button>
+                    <el-button plain type="info" size="medium" round disabled v-else>收藏重做</el-button>
+                    <!-- <div class="collect-bank__main-btn1" >查看收藏</div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <exam-sort v-if="showSort" @close='closeSort' @openExam="openExam" />
+</div>

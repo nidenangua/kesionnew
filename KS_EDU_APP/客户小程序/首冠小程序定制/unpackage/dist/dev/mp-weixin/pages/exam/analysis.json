@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "查看试卷解析",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "analysis-item": "/components/ks-components/analysis-item/analysis-item"
+  }
+}

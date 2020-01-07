@@ -1,0 +1,1 @@
+<block wx:if="{{state.SRC}}"><web-view webview-styles="{{webviewStyles}}" src="{{state.SRC+'/Config/APP/service.html'}}"></web-view></block>

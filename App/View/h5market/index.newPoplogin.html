@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="/Tp/PC/Skin05/AM/Public/css/ncommon.css">
+    <link rel="stylesheet" type="text/css" href="/Tp/PC/Skin05/AM/Public/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/Tp/PC/Skin05/AM/Public/css/swiper.min.css"/>
+    <title>学员登录</title>
+	</head>
+	<body>
+		<div class="logo"><img src="<?php echo XImg($logo,1); ?>"/></div>
+		<div class="index-wrap">
+			<div id="loginflase" class="loginflag">
+				<div class="login-info">
+					<div class="login-item">
+						<span class="login-h">学员名<?php echo $openId;?></span>
+						<input type="text" name="username" id="LoginPhone" value=""  placeholder="请输入学员名" maxlength="11"/>
+					</div>
+					<div class="login-item">
+						<span class="login-h">密&nbsp;&nbsp;&nbsp;码</span>
+						<input type="password" name="password" id="password" value=""  placeholder="请输入密码"/>
+						<input type="hidden" name="openid" id="openid" value="<?php echo $openId; ?>"/>
+						<input type="hidden" name="wxid" id="wxid" value=""/>
+					</div>
+					<div class="tips-info">
+						<div class="fl login-tips" onclick="location.href='<?php echo M_URL('h5market','reg') ?>'">注册学员</div>
+						<div class="fr login-tips" onclick="location.href='<?php echo M_URL('h5market','getPass') ?>?actindex=<?php echo $actindex; ?>'">忘记密码</div>
+					</div>	
+				</div>
+				<div class="index-button index-color" onClick="login()">
+					<?php if(empty($openId)){ ?>立即登录 <?php }else{ ?>立即绑定<?php } ?>
+				</div>
+			</div>
+			<div id="login" class="loginflag">
+				<div class="userimg"><img src=""/></div>
+				<div class="username"></div>
+				<div class="index-button index-color" onClick="loginOut()">退出</div>
+				<?php if($actindex == 3){ ?>
+				<div class="index-button" onclick="location.href='<?php echo M_URL('h5market','Mywinlist'); ?>'">我的记录</div>
+				<?php } ?>
+				<?php if($actindex == 5){ ?>
+				<div class="index-button" onclick="location.href='<?php echo M_URL('h5market','MyVoucherlist'); ?>'">我的优惠券</div>
+				<?php } ?>
+			</div>
+		</div>
+	<script src="/Tp/PC/Skin05/AM/Public/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Public/Zpopup/js/Zpopup.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	function login(){
+	var userName = $('#LoginPhone').val();//用户名
+	var password =  $('#password').val();//密码
+	var openid   = $('#openid').val();
+	var wxid     = $('#wxid').val();
+	var reg      = /^1[345678]\d{9}$/;        
+    var isok     = reg.test(userName);
+	if(userName==''){
+		alert('用户名不能为空');
+		$('#LoginPhone').focus()
+		return false;
+	}else if(password==''){
+		alert('密码不能为空');
+		return false;
+	}else if(password.length<6 || password.length>20){
+		alert('密码6-20位');		
+		return false
+	};
+	$.ajax({ 
+			type:"post",
+			url:"/home/sigin/2",
+			data:{
+				username:userName,
+				password:password,
+				openid:openid,
+				wxid:wxid
+			},
+			success : function(data) {
+				    var jsonData =JSON.parse(data)
+		            if(jsonData.succeed=="10001"){
+		         		Alert('登陆成功');
+		         		var oldwxid = "<?php echo $GLOBALS['_DoM']['wxid'] ?>";
+		         		var newwxid =$('#wxid').val();
+		         		if(oldwxid != newwxid){
+		         			window.location = 'https://'+jsonData.domain+'/h5market/wechatlogin?actindex=<?php echo $actindex; ?>&token='+jsonData.token;
+		         		}else{
+		         			<?php if($actindex==6){?>
+		         			window.history.back(-1); 	
+		         			<?php }else{?>
+		         				window.location = 'https://'+jsonData.domain+'/h5market/<?php echo $actindex; ?>';
+		         			<?php }?>
+		         		}
+//		         		setTimeout(function(){
+//		         			$('#loginflase').hide();
+//		            		$('#login').find('img').attr('src',jsonData.userhead);
+//	            			$('#login').find('.username').html(jsonData.name);
+//	            			$('#login').show();
+//		         		})
+		            }else{
+		            	Alert('请检查您的用户名或者密码')
+		            }
+		         },
+		});
+	};
+	//判断登录状态
+	$.ajax({
+		type:"get",
+		url:"/home/checklogin",
+		success : function(data) {
+				console.log(data)
+	            if(data.result=="failed"){
+	            	$('#loginflase').show()
+	            }else{
+	            	$('#login').find('img').attr('src',data.memberhead);
+	            	$('#login').find('.username').html(data.userInfo.name)
+	            	$('#login').show();
+	            	
+	            }
+	         },
+	});
+	//退出登录
+	function loginOut(){
+		$.ajax({
+			type:"post",
+			url:"/home/simplelogout",
+			success : function(data) {  
+		            if(data.result=="succes"){
+		            	$('#login').hide();
+		            	$('#loginflase').show()
+		            }
+		         },
+		});
+	}
+	function Alert(text){
+		popup.tips({'text':text,'style':2})
+	} 
+	function checkwxid(){
+		var userName = $('#LoginPhone').val();//用户名
+	 	$.ajax({ 
+			type:"post",
+			url:"/home/checkwxid",
+			data:{username:userName,},
+			success : function(data) {
+				console.log(data);
+			   $('#wxid').val(data);
+         	},
+		});
+	}
+	$("#LoginPhone").blur(function(){checkwxid();});
+	checkwxid();
+	</script>
+	</body>
+</html>

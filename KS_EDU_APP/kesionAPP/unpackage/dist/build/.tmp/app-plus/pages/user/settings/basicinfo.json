@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "个人资料",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "mpvue-picker": "/components/uni/mpvue-picker/mpvue-picker",
+    "mpvue-city-picker": "/components/uni/mpvue-citypicker/mpvue-citypicker"
+  }
+}

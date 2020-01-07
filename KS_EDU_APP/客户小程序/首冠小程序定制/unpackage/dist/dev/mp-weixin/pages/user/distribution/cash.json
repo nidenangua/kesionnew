@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "佣金提现",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "uni-popup": "/components/uni/uni-popup/uni-popup"
+  }
+}

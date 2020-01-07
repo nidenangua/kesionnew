@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/ks-components/collect/collect"],{"246d":function(t,e,n){"use strict";n.r(e);var i=n("bf5d"),o=n("5f89");for(var s in o)"default"!==s&&function(t){n.d(e,t,function(){return o[t]})}(s);n("5a15");var l=n("2877"),a=Object(l["a"])(o["default"],i["a"],i["b"],!1,null,"78abeb84",null);e["default"]=a.exports},"5a15":function(t,e,n){"use strict";var i=n("868d"),o=n.n(i);o.a},"5f89":function(t,e,n){"use strict";n.r(e);var i=n("f6e1"),o=n.n(i);for(var s in i)"default"!==s&&function(t){n.d(e,t,function(){return i[t]})}(s);e["default"]=o.a},"868d":function(t,e,n){},bf5d:function(t,e,n){"use strict";var i=function(){var t=this,e=t.$createElement;t._self._c},o=[];n.d(e,"a",function(){return i}),n.d(e,"b",function(){return o})},f6e1:function(t,e,n){"use strict";(function(t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=n("5469"),o={name:"KsCollect",props:{modelid:0,infoid:0,iscollect:!1,action:0,event:0,iszan:!1},data:function(){return{isCollect:this.iscollect,isZan:this.iszan}},methods:{setCollect:function(){var e,n=this;e=1==this.event?{modelid:this.modelid,infoid:this.infoid,type:1,flag:0}:{modelid:this.modelid,infoid:this.infoid,type:0,flag:0},(0,i.DoCollect)(e).then(function(e){e.result?(1==n.event?(3==e.returnCode?n.isZan=!0:4==e.returnCode&&(n.isZan=!1),n.$emit("result",1)):3==e.returnCode?n.isCollect=!0:4==e.returnCode&&(n.isCollect=!1),t.showToast({title:e.message,duration:2e3,icon:"none"})):(t.showToast({title:e.message,duration:500,icon:"none"}),1002==e.returnCode&&setTimeout(function(){t.navigateTo({url:"/pages/user/login/index"})},500))})}}};e.default=o}).call(this,n("6e42")["default"])}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/ks-components/collect/collect-create-component',
+    {
+        'components/ks-components/collect/collect-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("246d"))
+        })
+    },
+    [['components/ks-components/collect/collect-create-component']]
+]);                

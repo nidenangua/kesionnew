@@ -1,0 +1,28 @@
+
+.share-box.data-v-711b0bcc{
+	width: 100%;
+	min-height: 100vh;
+	padding-bottom: 20px;
+}
+.login-btn.data-v-711b0bcc {
+    margin: 20px 40px;
+
+    height: 40px;
+    border-radius: 20px;
+    background: rgb(235, 118, 80);
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+.login-text.data-v-711b0bcc {
+  color: #fff;
+  line-height: 24px;
+  text-align: left;
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+
+
+

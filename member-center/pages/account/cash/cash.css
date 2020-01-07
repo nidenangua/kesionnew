@@ -1,0 +1,58 @@
+.useraccount {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+    position: relative;
+}
+
+.useraccount-cash__retrun {
+    padding: 7px 15px;
+    border-radius: 15px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.useraccount-cash__title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+}
+
+.useraccount-cash__list {
+    padding-bottom: 20px;
+}
+
+.useraccount-cash__list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 10px 0;
+}
+
+.useraccount-cash__list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.useraccount-list__pldelete {
+    padding: 20px 43px;
+}
+
+.useraccount-list__pldelete .el-button {
+    margin-left: 20px;
+}
+
+.useraccount-cash__list .el-row .el-checkbox__label {
+    display: none;
+}

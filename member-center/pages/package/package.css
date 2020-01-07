@@ -1,0 +1,484 @@
+.disabled {
+  background: #eee !important;
+  color: #999 !important;
+}
+
+.disabled2 {
+  color: #999 !important;
+}
+
+.package {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px 40px 20px;
+}
+
+.package-sort {
+  position: absolute;
+  right: 40px;
+  z-index: 10;
+  line-height: 55px;
+}
+
+/* 我的考试包 */
+
+.package-my__item {
+  background: #fff;
+  padding: 20px 20px 0 20px;
+}
+
+.package-my__box {
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.package-image {
+  width: 100%;
+  height: 185px;
+  position: relative;
+}
+
+.package-image h1 {
+  width: 66px;
+  height: 30px;
+  background: #488bff;
+  border-radius: 0px 15px 15px 0px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 19px;
+  z-index: 10;
+}
+
+.package-image .ks-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.package-my__box img {
+  width: 100%;
+  height: 185px;
+  border-radius: 6px;
+}
+
+.package-my__box p {
+  width: 100%;
+  margin-top: 5px;
+  line-height: 1.5;
+  height: 42px;
+}
+
+.package-my__box h2 {
+  font-style: normal;
+  font-weight: 400;
+  color: #888;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.package-my__box .el-button {
+  margin-top: 10px;
+}
+
+.feepackage-buy {
+  padding: 20px 20px 0 20px;
+  border-top: 1px solid #e6e9ed;
+}
+
+.feepackage-buy h1 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 20px;
+}
+
+.feepackage-buy__row p {
+  display: block;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 40px;
+}
+
+.feepackage-buy__list {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.feepackage-buy__item {
+  width: 145px;
+  height: 48px;
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 48px;
+  float: left;
+  border: 1px solid #bcc3cc;
+  font-size: 20px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(53, 53, 53, 1);
+}
+
+.feepackage-buy__item i {
+  width: 16px;
+  height: 16px;
+  background: url(/ks_inc/member-center/images/account/active.png);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.active-pay {
+  border: 1px solid #3c81f9;
+}
+
+.feepackage-used {
+  width: 145px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(136, 136, 136, 1);
+}
+
+.feepackage-buy__text {
+  margin-top: 15px;
+  border: 1px solid #e6e9ed;
+  max-height: 200px;
+  min-height: 100px;
+  overflow: auto;
+  padding: 10px;
+}
+
+.feepackage-checkbox {
+  margin-top: 30px;
+}
+
+.feepackage-buy__btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* 购买考试包 */
+
+.package-buy__item {
+  background: #fff;
+  padding: 20px;
+}
+
+.package-buy__box {
+  width: calc(100% / 3 - 60px);
+  min-width: 220px;
+  margin: 0 30px 20px 30px;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+.package-buy__box img {
+  width: 100%;
+  height: 185px;
+  border-radius: 6px;
+}
+
+.package-buy__box p {
+  width: 100%;
+  margin-top: 5px;
+  text-align: left;
+  line-height: 1.5;
+  height: 42px;
+}
+
+.package-buy__day {
+  width: 100%;
+  margin-top: 5px;
+  height: 20px;
+  line-height: 1.5;
+}
+
+.package-buy__day i {
+  font-style: normal;
+  color: #888;
+  float: left;
+}
+
+.package-buy__day h1 {
+  font-size: 14px;
+  font-weight: normal;
+  float: right;
+  color: #888;
+}
+
+.package-buy__day h1 span {
+  color: #488bff;
+}
+
+.package-buy__btn {
+  width: 100%;
+  text-align: center;
+  float: left;
+  margin-top: 10px;
+}
+
+.package-buy__see {
+  background: #f9f9f9 !important;
+  border: 1px solid #eee !important;
+  color: #666 !important;
+}
+
+/* 购买记录 */
+
+.package-detail {
+  background: #fff;
+  padding-top: 20px;
+}
+
+.package-detail__item {
+  height: 640px;
+}
+
+.package-detail__title {
+  overflow: hidden;
+  height: 40px;
+  line-height: 40px;
+  background: #f5f7fa;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.package-detail__main {
+  padding-bottom: 20px;
+}
+
+.package-detail__main .el-row {
+  text-align: center;
+  border-bottom: 1px solid #e6e9ed;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  padding: 20px 0;
+}
+
+.package-detail__main .el-row .el-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* 分页 */
+
+.package-page {
+  height: 60px;
+  background: #fff;
+  padding-right: 20px;
+}
+
+/* 无内容提示 */
+
+.package-noShow {
+  width: 100%;
+  height: 450px;
+  padding-top: 100px;
+  background: #fff;
+}
+
+.active {
+  color: #488bff;
+}
+
+.disabled {
+  background: #eee !important;
+  color: #999 !important;
+}
+
+/* 文字 */
+
+.popupPackage-box__item {
+  width: 360px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.popupPackage-box__image {
+  width: 100%;
+  height: 222px;
+  position: relative;
+}
+
+.popupPackage-box__image h2 {
+  width: 66px;
+  height: 30px;
+  background: #488bff;
+  border-radius: 0px 15px 15px 0px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 14px;
+  z-index: 10;
+}
+
+.popupPackage-box__image .ks-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.popupPackage-box__item-price {
+  font-size: 14px;
+  color: #666;
+  margin-top: 18px;
+}
+
+.popupPackage-box__item-price i {
+  color: #488bff;
+  font-style: normal;
+}
+
+.popupPackage-box__item h1 {
+  font-size: 16px;
+  color: #666;
+  margin-top: 18px;
+}
+
+.popupPackage-box__item p {
+  font-size: 12px;
+  color: #488bff;
+  margin-top: 10px;
+}
+
+.popupPackage-box__item span {
+  display: inline-block;
+  font-size: 14px;
+  color: #666;
+  margin-top: 18px;
+}
+
+/* 底部 */
+
+.popupPackage-box__text {
+  width: 620px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.popupPackage-box__text p {
+  width: 100%;
+  float: left;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.popupPackage-box__text-box {
+  width: 100%;
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  float: left;
+}
+
+.popupPackage-box__class {
+  float: left;
+}
+
+.popupPackage-box__left {
+  float: left;
+}
+
+.popupPackage-box__right {
+  width: 430px;
+  float: left;
+  line-height: 20px;
+}
+
+.popupPackage-box__right a {
+  color: #3c81f9;
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+/* 按钮 */
+
+.popupPackage-box__btn {
+  width: 100%;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.buy {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.buy-box {
+  width: 500px;
+  height: 150px;
+  border-radius: 5px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -100px;
+  left: 50%;
+  margin-left: -250px;
+}
+
+.buy-box h1 {
+  font-size: 18px;
+  color: #999;
+  font-weight: normal;
+  margin: 30px 0 0 20px;
+}
+
+.buy-box__btn {
+  margin-top: 40px;
+  margin-right: 30px;
+}
+
+.buy-box__btn span {
+  padding: 5px 20px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #999;
+  float: right;
+  margin-left: 10px;
+  cursor: pointer;
+}

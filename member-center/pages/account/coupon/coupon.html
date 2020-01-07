@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<div class="useraccount">
+    <ks-title title="优惠券/红包" :underline="false" />
+    <el-button class="useraccount-coupon__retrun" @click="retrunView">返回</el-button>
+    <div style="position: relative">
+        <div class="coupon-sort">
+            <el-select v-model="value" placeholder="请选择" size="small" @change="change">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+        </div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我的优惠券" name="first">
+                <div class="coupon-exchange">
+                    <el-button type="primary" size="small" @click="saveUserCouponList">兑换</el-button>
+                    <el-input v-model="couponnum" placeholder="请输入兑换券号"></el-input>
+                </div>
+                <div class="coupon-list">
+                    <el-row>
+                        <el-col :span="8" v-for="(item,i) in couponList" :key="i">
+                            <div class="coupon-item">
+                                <img v-if="item.use_status ==0 ||item.use_status == 2" src="/ks_inc/member-center/images/account/me_coupon_bg@2x.png" />
+                                <img v-else src="/ks_inc/member-center/images/account/me_coupon_bg_o@2x.png" />
+                                <div class="coupon-item__left">
+                                    <h1>{{item.couponname}}</h1>
+                                    <span>￥<i>{{item.price}}</i></span>
+                                    <span v-if="item.minamount == 0">无金额门槛限制</span>
+                                    <span v-else>满{{item.minamount}}元使用</span>
+                                </div>
+                                <div class="coupon-item__right">
+                                    <span v-if="item.use_status==1 || item.use_status==2" @click="openDetail(item,'优惠券')">使用详情</span>
+                                    <p :class="{'disabled-status':item.use_status==1|| item.use_status==3}">{{item.use_status_str}}</p>
+                                </div>
+                                <div class="coupon-item__bottom"  style="margin-right: 20px;overflow: hidden">
+                                    <div style="width:100%;padding: 0 10px;overflow: auto;height: 90px;">
+                                    <div class="coupon-item__date">
+                                        <span>有效期：</span>
+                                        <span style="color: #787C82">
+                                        <i>从{{item.begindate}}</i>
+                                        <i>至{{item.enddate}}</i>
+                                        </span>
+                                    </div>
+                                    <div class="coupon-item__scope">
+                                        <span>适用范围：</span>
+                                        <span style="color: #787C82">{{item.use_condition ? item.use_condition : '无限制'}}</span>
+                                      
+                                        <div class="coupon-item__site" >
+                                            <span @click="open(site.url)" v-for="(site,s) in item.online_courses_list" :key="s">{{site.title}}</span>
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserCouponList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="我的红包" name="second">
+                <div class="redPacket-list">
+                    <el-row :gutter="30">
+                        <el-col :span="8" v-for="(item,i) in redPacketList" :key="i">
+                            <div class="redPacket-item" :style="{backgroundImage: 'url('+(item.use_status ==1?'/ks_inc/member-center/images/account/me_redpoket_bg_o@2x.png':'/ks_inc/member-center/images/account/me_redpoket_bg@2x.png')+')',backgroundSize:'contain'}">
+                                <div style="margin-right: 20px;overflow: hidden">
+                                    <div style="width:100%;padding: 0 10px;overflow: auto;height: 163px;">
+                                        <div class="redPacket-item__left">
+                                            <h1>{{item.couponname}}</h1>
+                                            <span style="color:#FF5967;line-height: 25px;">￥<i>{{item.price}}</i></span>
+                                            <span v-if="item.minamount == 0">无金额门槛限制</span>
+                                            <span style="line-height: 22px;" v-else>满{{item.minamount}}元使用</span>
+                                        </div>
+                                        <div class="redPacket-item__middle">
+                                            <div class="redPacket-item__scope">
+                                                <span>使用状态：</span>
+                                                <span>{{item.use_status_str}}</span>
+                                                <span style="color:#3C81F9;cursor: pointer;" v-if="item.use_status==1 || item.use_status==2" @click="openDetail(item,'红包')">详情</span>
+                                            </div>
+                                            <div class="redPacket-item__scope">
+                                                <span>适用范围：</span>
+                                                <span style="color: #787C82">{{item.use_condition}}</span>
+                                            </div>
+                                            
+                                                <div class="coupon-item__site" style="margin-top: 5px;">
+                                                    <span @click="open(site.url)" style="color:#3C81F9;cursor: pointer;font-size: 12px;"  v-for="(site,s) in item.online_courses_list" :key="s">{{site.title}}</span>
+                                                </div>
+                                     
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="redPacket-item__date">
+                                    <span style="margin-left: 30px;">有效期：</span>
+                                    <span>
+                                        <i>从{{item.begindate}}</i>
+                                        <i>至{{item.enddate}}</i>
+                                    </span>
+                                </div>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserRedPacketList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+    <div class="detail-box">
+        <el-dialog :title="title=='红包' ? '红包使用详情' : '优惠券使用详情'" :visible.sync="dialogVisible" width="600px">
+            <div class="detail-dialog">
+                <div class="detail-dialog__box">
+                    <img src="/ks_inc/member-center/images/account/common_icon_infor.png" />
+                    <div class="detail-dialog__content">
+                        <p>卡号：{{detailData.couponnum}}</p>
+                        <p>{{detailData.note}}</p>
+                    </div>
+                </div>
+                <el-button style="padding: 12px 40px;text-align: center" size="medium" round @click="close">返回</el-button>
+            </div>
+        </el-dialog>
+    </div>
+</div>

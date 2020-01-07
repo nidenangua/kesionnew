@@ -1,0 +1,257 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*题目解析*/
+.analysis-info.data-v-2b604aae {
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    background: #f9f9f9;
+}
+.analysis-info__title.data-v-2b604aae {
+    font-size: 14px;
+}
+.analysis-info__content.data-v-2b604aae {
+    font-size: 14px;
+    color: #999;
+    padding: 5px 0 10px 0;
+    line-height: 22px;
+    border-radius: 4px;
+}
+.analysis-info .score_rule.data-v-2b604aae{
+    font-size: 14px;
+}
+.audiofile-btn.data-v-2b604aae{
+    border: 0.05rem solid #2987EE;
+    color: #2987EE;
+    padding: 0 0.5rem;
+    line-height: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    display: inline-block;
+}
+.analysis-info .underline.data-v-2b604aae{
+    text-decoration: underline;
+}
+.analysis-video.data-v-2b604aae,.success.data-v-2b604aae{
+    margin: 0.5rem 0;
+}
+.analysis-info .mr10.data-v-2b604aae{
+    margin-right:0.5rem;
+}
+

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "消息中心",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-empty": "/components/ks-components/empty/empty",
+    "uni-popup": "/components/uni/uni-popup/uni-popup",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more",
+    "uni-swipe-action": "/components/uni/uni-swipe-action/uni-swipe-action"
+  }
+}

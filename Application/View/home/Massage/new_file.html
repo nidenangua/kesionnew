@@ -1,0 +1,65 @@
+<div class="ks-clist">
+        <ul class="clearfix">
+        <?php foreach($Massages as $k=>$v){ ?>
+        	<li id="<?php echo $v['id'] ?>" class="massagesload">
+        		<div class="ks-input"><input type="checkbox" class="select-checks form-in" name="check[]" value="<?php echo $v['id'] ?>"></div>	
+        			<div class="ks-cbox clearfix">
+        				<div class="fl ks-txtLeft">
+	        				<p>信息：<?php echo $v['title'] ?></p>
+	        				<p>发送人/接收人：<?php echo $v['inputer']; ?>/</p>
+        				</div>
+        				<div class="ks-ctxt fl">
+	        				<p>发送时间：<?php echo $v['adddate']; ?></p>
+	        				<p>读取状态：<?php if($v['isread'] == 1){ echo '未读';}else{ echo '已读';}?></p>
+        				</div>
+        				<div class="ks-operaRight fr">
+        					<!--<div class="ks-state">已审核</div>-->
+        					<ul class="clearfix">
+								<li>
+									<a href="javascript:void(0);" onclick="Confirm('是否删除此站内信？该操作不可逆!','<?php echo M_URL('Massage','delnotice',$v['id'],GP(''));?>');">
+										<i class="iconfont icon-lajitong1"></i>
+										<p class="class-name">删除</p>
+									</a>
+								</li>
+        					</ul>
+        				</div>
+        			</div>
+       		</li>
+        <?php } ?>
+        </ul>	
+     <?php echo NoC($Massages);?>
+     </div>
+     
+
+
+
+
+
+
+
+
+
+
+
+<div class="message">	
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="bg-white mt20 bRadius10 ks-table" style="border-bottom:0;">
+    	
+        <tbody>
+       	<?php foreach($Massages as $k=>$v){ ?>
+            <tr >
+                 <td><input type="checkbox" class="select-checks "  name="check[]" value="<?php echo $v['id'];  ?>"></td>
+                 <td width="23%"  style="text-align: left;"><i><?php echo $v['title'] ?></i></td>
+                 <td ><?php echo $v['inputer']; ?></td>
+                 <td><?php echo $v['adddate']; ?></td>
+                 <td>
+                 	<div class="operate">
+							<a href="javascript:void(0);" ><em>编辑</em><i class="iconfont icon-bianji1"></i></a>
+							<a href="javascript:void(0);" ><em>删除</em><i class="iconfont icon-shanchu1"></i></a>
+					</div>
+                 </td>
+            </tr>
+          	<?php } ?>
+        </tbody>
+    </table>
+    <?php echo NoC($Massages);?>
+    	</div>

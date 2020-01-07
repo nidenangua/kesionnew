@@ -1,0 +1,88 @@
+html, body, div, applet, object, iframe,
+h1, h2, h3, h4, h5, h6,p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output,textarea, ruby, section, summary,
+time, mark, audio, video,input,button{margin: 0;padding: 0;border: 0;vertical-align: baseline;}
+input,textarea{ outline: none; }
+input:focus,textarea:focus{border-color: none;}
+body,a{
+    color:#333;
+}
+html{
+  font-size: 20px;
+}
+a{text-decoration: none; }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+body,
+textarea,
+input {font-size: 12px;line-height: 1.8;background:#fff;font-family: "Microsoft Yahei",Helvetica,"Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;}
+ol, ul {list-style: none;}
+::placeholder{
+  color:#a9acb3;
+}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+a:hover{
+    color:#4687fa;
+}
+textarea{
+  resize: none;
+}
+::-webkit-scrollbar {
+  width:6px;   
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-track {
+  background: none;
+}
+@media(max-width:1920px){
+  html{
+    font-size: 20px;
+  }  
+}
+@media(max-width:1680px){
+  html{
+    font-size: 17.5px;
+  }  
+}
+@media(max-width:1600px){
+  html{
+    font-size: 16.66px;
+  }  
+}
+@media(max-width:1440px){
+  html{
+    font-size: 15px;
+  }  
+}
+@media(max-width:1400px){
+  html{
+    font-size: 14.58px;
+  }  
+}
+@media(max-width:1360px){
+  html{
+    font-size: 14.16px;
+  }  
+}
+@media(max-width:1280px){
+  html{
+    font-size: 13.33px;
+  }  
+}

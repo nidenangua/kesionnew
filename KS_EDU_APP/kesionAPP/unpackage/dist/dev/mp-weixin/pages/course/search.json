@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "搜索内容",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more",
+    "uni-rate": "/components/uni/uni-rate/uni-rate"
+  }
+}

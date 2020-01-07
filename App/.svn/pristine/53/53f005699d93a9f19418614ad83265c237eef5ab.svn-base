@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>我的收益</title>
+	<link href="https://store.kesion.com/Public/common/drag/css/reset.css" rel="stylesheet">
+	
+	<link href="<?php echo UOOT ?>Public/wechat/css/spread.css?121132132331" rel="stylesheet">
+	<style>
+		input[type=radio]{width: 18px;height:18px;border: 0px;background: url('<?php echo UOOT ?>Public/app/images/check.png') no-repeat -18px 0;-webkit-appearance: none;outline: none;cursor: pointer;position: relative;float:left;margin:5px 5px 0 0;}
+		input[type=radio]:checked {background: url('<?php echo UOOT ?>Public/app/images/check.png') no-repeat;}
+		.spread-title {
+		    font-size: 1rem;
+		    margin: 0.8rem 0 0.5rem 0.4rem;
+		}
+		.spread-title button {
+			padding: 8px 15px;
+		    border-radius: 1rem;
+		    background: #e64a3b;
+		    border-color: #e64a3b;
+		    color: #fff;
+		    float: none;
+		    display: inline-block;
+		}
+		.spared-gray-list li p {
+		    display: inline-block;
+		    font-size: 0.75rem;
+		    margin-left: 0.75rem;
+		    margin-top: 0.25rem; 
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    width: 70%;
+		    white-space: normal;
+		}
+	</style>
+</head>
+<body style="background: #f3f4f5">
+	<div class="spread">
+		<div class="spread-head">
+			<a class="spread-code" href="<?php echo M_URL('h5market','spreadtx'); ?>">
+				提现记录
+			</a>
+			<div class="spread-total">
+				累计收益 （元）
+			</div>
+			<div class="spread-number">
+				<?php echo $money; ?>
+			</div>
+			<div class="spread-put" style="float: left;">
+				可提现<?php if($info['balance']){ echo $info['balance'];}else{ echo 0.00;}; ?>元</br>
+				已提现<?php if(isset($cmoney)){ echo $cmoney;}else{ echo 0;} ?>元
+			</div>
+			<div class="spread-btn-box">
+				<button class="spread-btn spread-white" onclick="window.location.href='<?php echo M_URL('h5market','spreadcash');  ?>'">
+					提现
+				</button>
+			</div>
+		</div>
+		<div class="spread-title">
+			今日任务<!-- <button class="spread-btn" onclick="tabclick('.spread-gray')">分享赚钱</button> -->
+		</div>
+		<div class="spread-list">
+			<ul>
+				<?php foreach($taskinfo as $k =>$v){ ?>
+				<li>
+					<div class="spread-left">
+						<h5>
+							<?php echo $v['title']; ?>（每天上限<?php echo $v['num'];?>次）
+						</h5>
+						<p>
+							任务要求:<?php echo $v['quantity']; if($v['type']==1){ echo '人';}elseif($v['type']==2){ echo '数量';}elseif($v['type']==3){ echo '元';}  ?>
+						</p>
+						<p>奖励:佣金：<font style="color:red"><?php echo $v['money']; ?>元</font>(<font style="color:#55b2ef "><?php echo $v['count'];?></font>/<?php echo $v['num'];?>)</p>
+						<?php if(!empty($v['url'])){ ?>
+							<a href="<?php echo $v['url']; ?>">如何完成任务?</a>
+						<?php } ?>
+					</div>
+					
+				</li>
+				<?php } ?>
+			</ul>
+		</div>
+		<div class="spread-title">
+			分享赚钱<!-- <button class="spread-btn" onclick="tabclick('.spread-gray')">分享赚钱</button> -->
+		</div>
+		<div class="spared-gray-list" style="background: #fff;padding: 1rem;">
+			<ul style="    padding-bottom: 1rem;">
+				<?php foreach($news as $k =>$v){ ?>
+				<li class="clearfix" style=" margin-bottom: 0.5rem;">
+					<input type="radio" <?php if($k==0){ echo 'checked';} ?> value=<?php echo $k+1; ?>  name="news" value="" title="<?php echo $v['title']; ?>" img="<?php echo Img($v['defaultpic']) ; ?>" abstract='<?php echo $v["abstract"]; ?>' urls="<?php echo 'http://store.kesion.com/h5market/ktjshare?wxid=1&shareact=spreadnew&id='.$v['id'].'&userid='.getsession('member')['userid']; ?>" >
+					<div class="spared-gray-img"><img width="50" height='50' src="<?php echo Img($v['defaultpic']) ; ?>" ></div>
+					<p><?php echo $v['title']; ?></p>
+					<a class="spread-check" href="<?php echo M_URL('h5market','spreadnew').'?id='.$v['id'],'&userid='.getsession('member')['userid']; ?>" style="color: #55b2ef;right: 60px;">查看</a>
+					<a class="spread-check" style="color: #55b2ef;" onclick=tabclick('.spraed-code',"<?php echo UOOT.'Images/QRcode/'.createQRcode(ROOT.'Images/QRcode/','http://store.kesion.com/h5market/ktjshare?wxid=1&shareact=spreadnew&id='.$v['id'].'&userid='.getsession('member')['userid'],'L',4,'qrcode');?>")>邀请卡</a>
+				</li>
+				<?php } ?>
+			</ul>
+		</div>
+		<div class="spread-money">
+			<button class="spread-btn" onclick="sharelink()" style="    padding: 18px 90px;font-size: 16px;">分享给朋友赚取收益</button>
+		</div>
+		<div class="spread-title">
+			收益明细
+		</div>
+		
+		<div class="spread-item">
+			<ul>
+				<?php foreach($values as $k =>$v){ ?>
+				<li>
+					<div class="spared-aver" style="background-image: url('<?php echo $v['logo']; ?>');background-repeat: no-repeat;background-size: 100% 100%;background-position: center center;">
+						
+					</div>
+					<div class="spared-info" style="color: #55b2ef;">
+						<a style="color: #55b2ef; text-align: left;"><?php  if(empty($v['sitename'])){echo '该用户已经注销';}else{ echo $v['sitename'];}; ?></a>
+						<sapn style="color: #000">完成<?php echo $v['remark']; ?></sapn>
+					</div>
+					<div class="spared-code">
+						+<?php echo $v['money']; ?>
+					</div>
+				</li>
+				<?php } ?>
+			</ul>
+		
+			<?php if(empty($values)){?>
+			
+				<div class="emptyname">您还没有任何收益，赶紧分享给好友赚钱吧~</div>
+			
+				
+			<?php } ?>	
+				
+		</div>
+		
+		
+		<!-- <div class="spread-empty">
+			您还没有任何收益您还没有任何收益
+		</div> -->	
+	</div>
+	
+	<div class="spread-mark" onclick="tabhide()" style="display: none;position: fixed;"></div>
+	<div class="spread-bg" onclick="tabhide()"  style="top:0;display: none;position: fixed;background-image: url(/Public/wechat/images/share_bg.png);background-repeat: no-repeat;background-size: contain;background-position: top center;width: 100%;height: 100%;    z-index: 99;" id="sharebg">
+	</div>
+	<div class="spraed-code" style="position: fixed;">
+		<img id='img3'>
+		<p style="color: #fff;font-size: 16px;margin-top: 10px">长按图片保存分享给好友赚取收益</p>
+	</div>
+	<img src="/Public/wechat/images/share_qrcode_bg.jpg" id="img1" style="display: none">
+ 	<img src="" id="img2" style="display: none">
+ 	<canvas id="canvas" width="200%" height="200%" style="width: 100%; display: none;"></canvas>
+</body>
+<script src="https://ks.kesion.com/Public/common/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js?99999"></script>
+<script src="<?php echo UOOT; ?>/Public/wechat/js/share.js?99999" type="text/javascript"></script>
+<script>
+	var conf  = {};
+	conf.basicinfo = {};
+
+	conf.appId = "<?php echo $signPackage['appId']; ?>";
+	conf.timestamp = "<?php echo $signPackage['timestamp']; ?>";
+	conf.nonceStr = "<?php echo $signPackage['nonceStr']; ?>";
+	conf.signature = "<?php echo $signPackage['signature']; ?>";
+	function defutshare(){
+		conf.url = $('[name=news]').eq(0).attr('urls');
+		conf.basicinfo.sharetitle = $('[name=news]').eq(0).attr('title');
+		conf.basicinfo.shareintr =  $('[name=news]').eq(0).attr('abstract');
+		conf.basicinfo.defaultpic = $('[name=news]').eq(0).attr('img');
+		onshare(conf);
+	}
+	defutshare();
+	function tabclick(target,src){	
+		cancelBubble()
+		$(target).show();
+		$('#img2').attr('src',src)
+		$('.spread-mark').show();
+		
+		Dr_bg()
+	}
+	function tabhide(){
+		 cancelBubble()
+		$('#sharebg').hide();
+		$('.spread-mark').hide();
+		$('.spraed-code').hide();
+		
+	}
+	function sharelink(){
+		var id = $('[name=news]:checked').val();
+		console.log(id);
+		if(id){
+			pageScroll();
+			$('.spread-gray').hide();
+			$('.spread-mark').hide();
+			conf.url = $('[name=news]:checked').attr('urls');
+			conf.basicinfo.sharetitle = $('[name=news]:checked').attr('title');
+			conf.basicinfo.shareintr =  $('[name=news]:checked').attr('abstract');
+			conf.basicinfo.defaultpic = $('[name=news]:checked').attr('img');
+			onshare(conf);
+			$('.spread-bg').show();
+			$('.spread-mark').show();
+			
+			// alert('点击有上角分享给好友');
+		}else{
+
+			alert('请先选择文章');
+		}
+	}
+	function cancelBubble(){
+	  var e = window.event || arguments[0];
+	  if ( e && e.stopPropagation ) {   
+		  e.stopPropagation()
+	  } else {
+		  window.event.cancelBubble = true
+	  }
+	};
+	
+	function pageScroll() { 
+	window.scrollBy(0,-1080); 
+	//scrolldelay = setTimeout('pageScroll()',0); 
+	} 
+</script>
+<script type="text/javascript">
+	$('#canvas').show();
+    var code = document.getElementById("canvas");
+    var thisw = code.offsetWidth;//获取画布的宽度
+    var thish = code.offsetHeight;//计算画布的高度
+    $('#canvas').hide();
+    var bili  = 4/5; 
+    thish = thish*bili;
+    code.style.height = thish;
+    context = code.getContext('2d');
+    var img3 = document.getElementById("img3");
+    function Dr_bg() {
+        var img1 = document.getElementById("img1").src
+        img3.setAttribute("width", thisw);
+        img3.setAttribute("height", thish);
+        canvas.width = thisw;
+        canvas.height = thish;
+        // 将 img1 加入画布
+        var imgObj = new Image();
+        imgObj.src = img1;
+        //背景图加载完
+        imgObj.onload = function(){ //onload必须使用
+            context.drawImage( imgObj,0,0,thisw,thish);
+            Dr_text(thisw,thish);
+        }
+       
+        
+
+    }
+    //渲染文字
+    function Dr_text(thisw,thish){
+    	$('#canvas').show();
+        var code = document.getElementById("canvas");
+        var thisw2 = (code.offsetWidth/2);//一半的宽度
+        var thish2 = (thish*0.8)-70;//一半的宽度
+        var thish3 = (thish*0.25);//一半的宽度
+        $('#canvas').hide();
+        context = code.getContext('2d');
+        context.textAlign="center";
+        context.fillStyle = '#00e6f0';
+        context.font = '22px bold 微软雅黑';
+        // context.
+        var u = navigator.userAgent;
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isiOS==true){
+            context.fillText("免费开启线上教学",thisw2,thish3,thisw,thish);
+            context.fillText("立即开启教育微门户",thisw2,thish3+40,thisw,thish);
+            context.fillStyle = '#FFF';
+            context.font = '14px bold 微软雅黑';
+             var ary = ["长","按","扫","描","二","维","码","查",'看'];
+            for(var i=0;i<ary.length;i++){
+                var w = thisw2-(14*4);
+                context.fillText(ary[i],w+14*i,thish2+90);
+            }
+            // context.fillText("长按扫描二维码",thisw2,thish2+90,thisw,thish);
+        }else{
+            context.fillText("免费开启线上教学",thisw2,thish3,thisw,thish);
+            context.fillText("立即开启教育微门户",thisw2,thish3+40,thisw,thish);
+            context.fillStyle = '#FFF';
+            context.font = '14px bold 微软雅黑';
+            var ary = ["长","按","扫","描","二","维","码","查",'看'];
+            for(var i=0;i<ary.length;i++){
+                var w = thisw2-(14*4);
+                context.fillText(ary[i],w+14*i,thish2+90);
+            }
+        }
+        img2 = document.getElementById("img2").src 
+        var imgObj1 = new Image();
+        imgObj1.src = img2;
+        imgObj1.onload = function(){ 
+
+            context.drawImage(imgObj1,thisw2-35,thish2,70,70);
+             // 将画布内容导出
+            var src = code.toDataURL();
+          	// console.log(src);
+            img3.src = src;
+        	
+        }
+
+        
+    }
+</script>
+</html>

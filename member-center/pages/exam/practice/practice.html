@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<div style="width: 100%;">
+    <div class="practice-item" v-if="chaper==0&&knowledge==0">
+        <div class="practice-box1" @click="openExamAll(0)">
+            <div class="practice-box1__img"></div>
+            <p>顺序练习</p>
+        </div>
+        <div class="practice-box2" @click="openExamAll(1)">
+            <div class="practice-box2__img"></div>
+            <p>随机练习</p>
+        </div>
+    </div>
+    <!-- 练习中心列表 -->
+    <div class="practice__bank" v-else>
+        <div class="practice__nav">
+            <span :class="{active:active==0}" v-if="chaper==1" @click="nav(0)">章节练习</span>
+            <span :class="{active:active==1}" v-if="knowledge==1" @click="nav(1)">知识点练习</span>
+        </div>
+        <div v-if="active==0">
+            <div v-if="allData!=null">
+                <div class="practice__bank-title">
+                    <p>章节</p>
+                    <span>已做/做题</span>
+                </div>
+                <div v-for="(item,i) in allData" :key="i">
+                    <div class="practice__box">
+                        <div class="practice__left" @click="openSub(i)">
+                            <img v-if="showSub==i" src="/ks_inc/member-center/images/exam/me_test_btn_f.png" />
+                            <img v-else src="/ks_inc/member-center/images/exam/me_test_btn_nf.png" />
+                            <span>{{item.name}}</span>
+                        </div>
+                        <div class="practice__right">
+                            <!-- <el-button type="primary" size="medium" round v-if="item.do_num==0" @click="openSort(item.sectionid)">开始做题</el-button>
+                            <el-button type="primary" plain size="medium" round v-else-if="item.do_num>0&&item.do_num<item.tk_num" @click="openSort(item.sectionid)">继续做题</el-button>
+                            <el-button size="medium" round v-else-if="item.do_num==item.tk_num" @click="openSort(item.sectionid)">重新做题</el-button> -->
+                            <!-- <div class="practice__progress">
+                                <div class="practice__progress-box">
+                                    <span :style="{width: (item.do_num*100/item.tk_num)+'%'}"></span>
+                                </div>
+                                <i>{{item.do_num}}/{{item.tk_num}}</i>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div v-if="showSub==i" v-for="(child,n) in item.childs" :key="n">
+                        <div class="practice__box">
+                            <div class="practice__left marginLeft32" @click="openSub2(n)">
+                                <img v-if="showSub2==n" src="/ks_inc/member-center/images/exam/me_test_btn_f.png" />
+                                <img v-else src="/ks_inc/member-center/images/exam/me_test_btn_nf.png" />
+                                <span>{{child.name}}</span>
+                            </div>
+                            <div class="practice__right">
+                                <el-button type="primary" size="medium" round v-if="child.do_num==0" @click="openSort(child.sectionid,child.get_viewurl)">开始做题</el-button>
+                                <el-button type="primary" plain size="medium" round v-else-if="child.do_num>0&&child.do_num<child.tk_num" @click="openSort(child.sectionid,child.get_viewurl)">继续做题</el-button>
+                                <el-button size="medium" round v-else-if="child.do_num==child.tk_num" @click="openSort(child.sectionid,child.get_viewurl)">重新做题</el-button>
+                                <div class="practice__progress">
+                                    <div class="practice__progress-box">
+                                        <span :style="{width: (child.do_num*100/child.tk_num)+'%'}"></span>
+                                    </div>
+                                    <i>{{child.do_num}}/{{child.tk_num}}</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="showSub2==n" class="practice__box" v-for="(subChild,m) in child.childs" :key="m">
+                            <div class="practice__left marginLeft60">
+                                <span>{{subChild.name}}</span>
+                            </div>
+                            <div class="practice__right">
+                                <el-button type="primary" size="medium" round v-if="subChild.do_num==0" @click="openSort(subChild.sectionid,child.get_viewurl)">开始做题</el-button>
+                                <el-button type="primary" plain size="medium" round v-else-if="subChild.do_num>0&&subChild.do_num<subChild.tk_num" @click="openSort(subChild.sectionid,child.get_viewurl)">继续做题</el-button>
+                                <el-button size="medium" round v-else-if="subChild.do_num==subChild.tk_num" @click="openSort(subChild.sectionid,child.get_viewurl)">重新做题</el-button>
+                                <div class="practice__progress">
+                                    <div class="practice__progress-box">
+                                        <span :style="{width: (subChild.do_num*100/subChild.tk_num)+'%'}"></span>
+                                    </div>
+                                    <i>{{subChild.do_num}}/{{subChild.tk_num}}</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 无数据提示 -->
+            <div class="practice-nodata" v-else>
+                <ks-empty msg="暂无章节题库" />
+            </div>
+        </div>
+        <div v-else-if="active==1">
+            <div v-if="knowledgeList.length > 0">
+                <div class="practice__bank-title">
+                    <p>知识点</p>
+                    <span>已做/做题</span>
+                </div>
+                <div v-for="(item,i) in knowledgeList" :key="i">
+                    <div class="practice__box">
+                        <div class="practice__left">
+                            <span style="margin-left: 10px;">{{i+1}}、&nbsp;&nbsp;{{item.title}}</span>
+                        </div>
+                        <div class="practice__right">
+                            <el-button type="primary" size="medium" round v-if="item.do_num==0" @click="openSort(item.knowledgeid)">开始做题</el-button>
+                            <el-button type="primary" plain size="medium" round v-else-if="item.do_num>0&&item.do_num<item.tk_num" @click="openSort(item.knowledgeid)">继续做题</el-button>
+                            <el-button size="medium" round v-else-if="item.do_num==item.tk_num" @click="openSort(item.knowledgeid)">重新做题</el-button>
+                            <div class="practice__progress">
+                                <div class="practice__progress-box">
+                                    <span :style="{width: (item.do_num*100/item.tk_num)+'%'}"></span>
+                                </div>
+                                <i>{{item.do_num}}/{{item.tk_num}}</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ks-empty msg="暂无知识点题库" v-else />
+        </div>
+    </div>
+    <exam-sort v-if='showSort' @close="closeSort" @openExam="openExam"></exam-sort>
+</div>

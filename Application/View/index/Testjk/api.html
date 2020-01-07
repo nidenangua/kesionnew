@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>科汛V名师API接口开发文档</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta charset="utf-8">
+	<link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="<?php echo UOOT; ?>Public/common/css/api.css">
+</head>
+<style type="text/css">
+em {
+    font-style: normal;
+    color: #44b549;
+} 
+td{
+	    border-bottom: 1px solid #eee;
+    /*text-align: center;*/
+    min-width: 14%;
+    line-height: 24px;
+    font-size: 14px;
+    padding: 10px 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+</style>
+<body class="zh_CN page_simple">
+	<!-- 头部 -->
+	<div class="mp-head">     
+		<div class="weui-desktop-head">               
+			<div class="weui-desktop-head__inner">                    
+				<div class="weui-desktop-layout">                
+					<div class="weui-desktop-layout__side">                  
+						<h1 class="weui-desktop-logo"><a href="<?php echo M_URL('home.html/home','Login');?>" title="科汛V名师"></a></h1>                
+					</div>              
+				</div>            
+			</div>        
+		</div>   
+	</div>
+	<!-- 头部结束 -->
+	<!-- 内容页中间部分 -->
+	<div id="body" class="mp-body page_resource">      
+		<div class="weui-desktop-layout weui-desktop-layout_global">        
+			<div class="weui-desktop-layout__main">          
+				<div class="weui-desktop-layout__main__area">           
+					<div class="weui-desktop-layout__main__inner">              
+						<div class="container_box weui-desktop-panel cell_layout side_l">                  
+				  			<div class="container_hd">                      
+				  				<h2>科汛V名师API文档</h2>                      
+				  				<div class="extra_info align_title with_search_clear">                          
+				  					<div class="search_box wiki_side">                              
+				  						<span class="frm_input_box search with_del append">                                  
+				  							<a id="del_btn" class="del_btn" href="javascript:;" style="display:none;">                                      
+				  								<i class="icon16_common icon_search_del"></i>                                  
+				  							</a>                                  
+				  							<a id="search_btn" href="javascript:;" class="frm_input_append">                                      
+				  								<i class="icon20_common search_gray">搜索</i>                                  
+				  							</a>                                                              
+				  							<input id="search_text" type="text" name="" maxlength="30" class="frm_input" onkeyup="monitor(this)">      
+				  						</span>                          
+				  					</div>               
+				  				</div>                                  
+				  			</div>                  
+				  			<div class="container_bd">                      
+				  				<div id="col_side" class="col_side">                          
+				  					<div class="menu_box_primary">                              
+				  						<dl class="menu_primary" id="resMenu">
+									        <dt data-leaf="1" class="menu_title_primary" tittle="开始前必读" data-f='1'>
+									            <i class="icon_menu_switch"></i>
+									            开始前必读
+									        </dt>
+									        <dd class="menu_desc_primary" style="display: block;">
+									            <dl class="sub_menu_primary">
+									                <dt data-leaf="1" class="sub_menu_title_primary">
+									                    <a href="javascript:" data-leaf="1" data-id="mp1445241432" data-father="mp1418702131" class="menu_link_primary no_sub" title="首页" src ="<?php echo M_URL('home','apiwordinfo',-1); ?>">首页</a>
+									                </dt>
+									                <dt data-leaf="1" class="sub_menu_title_primary">
+									                    <a href="javascript:" data-leaf="1" data-id="mp1418702138" data-father="mp1418702131" class="menu_link_primary no_sub" title="更新日志" src ="<?php echo M_URL('home','apiwordinfo',-2); ?>">更新日志</a>
+									                </dt>
+									                <dt data-leaf="1" class="sub_menu_title_primary">
+									                    <a href="javascript:" data-leaf="1" data-id="mp1421137025" data-father="mp1418702131" class="menu_link_primary no_sub" title="开发者规范" src ="<?php echo M_URL('home','apiwordinfo',-3); ?>">开发者规范</a>
+									                </dt>
+										        </dl>
+										    </dd>
+										    <?php foreach ($info as $k => $v) { ?>
+										     <dt data-leaf="1" class="menu_title_primary closed" tittle="<?php echo $v['name']; ?>" data-f='1'>
+									            <i class="icon_menu_switch"></i>
+									            <?php echo $v['name']; ?>
+									        </dt>
+									        
+									        <dd class="menu_desc_primary" style="display: none;">
+									            <dl class="sub_menu_primary">
+									            	<?php foreach ($v['dt'] as $kt => $vt) { ?>
+									                <dt data-leaf="1" class="sub_menu_title_primary">
+									                    <a href="javascript:" data-leaf="1" data-id="<?php echo $vt['id'] ?>" data-father="<?php echo $vt['parentid'] ?>" class="menu_link_primary no_sub" title="<?php echo $vt['name']; ?>" src ="<?php echo M_URL('home','apiwordinfo',$vt['id']); ?>"><?php echo $vt['name']; ?></a>
+									                </dt>
+									                <?php } ?>
+										        </dl>
+										        
+										    </dd>
+										    <?php } ?>
+										</dl>                           
+									</div>                     
+								</div>                      
+							<div class="col_main">  
+								<iframe class="res_iframe" style="height: 770px;padding-left: 100px;width: 1120px;padding-top: 63px;" id="iframes" scrolling="no" frameborder="no" border="0" src ="<?php echo M_URL('home','apiwordinfo',-1); ?>" onload='ifonload()' ></iframe>                                          
+							</div>                  
+						</div> 
+					</div>            
+				</div>          
+			</div>        
+		</div>      
+	</div>    
+</body>
+</html>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#iframes').contents().find("body").addClass('text')
+	$('dd').eq(0).find('dl').find('dt').eq(0).find('a').addClass('selected');
+	$('[data-f=1]').click(function(){
+		var index = $('[data-f=1]').index(this);
+		if($(this).hasClass('closed')){
+			$(this).removeClass('closed')
+			$(this).addClass('opended')
+			$('dd').eq(index).show();
+			// $('dd').eq(index).find('dl').find('dt').eq(0).find('a').addClass('selected');
+		}else{
+			$(this).removeClass('opended')
+			$(this).addClass('closed')
+			$('dd').eq(index).hide();
+
+			
+		}
+	})
+	$('.sub_menu_title_primary').click(function(){
+		var index = $('.sub_menu_title_primary').index(this);
+		$('dd').find('dl').find('dt').find('a').removeClass('selected');
+		$(this).find('a').addClass('selected');
+
+		var src = $(this).find('a').attr('src');
+		$('#iframes').attr('src',src);
+		$('#iframes').load(function(){
+			var h = $('#iframes').contents().find("body").css('height');
+			$('#iframes').css({
+				height:h
+			})
+		})
+	})
+	$('#iframes').load(function(){
+		var h = $('#iframes').contents().find("body").css('height');
+		$('#iframes').css({
+			height:h
+		})
+	})
+	//监控inpout的事件
+	function monitor(that){
+		var txt = $(that).val();
+		if(txt.length>=1){
+			$('#del_btn').show();//	
+		}else{
+			$('#del_btn').hide();//
+		}
+		
+	}
+	$('#del_btn').click(function(){
+		$('#del_btn').hide();
+		$('#search_text').val('');
+		$('#iframes').attr('src','<?php echo M_URL('home','apiwordinfo',-1); ?>');
+		$('#iframes').load(function(){
+			var h = $('#iframes').contents().find("body").css('height');
+			$('#iframes').css({
+				height:h
+			})
+		})
+	})
+	$('#search_btn').click(function(){
+		var txt = $('#search_text').val();
+		if(txt.length>=1){
+			var src = '<?php echo M_URL('home','apiwordserrch'); ?>/?keyword='+txt;
+			$('#iframes').attr('src',src);
+			$('#iframes').load(function(){
+				var h = $('#iframes').contents().find("body").css('height');
+				$('#iframes').css({
+					height:h
+				})
+			})
+		}
+		// $('#del_btn').hide();
+		// $('#search_text').val('');
+	})
+	function ifonload(){
+		$('#iframes').load(function(){
+			var h = $('#iframes').contents().find("body").css('height');
+			$('#iframes').css({
+				height:h
+			})
+		})
+	}
+</script>

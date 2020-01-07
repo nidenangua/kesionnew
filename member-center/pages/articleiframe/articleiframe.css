@@ -1,0 +1,5 @@
+.article-iframe {
+    width: 100%;
+    z-index: 1999;
+    min-height: 700px;
+  }

@@ -1,0 +1,219 @@
+.collect-bank__item {
+    width: 100%;
+    border: solid 1px #ebebeb;
+    background-color: #ffffff;
+    margin-top: 20px;
+}
+
+.collect-bank__head {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.collect-bank__head-left {
+    width: calc(100% - 300px);
+    padding: 0 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    float: left;
+}
+
+.collect-bank__head-box {
+    width: calc(100% / 2 - 120px);
+    height: 120px;
+    border-radius: 6px;
+    border: solid 1px #ebebeb;
+    text-align: center;
+    margin: 20px 58px;
+    float: left;
+}
+
+.collect-bank__head-box p {
+    font-size: 16px;
+    color: #333;
+    margin: 16px 0 0 0;
+}
+
+.collect-bank__head-box p i {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.collect-bank__head-box span {
+    color: #7f7f7f;
+    font-size: 14px;
+}
+
+.collect-bank__head-right {
+    width: 300px;
+    float: right;
+    text-align: center;
+}
+
+.collect-bank__head-right .el-button {
+    margin-top: 63px;
+}
+
+.collect-bank__head-right .el-button img {
+    width: 14px;
+    height: 14px;
+}
+
+.collect-bank__head-right i {
+    width: 1px;
+    height: 124px;
+    background-color: #eeeeee;
+    float: left;
+    margin-top: 18px;
+}
+
+.collect-bank__head-btn1 {
+    width: 120px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    text-align: center;
+    line-height: 36px;
+    margin-left: 50px;
+    margin-top: 60px;
+    float: left;
+    cursor: pointer;
+}
+
+.collect-bank__head-btn2 {
+    width: 120px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    background: #fff;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 70px;
+    margin-top: 60px;
+    float: right;
+    cursor: pointer;
+}
+
+.collect-bank__head-btn2 img {
+    width: 12px;
+    height: 14px;
+    margin: 0 4px -2px 0;
+}
+
+
+/* 内容部分 */
+
+.collect-bank__main {
+    padding-bottom: 20px;
+    margin: 0 20px;
+    background: #fff;
+}
+
+.collect-bank__main-title {
+    height: 55px;
+    margin-left: 10px;
+    line-height: 55px;
+    color: #333;
+    font-size: 16px;
+}
+
+.collect-bank__main-subtitle {
+    width: 100%;
+    height: 40px;
+    background-color: #f5f6fc;
+    font-size: 16px;
+    color: #999;
+    line-height: 40px;
+}
+
+.collect-bank__main-subtitle p {
+    margin-left: 30px;
+    text-align: center;
+    float: left;
+}
+
+.collect-bank__main-subtitle span {
+    width: 300px;
+    float: right;
+}
+
+.collect-bank__main-list {
+    height: 77px;
+    width: 100%;
+    line-height: 77px;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.collect-bank__main-list:hover {
+    background: #F0F2F5;
+}
+
+
+/* 列表样式 */
+
+.collect-bank__main-left {
+    margin-left: 30px;
+    float: left;
+}
+
+.collect-bank__main-right {
+    width: 300px;
+    float: right;
+}
+
+.collect-bank__main-right .el-button {
+    float: right;
+    margin-top: 20.5px;
+    margin-right: 20px;
+}
+
+.collect-bank__main-right p {
+    margin-left: 16px;
+    float: left;
+}
+
+.collect-bank__main-btn1 {
+    width: 100px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 20px;
+    margin-top: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.collect-bank__main-btn2 {
+    width: 100px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    background: #fff;
+    text-align: center;
+    line-height: 36px;
+    margin-top: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #c0c4cc;
+}

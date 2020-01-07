@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<div class="usercollect">
+    <ks-title title="我的收藏" :underline="false" />
+    <div style="position: relative">
+        <div class="usercollect-sort" v-if="activeName == 'first'">
+            <el-select v-model="channelid" placeholder="请选择" size="small" @change="handleClick">
+                <el-option v-for="item in channelidList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+        </div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我的收藏" name="first">
+                <div class="usercollect-list">
+                    <div class="usercollect-list__title">
+                        <span style="width:100px;">选择</span>
+                        <span style="width:100px;text-align: left">类型</span>
+                        <span style="width:calc(100% - 480px);text-align: left">收藏内容</span>
+                        <span style="width: 140px">收藏时间</span>
+                        <span style="width: 140px;">操作</span>
+                    </div>
+                    <div class="usercollect-item" v-for="(item,i) in collectList" :key="i">
+                        <div class="usercollect-item__select">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                            </el-checkbox-group>
+                        </div>
+                        <div class="usercollect-item__type">
+                            {{item.favorite_type_str}}
+                        </div>
+                        <div class="usercollect-item__content" @click="openView(item)">
+                            <ks-image :src="item.photourl" />
+                            <span>{{item.title}}</span>
+                        </div>
+                        <div class="usercollect-item__time">{{item.adddate}}</div>
+                        <div class="usercollect-item__methods" @click="deleteUserFavorite(item.id)">删除</div>
+                    </div>
+                    <div class="usercollect-list__pldelete" v-if="collectList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+
+                        <el-button size="medium" @click="deleteUserFavorite(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center" @current-change="getUserFavoriteList" :current-page="currentPage" background layout="prev, pager, next" :total="myPageCount" v-if="myPageCount>0">
+                    </el-pagination>
+                    <ks-empty msg="该分类下无收藏问题" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="问题收藏" name="second">
+                <div class="usercollect-list">
+                    <div class="usercollect-question__title">
+                        <span style="width:100px;">选择</span>
+                        <span style="width:400px;text-align: left">问题内容</span>
+                        <span style="width:150px;">收藏时间</span>
+                        <span style="width:100px;">是否解决</span>
+                        <span style="width:100px;">操作</span>
+                    </div>
+                    <div class="usercollect-questionitem" v-for="(item,i) in askList" :key="i">
+                        <div class="usercollect-questionitem__select">
+                            <el-checkbox-group v-model="askCheckList" @change="handleCheckedAskListChange">
+                                <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                            </el-checkbox-group>
+                        </div>
+                        <div class="usercollect-questionitem__content" @click="openView(item)">
+                            {{item.title}}
+                        </div>
+                        <div class="usercollect-questionitem__time">{{item.adddate}}</div>
+                        <div class="usercollect-questionitem__ok" :style="{color:item.issolve_str == '未解决' ? '#E91C35' : '#606367'}">
+                            {{item.issolve_str}}
+                        </div>
+                        <div class="usercollect-questionitem__methods" @click="deleteUserAskFavorite(item.id)">删除</div>
+                    </div>
+                    <div class="usercollect-list__pldelete" v-if="askList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminateAsk" v-model="checkAllAsk" @change="handleCheckAllAskChange">全选</el-checkbox>
+
+                        <el-button size="medium" @click="deleteUserAskFavorite(askCheckListStr)" v-if='askCheckList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center" @current-change="getUserAskFavriteList" :current-page="currentPage" background layout="prev, pager, next" :total="askPageCount" v-if="askPageCount>0">
+                    </el-pagination>
+                    <ks-empty msg="该分类下无收藏问题" v-else />
+                </div>
+
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>

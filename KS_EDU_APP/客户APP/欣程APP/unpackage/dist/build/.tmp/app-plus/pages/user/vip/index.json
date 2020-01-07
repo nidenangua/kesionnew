@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "升级vip",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "uni-popup": "/components/uni/uni-popup/uni-popup"
+  }
+}

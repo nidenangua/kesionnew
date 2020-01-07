@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "我的订单",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-tabs": "/components/ks-components/tabs/tabs",
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-empty": "/components/ks-components/empty/empty",
+    "uni-popup": "/components/uni/uni-popup/uni-popup",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

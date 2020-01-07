@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+
+<div style="width: 100%;position:relative">
+  <div class="myexam-box">
+    <!-- 进度条 -->
+    <div class="myexam-progress">
+      <div class="myexam-progress__left">
+        <div class="myexam-progress__item">
+          <h1>试题：</h1>
+          <div class="myexam-progress__box">
+            <el-progress
+              :show-text="false"
+              :percentage="allData.tk_num - 0 == 0 ? 0 : allData.do_num*100/allData.tk_num"
+            ></el-progress>
+          </div>
+          <span>已做{{ allData.do_num }}题/共{{ allData.tk_num }}题</span>
+        </div>
+        <div class="myexam-progress__item">
+          <h1>试卷：</h1>
+          <div class="myexam-progress__box">
+            <el-progress
+              :show-text="false"
+              :percentage="allData.paper_num - 0 == 0 ? 0 : allData.user_paper_num*100/allData.paper_num"
+            ></el-progress>
+          </div>
+          <span
+            >已做{{ allData.user_paper_num }}份/共{{
+              allData.paper_num
+            }}份</span
+          >
+        </div>
+        <div class="myexam-progress__item">
+          <h1>知识点：</h1>
+          <div class="myexam-progress__box">
+            <el-progress
+              :show-text="false"
+              :percentage="allData.knowledge_num - 0 == 0 ? 0 : allData.user_knowledge_num*100/allData.knowledge_num"
+            ></el-progress>
+          </div>
+          <span
+            >已做{{ allData.user_knowledge_num }}个/共{{
+              allData.knowledge_num
+            }}个</span
+          >
+        </div>
+      </div>
+      <div class="myexam-progress__right" v-if="showDay">
+        <div class="myexam-progress__btn" @click="openExam(url)">
+          <img src="/ks_inc/member-center/images/exam/kaoshi.png" />每日一练
+        </div>
+        <span></span>
+      </div>
+    </div>
+    <!-- 学习情况文字 -->
+    <div class="myexam-record">
+      <div class="myexam-record__item">
+        <div class="myexam-record__text">
+          <span>{{ allData.total_continedotkday }}</span
+          >天
+        </div>
+        <p>连续学习</p>
+      </div>
+      <div class="myexam-record__item">
+        <div class="myexam-record__text">
+          <span>{{ Math.floor(allData.total_dotktime / 60) }}</span
+          >小时<span>{{ Math.floor(allData.total_dotktime % 60) }}</span
+          >分钟
+        </div>
+        <p>连续学习</p>
+      </div>
+      <div class="myexam-record__item">
+        <div class="myexam-record__text">
+          <span>{{ allData.zhunquelv }}</span
+          >%
+        </div>
+        <p>正确率</p>
+      </div>
+      <div class="myexam-record__item">
+        <div class="myexam-record__text">
+          <span>{{ allData.error_num }}</span
+          >题
+        </div>
+        <p>错题数</p>
+      </div>
+      <div class="myexam-record__item">
+        <div class="myexam-record__text">
+          <span>{{ allData.collect_num }}</span
+          >题
+        </div>
+        <p>收藏题数</p>
+      </div>
+    </div>
+    <!-- 学习图表 -->
+    <div class="myexam-chart">
+      <echarts
+        :data-list="allData.day_record"
+        :width="771"
+        :height="473"
+        title="考试练习情况"
+        title-color="#2F3133"
+        :axis-line="false"
+        :area-style="{color:'#F5F7FA'}"
+        :smooth="false"
+        item-type="2"
+      ></echarts>
+    </div>
+  </div>
+</div>

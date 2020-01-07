@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "设置",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-cell-group": "/components/ks-components/cell-group/cell-group",
+    "ks-cell": "/components/ks-components/cell/cell"
+  }
+}

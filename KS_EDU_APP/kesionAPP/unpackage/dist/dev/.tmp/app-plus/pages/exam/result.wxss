@@ -1,0 +1,199 @@
+
+.van-icon-arrow-left.data-v-1e0825b0{
+  color: #4d4c4c !important;
+}
+.paper-contianer.data-v-1e0825b0 {
+  padding: 20px 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  background: #fff;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.paper-contianer-title.data-v-1e0825b0 {
+  font-size: 14px;
+  color: #3e4754;
+  line-height: 24px;
+}
+.paper-title.data-v-1e0825b0 {
+  font-size: 16px;
+  padding: 20px;
+  background: #fff;
+}
+.paper-answer.data-v-1e0825b0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding-bottom: 20px;
+}
+.paper-answer__item.data-v-1e0825b0 {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  color: #999;
+  text-align: center;
+  font-size: 15px;
+  margin: 10px;
+}
+.paper-submit-box.data-v-1e0825b0 {
+  line-height: 49px;
+  width: 100%;
+  font-size: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.paper-submit.data-v-1e0825b0 {
+  line-height: 49px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #fff;
+  color: #2987EE;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.paper-submit--default.data-v-1e0825b0 {
+  background: #2987EE;
+  color: #fff;
+  text-align: center;
+}
+.paper-icon-sign.data-v-1e0825b0 {
+  display: inline-block;
+  padding-left: 20px;
+  font-size: 13px;
+  color: #8f8f8f;
+  position: relative;
+  margin-left: 5px;
+}
+.paper-icon-sign ._i.data-v-1e0825b0 {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 14px;
+  height: 14px;
+  display: block;
+  border-radius: 50%;
+}
+.paper-icon-sign--color1 ._i.data-v-1e0825b0 {
+  background: #ffb03b;
+}
+.paper-icon-sign--color2 ._i.data-v-1e0825b0 {
+  background: #2987EE;
+}
+.paper-icon-sign--color3 ._i.data-v-1e0825b0 {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+}
+.paper-icon-sign--color4 ._i.data-v-1e0825b0 {
+  background: #dcdcdc;
+}
+.paper-icon-sign--color5 ._i.data-v-1e0825b0 {
+  background: #32d432;
+  border: 1px solid #32d432;
+}
+.paper-opear.data-v-1e0825b0 {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 15px 0;
+  background: #f1f1f1;
+}
+.paper-icon-sign--color4.data-v-1e0825b0 {
+  padding-right: 20px;
+}
+.paper-opear__right.data-v-1e0825b0 {
+  float: right;
+  margin-right: 15px;
+}
+.doing.data-v-1e0825b0 {
+  background: #ffb03b;
+  color: #fff;
+  border: 1px solid #ffb03b;
+}
+.error.data-v-1e0825b0 {
+  background: #2987EE;
+  border: 1px solid #2987EE;
+  color: #fff;
+}
+.right.data-v-1e0825b0 {
+  background: #32d432;
+  border: 1px solid #32d432;
+  color: #fff;
+}
+.exam-title.data-v-1e0825b0{
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+.white-bg.data-v-1e0825b0{
+  background: #fff;
+  padding: 0.75rem;
+}
+.bind-course ._li.data-v-1e0825b0{
+  position: relative;
+  padding-left: 8rem;
+  min-height: 4.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+.bind-course ._li.data-v-1e0825b0:last-child{
+  border: none;
+  margin-bottom: 0;
+}
+.bind-course-img.data-v-1e0825b0{
+  width: 7.5rem;
+  height: 4.5rem;
+  position:absolute;
+  left: 0;
+  top: 0.5rem;
+  overflow: hidden;
+  border-radius: 0.1rem;
+}
+.bind-course-img ._img.data-v-1e0825b0{
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.bind-course-con ._h3.data-v-1e0825b0{
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+.bind-course-intro.data-v-1e0825b0{
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  overflow: hidden;
+}
+.darkgray-font.data-v-1e0825b0{
+  color: #8f8f8f;
+}
+

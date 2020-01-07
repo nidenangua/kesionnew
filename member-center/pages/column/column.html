@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<div class="usercolumn">
+    <!-- 列表页 -->
+    <div v-if="listFalg==true" style="padding-bottom: 20px">
+        <ks-title title="我的专栏" />
+        <!-- 排序和搜索 -->
+        <div class="usercolumn-sort">
+            <el-input placeholder="请输入想要搜索的课程" size="medium" v-model="keyWord" @change="change">
+                <i slot="suffix" class="el-input__icon el-icon-search" @click="change"></i>
+            </el-input>
+            <el-select v-model="from" placeholder="请选择" size="medium" @change="change">
+                <el-option v-for="item in fromList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <span>来源：</span>
+            <el-select v-model="sort" placeholder="请选择" size="medium" @change="change">
+                <el-option v-for="item in sortList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <span>排序：</span>
+        </div>
+        <!-- 课程列表 -->
+        <div class="usercolumn-list">
+            <div class="usercolumn-item" v-for="(item,i) in columnList" :key="item.cousreid">
+                <ks-image :src="item.photourl" @click="open(item.get_viewurl)" />
+                <div class="usercolumn-item__word">
+                    <h2 @click="open(item.get_viewurl)">{{item.name}}</h2>
+                    <span>共{{item.course_count}}门课程<i>|</i>{{item.paper_count}}份试卷<i>|</i>{{item.shop_count}}件商品</span>
+                    <p>授课老师：{{item.teacher_name}}</p>
+                </div>
+                <div class="usercolumn-item__btn">
+                    <!-- <h3>有效期：永久</h3> -->
+                    <el-button style="padding: 7px 16px;" round @click="openDetail(item)">查看更多</el-button>
+                </div>
+            </div>
+        </div>
+        <el-pagination style="text-align: center" :current-page="currentPage" @current-change="getUserSpecialList" background layout="prev, pager, next" :total="pageCount" v-if="pageCount>0">
+        </el-pagination>
+        <ks-empty msg="您还没有购买专栏" v-else />
+    </div>
+    <!-- 详情页 -->
+    <div style="position:relative" v-else>
+        <ks-title :title="columnInfo.name" />
+        <el-button style="padding:7px 15px;border-radius:15px;position:absolute;top:15px;right:10px;" @click="listFalg = true">返回</el-button>
+        <el-row>
+            <el-col :span="16">
+                <div class="usercolumn-detail">
+                    <ks-image :src="columnInfo.photourl" @click="open(columnInfo.get_viewurl)" />
+                    <div class="usercolumn-detail__word">
+                        <h1 @click="open(columnInfo.get_viewurl)">{{columnInfo.name}}</h1>
+                        <span>分类：{{columnInfo.classname}}</span>
+                        <p>授课老师：{{columnInfo.teacher_name}}</p>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="8">
+                <!-- <div class="usercolumn-detail__item">
+                    <p>学员</p>
+                    <span>{{columnInfo.student_num}}</span>
+                </div> -->
+                <div class="usercolumn-detail__item">
+                    <p>商品</p>
+                    <span>{{columnInfo.shop_count}}</span>
+                </div>
+                <div class="usercolumn-detail__item">
+                    <p>试卷</p>
+                    <span>{{columnInfo.paper_count}}</span>
+                </div>
+                <div class="usercolumn-detail__item">
+                    <p>课程</p>
+                    <span>{{columnInfo.course_count}}</span>
+                </div>
+            </el-col>
+        </el-row>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="课程" name="first">
+                <div class="usercolumn-list" v-if="courseList.length > 0">
+                    <div class="usercolumn-courseitem" v-for="(item,i) in courseList" :key="i">
+                        <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                        <div class="usercolumn-courseitem__word">
+                            <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                            <div v-if="item.is_buy == 1 && item.teachway != 0">
+                                <span>已学习{{parseFloat(item.has_learnpercent)?parseFloat(item.has_learnpercent):0}}%</span>
+                                <p v-if="item.has_learnpercent - 0 > 0">上次学到：{{item.lastlearn_periodnam}}</p>
+                            </div>
+                        </div>
+                        <el-button @click="open(item.teachway == 0 ? item.view_url : item.learn_url)" v-if="item.is_buy == 1" >进入学习</el-button>
+                        <el-button type="primary" plain @click="open(item.view_url)" v-else>去购买</el-button>
+                    </div>
+                </div>
+                <ks-empty msg="该分类下暂无数据" v-else />
+            </el-tab-pane>
+            <el-tab-pane label="试卷" name="second">
+                <div class="usercolumn-list" v-if="paperList.length > 0">
+                    <div class="usercolumn-examitem" v-for="(item,i) in paperList" :key="i">
+                        <ks-image src="/ks_inc/member-center/images/common/shijuan.png" @click="open(item.view_url)" />
+                        <div class="usercolumn-examitem__word">
+                            <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                            <span v-if="item.sumscore<0">未考试</span>
+                            <p v-else>{{item.sumscore}}分</p>
+                        </div>
+                        <el-button @click="open(item.view_url)">
+                            {{(item.sumscore >= 0 && "查看考试") || (item.sumscore
+                            < 0 && "进入考试")}} </el-button>
+                    </div>
+                </div>
+                <ks-empty msg="该分类下暂无数据" v-else />
+            </el-tab-pane>
+            <el-tab-pane label="商品" name="third">
+                <el-row class="usercolumn-list" v-if="shopList.length > 0">
+                    <el-col :span="6" v-for="(item,i) in shopList" :key="i">
+                        <div class="usercolumn-shopitem" @click="open(item.view_url)">
+                            <ks-image :src="item.photourl" />
+                            <h1>{{item.name}}</h1>
+                        </div>
+                    </el-col>
+                </el-row>
+                <ks-empty msg="该分类下暂无数据" v-else />
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>

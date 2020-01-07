@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/ks-components/course-list/course-list"],{1659:function(n,t,e){"use strict";var u=function(){var n=this,t=n.$createElement;n._self._c},o=[];e.d(t,"a",function(){return u}),e.d(t,"b",function(){return o})},"40bd":function(n,t,e){"use strict";e.r(t);var u=e("1659"),o=e("b379");for(var i in o)"default"!==i&&function(n){e.d(t,n,function(){return o[n]})}(i);e("dede");var r=e("2877"),a=Object(r["a"])(o["default"],u["a"],u["b"],!1,null,null,null);t["default"]=a.exports},a2c0:function(n,t,e){"use strict";(function(n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var u=function(){return e.e("components/uni/uni-countdown/uni-countdown").then(e.bind(null,"510a"))},o=function(){return e.e("components/uni/uni-tag/uni-tag").then(e.bind(null,"03ca"))},i=function(){return e.e("components/uni/uni-rate/uni-rate").then(e.bind(null,"9c1a"))},r={components:{UniCountdown:u,UniTag:o,UniRate:i},name:"KsCourseList",props:{type:{type:Number,default:1},list:Array},data:function(){return{isshowprice:!1}},methods:{open:function(t){n.navigateTo({url:"/pages/web/web?url="+encodeURIComponent(t.web_url)+"&title="+t.name})},openClass:function(t){n.navigateTo({url:"/pages/web/web?url=/room/"+t.id+"&title="+t.name})}},mounted:function(){this.isshowprice=this.$store.state.isshowprice}};t.default=r}).call(this,e("6e42")["default"])},b379:function(n,t,e){"use strict";e.r(t);var u=e("a2c0"),o=e.n(u);for(var i in u)"default"!==i&&function(n){e.d(t,n,function(){return u[n]})}(i);t["default"]=o.a},dede:function(n,t,e){"use strict";var u=e("e09c"),o=e.n(u);o.a},e09c:function(n,t,e){}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/ks-components/course-list/course-list-create-component',
+    {
+        'components/ks-components/course-list/course-list-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("40bd"))
+        })
+    },
+    [['components/ks-components/course-list/course-list-create-component']]
+]);

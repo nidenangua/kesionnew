@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "uni-countdown": "/components/uni/uni-countdown/uni-countdown",
+    "uni-tag": "/components/uni/uni-tag/uni-tag",
+    "uni-rate": "/components/uni/uni-rate/uni-rate"
+  }
+}

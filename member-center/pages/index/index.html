@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<div class="userindex">
+    <div class="userindex-news" v-if="msgList.length > 0">
+        <span class="news-box">{{msgList[0].title}}<i @click="openMsg">查看详情>></i></span>
+        <span style="color:rgba(60,129,249,1);margin-left: 15px;cursor: pointer;" @click="setRead(msgList[0])">我知道了</span>
+    </div>
+    <div class="userindex-survey">
+        <ks-title title="学习概况" />
+        <div class="userindex-survey__box">
+            <div class="userindex-survey__word">
+                <div class="userindex-survey__item">
+                    <h2>连续学习</h2>
+                    <span>{{learnInfo.continued_day}}<i>天</i></span>
+                </div>
+                <div class="userindex-survey__item">
+                    <h2>学习总时长</h2>
+                    <span>{{Math.floor(learnInfo.study_time/60)}}<i>小时</i>{{learnInfo.study_time%60}}<i>分钟</i></span>
+                </div>
+                <div class="userindex-survey__item">
+                    <h2>已参加课程数</h2>
+                    <span>{{learnInfo.course_num}}</span>
+                </div>
+            </div>
+            <!-- 学习图表 -->
+            <div class="userindex-survey__chart">
+                <echarts :dataList="learnInfo.study_list" :width="406" :height="210" title="最近7天学习时长" title-color="#787C82" :grid="grid"></echarts>
+            </div>
+        </div>
+    </div>
+    <div class="userindex-record">
+        <ks-title title="最近学习" :underline="false" />
+        <el-row v-for="(item,i) in learnList" :key="i">
+            <el-col :span="4">
+                <div class="userindex-image" @click="open(item.view_url)">
+                    <ks-image :src="item.photourl" ></ks-image>
+                    <span>{{(item.teachWay == 0 && "面授")||(item.teachWay == 1 && "点播")||(item.teachWay == 2 && "组合")||(item.teachWay == 5 && "直播")}}</span>
+                </div>
+            </el-col>
+            <el-col :span="16">
+                <div class="userindex-record__text">
+                    <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                    <span>{{item.lastdate}}学习至<i style="margin-left: 5px;">{{item.lastlearn_periodname}}</i></span>
+                    <div class="userindex-progress">
+                        <el-progress style="width: 300px;overflow: hidden;display: inline-block" :percentage="item.has_learnpercent - 0 == 0 ? 0 : item.has_learnpercent" :show-text="false"></el-progress>
+                        已学习：{{item.has_learnperiodnum}}/{{item.total_periodnum}}课时
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="4" style="line-height: 78px;">
+                <el-button round size="medium" type="primary" @click="open(item.learn_url)" v-if="item.teachWay == 5">进入直播</el-button>
+                <el-button round size="medium" type="primary" @click="open(item.learn_url)" v-else>继续学习</el-button>
+            </el-col>
+        </el-row>
+    </div>
+    <div class="userindex-nav" v-if="exam || activity || group">
+        <el-row>
+            <el-col :span="4" v-if="exam">
+                <div class="userindex-nav__item" @click="openExam('user/practice')">
+                    <img src="/ks_inc/member-center/images/home/me_main_btn_exercise@2x.png" />
+                    <span>练习中心</span>
+                </div>
+            </el-col>
+            <el-col :span="4" v-if="exam">
+                <div class="userindex-nav__item" @click="openExam('user/errorbank')">
+                    <img src="/ks_inc/member-center/images/home/me_main_btn_wrong@2x.png" />
+                    <span>错题本</span>
+                </div>
+            </el-col>
+            <el-col :span="4" v-if="exam && state.version != 'saas'">
+                <div class="userindex-nav__item" @click="openExam('user/myexam')">
+                    <img src="/ks_inc/member-center/images/home/me_main_btn_daily@2x.png" />
+                    <span>每日一练</span>
+                </div>
+            </el-col>
+            <el-col :span="4" v-if="activity">
+                <div class="userindex-nav__item" @click="openView('user/activity')">
+                    <img src="/ks_inc/member-center/images/home/me_main_btn_activity@2x.png" />
+                    <span>我的活动</span>
+                </div>
+            </el-col>
+            <el-col :span="4" v-if="group">
+                <div class="userindex-nav__item" @click="openView('user/community')">
+                    <img src="/ks_inc/member-center/images/home/me_main_btn_group@2x.png" />
+                    <span>我的社群</span>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+    <div class="userindex-form">
+        <ks-title title="直播课表" :underline="false" />
+        <div class="form-day">
+            <el-row>
+                <el-col :span="3" v-for="(item,i) in dayList" :key="i">
+                    <div class="userindex-form__item" @click="changeDay(item,i)">
+                        <span :class="{'active-day':activeDay == i}">{{item.week}}</span>
+                        <span :class="{'active-day':activeDay == i}" style="margin-top: 10px;" v-if="!item.checked">{{item.day}}</span>
+                        <p v-else>今</p>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+        <div style="padding: 20px;" v-if="liveList.length > 0">
+            <div class="form-item" v-for="(item,i) in liveList" :key="i">
+                <div class="userindex-form__title">
+                    {{item.live_time}}
+                </div>
+                <div class="form-dot"></div>
+                <el-row>
+                    <el-col :span="18">
+                        <div>
+                            <p @click="open(item.view_url)">{{item.periodname}}</p>
+                            <p style="margin-top: 20px;font-size: 14px" @click="open(item.view_url)">{{item.name}}</p>
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div style="text-align: center">
+                            <p :style="{color:(item.livestate == 0 && '#606367') || (item.livestate == 1 && '#3C81F9') || (item.livestate == 2 && '#BCC3CC')}">{{item.livestatu_title}}</p>
+                            <el-button @click="open(item.learn_url)" size="medium" :type="item.livestate == 0 ? '' : 'primary'" :plain="item.livestate == 2" style="margin-top: 10px">{{(item.livestate == 0 && '等待直播') || (item.livestate == 1 && '进入直播') || (item.livestate == 2 && '看回放')}}</el-button>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+
+        </div>
+        <ks-empty msg="该分类下暂无内容" v-else ></ks-empty>
+    </div>
+
+</div>

@@ -1,0 +1,30 @@
+
+.ks-empty.data-v-1a9c7ec5{
+	text-align: center;
+	font-size: 14px;
+	padding-top: 80%;
+	color: #888888;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.login-btn.data-v-1a9c7ec5{
+	background: #3C81FA;
+	width: 120px;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 36px;
+	font-size: 14px;
+	margin-top: 35.5px;
+}
+.refresh-btn.data-v-1a9c7ec5{
+	margin-top: 19.5px;
+	height: 28px;
+	width: 74px;
+	line-height: 28px;
+	font-size: 14px;
+	color: #3C81FA;
+	background: #fff;
+	border: 1px solid #3C81FA;
+	box-sizing: border-box;
+}
+

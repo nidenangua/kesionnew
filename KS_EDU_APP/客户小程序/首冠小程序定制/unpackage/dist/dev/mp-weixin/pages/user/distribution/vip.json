@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "小店会员",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

@@ -1,0 +1,59 @@
+
+
+/*我的订单*/
+.my-order__item{
+    background: #fff;
+    margin-top: 10px;
+}
+
+.my-order__item_head{
+    height: 44px;
+    line-height: 44px;
+    overflow: hidden;
+    color:#999;
+    padding: 0 10px;
+}
+.my-order__status{
+    float: right;
+}
+.my-order__item_cont{
+    position: relative;
+    padding: 10px 10px 10px 180px
+}
+.my-order__image{
+    width: 160px;
+    height: 90px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.my-order__title{
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+   
+}
+.my-order__type{
+    margin-top:10px;
+    color:#999;
+}
+
+.my-order__price{
+    font-size: 18px;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.my-order__item_foot{
+    padding: 6px 10px;
+    line-height: 36px;
+    font-size: 14px;
+}
+
+.my-order__store_logo{
+    width: 36px;
+    height: 36px;
+    float: left;
+    margin-right: 10px;
+}

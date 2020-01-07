@@ -1,0 +1,7 @@
+$primary-color:#409EFF;
+$success-color:#67C23A;
+$warning-color:#E6A23C;
+$danger-color:#F56C6C;
+$gray-color:#a9acb1;
+$info-color:#909399;
+$info-deep-color:#6c6e72;

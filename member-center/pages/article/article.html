@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<div>
+    
+    <div class="article">
+        <ks-title title="我的文章" :underline="false" />
+        <div style="position: absolute;right:40px;z-index: 10;">
+            <el-button size="medium" type="primary" @click="openView('UserArticleView')" plain>发表文章</el-button>
+            <el-button size="medium" type="primary" @click="openNew(userInfo.space_url)" plain>进入我的空间</el-button>
+        </div>
+
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="全部文章" name="first">
+                <div class="article-title">
+                    <el-row>
+                        <el-col :span="3"><span>选择</span></el-col>
+                        <el-col :span="10" style="text-align: left"><span>标题</span></el-col>
+                        <el-col :span="4"><span>时间</span></el-col>
+                        <el-col :span="3"><span>状态</span></el-col>
+                        <el-col :span="4"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="article-list">
+                    <el-row type="flex" v-for="(item,i) in articleList" :key="i">
+                        <el-col :span="3" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.infoid" :key="item.infoid"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="10" align="middle" style="text-align: left"> <span @click="openNew(item.view_url)">{{item.title}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span :style="{color:item.verify == 0 ? '#e91c35' : ''}">{{item.verify_str}}</span> </el-col>
+                        <el-col :span="4">
+                            <div>
+                                <span v-if="item.modify_Button" style="cursor: pointer;margin: 0 5px;"  @click="modify(item)">修改</span>
+                                <span v-if="item.del_Button" style="cursor: pointer;margin: 0 5px;" @click="deleteUserArticle(item.infoid)">删除</span>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <div class="article-list__pldelete" v-if="articleList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                        <el-button size="medium" @click="deleteUserArticle(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserArticleList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="待审核文章" name="second">
+                <div class="article-title">
+                    <el-row>
+                        <el-col :span="3"><span>选择</span></el-col>
+                        <el-col :span="10" style="text-align: left"><span>标题</span></el-col>
+                        <el-col :span="4"><span>时间</span></el-col>
+                        <el-col :span="3"><span>状态</span></el-col>
+                        <el-col :span="4"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="article-list">
+                    <el-row type="flex" v-for="(item,i) in articleList" :key="i">
+                        <el-col :span="3" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.infoid" :key="item.infoid"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="10" align="middle" style="text-align: left"> <span @click="openNew(item.view_url)">{{item.title}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span :style="{color:item.verify == 0 ? '#e91c35' : ''}">{{item.verify_str}}</span> </el-col>
+                        <el-col :span="4">
+                            <div>
+                                <span v-if="item.modify_Button" style="cursor: pointer;margin: 0 5px;" @click="modify(item)">修改</span>
+                                <span v-if="item.del_Button" style="cursor: pointer;margin: 0 5px;" @click="deleteUserArticle(item.infoid)">删除</span>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <div class="article-list__pldelete" v-if="articleList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                        <el-button size="medium" @click="deleteUserArticle(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserArticleList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="已审核文章" name="third">
+                <div class="article-title">
+                    <el-row>
+                        <el-col :span="3"><span>选择</span></el-col>
+                        <el-col :span="10" style="text-align: left"><span>标题</span></el-col>
+                        <el-col :span="4"><span>时间</span></el-col>
+                        <el-col :span="3"><span>状态</span></el-col>
+                        <el-col :span="4"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="article-list">
+                    <el-row type="flex" v-for="(item,i) in articleList" :key="i">
+                        <el-col :span="3" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.infoid" :key="item.infoid"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="10" align="middle" style="text-align: left"> <span @click="openNew(item.view_url)">{{item.title}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span :style="{color:item.verify == 0 ? '#e91c35' : ''}">{{item.verify_str}}</span> </el-col>
+                        <el-col :span="4">
+                            <div>
+                                <span v-if="item.modify_Button" style="cursor: pointer;margin: 0 5px;"  @click="modify(item)">修改</span>
+                                <span v-if="item.del_Button" style="cursor: pointer;margin: 0 5px;" @click="deleteUserArticle(item.infoid)">删除</span>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <div class="article-list__pldelete" v-if="articleList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                        <el-button size="medium" @click="deleteUserArticle(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserArticleList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="草稿箱" name="four">
+                <div class="article-title">
+                    <el-row>
+                        <el-col :span="3"><span>选择</span></el-col>
+                        <el-col :span="10" style="text-align: left"><span>标题</span></el-col>
+                        <el-col :span="4"><span>时间</span></el-col>
+                        <el-col :span="3"><span>状态</span></el-col>
+                        <el-col :span="4"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="article-list">
+                    <el-row type="flex" v-for="(item,i) in articleList" :key="i">
+                        <el-col :span="3" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.infoid" :key="item.infoid"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="10" align="middle" style="text-align: left"> <span @click="openNew(item.view_url)">{{item.title}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span :style="{color:item.verify == 0 ? '#e91c35' : ''}">{{item.verify_str}}</span> </el-col>
+                        <el-col :span="4">
+                            <div>
+                                <span v-if="item.modify_Button" style="cursor: pointer;margin: 0 5px;"  @click="modify(item)">修改</span>
+                                <span v-if="item.del_Button" style="cursor: pointer;margin: 0 5px;" @click="deleteUserArticle(item.infoid)">删除</span>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <div class="article-list__pldelete" v-if="articleList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                        <el-button size="medium" @click="deleteUserArticle(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserArticleList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="退稿信息" name="five">
+                <div class="article-title">
+                    <el-row>
+                        <el-col :span="3"><span>选择</span></el-col>
+                        <el-col :span="10" style="text-align: left"><span>标题</span></el-col>
+                        <el-col :span="4"><span>时间</span></el-col>
+                        <el-col :span="3"><span>状态</span></el-col>
+                        <el-col :span="4"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="article-list">
+                    <el-row type="flex" v-for="(item,i) in articleList" :key="i">
+                        <el-col :span="3" align="middle">
+                            <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                                <el-checkbox :label="item.infoid" :key="item.infoid"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-col>
+                        <el-col :span="10" align="middle" style="text-align: left"> <span @click="openNew(item.view_url)">{{item.title}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span :style="{color:item.verify == 0 ? '#e91c35' : ''}">{{item.verify_str}}</span> </el-col>
+                        <el-col :span="4">
+                            <div>
+                                <span v-if="item.modify_Button" style="cursor: pointer;margin: 0 5px;"  @click="modify(item)">修改</span>
+                                <span v-if="item.del_Button" style="cursor: pointer;margin: 0 5px;" @click="deleteUserArticle(item.infoid)">删除</span>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <div class="article-list__pldelete" v-if="articleList.length > 0">
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                        <el-button size="medium" @click="deleteUserArticle(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                        <el-button size="medium" disabled v-else>批量删除</el-button>
+                    </div>
+                    <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserArticleList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>

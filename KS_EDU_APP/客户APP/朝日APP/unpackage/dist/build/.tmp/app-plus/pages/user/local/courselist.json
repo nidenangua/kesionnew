@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "下载管理",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-empty": "/components/ks-components/empty/empty"
+  }
+}

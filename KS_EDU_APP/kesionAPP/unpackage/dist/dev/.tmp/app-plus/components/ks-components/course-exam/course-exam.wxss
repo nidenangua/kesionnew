@@ -1,0 +1,131 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*课程考试*/
+.ks-course-exam__item.data-v-3a119ef0 {
+	padding: 10px 15px;
+	cursor: pointer;
+}
+.ks-course-exam__item+.ks-course-exam__item.data-v-3a119ef0 {
+	border-top: 1px solid #eee;
+}
+.ks-course-exam__item .ks-button.data-v-3a119ef0 {
+	float: right;
+	margin-left: 10px;
+}
+.ks-course-data__item.data-v-3a119ef0:hover,
+.ks-course-exam__item.data-v-3a119ef0:hover {
+	background: #e6f0fd;
+}
+.ks-course-exam__name.data-v-3a119ef0 {
+	line-height: 28px;
+	font-size: 14px;
+	max-height: 28px;
+	overflow: hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+}
+.ks-course-exam__alert.data-v-3a119ef0 {
+	color: #e6a23c;
+}
+.ks-course-exam__lock.data-v-3a119ef0 {
+	width: 16px;
+	height: 16px;
+	
+	background-size: contain;
+	float: right;
+	position: relative;
+	top: 6px;
+}
+.ks-course-exam__item--disabled.data-v-3a119ef0 {
+	color: #999;
+	cursor: default;
+}
+.ks-course-exam__item--disabled.data-v-3a119ef0:hover {
+	background: none;
+}
+.ks-button.data-v-3a119ef0{
+	    display: inline-block;
+	    line-height: 1;
+	    white-space: nowrap;
+	    cursor: pointer;
+	    background: #fff;
+	    border: 1px solid #dcdfe6;
+	    color: #606266;
+	    -webkit-appearance: none;
+	    text-align: center;
+	    -webkit-box-sizing: border-box;
+	            box-sizing: border-box;
+	    outline: none;
+	    margin: 0;
+	    -webkit-transition: .1s;
+	    -o-transition: .1s;
+	    transition: .1s;
+	    font-weight: 500;
+	    -moz-user-select: none;
+	    -webkit-user-select: none;
+	    -ms-user-select: none;
+	    padding: 12px 20px;
+	    font-size: 14px;
+	    border-radius: 4px;
+}
+.ks-button--mini.data-v-3a119ef0 {
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+	cursor: pointer;
+}
+

@@ -1,0 +1,228 @@
+.useractivity {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+}
+
+.usercourse-sort {
+  overflow: hidden;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #e6e9ed;
+  padding-right: 20px;
+}
+
+.usercourse-sort span {
+  float: right;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 36px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+/* 多选框 */
+
+.useractivity-checkbox {
+  float: right;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  line-height: 55px;
+}
+
+/* 搜索框 */
+
+.usercourse-sort .el-input {
+  width: 240px;
+  float: left;
+}
+
+/* 选择器 */
+
+.usercourse-sort .el-select {
+  float: right;
+}
+
+.usercourse-sort .el-select > .el-input {
+  width: 130px;
+}
+
+.useractivity-list {
+  padding-bottom: 80px;
+}
+
+.box {
+  padding: 0 20px;
+  border-left: 2px solid #e6e9ed;
+  position: relative;
+  margin-left: 5px;
+}
+
+.date {
+  padding: 20px 0;
+  height: 39px;
+  margin-left: -21px;
+}
+
+.date i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  border: 2px solid #3c81f9;
+  margin-top: 15px;
+  margin-left: -4px;
+  float: left;
+}
+
+.date img {
+  float: left;
+  margin-left: 8px;
+  margin-top: 11px;
+}
+
+.date span {
+  padding: 10px;
+  background: #3c81f9;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  float: left;
+  border-radius: 1px;
+}
+
+.useractivity-item {
+  overflow: hidden;
+  padding: 20px;
+  border: 1px solid rgba(230, 233, 237, 1);
+  position: relative;
+}
+
+.useractivity-item2 {
+  border: none;
+  border-bottom: 1px solid #e6e9ed;
+  padding: 30px 30px 30px 0;
+}
+
+.useractivity-item .ks-image {
+  width: 200px;
+  height: 120px;
+  float: left;
+}
+
+.useractivity-item__word {
+  margin-left: 16px;
+  float: left;
+}
+
+.useractivity-item__word h2 {
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.useractivity-item__word span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 21px;
+  display: block;
+  margin-top: 15px;
+}
+
+.useractivity-item__word p {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 21px;
+  margin-top: 15px;
+}
+
+.useractivity-item__word p img {
+  line-height: 21px;
+  margin-bottom: -3px;
+  margin-right: 5px;
+}
+
+.useractivity-item__word p i {
+  font-style: normal;
+  margin-right: 30px;
+}
+
+.useractivity-item__right {
+  float: right;
+  text-align: right;
+}
+
+.useractivity-item__right h1 {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 21px;
+}
+
+.useractivity-item__right h1 i {
+  font-style: normal;
+}
+
+.useractivity-item__right h2 {
+  font-size: 18px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(233, 28, 53, 1);
+  line-height: 21px;
+  margin-top: 10px;
+}
+
+.useractivity-item__ticket span {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 24px;
+  display: block;
+}
+
+.useractivity-item__ticket span i {
+  font-style: normal;
+}
+
+.useractivity-item__ticket p {
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(60, 129, 249, 1);
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.useractivity-item__order {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 36px;
+  margin-top: 10px;
+}
+
+.useractivity-item__order span {
+  cursor: pointer;
+}
+
+.useractivity-item__order .el-button {
+  margin-left: 20px;
+}
+.activity-iframe {
+  height: 500px;
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+
+.ks-collect.data-v-5149293e{
+	padding-top: 23px;
+
+	background-size: 23px;
+	font-size: 12px;
+}
+.ks-collect2.data-v-5149293e{
+	padding-top: 23px;
+	
+	background-size: 23px;
+	font-size: 12px;
+	margin-top: 6px;
+}
+.ks-zan.data-v-5149293e{
+	display: inline-block;
+	font-size: 14px;
+	color: #666666;
+	margin-left: 12px;
+	padding-left: 23px;
+	background-size: 18px;
+}
+
+

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "content-parser": "/lib/polyv/components/chat-list/content-parser/content-parser"
+  },
+  "component": true
+}

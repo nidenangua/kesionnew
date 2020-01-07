@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发表话题",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image"
+  }
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>用户中心</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+	<!--Drag reset css-->
+	<link href="/Public/common/drag/css/reset.css" rel="stylesheet">
+	<!--//Drag reset css end-->
+	
+	<!--Website color config-->
+	<!--<link href="/Public/css/drag.setColor.css" rel="stylesheet">-->
+	<!--//Website color config end-->
+	
+	<link href="/Public/common/login/login.css" rel="stylesheet">
+	<style>
+		@charset "utf-8";
+		body{ background:#fff;}
+		a,body,textarea,input,button,select,keygen,legend{color:#333;}
+		body a:hover{color:#2d6cdf;}
+		.m-color,
+		.m-color-hover:hover{color:#2d6cdf;}
+		.m-border-color,
+		.m-border-color-hover:hover{border-color:#2d6cdf;}
+		.m-cb-color,
+		.m-cb-color-hover:hover{color:#2d6cdf;border-color:#2d6cdf;}
+		.m-bg-color,
+		.m-bg-color-hover:hover{ background-color:#2d6cdf;}
+		
+		.m-filter1 .m-color{ background: #2d6cdf;color:#fff !important;}
+	</style>
+</head>
+<body>
+	<iframe name="hidframe" hidden="hidden" style="display: none;"></iframe>
+	<div class="userlogin" id="login">
+		<div class="tab">
+			<ul>
+				<li class="m-border-color"><?php if(!empty($openId)){ echo ' 用户绑定';}else{ echo '用户登录';} ?></li>
+				<li>免费注册</li>
+			</ul>
+		</div>
+		
+		<div class="tabbox">
+			<div class="loginbox innerbox">
+				<form target="hidframe" method="post" action="<?php echo M_URL('h5market','login'); ?>" class="form-horizontal"  id="myform">
+					<div class="formlist">
+						<ul>
+							<li>
+								<div class="formtext"><input type="text" placeholder="请输入用户名/手机号" name="username" value=""></div>
+							</li>
+							<li>
+								<div class="formtext"><input placeholder="请输入密码" name="password" type="password" value=""></div>
+							</li>
+						</ul>
+					</div>
+					<div class="submit"><input type="button" class="m-bg-color" onClick="submitForm({formId:'myform'})" value="登录"></div>
+					<input type="hidden" name="actindex" value="<?php echo $actindex; ?>" />
+					<input type="hidden" name="openid" value="<?php echo $openId; ?>" />
+				</form>
+				
+				<div class="opreation clearfix">
+					<!--<div class="opreation-l"><input name="remember" type="hidden" value="1">记住我的登录信息</div>-->
+					<!--<div class="opreation-r"><a href="javascript:boxShow(1)" target="_blank">忘记密码？</a></div>-->
+				</div>
+
+			</div>
+			<!--//loginbox-->
+			
+			<div class="regbox innerbox" style="display: none;">
+				
+				<form target="hidframe" method="post" action="<?php echo M_URL("h5market","doregister") ?>" class="form-horizontal"  id="regForm">
+					<div class="formlist">
+						<ul>
+							<li>
+								<div class="formtext"><input type="text" id="regPhone" placeholder="请输入手机号" name="username" value=""></div>
+							</li>
+							<li>
+								<div class="formtext"><input placeholder="请设置密码" name="password" type="password" value=""></div>
+							</li>
+							
+							<?php  if($status==1&&$issms==1){ ?>
+        					<li>
+            					<input class="codetext" type="text" name="code" placeholder="请输入验证码" >
+					            <button class="getcode" type="button" onClick="getcode(this,'regPhone','Register')">获取验证码</button>
+					        </li>
+					        <input type="hidden" name="actindex" value="<?php echo $actindex; ?>" />
+							<input type="hidden" name="openid" value="<?php echo $openId; ?>" />
+					        <?php }?>
+						</ul>
+					</div>
+					<div class="submit"><input type="button" class="m-bg-color" onClick="submitForm({formId:'regForm',phoneId:'regPhone'})" value="注册"></div>
+				
+				</form>
+				
+			</div>
+			
+			
+			<!--<div class="otherlogin">
+				<div class="text">或</div>
+				<div class="iconlist">
+					<div class="icon qq"></div>
+					<div class="icon wechat"></div>
+					<div class="icon weibo"></div>
+				</div>
+			</div>-->
+			
+		</div>
+		
+	</div>
+	<script src="/Public/common/js/jquery.js"></script>
+	
+	<script>
+		
+			$('.tab').on('click','li',function(){
+				$(this).addClass('m-border-color').siblings().removeClass('m-border-color');
+				$('.tabbox').find('.innerbox').eq($(this).index()).show().siblings('.innerbox').hide();
+			});
+			
+			if(location.href.indexOf('type-reg')!=-1){
+				$('.tab').find('li').eq(1).click();
+			};
+			
+		 	
+		 	//登录回调
+		 	function loginSuccessBack(text){
+		 		top.popup.tips({
+					title:text
+				});
+				if(text=='登录成功'){
+					top.closePopup(window.name);
+					top.location.href='<?php echo M_URL("home","class");?>';
+					//top.location.reload();
+				}
+		 	};
+		 	
+		 	//验证手机号格式是否正确
+		 	function verifyPhoneNumber(phoneId){
+		 		var phoneValue = $.trim(document.getElementById(phoneId).value);  
+		 		if(phoneValue==''){
+		 			alert($('#'+phoneId).attr('placeholder'));
+	            	document.getElementById(phoneId).focus();
+	                return false;
+		 		};
+		 		var reg  =/^1[345678]\d{9}$/;        
+	            var isok = reg.test(phoneValue);
+	            if(!isok)
+	            {
+	            	alert('手机号格式不正确');
+	            	document.getElementById(phoneId).focus();
+	                return false;
+	            };
+	            
+	            return true;
+	            
+		 	};
+		 	
+
+			function getcode(target,phoneId,modelname){
+                var curCount = 60;     
+                if(verifyPhoneNumber(phoneId)){
+                	SetRemainTime(target,curCount,document.getElementById(phoneId).value,modelname); 
+                };
+	        }
+			
+			//重新发送验收吗
+	        function SetRemainTime(target,curCount,phone,modelname){
+	        	var $target = $(target);
+	            if($target.attr('date')==1){
+	            	return false;
+	            }else{
+	            	$target.html("正在发送...");
+	            	$target.attr('date',1);
+	            }
+	            $.post("/Plus/Kesion.ajax.php?act=SendEx&type=memberReg",{"phone":phone,"modelname":modelname},function(data){
+	            	
+	            	var InterValObj = window.setInterval(function(){
+			            if (curCount == 0 ){              
+			                window.clearInterval(InterValObj);
+			                $target.html("重发验证码");
+			                $target.attr('date',0);
+			            }else {
+			                curCount--;
+			                $target.html(curCount + "秒后重发");
+			            }
+	            	},1000);
+	            	
+	            });
+	            
+	        };
+		 	
+		 	//注册返回结果
+		 	function regSuccessBack(text){
+				alert(text);
+				
+		 	};
+		 	
+		 	//box显示隐藏
+		 	function boxShow(id){
+		 		var target = [$('#login'),$('#getPassWord'),$('#resetPassWord'),$('#resetSusseed')];
+		 		for(var i=0;i<target.length;i++){
+		 			if(i==id){
+		 				target[i].show();
+		 			}else{
+		 				target[i].hide();
+		 			}
+		 		};
+		 	};
+
+		 	
+		 	//提交表单
+		 	function submitForm(data){
+		 		
+		 		/*
+		 		 * formId 准备提交的表单id
+		 		 * phoneId 需要判断手机格式的id 
+		 		 * passWord 检测两次输入是否一致
+		 		 * 
+		 		 */
+		 		
+		 		var $form = $('#'+data.formId);
+		 		
+		 		//第一步，判断表单内是否有为空项
+		 		for(var i=0;i<$form.find('[placeholder]').length;i++){
+		 			var $target = $form.find('[placeholder]').eq(i);
+		 			var emptyTips = $target.attr('placeholder');
+		 			if($.trim($target.val())==''){
+		 				alert(emptyTips);
+		 				$target.focus();
+		 				return false;
+		 			};
+		 			
+		 		};
+		 		
+
+		 		//第二步，判断手机号格式是否正确
+		 		if(data.phoneId){
+		 			if(!verifyPhoneNumber(data.phoneId)){
+		 				return false;
+		 			};
+		 		};
+		 		
+		 		//第三步，验证输入密码是否一致
+		 		
+		 		if(data.passWord){
+		 			if($form.find('input[name="password"]').val()!=$form.find('input[name="password2"]').val()){
+		 				return false;
+		 			}
+		 			
+		 		}
+		 		
+		 		//第四步，确认提交
+		 		$form.submit();
+		 			
+		 	};
+
+	 	
+	 	
+	 	
+	</script>
+	
+</body>
+<script src="/Skin/2/PC/Skin04/Public/js/commons.js"></script>
+</html>

@@ -1,0 +1,39 @@
+.signrecord {
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 20px;
+    position: relative;
+}
+
+.signrecord-title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signrecord-list {
+    padding-bottom: 20px;
+}
+
+.signrecord-list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 20px 0;
+}
+
+.signrecord-list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

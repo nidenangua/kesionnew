@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "plv-live-player": "/lib/polyv/components/live-player/live-player"
+  },
+  "component": true
+}

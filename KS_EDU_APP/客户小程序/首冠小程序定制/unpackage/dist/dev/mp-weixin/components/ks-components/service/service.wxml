@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['openView',['/pages/service/service']]]]]}}" class="service data-v-e384221a" bindtap="__e">在线客服</view>

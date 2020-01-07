@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<div style="padding-bottom: 20px;">
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="职位推荐" name="first">
+            <!-- 排序和搜索 -->
+            <div class="recommend-sort">
+                <el-input placeholder="请输入想要搜索的职位" size="medium" v-model="key" @change="change">
+                    <i slot="suffix" class="el-input__icon el-icon-search" @click="change"></i>
+                </el-input>
+                <el-select v-model="date" placeholder="请选择" size="medium" @change="change">
+                    <el-option v-for="item in dateList" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+                <span>更新时间：</span>
+            </div>
+            <div class="recommend-title">
+                <el-row>
+                    <el-col :span="6"><span>职位名称</span></el-col>
+                    <el-col :span="6"><span>公司名称</span></el-col>
+                    <el-col :span="3"><span>人数</span></el-col>
+                    <el-col :span="4"><span>刷新时间</span></el-col>
+                    <el-col :span="5"><span>地点</span></el-col>
+                    <!-- <el-col :span="3"><span>操作</span></el-col> -->
+                </el-row>
+            </div>
+            <div class="recommend-list">
+                <el-row type="flex" v-for="(item,i) in recommendList" :key="i">
+                    <el-col :span="6" align="middle">
+                        {{item.jobtitle}}
+                    </el-col>
+                    <el-col :span="6" align="middle"> <span @click="open(item.company_url)">{{item.company}}</span></el-col>
+                    <el-col :span="3" align="middle"> <span>{{item.num}}</span></el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.refreshtime}}</span> </el-col>
+                    <el-col :span="5" align="middle"> <span>{{item.place}}</span> </el-col>
+                    <!-- <el-col :span="3" align="middle">
+                        <div style="cursor: pointer;color: #488eff">
+                            <span @click="open(item.view_url)">查看</span>
+                            <span @click="collect(item)">收藏</span>
+                        </div>
+                    </el-col> -->
+                </el-row>
+            </div>
+            <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :total="pageCount" @current-change="getUserJobRecommendList" v-if="pageCount > 0" />
+            <ks-empty msg="该分类下暂无内容" v-else />
+        </el-tab-pane>
+        <el-tab-pane label="职位收藏" name="second">
+            <div class="recommend-title">
+                <el-row>
+                    <el-col :span="3">选择</el-col>
+                    <el-col :span="3"><span>职位名称</span></el-col>
+                    <el-col :span="5"><span>公司名称</span></el-col>
+                    <el-col :span="2"><span>人数</span></el-col>
+                    <el-col :span="4"><span>刷新时间</span></el-col>
+                    <el-col :span="5"><span>地点</span></el-col>
+                    <el-col :span="2"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="recommend-list">
+                <el-row type="flex" v-for="(item,i) in dataList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="3" align="middle">
+                        {{item.jobtitle}}
+                    </el-col>
+                    <el-col :span="5" align="middle"> <span @click="open(item.company_url)">{{item.company}}</span></el-col>
+                    <el-col :span="2" align="middle"> <span>{{item.people_number}}</span></el-col>
+                    <el-col :span="4" align="middle"> <span>{{item.adddate}}</span> </el-col>
+                    <el-col :span="5" align="middle"> <span>{{item.place}}</span> </el-col>
+                    <el-col :span="2" align="middle"> <span style="cursor: pointer" @click="open(item.view_url)">查看</span> </el-col>
+                </el-row>
+                <div class="recommend-list__pldelete" v-if="dataList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserJobCollect(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserJobCollectList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+        </el-tab-pane>
+    </el-tabs>
+</div>

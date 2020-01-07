@@ -1,0 +1,90 @@
+
+/*按钮*/
+.ks-bt{float:left;padding: 0px 15px;height:34px; line-height:34px;font-size: 14px; background: white;border-radius: 4px; cursor: pointer;background: none;display: inline-block;border:1px solid #e6e6e6; box-sizing: border-box; outline: none;}
+.ks-bt:hover{background-color: #f9f9f9}
+.ks-bt:disabled,
+.ks-bt-disabled{opacity: 0.6;}
+.ks-bt-medium{height: 38px; line-height: 38px;padding: 0 20px;}
+.ks-bt-big{padding: 0 30px;height:44px;line-height: 44px; font-size:16px;}
+.ks-bt i{margin-right:5px;float:left;font-size:14px;}
+.ks-bt-pur{border: 1px solid #488bff; color: #488bff !important; }
+.ks-bt-pur:hover{
+  background: #fdf7f6
+}
+.ks-bt-gray{border: 1px solid #e3e3e3;background: #f9f9f9; color: #333; }
+.ks-bt-gray:hover{background: #f3f3f3;}
+.ks-bt-pue{border: 1px solid #488bff;background: #488bff; color: white!important; }
+.ks-bt-pue:hover{border:1px solid #3e84fb; background: #3e84fb; }
+.ks-link-bt{
+  background-image: url(icon-link.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%
+}
+.ks-link-bt:hover{
+  background-image: url(icon-link-on.png);
+}
+.ks-del-bt{
+  background-image: url(icon-del.png);
+  border:0px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%
+}
+.ks-del-bt:hover{
+   background-image: url(icon-del-on.png);
+   background-color:inherit
+}
+
+.ks-icon-link{
+  font-size: 14px;
+  cursor: pointer;
+}
+.ks-icon-link .eva-icon{
+  position: relative;
+  margin-right: 5px;
+  top:2px;
+}
+
+.ks-delete{
+  width:30px;
+  height: 30px;
+  background-image: url(icon-delete.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: absolute;
+  right:0;
+  top:50%;
+  margin-top: -15px;
+  cursor: pointer;
+}
+
+.ks-delete:hover{
+  background-image: url(icon-delete-on.png)
+}
+
+.ks-switch{position:relative;display: inline-block;width:40px;height: 20px;background: #d2d2d2;border-radius: 30px; cursor: pointer;transition: .3s; -webkit-transition: .3s; -moz-transition: .3s; -o-transition: .3s; }
+.ks-switch:after{content: '';position: absolute;left:2px;top:2px;width:16px;height: 16px; background: #fff;border-radius: 50%;transition: .3s; -webkit-transition: .3s; -moz-transition: .3s; -o-transition: .3s;}
+.ks-switch.open{ background: #44d58e;}
+.ks-switch.open:after{left:22px}
+
+.ks-checkbox{width:18px;height:18px; border:0px; background:url(check.png) no-repeat -18px -18px; -webkit-appearance:none; outline:none; cursor:pointer; display:inline-block; margin:2px 6px 0px 0px;}
+.ks-checkbox:checked{background:url(check.png) no-repeat 0 -18px;}
+.ks-checkbox:disabled{filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5;  opacity: 0.5;}
+
+/*表单*/
+.form-textarea{border:0px;border:1px solid #e6e6e6;width:100%;font-size:14px;background: inherit;display: block;min-height: 100px;border-radius: 4px; padding: 5px 10px; box-sizing: border-box; max-width: 750px;}
+.form-textbox,
+.form-select{height:34px; line-height: 34px;border:0px;border:1px solid #e6e6e6;width:100%;font-size:14px;padding:0px;background: inherit; max-width: 500px; box-sizing: border-box; padding: 0 10px; color:#666; border-radius: 4px; outline: none}
+.form-textbox:disabled,
+.form-select:disabled{color:#ababab;background:inherit;}
+.form-textbox:focus,
+.form-textarea:focus,
+.form-select:focus{border:0px;border:1px solid #488bff;}
+.form-select{background: url(arr-bt-2.png) no-repeat 97% 50%}
+.form-row{padding-bottom:15px; position:relative;}
+.form-row .name{display: block;font-size:14px; line-height: 34px;height: 34px; overflow: hidden;color:#ababab;}
+.form-row input[type=radio]{width: 18px;height:18px;border: 0px;background: url(check.png) no-repeat -18px 0;-webkit-appearance: none;outline: none;cursor: pointer;position: relative;float:left;margin:5px 5px 0 0;}
+.form-row input[type=radio]:checked {background: url(check.png) no-repeat;}
+.form-row input[type=radio]:disabled{filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5;  opacity: 0.5;}
+.form-row label{float:left;margin-right:15px; line-height: 28px; cursor: pointer;color:#666;font-size:14px;}
+.form-row .label-on{color:#488bff;}
+.form-tips{color:#999}

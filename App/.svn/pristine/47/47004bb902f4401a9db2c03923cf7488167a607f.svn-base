@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>领取优惠券</title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/home.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/myvoucher.css" rel="stylesheet">
+    <script>
+    	var uoot = '<?php echo UOOT ?>';	
+    </script> 
+    <style>
+        body{
+            background:#F7FCFF
+        }
+         .md-cross-bar{ background: #fff; display: flex; align-items: center;border-bottom: 1px solid #eee;padding: 5px;width: 100%;box-sizing: border-box; }
+        .md-cross-img{width: 50px;
+            height: 50px; overflow: hidden; line-height: 50px; border-radius:50%; 
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        .md-cross-img img{
+            border-radius:50%;
+            width: auto;
+            height: 40px;
+            vertical-align: middle;
+            display: inline-block;  
+        }
+
+        .md-cross-bar-info{
+            flex: 1;
+            margin-left: 15px;
+        }
+        .md-cross-bar-info .md-cross-title{
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 22px;
+            
+        }
+        .md-cross-bar-info .md-cross-tel{
+            color: #999;
+            font-size: 12px;
+            line-height: 22px;
+        }
+
+        .md-cross-bar .md-cross-btn{
+            padding: 0 12px;
+            height: 32pxs;
+            border: 1px solid #37a7ed;
+            font-size: 14px;
+            color: #37a7ed;
+            line-height: 32px;
+            border-radius: 4px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="vouceher"  class="voucherlist">
+        <div class="common-list" ref="navlist" style="margin-top: 10px;">
+            <div class="md-cross-bar">
+                <div class="md-cross-img"><img src="<?php echo $websiteInfo['logo'] ?>"/></div>
+                <div class="md-cross-bar-info">
+                    <div class="md-cross-title"><?php echo $websiteInfo['sitename']?></div>
+                    <div class="md-cross-tel">联系电话：<span><?php echo $websiteInfo['tel']?></span></div>
+                </div>
+                <a style="margin-left: 20px;" href="//<?php echo APP_DOMAIN; ?>" class="md-cross-btn">进入网校</a> 
+            </div>
+        </div> 
+        <?php if($ctype ==0){ ?>
+        <div class="items">
+            <div class="item" >
+                <div class="item-l bg-l" >
+                    ￥<span><?php echo ($info['money']); ?></span>
+                </div>
+                <div class="item-r">
+                    <p class="title" style="color:#666;font-size: 16px;"><?php echo $info['title']; ?></p>
+                    <div class="voucher-info">
+                        <div class="l">
+                            <div class="ling-status" style="color:#666;font-size: 14px;"><?php echo $info['term']; ?></div>
+                            <div class="time"><?php if($info['awarddate'] == 1){ echo date('Y-m-d',$info['redemptionstarttime']).'-'.date('Y-m-d',$info['redemptionendtime']);} ?></div>
+                        </div>
+                        
+                        <div class="r" onclick="getvocher(<?php echo $info['id']; ?>,this)">立即领取</div>
+                    </div>   
+                    <div class="detail"><?php echo $info['infotitle']; ?></div> 
+                </div>
+            </div>
+        </div>
+     <?php }else{ ?>
+       <div class="items">
+            <div class="item" >
+                <div class="item-l bg-l" style="background-image:url(../../../Public/wechat/images/voucher/discount_bg_over.png)no-repeat !important;">
+                    ￥<span><?php echo ($info['money']); ?></span>
+                </div>
+                <div class="item-r">
+                    <p class="title" style="color:#666;font-size: 16px;"><?php echo $info['title']; ?></p>
+                    <div class="voucher-info">
+                        <div class="l">
+                            <div class="ling-status" style="color:#666;font-size: 14px;"><?php echo $info['term']; ?></div>
+                            <div class="time"><?php if($info['awarddate'] == 1){ echo date('Y-m-d',$info['redemptionstarttime']).'-'.date('Y-m-d',$info['redemptionendtime']);} ?></div>
+                        </div>
+                        
+                        <div class="r" style="background: #999;">已领取</div>
+                    </div>   
+                    <div class="detail"><?php echo $info['infotitle']; ?></div> 
+                </div>
+            </div>
+        </div>  
+    <?php } ?>
+    </div>
+   <script src="<?php echo UOOT; ?>/Public/common/js/jquery.js"></script>
+   <script type="text/javascript">
+        function toast2(params){
+            var data = {
+                content:params.content,
+                icon:params.icon,
+                duration:params.duration || 1000,
+                success:params.callback,
+            }
+            iconUrl = ''
+            var bodys = document.getElementsByTagName('body')[0];
+            var toast = document.createElement('toast');
+            toast.setAttribute("class","toast");
+            toast.setAttribute("id","toast");
+            
+            var spans = document.createElement('span');
+            spans.innerHTML = data.content;
+            
+            toast.appendChild(spans);
+            
+            if(typeof data.icon!=="undefined"){
+                var imgs = document.createElement('img');
+                imgs.setAttribute("class","toast-img");
+                imgs.src = data.icon;
+                toast.appendChild(imgs);
+            }
+            bodys.appendChild(toast);
+            
+        
+            
+            var thisHalfWidth = toast.offsetWidth/2;
+            var thisHalfHeight = toast.offsetHeight/2;
+            toast.style.left = "50%";
+            toast.style.top = "50%";
+            toast.style.marginLeft = -thisHalfWidth+'px';
+            toast.style.marginTop = -thisHalfHeight+'px';
+            setTimeout(function(){
+                document.getElementsByTagName('body')[0].removeChild(toast) 
+                if(typeof data.success==="function"){
+                        params.callback()
+                }
+                        
+            },data.duration)
+            
+        }
+       function getvocher(id,target){
+            var id = id;
+            $.ajax({ 
+                type:"post",
+                url:"<?php echo M_URL('h5market','lqvocher'); ?>",
+                data:{
+                    id:id,
+                },
+                success : function(data) {
+                    var data  = JSON.parse(data);
+                    if(data.errcode == '404'){
+                       toast2({
+                            content:data.msg,
+                            duration:2000,
+                            callback:function(){
+                                window.location.reload()
+                            }
+                        });
+                    }else if(data.errcode == '200'){
+                        toast2({content:data.msg,duration:2000,callback:function(){window.location.reload()}});
+                    }
+                }, 
+            });
+       }
+   </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+.error-bank__item {
+    width: 100%;
+    background-color: #ffffff;
+    border: solid 1px #ebebeb;
+    margin-top: 20px;
+}
+
+.error-bank__head {
+    width: 100%;
+    border-bottom: solid 1px #ebebeb;
+    overflow: hidden;
+}
+
+.error-bank__head-left {
+    width: calc(100% - 300px);
+    padding: 0 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    float: left;
+}
+
+.error-bank__head-box {
+    width: calc(100% / 3 - 50px);
+    height: 120px;
+    border-radius: 6px;
+    border: solid 1px #ebebeb;
+    text-align: center;
+    margin: 20px 23px;
+    float: left;
+}
+
+.error-bank__head-box p {
+    font-size: 16px;
+    color: #333;
+    margin: 16px 0 0 0;
+}
+
+.error-bank__head-box p i {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.error-bank__head-box span {
+    color: #7f7f7f;
+    font-size: 14px;
+}
+
+.error-bank__head-right {
+    width: 300px;
+    float: right;
+    text-align: center;
+}
+
+.error-bank__head-right .el-button {
+    margin-top: 63px;
+}
+
+.error-bank__head-right .el-button img {
+    width: 14px;
+    height: 14px;
+}
+
+.error-bank__head-right i {
+    width: 1px;
+    height: 124px;
+    background-color: #eeeeee;
+    float: left;
+    margin-top: 18px;
+}
+
+.error-bank__head-btn1 {
+    width: 120px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    text-align: center;
+    line-height: 36px;
+    margin-left: 50px;
+    margin-top: 60px;
+    float: left;
+    cursor: pointer;
+}
+
+.error-bank__head-btn2 {
+    width: 120px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    background: #fff;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 70px;
+    margin-top: 60px;
+    float: right;
+    cursor: pointer;
+}
+
+.error-bank__head-btn2 img {
+    width: 12px;
+    height: 14px;
+    margin: 0 4px -2px 0;
+}
+
+
+/* 内容部分 */
+
+.error-bank__main {
+    padding-bottom: 20px;
+}
+
+.error-bank__main-title {
+    height: 55px;
+    padding-left: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 55px;
+    color: #333;
+    font-size: 16px;
+    text-align: left;
+}
+
+.error-bank__main-subtitle {
+    width: calc(100% - 40px);
+    height: 40px;
+    margin: 0 auto;
+    background-color: #f5f6fc;
+    font-size: 16px;
+    color: #999;
+    line-height: 40px;
+}
+
+.error-bank__main-subtitle p {
+    margin-left: 30px;
+    text-align: center;
+    float: left;
+}
+
+.error-bank__main-subtitle span {
+    width: 300px;
+    float: right;
+}
+
+.error-bank__main-list {
+    height: 77px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    line-height: 77px;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.error-bank__main-list:hover {
+    background: #F0F2F5;
+}
+
+
+/* 列表样式 */
+
+.error-bank__main-left {
+    margin-left: 30px;
+    float: left;
+}
+
+.error-bank__main-right {
+    width: 300px;
+    float: right;
+}
+
+.error-bank__main-right .el-button {
+    float: right;
+    margin-top: 20.5px;
+    margin-right: 20px;
+}
+
+.error-bank__main-right p {
+    margin-left: 16px;
+    float: left;
+}
+
+.error-bank__main-btn1 {
+    width: 100px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 20px;
+    margin-top: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.error-bank__main-btn2 {
+    width: 100px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 1px #488bff;
+    font-size: 14px;
+    color: #488bff;
+    background: #fff;
+    text-align: center;
+    line-height: 36px;
+    margin-top: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #c0c4cc;
+}

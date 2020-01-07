@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "课间",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-filter": "/components/ks-components/filter/filter",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more",
+    "uni-icons": "/components/uni/uni-icons/uni-icons",
+    "group-list": "/pages/class-center/group/index",
+    "ask-list": "/pages/class-center/ask/index",
+    "photo-list": "/pages/class-center/photo/index",
+    "news-list": "/pages/class-center/news/index"
+  }
+}

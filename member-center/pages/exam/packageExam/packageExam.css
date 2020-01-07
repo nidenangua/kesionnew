@@ -1,0 +1,182 @@
+/* 考试记录列表 */
+
+/* 标题 */
+
+.package-exam__show {
+  width: calc(100% - 40px);
+  padding: 0 20px;
+  background: #fff;
+  border: solid 1px #ebebeb;
+  border-top: none;
+}
+
+.package-exam__showbox {
+  height: 460px;
+}
+
+.package-exam__noShow {
+  width: 100%;
+  background: #fff;
+  height: 450px;
+  padding-top: 100px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-top: none;
+}
+
+.package-exam__item {
+  width: 100%;
+  background: #fff;
+  margin-top: 20px;
+  border: solid 1px #ebebeb;
+  border-bottom: none;
+}
+
+.package-exam__item-title {
+  width: calc(100% - 40px);
+  height: 40px;
+  margin: 0 auto;
+  background-color: #f5f6fc;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #999;
+  line-height: 40px;
+}
+
+.package-exam__item-title p {
+  width: 400px;
+  text-align: center;
+  float: left;
+}
+
+.package-exam__item-title span {
+  width: 300px;
+  float: right;
+}
+
+/* 导航栏 */
+
+.package-exam__nav {
+  padding-left: 40px;
+  height: 56px;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 16px;
+  color: #333;
+  line-height: 56px;
+}
+
+.package-exam__nav span {
+  margin-right: 60px;
+  display: inline-block;
+  height: 56px;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 2px solid #488bff;
+  color: #488bff;
+  box-sizing: border-box;
+}
+
+.package-exam__box {
+  height: 85px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.package-exam__box:hover {
+  background: #f0f2f5;
+}
+
+.package-exam__left {
+  float: left;
+}
+
+.package-exam__title {
+  font-size: 14px;
+  color: #333;
+  margin: 17px 0 0 0;
+}
+
+.package-exam__title span {
+  color: #488bff;
+}
+
+.package-exam__text {
+  font-size: 12px;
+  color: #999;
+  margin: 14px 0 0 0;
+}
+
+.package-exam__text span {
+  margin-right: 38px;
+  float: left;
+}
+
+.package-exam__right {
+  width: 300px;
+  float: right;
+  margin: 25px 0 0 0;
+}
+
+.package-exam__score {
+  font-size: 12px;
+  color: #999;
+  float: left;
+  line-height: 38px;
+}
+
+.package-exam__score i {
+  font-size: 18px;
+  color: #488bff;
+  font-style: normal;
+}
+
+.package-exam__right .el-button {
+  float: right;
+  margin-right: 20px;
+}
+
+/* 难度 */
+
+.package-exam__difficulty {
+  float: left;
+  position: relative;
+}
+
+.package-exam__star {
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  margin-top: -10px;
+  display: block;
+  width: 80px;
+  height: 20px;
+  background: url("/ks_inc/member-center/images/exam/me_test_icon_hard.png")
+    no-repeat left center;
+  z-index: 10;
+}
+
+.package-exam__star-bg {
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  z-index: 1;
+  margin-top: -10px;
+  display: block;
+  width: 80px;
+  height: 20px;
+  background: url("/ks_inc/member-center/images/exam/me_test_icon_easy.png")
+    no-repeat left center;
+}
+
+.package-exam__pagination {
+  width: 100%;
+  height: 60px;
+  background: #fff;
+}
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  background: #f0f2f5;
+}

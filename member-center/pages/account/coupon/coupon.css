@@ -1,0 +1,264 @@
+.useraccount {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+}
+
+.useraccount-coupon__retrun {
+  padding: 7px 15px;
+  border-radius: 15px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.coupon-sort {
+  position: absolute;
+  right: 0;
+  top: 11.5px;
+  z-index: 100;
+}
+
+.coupon-sort .el-select {
+  width: 100px;
+}
+
+.coupon-exchange {
+  overflow: hidden;
+}
+
+.coupon-exchange .el-input {
+  width: 200px;
+  float: right;
+  margin-right: 10px;
+}
+
+.coupon-exchange .el-input__inner {
+  height: 32px;
+  line-height: 32px;
+}
+
+.coupon-exchange .el-button {
+  float: right;
+}
+
+.coupon-list {
+  padding-bottom: 20px;
+}
+
+.coupon-item {
+  position: relative;
+}
+
+.coupon-item img {
+  width: 100%;
+}
+
+.coupon-item__left {
+  width: calc(100% - 120px);
+  position: absolute;
+  left: 30px;
+  top: 16px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}
+.coupon-item__left h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 24px;
+  height: 48px;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.coupon-item__left span {
+  display: block;
+}
+
+.coupon-item__left span i {
+  font-size: 28px;
+  font-weight: bold;
+  font-style: normal;
+}
+.coupon-item__site {
+  color: #3c81f9;
+  font-size: 12px;
+  line-height: 18px;
+  height: 42px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+.coupon-item__site span {
+  border-bottom: 1px solid #3c81f9;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.coupon-item__right span {
+  border-bottom: 1px solid #fff;
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.coupon-item__right p {
+  position: absolute;
+  right: 30px;
+  top: 97px;
+  width: 60px;
+  height: 24px;
+  background: rgba(252, 252, 252, 1);
+  border-radius: 2px;
+  line-height: 24px;
+  text-align: center;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(60, 129, 249, 1);
+}
+
+.disabled-status {
+  background: #bcc3cc !important;
+  color: #fff !important;
+}
+
+.coupon-item__bottom {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(188, 195, 204, 1);
+  width: calc(100% - 60px);
+}
+
+.coupon-item__date {
+  overflow: hidden;
+}
+
+.coupon-item__date span {
+  float: left;
+}
+
+.coupon-item__date span i {
+  display: block;
+  font-style: normal;
+  font-size: 10px;
+}
+
+.coupon-item__scope {
+  margin-top: 5px;
+}
+
+/* 红包 */
+
+.redPacket-list {
+  padding-bottom: 20px;
+}
+.redPacket-item {
+  height: 260px;
+  padding-top: 20px;
+}
+.redPacket-item__left {
+  width: 100%;
+
+  font-size: 16px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #787c82;
+  line-height: 35px;
+  text-align: center;
+}
+.redPacket-item__left h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 24px;
+  height: 48px;
+  font-size: 18px;
+  font-weight: 400;
+
+  text-align: center;
+}
+.redPacket-item__left span {
+  display: block;
+}
+
+.redPacket-item__left span i {
+  font-size: 28px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.redPacket-item__middle {
+  padding: 0 20px;
+  font-size: 12px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+}
+
+.redPacket-item__scope {
+  margin-top: 5px;
+}
+
+.redPacket-item__date {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.redPacket-item__date span {
+  float: left;
+}
+
+.redPacket-item__date span i {
+  display: block;
+  font-style: normal;
+}
+.detail-dialog {
+  text-align: center;
+}
+
+.detail-dialog__box {
+  overflow: hidden;
+  border-top: 1px solid #e6e9ed;
+  padding: 40px 0 50px 20px;
+}
+
+.detail-dialog__box img {
+  float: left;
+}
+
+.detail-dialog__content {
+  width: calc(100% - 100px);
+  float: left;
+  margin-left: 20px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  line-height: 28px;
+  text-align: left;
+}
+
+.detail-box .el-dialog__body {
+  padding: 10px 35 30px 35px;
+}
+
+.detail-dialog__btn {
+  margin: 0 auto;
+}

@@ -1,0 +1,44 @@
+
+.ks-sort-popup.data-v-6c40d065 {
+  width: 100%;
+  height: 178px;
+  border-radius: 10px 10px 0px 0px;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+.ks-sort-box__title.data-v-6c40d065 {
+  height: 40px;
+  border-bottom: 1px solid #eee;
+  margin-top: 15px;
+}
+.ks-sort__title.data-v-6c40d065 {
+  width: 100px;
+  font-size: 16px;
+  color: rgba(26, 26, 26, 1);
+  float: left;
+  padding-left: 50%;
+  margin-left: -50px;
+  text-align: center;
+}
+.ks-sort-box__title image.data-v-6c40d065 {
+  width: 16px;
+  height: 16px;
+  margin-right: 20px;
+  float: right;
+  margin-top: 2.5px;
+}
+.ks-sort-box text.data-v-6c40d065 {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  background: #2987ee;
+  border-radius: 4px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40px;
+  text-align: center;
+  margin: 45px 20px 0 20px;
+}
+

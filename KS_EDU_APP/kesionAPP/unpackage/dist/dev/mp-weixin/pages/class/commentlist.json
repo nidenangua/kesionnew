@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "提问列表",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "comment-list": "/components/ks-components/comment-list/comment-list"
+  }
+}

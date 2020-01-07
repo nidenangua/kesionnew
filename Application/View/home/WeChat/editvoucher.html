@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>优惠券详情</title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/home.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/myvoucher.css" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/lCalendar.css" rel="stylesheet">
+    <script>
+    	var uoot = '<?php echo UOOT ?>';	
+    </script> 
+    <style>
+        body{
+            background:#F7FCFF
+        }
+    </style>
+</head>
+<body>
+    <div id="edit" class="edit" v-cloak>
+        <div class="column-title">选择优惠券种类</div>
+        <div class="column-wrap line" :class="{'active' : firsttype==1}" @click="firsttype=1">
+                <div class="radio-inner"></div>
+                <div class="inner-title">网校通用优惠券</div>
+        </div>
+        <div class="column-wrap" :class="{'active' : firsttype==2}" @click="firsttype=2">
+                <div class="radio-inner"></div>
+                <div class="inner-title">指定类型优惠券</div>
+        </div>
+        <div class="course" v-if="firsttype==2" @click="choiceCourse">
+            <div class="title1">{{course}}</div>
+            <div class="arrow"></div>
+        </div>
+        <div class="column-title">现金优惠券金额</div>
+        <div class="money-wrap">
+            <input type="number" v-model="vouchermoney">
+            元
+        </div>
+        <div class="column-title">选择优惠券种类</div>
+        <div class="column-wrap line" :class="{'active' : twotype==1}" @click="twotype=1">
+                <div class="radio-inner"></div>
+                <div class="inner-wrap">满<input type="number" v-model="fullmoney">元使用</div>
+        </div>
+        <div class="column-wrap line" :class="{'active' : twotype==2}" @click="twotype=2">
+                <div class="radio-inner"></div>
+                <div class="inner-wrap">无门槛使用</div>
+        </div>
+        <div class="column-title">选择有效时间</div>
+            <div class="column-wrap line" :class="{'active' : threetype==1}" @click="choicetime">
+                    <div class="radio-inner"></div>
+                    <div class="inner-con">
+                        <div class="title1">指定时间</div>
+                        <div class="title2">{{time}}</div>
+                        <div class="arrow"></div>
+                    </div>
+            </div>
+            <div class="column-wrap line" :class="{'active' : threetype==2}" @click="threetype=2">
+                    <div class="radio-inner"></div>
+                    <div class="inner-con">
+                        <div class="title1">无时间限制</div>
+                    </div>
+            </div>
+        <div class="column-title">发放方式</div>
+        <div class="column-wrap line" :class="{'active' : fourtype==1}"  @click="choiceNumber">
+                <div class="radio-inner"></div>
+                <div class="inner-con">
+                    <div class="title1">用户领取</div>
+                    <div class="title2">{{number}}</div>
+                    <div class="arrow"></div>
+                </div>
+        </div>
+        <div class="column-wrap line" :class="{'active' : fourtype==2}"  @click="choiceStudent">
+                <div class="radio-inner"></div>
+                <div class="inner-con">
+                    <div class="title1">指定用户</div>
+                    <div class="title2">{{user}}</div>
+                    <div class="arrow"></div>
+                </div>
+        </div>
+        <div class="bottom-options">
+            <div class="btn cancel" @click="back">取消</div>
+            <div class="btn sure" @click = 'addvoucher'>确认</div>
+        </div>
+        <div class="masked" v-show="visible"></div>
+        <!--选择课程-->
+        <div class="course-wrap" v-if="courseFlag">
+            <div class="course-header">选择知识课程</div>
+           
+                <div class="course-body" v-show="coursetab==1">
+                        <div class="item" :class="{'active' : coursetypetab==index}" @click="incoursetype(index)" v-for="(item, index) in courseTypeArr" :key="index">
+                            <div class="radio-inner"></div>
+                            {{item}}
+                        </div>
+                </div>
+           
+            
+                <div class="course-body" v-show="coursetab==2">
+                    <template v-if="courseArr.length > 0">
+                        <div class="item" :class="{'active' : courseitemtab==index}" @click="incourse(item.id,index,item.title)" v-for="(item, index) in courseArr" :key="index">
+                                <div class="radio-inner"></div>
+                                {{item.title}}
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div style="font-size: 16px;color: #999;text-align: center;">该分类暂时课程</div>
+                    </template>
+                </div>
+           
+            
+            <div class="course-bottom">
+                <div class="btn cancel" @click="courseBack">返回</div>
+                <div class="btn sure" @click="courseSure">确定</div>
+            </div>
+        </div>
+        <!--选择数量-->
+        <div class="number-wrap" v-if="numberFlag">
+            <div class="number-header line">用户领取</div>
+            <div class="number-body">
+                <div class="item">
+                    <span>优惠券数量: </span>
+                    <input type="number" v-model="voucherNumber">
+                    张
+                </div>
+                <div class="item">
+                    <span>每个限领:</span>
+                    <input type="number" v-model="everyvoucherNumber">
+                    张
+                </div>
+            </div>
+            <div class="number-bottom">
+                    <div class="btn cancel" @click="numberBack">返回</div>
+                    <div class="btn sure" @click="numberSure">确定</div>
+            </div>
+        </div>
+        <!--选择学生-->
+        <div class="student-wrap" v-if="studentFlag">
+            <div style="padding: 0 10px">
+                <div class="student-header line">指定用户</div>
+                <div class="student-body" v-show="studentTab==1">
+                        <div class="item line" :class="{'active' : studentInnerTab==1}"  @click="choicAllstudent">
+                                <div class="radio-inner"></div>
+                                选择全部用户
+                        </div>
+                        <div class="item" :class="{'active' : studentInnerTab==2}" @click="studentInnerTab=2">
+                                <div class="radio-inner"></div>
+                                选择部分用户
+                        </div>
+                        <div class="user" v-if="studentInnerTab==2" @click="studentTab=2">
+                                <div class="title1">{{user}}</div>
+                                <div class="arrow"></div>
+                        </div>
+                </div>
+                <div class="student-body" v-show="studentTab==2">
+                    <div class="item line" v-for="(item, index) in student" :key="index" @click="instudent(item.userid,item.username,index)"  :class="{'active' : item.checked}">
+                            <div class="radio-inner"></div>
+                            {{item.username}}
+                    </div>
+                </div>
+            </div>
+            <div class="student-bottom">
+                    <div class="btn cancel" @click="studentBack">返回</div>
+                    <div class="btn sure" @click="studentSure">确定</div>
+            </div>
+        </div>
+        <input type="hidden" id="demo1">
+        <input type="hidden" id="demo2"> 
+    </div>
+    <script src="<?php echo UOOT ?>Public/wechat/js/lCalendar.js"></script>
+    <script src="<?php echo UOOT;?>Public/common/js/voucher.js"></script>
+	<script>
+		module.import('editvoucher');
+		
+	</script>
+</body>
+</html>

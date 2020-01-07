@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="Keywords" content="<?php echo $seo_keywords;?>" />
+    <meta name="Description" content="<?php echo $seo_description;?>" />
+    <link rel="icon" href="<?php echo $favicon;?>" type="image/x-icon">
+    <title>
+        <?php echo $seo_title;?>
+    </title>
+    <link href='/Public/static/wechat/emoji/emoji.css?b976f0a1f2553909a429212967dc258d' rel='stylesheet'>
+    <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+.givezan {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+}
+
+.active-msg {
+  background: #409eff;
+  color: #fff;
+}
+
+.givezan-title {
+  overflow: hidden;
+  height: 40px;
+  line-height: 40px;
+  background: #f5f7fa;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.givezan-list {
+  padding-bottom: 20px;
+}
+
+.givezan-list .el-row {
+  text-align: center;
+  border-bottom: 1px solid #e6e9ed;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  padding: 20px 0;
+}
+
+.givezan-list .el-row .el-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.givezan-list .el-row .el-checkbox__label {
+  display: none;
+}
+
+.givezan-list__pldelete {
+  padding: 20px 43px;
+  overflow: hidden;
+}
+
+.givezan-list__pldelete .el-button {
+  margin-left: 10px;
+}
+
+.givezan .el-dialog__body {
+  padding: 10px 20px 30px 20px;
+}
+
+.givezan-msg {
+  border-top: 1px solid #e6e9ed;
+}
+
+.givezan-msg__btn {
+  text-align: center;
+}
+
+.givezan .el-form {
+  margin-top: 20px;
+  padding-right: 100px;
+}
+
+.givezan-sort {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.givezan-sort span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 36px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.givezan-sort .el-select > .el-input {
+  width: 130px;
+}

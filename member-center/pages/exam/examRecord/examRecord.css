@@ -1,0 +1,179 @@
+.disabled {
+  background-color: #f5f7fa !important;
+  color: #c0c4cc !important;
+  border: 1px solid #e4e7ed !important;
+  cursor: not-allowed !important;
+}
+
+/* 考试记录列表 */
+
+/* 标题 */
+
+.exam-record__item {
+  width: 100%;
+  background: #fff;
+  margin-top: 20px;
+  border: solid 1px #ebebeb;
+}
+
+.exam-record__item-title {
+  width: 100%;
+  height: 40px;
+  background-color: #f5f6fc;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #999;
+  line-height: 40px;
+}
+
+.exam-record__item-title p {
+  width: 400px;
+  text-align: center;
+  float: left;
+}
+
+.exam-record__item-title span {
+  width: 322px;
+  float: right;
+}
+
+/* 考试记录 */
+
+.exam-record__show {
+  width: 100%;
+  background: #fff;
+  border: solid 1px #ebebeb;
+  border-top: none;
+}
+
+.exam-record__showbox {
+  height: 460px;
+}
+
+.exam-record__noShow {
+  width: 100%;
+  background: #fff;
+  padding-top: 100px;
+  height: 450px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-top: none;
+}
+
+.exam-record__box {
+  height: 85px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.exam-record__box:hover {
+  background: #f0f2f5;
+}
+
+.exam-record__left {
+  float: left;
+  width: calc(100% - 322px);
+}
+
+.exam-record__title {
+  font-size: 14px;
+  color: #333;
+  margin: 17px 0 0 20px;
+}
+
+.exam-record__title span {
+  color: #488bff;
+}
+
+.exam-record__text {
+  font-size: 12px;
+  color: #999;
+  margin: 14px 0 0 20px;
+}
+
+.exam-record__text span {
+  margin-right: 28px;
+  float: left;
+}
+
+.exam-record__right {
+  width: 300px;
+  float: right;
+  margin: 25px 22px 0 0;
+}
+
+.exam-record__right .el-button {
+  float: right;
+  margin-left: 10px;
+}
+
+.exam-record__score {
+  font-size: 12px;
+  color: #999;
+  float: left;
+  line-height: 38px;
+}
+
+.exam-record__score i {
+  font-size: 18px;
+  color: #488bff;
+  font-style: normal;
+}
+
+.exam-record__right p {
+  font-size: 12px;
+  color: #999;
+  float: right;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.exam-record__right-again {
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+}
+
+/* 难度 */
+
+.exam-record__difficulty {
+  width: 120px;
+  float: left;
+  position: relative;
+}
+
+.exam-record__difficulty p {
+  display: inline-block;
+  color: #488bff;
+  margin-left: 55px;
+}
+
+.exam-record__star {
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  margin-top: -10px;
+  display: block;
+  height: 20px;
+  background: url("/ks_inc/member-center/images/exam/me_test_icon_hard.png")
+    no-repeat left center;
+  z-index: 10;
+  margin-right: 10px;
+}
+
+.exam-record__star-bg {
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  z-index: 1;
+  margin-top: -10px;
+  display: block;
+  width: 50px;
+  height: 20px;
+  background: url("/ks_inc/member-center/images/exam/me_test_icon_easy.png")
+    no-repeat left center;
+}
+
+.exam-record__pagination {
+  height: 60px;
+  background: #fff;
+  padding-right: 20px;
+}

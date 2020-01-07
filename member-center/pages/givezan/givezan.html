@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<div class="givezan">
+    <ks-title title="我的点赞" />
+    <div class="givezan-sort">
+        <span>类型：</span>
+        <el-select v-model="channelid" placeholder="请选择" size="medium" @change="changeSelect">
+            <el-option v-for="item in channelidList" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+    </div>
+    
+            <div class="givezan-title">
+                <el-row>
+                    <el-col :span="3"><span>选择</span></el-col>
+                    <el-col :span="2" style="text-align: left"><span>类型</span></el-col>
+                    <el-col :span="9" style="text-align: left"><span>点赞内容</span></el-col>
+                    <el-col :span="6"><span>点赞时间</span></el-col>
+      
+                    <el-col :span="4"><span>操作</span></el-col>
+                </el-row>
+            </div>
+            <div class="givezan-list">
+                <el-row type="flex" v-for="(item,i) in givezanList" :key="i">
+                    <el-col :span="3" align="middle">
+                        <el-checkbox-group v-model="checkList" @change="handleCheckedlistChange">
+                            <el-checkbox :label="item.id" :key="item.id"></el-checkbox>
+                        </el-checkbox-group>
+                    </el-col>
+                    <el-col :span="2" align="middle" style="text-align: left"> <span>{{item.type_str}}</span> </el-col>
+                    <el-col :span="9" align="middle" style="text-align: left">
+                        <div style="overflow: hidden;cursor: pointer;" @click="open(item.view_url)">{{item.title}}</div>
+                        
+                    </el-col>
+                    <el-col :span="6" align="middle"> <span>{{item.adddate}}</span></el-col>
+                    
+                    <el-col :span="4">
+                        <span style="cursor: pointer;" @click="deleteUserGivezan(item.id)">删除</span>
+                    </el-col>
+                </el-row>
+                <div class="givezan-list__pldelete" v-if="givezanList.length > 0">
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+                    <el-button size="medium" @click="deleteUserGivezan(checkListStr)" v-if='checkList.length > 0'>批量删除</el-button>
+                    <el-button size="medium" disabled v-else>批量删除</el-button>
+                </div>
+                <el-pagination style="text-align: center;background: #fff;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </div>
+   
+</div>

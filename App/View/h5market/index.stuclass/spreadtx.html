@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>收益提现</title>
+	<link href="<?php echo UOOT; ?>/Public/common/drag/css/reset.css" rel="stylesheet">
+	
+	<link href="<?php echo UOOT ?>Public/wechat/css/spread.css" rel="stylesheet"></head>
+<body style="background: #f3f4f5">
+		
+	<div class="cash-box">
+		<ul class="cash-list">
+			<?php foreach($info as $k =>$v){ ?>
+			<li>
+				<div class="cash-le">
+					<?php echo date('Y-m-d H:i:s',$v['adddate']); ?>
+				</div>
+				<div class="cash-re">
+					提现<font style="color:#e64a3b"><?php echo $v['cmoney']; ?></font> 元 <?php if($v['status']==0){ echo '审核中';}else{ echo '审核通过';} ?>
+				</div>
+			</li>
+			<?php } ?>
+		</ul>
+		<?php echo Noc($info); ?>
+	</div>
+	
+
+</body>
+
+
+</html>

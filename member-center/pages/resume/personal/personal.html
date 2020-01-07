@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<div class="personal">
+  <div class="personal-user__avatar">
+    <ks-image :src="form.photo+'?'+hash" type="user"></ks-image>
+    <div class="personal-user__hover" @click="changeAvatar">上传照片</div>
+    <input
+      style="display: none;"
+      type="file"
+      ref="file_avatar"
+      @change="uploadAvatar"
+    />
+  </div>
+  <el-form ref="form" :model="form" :rules="rules" status-icon label-width="111px">
+    <div style="overflow: hidden;">
+      <div class="personal-user__form">
+        <el-form-item label="姓名：" prop="realname">
+          <el-input
+            v-model="form.realname"
+            placeholder="请输入真实姓名"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="民族：" prop="nation">
+          <el-input v-model="form.nation" placeholder="请输入民族"></el-input>
+        </el-form-item>
+        <el-form-item label="身份证号码：">
+          <el-input
+            v-model="form.cardid"
+            placeholder="请输入身份证号码"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="身高：" prop="height">
+          <el-input v-model="form.height" placeholder="请输入身高"></el-input>
+        </el-form-item>
+        <el-form-item label="毕业院校">
+          <el-input v-model="form.school" placeholder="请输入院校"></el-input>
+        </el-form-item>
+        <el-form-item label="学历：" prop="qualifications">
+          <el-select v-model="form.qualifications" placeholder="请选择">
+            <el-option
+              v-for="item in education"
+              :key="item.name"
+              :label="item.name"
+              :value="item.name"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="计算机水平：" prop="computerlevel">
+          <el-input
+            v-model="form.computerlevel"
+            placeholder="请输入计算机等级"
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="手机号码：" prop="mobile">
+          <el-input
+            v-model="form.mobile"
+            placeholder="请输入手机号码"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="联系地址：">
+          <el-input v-model="form.address" placeholder="请输入地址"></el-input>
+        </el-form-item>
+      </div>
+      <div class="personal-user__form">
+        <el-form-item label="性别：" prop="sex">
+          <el-radio v-model="form.sex" label="男">男</el-radio>
+          <el-radio v-model="form.sex" label="女">女</el-radio>
+        </el-form-item>
+        <el-form-item label="出生年月：" prop="birthday">
+          <el-date-picker
+            v-model="form.birthday"
+            value-format="yyyy-MM"
+            type="month"
+            placeholder="选择年月"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="婚姻状况">
+          <el-select v-model="form.marriage" placeholder="请选择">
+            <el-option
+              v-for="item in marriageList"
+              :key="item.name"
+              :label="item.name"
+              :value="item.name"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="体重：" prop="nation">
+          <el-input v-model="form.kg" placeholder="请输入体重"></el-input>
+        </el-form-item>
+        <el-form-item label="毕业年份：">
+          <el-date-picker
+            v-model="form.graduationtime"
+            value-format="yyyy"
+            type="year"
+            placeholder="选择年"
+            @change="change"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="专业：">
+          <el-input
+            v-model="form.professional"
+            placeholder="请输入专业"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="外语水平：" prop="languagelevel">
+          <el-input
+            v-model="form.languagelevel"
+            placeholder="请输入外语等级"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="电子邮箱：">
+          <el-input
+            v-model="form.email"
+            placeholder="请输入您的邮箱地址"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="工作年限：">
+          <el-select v-model="form.workExperience" placeholder="请选择">
+            <el-option
+              v-for="item in experienceList"
+              :key="item.name"
+              :label="item.name"
+              :value="item.name"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </div>
+    </div>
+    <el-form-item style="padding: 0 20px" label="现居住地：">
+      <el-select
+        v-model="form.province"
+        placeholder="请选择省"
+        @change="changeProvince"
+        @visible-change="getProvinceList"
+      >
+        <el-option
+          v-for="item in provinceList"
+          :key="item.id"
+          :label="item.city"
+          :value="item.id"
+        >
+        </el-option>
+      </el-select>
+      <el-select
+        v-model="form.city"
+        placeholder="请选择市"
+        @change="changeCity"
+        @visible-change="getCityList"
+      >
+        <el-option
+          v-for="item in cityList"
+          :key="item.id"
+          :label="item.city"
+          :value="item.id"
+        >
+        </el-option>
+      </el-select>
+      <el-select
+        v-model="form.county"
+        placeholder="请选择区"
+        @change="changeCounty"
+        @visible-change="getAreaList"
+      >
+        <el-option
+          v-for="item in areaList"
+          :key="item.id"
+          :label="item.city"
+          :value="item.id"
+        >
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="供职情况：">
+      <el-radio
+        v-model="form.worktime"
+        label="我目前处于离职状态（或还未就业状态），可立即上岗。"
+        >我目前处于离职状态（或还未就业状态），可立即上岗。</el-radio
+      >
+      <el-radio
+        v-model="form.worktime"
+        label="我目前在职，正考虑换个新环境。（如有合适的工作机会，到岗时间一个月左右）"
+        >我目前在职，正考虑换个新环境。（如有合适的工作机会，到岗时间一个月左右）</el-radio
+      >
+      <el-radio
+        style="margin-right: 100px;"
+        v-model="form.worktime"
+        label="我对现有工作还算满意，如有更好的工作机会，我也可以考虑。（到岗时间另议）"
+        >我对现有工作还算满意，如有更好的工作机会，我也可以考虑。（到岗时间另议）</el-radio
+      >
+      <el-radio v-model="form.worktime" label="我目前暂时没有跳槽打算。"
+        >我目前暂时没有跳槽打算。</el-radio
+      >
+    </el-form-item>
+    <el-form-item style="padding: 0 20px" label="自我评价:" prop="review">
+      <el-input
+        v-model="form.review"
+        type="textarea"
+        :autosize="{ minRows: 4, maxRows: 6}"
+        placeholder="请输入自我评价"
+      ></el-input>
+    </el-form-item>
+  </el-form>
+  <div class="personal-user__formbtn">
+    <el-button style="padding: 12px 45px;" type="primary" @click="save()" round
+      >保存</el-button
+    >
+  </div>
+</div>

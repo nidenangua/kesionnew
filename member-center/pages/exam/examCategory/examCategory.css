@@ -1,0 +1,103 @@
+.userexam-active {
+    color: #488BFF !important;
+    border: 1px solid #488BFF !important;
+}
+
+.userexam-select {
+    width: 100%;
+    background: #fff;
+}
+
+.userexam-select__title {
+    line-height: 55px;
+    height: 55px;
+    width: 100%;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.userexam-select__title p {
+    font-size: 16px;
+    color: #333;
+    margin-left: 20px;
+    float: left;
+}
+
+.userexam-select__search {
+    width: 298px;
+    height: 34px;
+    background-color: #f6f6f6;
+    border-radius: 18px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.userexam-select__search input {
+    width: 200px;
+    height: 34px;
+    float: left;
+    margin-left: 12px;
+    background: #f6f6f6;
+    border: none;
+    outline: none;
+}
+
+.userexam-select__search input::placeholder {
+    font-size: 16px;
+    color: #888888;
+}
+
+.userexam-select__search img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    float: right;
+    margin-top: 7px;
+}
+
+.userexam-select__item {
+    width: calc(100% - 60px);
+    padding: 0 30px;
+    position: relative;
+}
+
+.userexam-select__top {
+    line-height: 34px;
+    margin-top: 30px;
+    height: 34px;
+    position: absolute;
+}
+.third-class{
+  margin-left: 130px;
+}
+.third-class .el-button{
+  margin-right: 20px !important;
+}
+.second-class{
+  color: #666 !important;
+  padding-left: 10px !important;
+}
+.userexam-select__top p {
+    color: #333;
+    font-size: 18px;
+    float: left;
+    width: 100px;
+    font-weight: bold;
+}
+.userexam-select__bottom li{
+  margin: 10px 0;
+}
+
+.userexam-select__bottom {
+    margin-left: 100px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.userexam-select__bottom .el-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.third-class-box{background: #f5f7fa;padding:0 20px 0px;}

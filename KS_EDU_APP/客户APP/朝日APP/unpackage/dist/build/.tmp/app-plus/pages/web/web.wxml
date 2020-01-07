@@ -1,0 +1,1 @@
+<view class="data-v-a546794e"><block wx:if="{{refresh}}"><web-view webview-styles="{{webviewStyles}}" src="{{url}}" class="data-v-a546794e"></web-view></block></view>

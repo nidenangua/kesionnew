@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<div class="userclass">
+    <div v-if="listFalg == true" style="padding-bottom: 20px">
+        <ks-title title="我的班级" />
+        <!-- 排序和搜索 -->
+        <div class="userclass-sort">
+            <el-input placeholder="请输入想要搜索的课程" size="medium" v-model="key" @change="changeInput">
+                <i slot="suffix" class="el-input__icon el-icon-search" @click="changeInput"></i>
+            </el-input>
+            <el-select v-model="sort" placeholder="请选择" size="medium" @change="changeSelect">
+                <el-option v-for="item in sortList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <span>排序：</span>
+        </div>
+        <!-- 课程列表 -->
+        <div class="userclass-list">
+            <div class="userclass-item" v-for="(item,i) in classList" :key="item.roomid">
+                <ks-image :src="item.defaultpic" @click="openView(item.get_viewurl)" />
+                <div class="userclass-item__word">
+                    <h2 @click="openView(item.get_viewurl)">{{item.title}}</h2>
+                    <span>共{{item.course_count}}门课程<i>|</i>{{item.home_worknum}}份作业</span>
+                    <p>班主任：{{item.room_teachername}}</p>
+                </div>
+                <div class="userclass-item__btn">
+                    <!-- <h3>有效期：永久</h3> -->
+                    <el-button style="padding: 7px 16px;" @click="openDetail(item)" round sizi="medium">查看更多</el-button>
+                </div>
+            </div>
+        </div>
+        <el-pagination style="text-align: center" @current-change="getUserClassList" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" v-if="pageCount>0">
+        </el-pagination>
+        <ks-empty msg="您还没有加入班级" v-else />
+    </div>
+
+    <!-- 详情页 -->
+    <div style="position:relative" v-else>
+        <div class="userclass-look">
+            <p>{{classInfo.title}}</p>
+            <span @click="openNotice(noticeList[0])" v-if="noticeList.length > 0"><i>最新公告：</i><i class="userclass-look__title">{{noticeList[0].title}}</i><i style="font-size: 12px;">查看详情>></i></span>
+        </div>
+        <el-button class="userclass-detail__retrun" @click="listFalg = true">返回</el-button>
+        <el-row>
+            <el-col :span="12">
+                <div class="userclass-detail">
+                    <ks-image :src="classInfo.defaultpic" />
+                    <div class="userclass-detail__word">
+                        <h1>{{classInfo.title}}</h1>
+                        <span>分类：{{classInfo.classname}}</span>
+                        <p>班主任：{{classInfo.room_teachername}}</p>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="12">
+                <!-- <div class="userclass-detail__item">
+                    <p>学员</p>
+                    <span>{{classInfo.student_num}}</span>
+                </div> -->
+                <div class="userclass-detail__item">
+                    <p>学员</p>
+                    <span>{{classInfo.buy_count}}</span>
+                </div>
+                <div class="userclass-detail__item">
+                    <p>公告</p>
+                    <span>{{classInfo.notice_count}}</span>
+                </div>
+                <div class="userclass-detail__item">
+                    <p>问答</p>
+                    <span>{{classInfo.ask_count}}</span>
+                </div>
+                <div class="userclass-detail__item">
+                    <p>训练营</p>
+                    <span>{{classInfo.train_count}}</span>
+                </div>
+                <div class="userclass-detail__item">
+                    <p>作业</p>
+                    <span>{{classInfo.homework_count}}</span>
+                </div>
+                <div class="userclass-detail__item">
+                    <p>课程</p>
+                    <span>{{classInfo.course_count}}</span>
+                </div>
+            </el-col>
+        </el-row>
+
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="课程" name="first">
+                <div class="userclass-coursesort">
+                    <div class="userclass-coursesort__box">
+                        <span :class="{'active-course':activeCourse == 0}" @click="activeCourse = 0">线上</span>
+                        <span :class="{'active-course':activeCourse == 1}" @click="activeCourse = 1">面授</span>
+                    </div>
+                </div>
+                <div v-if="activeCourse == 0">
+                    <div class="userclass-detaillist" v-if="courseList.length > 0">
+                        <div class="userclass-courseitem" v-for="(item,i) in courseList" :key="item.courseid">
+                            <ks-image :src="item.photourl" @click="openView(item.view_url)" />
+                            <div class="userclass-courseitem__word">
+                                <h2 @click="openView(item.view_url)">{{item.name}}</h2>
+                                <span>已学习{{parseFloat(item.has_learnpercent)}}%</span>
+                                <p v-if="parseFloat(item.has_learnpercent) > 0">上次学到：{{item.lastlearn_periodnam}}</p>
+                            </div>
+                            <el-button @click="openView(item.learn_url)">进入学习</el-button>
+                        </div>
+                    </div>
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+                <div v-else>
+                    <div class="userclass-detaillist" v-if="coursefacelist.length > 0">
+                        <div class="userclass-courseitem" v-for="(item,i) in coursefacelist" :key="item.courseid">
+                            <ks-image :src="item.photourl" @click="openView(item.view_url)" />
+                            <div class="userclass-courseitem__word">
+                                <h2 @click="openView(item.view_url)">{{item.name}}</h2>
+                            </div>
+                            <el-button @click="openView(item.view_url)">课程详情</el-button>
+                        </div>
+                    </div>
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="作业" name="second">
+                <div class="userclass-detaillist" v-if="homeworkList.length > 0">
+                    <div class="userclass-workitem" v-for="(item,i) in homeworkList" :key="item.workid">
+                        <h2 @click="open(item.view_url)">{{item.title}}</h2>
+                        <el-button @click="openHomework(item)">查看作业</el-button>
+                        <p>{{item.adddate}}</p>
+                    </div>
+                </div>
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </el-tab-pane>
+            <!-- <el-tab-pane label="训练营" name="third">
+                <div class="userclass-detaillist" v-if="trainList.length > 0">
+                    <div class="userclass-trainitem" v-for="(item,i) in trainList" :key="item.infoid">
+                        <ks-image :src="item.photourl" @click="openView(item.view_url)" />
+                        <div class="userclass-trainitem__word">
+                            <h2 @click="openView(item.view_url)">{{item.name}}</h2>
+                            <p>共{{item.camp_count}}期</p>
+                            <span>分类：{{item.classname}}</span>
+                            <span>总学分：{{item.sum_credit}}</span>
+                            <span>通过学分:{{item.pass_credit}}</span>
+                            <span>已得学分：{{item.has_credit}}</span>
+                            <span :style="{color:item.is_pass == 1 ? '#3c91f9' : '#e91c35'}">{{item.is_pass == 1 ? '已通过' : '未通过'}}</span>
+                        </div>
+                        <el-button @click="openView(item.view_url)">查看更多</el-button>
+                    </div>
+                </div>
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </el-tab-pane> -->
+            <el-tab-pane label="问答" name="four">
+                <div class="userclass-detaillist" v-if="askList.length > 0">
+                    <div class="userclass-askitem" v-for="(item,i) in askList" :key="item.chatid">
+                        <div class="userclass-askitem__userinfo">
+                            <ks-image type="user" :src="item.userface" />
+                            <div class="userclass-askitem__nickname">
+                                <span>{{item.username}}</span>
+                                <p>{{item.adddata}}</p>
+                            </div>
+                        </div>
+                        <div class="userclass-askitem__comment">
+                            {{item.content}}
+                        </div>
+                        <div style="margin-left: 56px" v-for="(child,c) in item.replaylist" :key="c">
+                            <div class="userclass-askitem__userinfo">
+                                <ks-image type="user" :src="item.userface" />
+                                <div class="userclass-askitem__nickname">
+                                    <span>{{item.username}}</span>
+                                    <p>{{item.adddata}}</p>
+                                </div>
+                            </div>
+                            <div class="userclass-askitem__comment">
+                                {{item.content}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </el-tab-pane>
+            <el-tab-pane label="公告" name="five">
+                <div class="userclass-detaillist" v-if="noticeList.length > 0">
+                    <div class="userclass-workitem" v-for="(item,i) in noticeList" :key="item.id">
+                        <h2 @click="openView(item.view_url)">{{item.title}}</h2>
+                        <el-button @click="openNotice(item)">查看公告</el-button>
+                        <p>{{item.adddate}}</p>
+                    </div>
+                </div>
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+    <el-dialog title="查看公告" :visible.sync="noticeDialogVisible" width="800px">
+        <div class="userclass-noticedetail">
+            <div class="noticedetail-title">{{noticeDetail.title}}</div>
+            <div style="padding: 20px 0 40px 0;" v-html="noticeDetail.content">
+
+            </div>
+            <div style="text-align: center">
+                <el-button style="padding: 10px 34px;" round size="medium" @click="noticeDialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <el-dialog title="查看作业" :visible.sync="homeworkDialogVisible" width="800px">
+        <div class="userclass-noticedetail">
+            <el-form style="margin-top: 20px;" label-width="111px">
+            <el-form-item label="标题：">
+                {{homeworkDetail.title}}
+            </el-form-item>
+            <!-- <el-form-item label="上传者：">
+                
+            </el-form-item> -->
+            <el-form-item label="发布时间：">
+                {{homeworkDetail.adddate}}
+            </el-form-item>
+            <el-form-item label="所属班级：">
+                {{homeworkDetail.room_name}}
+            </el-form-item>
+            <el-form-item label="作业要求：">
+                <div v-html="homeworkDetail.content"></div>
+            </el-form-item>
+            <el-form-item label="附件：">
+                <div v-if="homeworkDetail.fjurl">
+                    <el-button type="primary" size="medium" @click="downloadFile(homeworkDetail.fjurl,'downFile')"><a style="color:#fff" href="javascript:void(0);" id="downFile">附件下载</a></el-button>
+                </div>
+                <div v-else>无</div>
+            </el-form-item>
+            </el-form>
+            <div v-if="homeworkDetail.paper_list && homeworkDetail.paper_list.length > 0">
+            <div class="dialog-title">
+                <el-row>
+                    <el-col :span="24"><span style="margin-left: 20px;">试卷</span></el-col>                  
+                </el-row>
+            </div>
+            <div class="dialog-list">
+                <el-row type="flex" v-for="(item,i) in homeworkDetail.paper_list" :key="i">                  
+                    <el-col :span="20" align="middle"> <span style="margin-left: 20px;text-align: left">{{item.title}}</span></el-col>
+                    <el-col :span="4" align="middle"> 
+                        <div>
+                        <el-button type="primary" size="small" @click="openView(item.view_url)">做题</el-button>
+                    </div>
+                    </el-col>                   
+                </el-row>   
+            </div>
+        </div>
+            <div style="text-align: center">
+                <el-button style="padding: 10px 34px;" round size="medium" @click="homeworkDialogVisible = false">返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

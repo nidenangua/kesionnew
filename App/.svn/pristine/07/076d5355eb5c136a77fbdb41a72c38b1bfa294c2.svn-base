@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>图文详情</title>
+    <link href="<?php echo UOOT ?>Public/common/drag/css/reset.css?<?php $site = $this->cache->GetACache('setting');echo $site['jshash'];?>" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/microportal/rely.css?<?php $site = $this->cache->GetACache('setting');echo $site['jshash'];?>" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Tp/M/Skin01/css/coursedetail.css?<?php $site = $this->cache->GetACache('setting');echo $site['jshash'];?>" rel="stylesheet">
+    <link href="<?php echo UOOT ?>Public/wechat/css/fonts/iconfont.css?<?php $site = $this->cache->GetACache('setting');echo $site['jshash'];?>" rel="stylesheet">
+    <link href="//cdn.bootcss.com/photoswipe/4.1.1/default-skin/default-skin.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/photoswipe/4.1.1/photoswipe.css" rel="stylesheet">
+    <style>
+ 		
+ 		.directories-footer-block{height: 49px;overflow: hidden;}
+    	.directories-footer{background: #fff;height: 49px; line-height: 49px; background: #fff; position: fixed;width:100%;bottom:0;left:0; z-index: 100;}
+    	.directories-footer li{width: 33.3%;float:left; text-align: center;font-size:14px; position: relative; color:#e5412c;}
+    	.directories-footer li:before{content:'';width: 1px;height: 36px; position: absolute;top:50%;margin-top:-18px; left:0; background: #eee;}
+    	.directories-footer .disabled{color:#666}
+    	.directories-chapter{ position: fixed;bottom:-100%;width: 100%;left:0; transition: .4s; -webkit-transition: .4s;height: 60%; background: #fff; z-index: 100; overflow-y:auto; padding: 10px 0; -webkit-overflow-scrolling: touch;} 
+    	.directories-title{font-size: 18px;padding:10px 15px; }
+    	.directories-chapter-gray{width: 100%;}
+    	.zanwrap{
+    		background: #fff;
+    		text-align: right;
+    		padding-right: 15px;
+    	}
+    	.red{
+    		color: #E03520;
+    	}
+    </style>
+    <script>
+    	var uoot = '<?php echo UOOT ?>';	
+    </script>  
+</head>
+<body>
+	
+	
+	<div id="directories" v-show="render" v-cloak>
+		<div class="md-cross-bar">
+			<div class="md-cross-img">
+				<img :src="wxMsg.logo" />
+			</div>
+			<div class="md-cross-bar-info">
+				<div class="md-cross-title">{{wxMsg.sitename}}</div>
+				<div class="md-cross-tel">联系电话：{{wxMsg.tel}}</div>
+			</div>
+			<a href="<?php echo wx_Url($this->wxid)?>" class="md-cross-btn">店铺主页</a>
+		</div>
+		<div class="course-info">  
+			<div class="voice-title">{{listdata.title}}</div>
+			
+		</div>
+		<div class="musici-lists" style="margin-top:0px;">
+			<div class="article" id="articleContent"></div>
+		</div>
+		
+		<div class="musici-lists" style="margin-top:0px" v-if="msg.isbuy != 1 && listdata.freeplay != 1">
+			<div class="article" v-html="listdata.intro"></div>
+  			<div class="buy-article-tips line line-top">本内容需要参与之后才能阅读全文</div>
+		</div>
+		<div class="zanwrap">
+			<div style="display: inline-block;" @click="allzan">
+				<img style="position: static;border-radius: 0;width: 16px;height: 16px;" class="del-icon" src="<?php echo UOOT;?>Public/wechat/images/icon/comment_btn_like_n.png" v-if="isdz==0"/>
+				<img  style="position: static;border-radius: 0;height: 16px;width: 16px;" class="del-icon" src="<?php echo UOOT;?>Public/wechat/images/icon/comment_btn_like_p.png" v-if="isdz==1"/>
+				<span style="vertical-align: super;font-size: 12px;line-height: 20px;height: 20px;" :class="isdz==1 ?'red':''">{{zannumber}}</span>
+			</div>
+			
+		</div>
+		<div class="confirm-bg" v-show="bot=='49px'" @click="bot='-100%'"></div>
+		<div class="directories-chapter" v-if="chapter.length != 0" :style="{bottom:bot}"> 
+			<div class="directories-title">{{msg.title}}</div>
+			<template v-if="istype == 0">
+				
+				<template v-for="site in chapter">
+					
+					<div class="chapter-wrap">
+						<div class="chapter-title level1 line" @click.stop="meau"><span>{{site.title}}</span>
+							<div class="arrow"></div>
+						</div>
+						<div class="sections" style="display: block;">
+							<div class="section-wrap" v-for="node in site.Section">
+								<div class="section">
+									<div class="section-title level2 line"><span>{{node.title}}</span>
+									</div>
+									<div class="hour-wrap" v-for="hour in node.keshi">
+										<div class="hour line" @click="inchapter(hour.chapterid)">
+											<div class="hour-title" :class="{'imgactive':hour.chapterid == chapterid}"><i class="iconfont icon-wenzhang"></i>{{hour.title}}</div>
+											<div class="freeplay"  v-html="forFreePlay(hour.chapterid)"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</template>
+				
+			</template>
+
+			<template v-else-if="istype == 1">
+				
+				<template v-for="site in chapter">
+					
+					<div class="chapter-wrap">
+						<div class="chapter-title level1" @click.stop="meau"><span>{{site.title}}</span>
+							<div class="arrow"></div>
+						</div>
+						<div class="sections" style="display: block;">
+							<div class="section-wrap">
+								<div class="section" v-if="site.keshi.length>0" >
+									<div class="hour-wrap" v-for="hour in site.keshi">
+										<div class="hour line" @click="inchapter(hour.chapterid)">
+
+											<div class="hour-title" :class="{'imgactive':hour.chapterid == chapterid}"><i class="iconfont icon-wenzhang"></i>{{hour.title}}</div>
+											<div class="freeplay" v-html="forFreePlay(hour.chapterid)"></div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="section" v-else>
+									<div style="margin-left: 20px;">暂未设置课时</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</template>
+	
+			</template>
+			
+			<!--单课时-->
+			<template v-else-if="istype == 2">
+				
+				<div class="chapter-wrap">
+					<div class="section-wrap">
+						<div class="section">
+							<div class="hour-wrap" v-for="hour in chapter">
+								<div class="hour line" @click="inchapter(hour.chapterid)">
+									<div class="hour-title" :class="{'imgactive':hour.chapterid == chapterid}"><i class="iconfont icon-wenzhang"></i>{{hour.title}}</div>
+									<div class="freeplay" v-html="forFreePlay(hour.chapterid)"></div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</template>			
+	
+		</div>
+		
+		<div class="directories-footer-block"></div>
+		<div class="directories-footer line line-top">
+			<ul>
+				<li @click="changedata('prev')" :class="{disabled:chapterid==firstKeshi}"><i class="iconfont icon-zuo"></i>上一篇</li>
+				<li @click="openContents">目录</li>
+				<li @click="changedata('next')" :class="{disabled:chapterid==lastKeshi}">下一篇 <i class="iconfont icon-zuo-copy"></i></li>
+			</ul>
+		</div>
+		
+	</div>
+	
+	
+	
+	<!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" id="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+         
+            <!-- Background of PhotoSwipe. 
+                It's a separate element as animating opacity is faster than rgba(). -->
+            <div class="pswp__bg"></div>
+        
+            <!-- Slides wrapper with overflow:hidden. -->
+            <div class="pswp__scroll-wrap">
+    
+            <!-- Container that holds slides. 
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+    
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+    
+                <div class="pswp__top-bar">
+    
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+    
+                    <div class="pswp__counter"></div>
+    
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+    
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+    
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+    
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+    
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+    
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+	
+	<script src="<?php echo UOOT;?>Public/common/js/MicroPortal.js?<?php $site = $this->cache->GetACache('setting');echo $site['jshash'];?>"></script>
+	<script>
+
+		module.import('directories',['photoswipe','photoswipe_ui']); 
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "学习记录",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-filter": "/components/ks-components/filter/filter",
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
+}

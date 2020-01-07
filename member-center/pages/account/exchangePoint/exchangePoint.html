@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<div class="useraccount">
+    <ks-title title="点券兑换" />
+    <el-button class="useraccount-exchangepoint__retrun" @click="retrunView">返回</el-button>
+    <div class="useraccount-exchangepoint__tab">
+        <span :class="{'active-exchangepoint':activeExchangepoint == 0}" @click="changeTabs(0)">余额兑换点券</span>
+        <span :class="{'active-exchangepoint':activeExchangepoint == 1}" @click="changeTabs(1)">积分兑换点券</span>
+    </div>
+    <div class="useraccount-exchangepoint__info">
+        <el-form label-width="140px" v-if="activeExchangepoint == 0">
+            <el-form-item label="可用余额：">
+                <span><i>{{moneyData.available_balance}}</i>{{moneyData.money_unit}}</span>
+                <span style="color: #3C81F9" @click="openView('money')">明细</span>
+            </el-form-item>
+            <el-form-item label="可用点券：">
+                <span><i>{{moneyData.available_point}}</i>{{moneyData.point_unit}}</span>
+                <span style="color: #3C81F9" @click="openView('point')">明细</span>
+            </el-form-item>
+            <el-form-item label="兑换比率：">
+                1元兑换1个点券，您当前可用余额为<span style="color: #E91C35">{{moneyData.available_balance}}</span>元，您最多可以兑换 <span style="color: #2BC152">{{Math.floor(moneyData.available_balance)}}</span>个点券。
+            </el-form-item>
+            <el-form-item label="本次兑换：">
+                <el-input style="width: 160px;margin-right: 10px;" type="number" v-model="moneyCount" placeholder="输入个数"></el-input>
+                <span>个</span>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" size="medium" @click="saveMoneyExchangePoint">确定兑换</el-button>
+            </el-form-item>
+        </el-form>
+        <el-form label-width="140px" v-else-if="activeExchangepoint == 1">
+            <el-form-item label="可用积分：">
+                <span><i>{{scoreData.available_score}}</i>{{scoreData.score_unit}}</span>
+                <span style="color: #3C81F9" @click="openView('score')">明细</span>
+            </el-form-item>
+            <el-form-item label="可用点券：">
+                <span><i>{{scoreData.point}}</i>{{scoreData.point_unit}}</span>
+                <span style="color: #3C81F9" @click="openView('point')">明细</span>
+            </el-form-item>
+            <el-form-item label="兑换比率：">
+                    {{scoreData.scoretopoint_rate}}个积分兑换1个点券，您当前可用积分为<span style="color: #E91C35">{{scoreData.available_score}}</span>个，您最多可以兑换 <span style="color: #2BC152">{{scoreData.most_point}}</span>个点券。
+            </el-form-item>
+            <el-form-item label="本次兑换：">
+                <el-input style="width: 160px;margin-right: 10px;" type="number" v-model="scoreCount" placeholder="输入个数"></el-input>
+                <span>个</span>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" size="medium" @click="saveScoreExchangePoint">确定兑换</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+</div>

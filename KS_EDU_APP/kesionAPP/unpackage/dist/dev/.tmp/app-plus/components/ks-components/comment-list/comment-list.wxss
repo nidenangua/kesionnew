@@ -1,0 +1,290 @@
+
+.ks-imageuser.data-v-198210cc {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 43px; 
+	width: 43px;
+}
+.ks-comment-wrap.data-v-198210cc{
+	position: relative;
+	height: 100%;
+	padding: 0 15px ;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+/*讨论*/
+.ks-comment.data-v-198210cc {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+.ks-comment__expression.data-v-198210cc{
+	margin-right:10px;
+	
+	position: relative;
+}
+.ks-comment__image.data-v-198210cc {
+	margin: 0 10px;
+	position: relative;
+}
+.ks-comment__input.data-v-198210cc{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	background: #f6f6f6;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.ks-comment__expression image.data-v-198210cc,
+.ks-comment__image image.data-v-198210cc {
+	width: 22px;
+	height: 22px;
+	vertical-align: middle;
+}
+.ks-comment-image .comment-image.data-v-198210cc {
+	display: inline-block;
+	width: 180px;
+	height: 120px;
+	overflow: hidden;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+.ks-comment-image .comment-image .ks-image.data-v-198210cc {
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+}
+.ks-comment-list.data-v-198210cc {
+	margin-top: 10px;
+	padding-bottom: 53px;
+}
+.ks-comment__li.data-v-198210cc {
+	padding-top: 20px;
+	border-bottom: 1px solid #eee;
+}
+.ks-comment__box.data-v-198210cc {
+	position: relative;
+	padding-left: 54px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #eee;
+}
+.ks-imageuser.data-v-198210cc {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 43px;
+	width: 43px;
+}
+.ks-comment__box.data-v-198210cc {
+	margin-bottom: 0;
+	border-bottom: 0;
+}
+.ks-comment__first.data-v-198210cc {
+	margin-bottom: 0;
+	border-bottom: 0;
+}
+.ks-comment__avator.data-v-198210cc {
+	width: 43px;
+	height: 43px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	border-radius: 43px;
+}
+.ks-comment__avator image.data-v-198210cc {
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+}
+.ks-comment__username.data-v-198210cc {
+	font-weight: normal;
+	margin-bottom: 10px;
+	color: #666;
+	line-height: 14px;
+	font-size: 14px;
+}
+.ks-comment__content.data-v-198210cc {
+	line-height: 20px;
+	font-size: 14px;
+	margin-bottom: 15px;
+	color: #666;
+}
+.ks-comment__bottom.data-v-198210cc {
+	color: #bcc3cc;
+	line-height: 13px;
+	font-size: 13px;
+}
+.ks-comment__bottom text.data-v-198210cc {
+	margin-right: 20px;
+	color: #bcc3cc;
+	font-size: 13px;
+	line-height: 13px;
+}
+.ks-comment-look.data-v-198210cc {
+	color: #3c81f9;
+	cursor: pointer;
+}
+.ks-comment__reply.data-v-198210cc {
+	background: #f5f7fa;
+	padding: 20px 20px 0;
+	margin-bottom: 20px;
+	display: none;
+}
+.ks-no-reply.data-v-198210cc {
+	padding: 0 !important;
+	margin-bottom: 0 !important;
+}
+/*表情*/
+.ks-emoji.data-v-198210cc {
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 12px;
+	-webkit-box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .1);
+	        box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .1);
+	z-index: 99;
+	background: #EDEDED;
+	height: 160px;
+	overflow: auto;
+	-webkit-transition: width 2s;
+	-o-transition: width 2s;
+	transition: width 2s;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.ks-emoji__item.data-v-198210cc {
+	height: 30px;
+	width: 30;
+	padding: 3px;
+	cursor: pointer;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.ks-emoji-image.data-v-198210cc {
+	width: 24px;
+	height: 24px;
+}
+.ks-emoji__item.data-v-198210cc:hover {
+	background: #f3f3f3;
+}
+/*图片上传*/
+.ks-upload-box.data-v-198210cc {
+	padding: 10px;
+}
+.ks-upload-btn.data-v-198210cc {
+	padding: 9px 0;
+	background: #3c81f9;
+	color: #FFFFFF;
+	border-radius: 3px;
+	border: 0;
+	margin-top: 15px;
+	width: 100px;
+}
+.ks-upload-upimage.data-v-198210cc {
+	position: relative;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border: 1px dashed #ddd;
+	font-size: 12px;
+	text-align: center;
+	color: #999;
+}
+.ks-upload-upimage image.data-v-198210cc{
+	display: block;
+	margin:10px auto auto;
+}
+.ks-upload-showui__li.data-v-198210cc {
+	width: 130rpx;
+	height: 130rpx;
+	position: relative;
+	overflow: hidden;
+	margin:6rpx;
+	float: left;
+	border-radius: 10rpx;
+	overflow: hidden;
+}
+.ks-upload-showui__li image.ks-upload-showimage.data-v-198210cc {
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	z-index: 6;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+}
+.ks-upload-showview.data-v-198210cc {
+	position: absolute;
+	z-index: 9;
+	bottom: 0;
+	width: 100%;
+	padding: 3px;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	background: rgba(0, 0, 0, .6);
+}
+.ks-upload-showview image.data-v-198210cc {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	margin: 0 5px;
+}
+.ks-upload-showui ._li:first-child image.ks-upload-left.data-v-198210cc {
+	opacity: .6;
+	cursor: no-drop;
+}
+.ks-upload-showui ._li:last-child image.ks-upload-right.data-v-198210cc {
+	opacity: .6;
+	cursor: no-drop;
+}
+.ks-upload-oneright.data-v-198210cc {
+	opacity: .6;
+	cursor: no-drop !important;
+}
+/* 播放页的问答 */
+.ks-play-comment .ks-emoji.data-v-198210cc {
+	width: 320px;
+	left: -102px;
+	padding: 14px;
+}
+.ks-play-comment .comment-image.data-v-198210cc {
+	width: 50px;
+	height: 50px;
+}
+.ks-comment-foot.data-v-198210cc{
+	position: fixed;
+	bottom: 0;
+	background: #fff;
+	z-index: 888;
+	width: 100%;
+	left: 0;
+	overflow: hidden;
+}
+

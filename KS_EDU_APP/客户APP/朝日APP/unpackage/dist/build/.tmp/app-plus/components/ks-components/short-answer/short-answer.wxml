@@ -1,0 +1,1 @@
+<view class="data-v-da71bd16"><block wx:if="{{showTextarea}}"><textarea class="short-answer data-v-da71bd16" placeholder="请输入答案" data-event-opts="{{[['input',[['__set_model',['$0','useranswer','$event',[]],['item']],['handleBlur',['$event']]]]]}}" value="{{item.useranswer}}" bindinput="__e"></textarea></block></view>

@@ -1,0 +1,15 @@
+{
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "缓存管理",
+        "fontSize": "16px",
+        "width": "auto",
+        "color": "#5FBF82"
+      }
+    ]
+  },
+  "navigationBarTitleText": "选择缓存",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {}
+}

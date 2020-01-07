@@ -1,0 +1,671 @@
+﻿<!DOCTYPE html>
+<div class="userorder">
+    <div v-if="visible == 0">
+        <ks-title title="我的订单" :underline="false" />
+        <div style="position: relative">
+            <div class="sort" v-if="activeName == 'first'">
+                <el-select v-model="statusCourse" placeholder="请选择" size="medium" @change="change">
+                    <el-option v-for="item in statusCourseList" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="sort" v-else-if="activeName == 'third'">
+                <el-select v-model="groupStatus" placeholder="请选择" size="medium" @change="change">
+                    <el-option v-for="item in groupStatusList" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="sort" v-else-if="activeName == 'second'">
+                <el-select v-model="status" placeholder="请选择" size="medium" @change="change">
+                    <el-option v-for="item in statusList" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="sort" v-else-if="activeName == 'four'">
+                <el-select v-model="bargainStatus" placeholder="请选择" size="medium" @change="change">
+                    <el-option v-for="item in bargainStatusList" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="sort" v-else-if="activeName == 'five'">
+                <el-select v-model="paperFlag" placeholder="请选择" size="medium" @change="change">
+                    <el-option v-for="item in paperFlagList" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </div>
+            <el-tabs v-model="activeName" @tab-click="change">
+                <el-tab-pane label="课程订单" name="first">
+                    <!-- 排序和搜索 -->
+                    <div class="userorder-sort">
+                        <el-select v-model="type" placeholder="请选择" size="medium">
+                            <el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value">
+                            </el-option>
+                        </el-select>
+                        <div class="input">
+                            <el-input placeholder="请输入要搜索的内容" size="medium" v-model="key" @change="change">
+                                <i slot="suffix" class="el-input__icon el-icon-search" @click="change"></i>
+                            </el-input>
+                        </div>
+                    </div>
+                    <div class="userorder-orderlist">
+                        <div class="userorder-courseorderitem" v-for="(item,i) in courseOrderList" :key="i">
+                            <div class="userorder-courseorderitem__title">
+                                <span>订单编号：{{item.orderid}}</span>
+                                <span>下单时间：{{item.inputtime}}</span>
+                                <span v-if="item.status_str === '未付款'" style="float: right;margin-right:20px" v-html="item.orderfailurestr"></span>
+                            </div>
+                            <div class="order-list">
+                            <el-row type="flex" >
+                                <el-col :span="4" align="middle">
+                                    <div class="order-image" v-for="(course,c) in item.itemlist" :key="c">
+                                        <ks-image :src="course.photourl" @click="open(course.view_url)" />
+                                    </div>    
+                                </el-col>
+                                <el-col :span="7" align="middle" style="border-right: 1px solid #e6e9ed;"> 
+                                    <div class="userorder-courseorderitem__word" v-for="(course,c) in item.itemlist" :key="c">
+                                        <h2 @click="open(course.view_url)">{{course.coursename}}</h2>
+                                        <div style="overflow: hidden;margin-top: 5px;">
+                                            <span style="float: left;">{{course.costype}}</span>
+                                            <span style="margin-left: 5px;float: left;cursor: pointer;" v-if="item.comment_button" :style=" {color:course.comment_str == '去评价' && '#3C81F9'}" @click="openComment(course,item)">{{course.comment_str}}</span>
+                                            <span style="float: right;width:calc(100% - 106px);text-align: right">{{course.costype == '活动' ? '￥'+course.json.price+'x ' + course.json.num : course.price+'x 1'}}</span>
+                                        </div>
+                                        <div style="margin-top: 5px;" v-if="course.train_camp && course.train_camp.is_buyallcos == 0">
+                                            <span>营期：{{course.train_camp.camp_title}}</span>
+                                        </div>
+                                    </div>
+                                </el-col>
+                                <el-col :span="5" align="middle" style="border-right: 1px solid #e6e9ed;"> 
+                                    <div class="userorder-courseorderitem__price">
+                                        <div v-if="item.itemlist.length > 0">
+                                            <span v-if="item.itemlist[0].costype == '活动'&&item.itemlist[0].json.cash_deposit - 0 != 0">{{'保证金：'+'￥'+item.itemlist[0].json.cash_deposit+'x ' + item.itemlist[0].json.num}}</span>
+                                        </div>
+                                        
+                                        <span style="margin: 5px 0;">总价：&nbsp;￥{{item.total_price}}</span>
+                                        <span style="margin: 5px 0;">优惠券抵扣：&nbsp;{{item.use_couponmoney}}</span>
+                                        <span style="margin: 5px 0;">支付：&nbsp;<i>{{item.pay_amount}}</i></span>
+                                    </div>
+                                </el-col>
+                                <el-col :span="3" align="middle" style="border-right: 1px solid #e6e9ed;"> 
+                                    <div class="userorder-courseorderitem__deliver">
+                                        <p>{{item.status_str}}</p>
+                                    </div>
+                                </el-col>
+                                <el-col :span="5">
+                                    <div class="userorder-courseorderitem__button">
+                                        <el-button type="warning" size="medium" v-if="item.pay_button" @click="openPay(item)">立即支付</el-button>
+                                        <span style="margin: 5px 0;" @click="deleteUserCourseOrder(item)" v-if="item.del_button">删除订单</span>
+                                        <el-button v-if="item.refund_button" type="warning" size="medium" @click="returnUserCourseOrder(item)">立即退款</el-button>
+                                        <el-button v-if="item.receipt_button" type="primary" size="medium" plain @click="receiptUserCourseOrder(item)">确认收货</el-button>
+                                        <span style="margin: 5px 0;" @click="getUserCourseOrderDetail(item)">订单详情</span>
+                                        
+                                    </div>
+                                </el-col>
+                            </el-row>
+                            </div>
+                        </div>
+                    </div>
+                    <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="coursePageCount" @current-change="getUserCourseOrderList" v-if="coursePageCount > 0" />
+                    <ks-empty msg="您还没有课程订单" v-else />
+                </el-tab-pane>
+                <el-tab-pane label="商城订单" v-if="showMall" name="second">
+                    
+                    <div class="userorder-sort">
+                        <div class="input">
+                            <el-input placeholder="请输入要搜索的内容" size="medium" v-model="keyWord" @change="change">
+                                <i slot="suffix" class="el-input__icon el-icon-search" @cilck="change"></i>
+                            </el-input>
+                        </div>
+                    </div>
+                    <div class="userorder-orderlist">
+                        <div class="userorder-courseorderitem" v-for="(item,i) in shopOrderList" :key="i">
+                            <div class="userorder-courseorderitem__title">
+                                <span>订单编号：{{item.orderid}}</span>
+                                <span>下单时间：{{item.inputtime}}</span>
+                                <span style="float: right;margin-right:20px;color: #3c81f9">{{item.verifycode_str}}</span>
+                            </div>
+                            <div class="order-list">
+                                <el-row type="flex" >
+                                    <el-col :span="4" align="middle">
+                                        <div class="order-image" v-for="(course,c) in item.itemlist" :key="c">
+                                            <ks-image :src="course.defaultpic" @click="open(course.view_url)" />
+                                        </div>    
+                                    </el-col>
+                                    <el-col :span="7" align="middle" style="border-right: 1px solid #e6e9ed;"> 
+                                        <div class="userorder-courseorderitem__word" v-for="(course,c) in item.itemlist" :key="c">
+                                            <h2 @click="open(course.view_url)">{{course.title}}</h2>
+                                            <div style="overflow: hidden;margin-top: 5px;">
+                                                <span style="margin: 5px 0;float: left;cursor: pointer;" v-if="item.comment_button" :style=" {color:course.comment_str == '去评价' && '#3C81F9'}" @click="openComment(course)">{{course.comment_str}}</span>
+                                                <span style="float: right;margin: 5px 0;">{{course.price}} x 1</span>
+                                            </div>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="5" align="middle" style="border-right: 1px solid #e6e9ed;"> 
+                                        <div class="userorder-courseorderitem__price">
+                                            <span style="margin: 5px 0;">总价：&nbsp;￥{{item.total_price}}</span>
+                                            <span style="margin: 5px 0;">优惠券抵扣：&nbsp;{{item.use_couponmoney}}</span>
+                                            <span style="margin: 5px 0;">支付：&nbsp;<i>{{item.pay_amount}}</i></span>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="3" align="middle" style="border-right: 1px solid #e6e9ed;"> 
+                                        <div class="userorder-courseorderitem__deliver">
+                                            <p>{{item.order_status_str}}</p>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="5">
+                                        <div class="userorder-courseorderitem__button">
+                                            <el-button type="warning" v-if="item.pay_button" @click="openPay(item)">立即支付</el-button>
+                                            <span style="margin: 5px 0;" v-if="item.del_button" @click="deleteUserShopOrder(item)">删除订单</span>
+                                            <el-button v-if="item.refund_button" type="warning" size="medium" @click="returnUserShopOrder(item)">退货退款</el-button>
+                                            <el-button v-if="item.receipt_button" type="primary" plain @click="receiptUserShopOrder(item)">确认收货</el-button>
+                                            <span style="margin: 5px 0;" @click="getUesrShopOrderDetail(item)">订单详情</span>
+                                            
+                                            <span style="margin: 5px 0;" @click="reBuyUserShop(item)" v-if="item.more_buy">再次购买</span>
+                                        </div>
+                                    </el-col>
+                                </el-row>
+                            </div>
+                        </div>
+                    </div>
+                    <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="shopOrderPageCount" @current-change="getUesrShopOrderList" v-if="shopOrderPageCount > 0" />
+                    <ks-empty msg="该分类下无商城订单" v-else />
+                </el-tab-pane>
+                <el-tab-pane label="我的拼团" name="third">
+                    <div class="userorder-assemblelist">
+                        <div class="userorder-assembleitem" v-for="(item,i) in assembleList" :key="i">
+                            <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                            <div class="userorder-assembleitem__word">
+                                <h2 @click="open(item.view_url)">{{item.title}}</h2>
+                                <span>{{item.group_number}}人团</span>
+                                <span>单购价：￥{{item.favorable_price}}</span>
+                            </div>
+                            <div class="userorder-assembleitem__right">
+                                <h2>拼团价：<i>￥{{item.group_price}}</i></h2>
+                                <div class="userorder-assembleitem__button">
+                                    <el-button @click="open(item.collage_url)" type="primary" plain>查看拼团详情</el-button>
+                                    <p :style="{color:(item.collagestatus == 1 && '#2BC152') || (item.collagestatus == 2 && '#606367') || (item.collagestatus == 3 && 'e91c35')}">{{item.collagestatus_str}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="assemblePageCount" @current-change="getUserGroupOrderList" v-if="assemblePageCount > 0" />
+                    <ks-empty msg="该分类下没有拼团订单" v-else />
+                </el-tab-pane>
+                <el-tab-pane label="我的砍价" name="four">
+                    <div class="userorder-assemblelist">
+                        <div class="userorder-assembleitem" v-for="(item,i) in bargainOrderList" :key="i">
+                            <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                            <div class="userorder-assembleitem__word">
+                                <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                                <div>
+                                    <span style="display: inline-block;margin-right: 20px;">原价：￥<i style="text-decoration: line-through;font-style: normal;">{{item.original_price}}</i></span>
+                                    <span style="display: inline-block">最低价：￥{{item.min_price}}</span>
+                                </div>
+                                <span>已砍：￥{{item.done_price}}</span>
+                            </div>
+                            <div class="userorder-assembleitem__right">
+                                <h2>实付价：<i>￥{{item.pay_money}}</i></h2>
+                                <div class="userorder-assembleitem__button">
+                                    <el-button @click="open(item.view_url)" type="primary" plain>去学习</el-button>
+                                    <p :style="{color:(item.status_str == 1 && '#2BC152') || (item.status_str == 2 && '#606367') || (item.status_str == 3 && 'e91c35')}">{{item.status_str}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="bargainPageCount" @current-change="getUserBargainOrderList" v-if="bargainPageCount > 0" />
+                    <ks-empty msg="该分类下没有砍价订单" v-else />
+                </el-tab-pane>
+                <el-tab-pane label="我的试卷" name="five">
+                    <div class="userorder-assemblelist">
+                        <div class="userorder-assembleitem" v-for="(item,i) in paperOrderList" :key="i">
+                            <ks-image fit="contain" src="/ks_inc/member-center/images/common/shijuan.png" @click="open(item.view_url)" />
+                            <div class="userorder-assembleitem__word">
+                                <h2 @click="open(item.view_url)">{{item.title}}</h2>
+                                <span>备注：{{item.remark}}</span>
+                            </div>
+                            <div class="userorder-assembleitem__right">
+                                <h2>{{(item.flag == 0&& '金额:')||(item.flag == 1&& '点券:')||(item.flag == 2&& '积分:') }}<i>{{item.flag == 0 ?'￥':''}}{{item.pay_money}}</i></h2>
+                                <div class="userorder-assembleitem__button">
+                                    <el-button @click="open(item.view_url)" type="primary" plain>去考试</el-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <el-pagination style="text-align: center;padding:20px 0;background: #fff" :current-page="currentPage" background layout="prev, pager, next" :total="paperPageCount" @current-change="getUserPaperOrderList" v-if="paperPageCount > 0" />
+                    <ks-empty msg="该分类下没有试卷订单" v-else />
+                </el-tab-pane>
+            </el-tabs>
+        </div>
+    </div>
+    <div style="position: relative" v-else-if="visible == 1">
+        <ks-title title="订单详情" />
+        <el-button class="userorder-detail__retrun" @click="visible = 0">返回</el-button>
+        <!-- 课程详情 -->
+        <div v-if="detailType == 1">
+            <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    订单信息
+                </div>
+                <div class="userorder-detail__content">
+                    <div class="detail-content__left">
+                        <span>订单编号：{{orderDetail.orderid}}</span>
+                        <span>下单时间：{{orderDetail.inputtime}}</span>
+                    </div>
+                    <div class="detail-content__right">
+                        <span :style="{color:(orderDetail.status_str=='已支付' && '#2BC152') || '#E91C35'}">{{orderDetail.status_str}}</span>
+                        <span v-if="orderDetail.status_str=='未付款'" 　v-html="orderDetail.orderfailurestr"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    购买信息
+                </div>
+                <div class="userorder-detail__content">
+                    <div>姓名：{{orderDetail.realname}}</div>
+                    <div>手机号码：{{orderDetail.mobile}}</div>
+                    <!-- <span>付款方式:{{orderDetail.inputtime}}</span> -->
+                    <div>付款方式：<i style="font-style: normal" v-html="orderDetail.paystatus_str"></i></div>
+                    <div>折后价格：{{orderDetail.pay_amount}}</div>
+                    <!-- <span v-if="orderDetail.ordertotalprice">折后价格：{{orderDetail.ordertotalprice}}</span>
+                            <span>使用积分：{{orderDetail.inputtime}}</span> -->
+                </div>
+            </div>
+            <div class="userorder-detailinfo" v-if="orderDetail.invoice">
+                    <div class="userorder-detail__title">
+                        发票信息
+                    </div>
+                    <div class="userorder-detail__content" v-html="orderDetail.invoice">
+                        
+                    </div>
+                </div>
+            <div class="userorder-detailinfo" v-if="orderDetail.is_receive_info == 1">
+                <div class="userorder-detail__title">
+                    收货地址
+                </div>
+                <div class="userorder-detail__content">
+                    <span>收货人：{{orderDetail.realname}}</span>
+                    <span>手机号码：{{orderDetail.mobile}}</span>
+                    <span>收货地址：{{orderDetail.address}}</span>
+                </div>
+            </div>
+            <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    课程信息
+                </div>
+                <div class="userorder-detail__table">
+                    <div class="detail-table__title">
+                        <el-row>
+                            <el-col :span="10" style="text-align: left;"><span style="margin-left: 20px;">课程名称</span></el-col>
+                            <el-col :span="2"><span>类型</span></el-col>
+                            <el-col :span="3"><span>市场价</span></el-col>
+                            <el-col :span="3"><span>实价</span></el-col>
+                            <el-col :span="2"><span>数量</span></el-col>
+                            <el-col :span="2"><span>资料价格</span></el-col>
+                            <el-col :span="2"><span>税金</span></el-col>
+                        </el-row>
+                    </div>
+                    <div class="order-list"  v-for="(item,i) in orderDetail.item_list" :key="i">
+                        <el-row type="flex" >
+                            <el-col :span="4" align="middle">
+                                <div class="detail-table__image">
+                                    <ks-image :src="item.photourl" @click="open(item.view_url)" />                                
+                                </div>
+                            </el-col>
+                            <el-col :span="6" align="middle">                                 
+                                <div class="detail-table__course">
+                                <h2 @click="open(item.view_url)" v-if="item.costype == '面授'&&item.campus_name">{{item.coursename+'('+item.campus_name+')'}}</h2>
+                                <h2 @click="open(item.view_url)" v-else>{{item.coursename}}</h2>
+                                <div class="camp-title" style="margin-top: 5px;" v-if="item.train_camp && item.train_camp.is_buyallcos == 0">
+                                    <span style="color: #787c82">营期：{{item.train_camp.camp_title}}</span>
+                                </div>
+                                </div> 
+                            </el-col>
+                            <el-col :span="2" align="middle"> 
+                                <div class="detail-table__type">{{item.costype}}</div>
+                            </el-col>
+                            <el-col :span="3" align="middle"> 
+                                <div class="detail-table__market">￥{{item.price_market}}</div>
+                            </el-col>
+
+                            <el-col :span="3" align="middle"> 
+                                <div class="detail-table__price">{{item.costype == '活动'&&item.json.cash_deposit - 0 != 0 ? orderDetail.total_price == item.json.cash_deposit*item.json.num ?'保证金'+item.json.cash_deposit :'价格'+item.json.price+'+保证金'+item.json.cash_deposit  : item.price}}</div>
+                            </el-col>
+                            <el-col :span="2">
+                                <div class="detail-table__count">{{item.costype == '活动' ? 'x '+item.json.num : 'x 1'}}</div>
+                            </el-col>
+                            <el-col :span="2">
+                                <div class="detail-table__data">{{item.dataprice}}</div>
+                            </el-col>
+                            <el-col :span="2">
+                                <div class="detail-table__tax">{{item.taxprice}}</div>
+                            </el-col>
+                        </el-row>
+                    </div>
+                    <div class="detail-table__pay">
+                        <div style="float:right;text-align:right;padding-right: 20px;">
+                            <div class="detail-table__paybox">
+                                <span>总价：<i>￥{{orderDetail.total_price}}</i></span>
+                                <span>优惠券抵扣：<i>{{orderDetail.use_couponmoney}}</i></span>
+                                <span>红包抵扣：<i>{{orderDetail.user_hongbaomoney}}</i></span>
+                                <span>返现抵扣：<i>{{orderDetail.user_cahsemoney}}</i></span>
+                                <span>实付：<i style="font-size: 18px;color:#E91C35">{{orderDetail.pay_amount}}</i></span>
+                            </div>
+                            <div class="detail-table__btn">
+                                <el-button size="medium" style="font-size: 14px;color:#606367" v-if="orderDetail.pay_button" @click="deleteUserCourseOrder(orderDetail)">删除订单</el-button>
+                                <el-button size="medium" v-if="orderDetail.del_button" type="warning" @click="openPay(orderDetail)">立即支付</el-button>
+                                <el-button size="medium" v-if="orderDetail.receipt_button" type="primary" plain @click="receiptUserCourseOrder(orderDetail)">确认收货</el-button>
+                                <el-button size="medium" v-if="orderDetail.refund_button" type="primary" plain @click="returnUserCourseOrder(orderDetail)">申请退款</el-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="userorder-detailinfo" v-if="orderDetail.ordertracking_list.length > 0">
+                <div class="userorder-detail__title">
+                    跟踪物流信息
+                </div>
+                <div class="userorder-detail__table">
+                    <div class="detail-table__title">
+                        <span style="width: 200px;padding-left:20px;">处理时间</span>
+                        <span style="width:300px;">处理信息</span>
+                        <span style="width:100px;">操作人</span>
+                        <span style="width:100px;">详情</span>
+                    </div>
+                    <div class="detail-table__site" v-for="(item,i) in orderDetail.ordertracking_list" :key="i">
+                        <div class="detail-table__time">{{item.adddate}}</div>
+                        <div class="detail-table__info">{{item.remark}}</div>
+                        <div class="detail-table__man">{{item.inputer}}</div>
+                        <div class="detail-table__detail">{{item.logistics_button == true ? '查看物流' : '- -'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 商品订单详情 -->
+        <div v-if="detailType == 2"  id="print">
+            <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    订单信息
+                </div>
+                <div class="userorder-detail__content">
+                    <div class="detail-content__left">
+                        <span>订单编号：{{orderDetail.orderid}}</span>
+                        <span>下单时间：{{orderDetail.inputtime}}</span>
+                        <span>支付方式：{{orderDetail.paytype_str}}</span>
+                        <span>付款附言：{{orderDetail.remark}}</span>
+                    </div>
+                    <div class="detail-content__right">
+                        <span :style="{color:(orderDetail.status_str=='已支付' && '#2BC152') || '#E91C35'}">{{orderDetail.status_str}}</span>
+                        <span v-if='orderDetail.settletime!=""'>结清时间：{{orderDetail.settletime}}</span>
+                        <span v-if='orderDetail.settleinputer!=""'>结清操作员：{{orderDetail.settleinputer}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    收货信息
+                </div>
+                <div class="userorder-detail__content">
+                    <div class="userorder-detail__contentbox" style="float: left">
+                        <span>收货人：{{orderDetail.realname}}</span>
+                        <span style="max-width: 400px;max-height: 60px;overflow: hidden;text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 2;">地址：{{orderDetail.address}}</span>
+                        <span>手机号码：{{orderDetail.tel}}</span>
+                        <span>电子邮件：{{orderDetail.email}}</span>
+                        <span v-if="orderDetail.ordertype == 1">{{orderDetail.verifycode_str}}</span>
+                    </div>
+                    <div class="userorder-detail__contentbox" style="float: right;width: 360px;">
+                        <span>配送方式：{{orderDetail.consumptionmode}}</span>
+                        <span>邮政编码：{{orderDetail.zipCode}}</span>
+                        <span>送货日期：{{orderDetail.deliverydate}}</span>
+                        <span>送货时间：{{orderDetail.deliverytime}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    附加信息
+                </div>
+                <div class="userorder-detail__content">
+                    <span>下单：</span>
+                    <span>样本：</span>
+                </div>
+            </div> -->
+            <div class="userorder-detailinfo">
+                <div class="userorder-detail__title">
+                    商品信息
+                </div>
+                <div class="userorder-detail__table">
+                    <div class="detail-table__title">
+                        <el-row>
+                            <el-col :span="11" style="text-align: left;"><span style="margin-left: 20px;">商品</span></el-col>
+                            <el-col :span="3"><span>发货方式</span></el-col>
+                            <el-col :span="3"><span>数量</span></el-col>
+                            <el-col :span="3"><span>实价</span></el-col>
+                            <el-col :span="2"><span>运费</span></el-col>
+                            <el-col :span="2"><span>小计</span></el-col>
+                        </el-row>
+                    </div>
+                    <div class="order-list" v-for="(item,i) in orderDetail.itemlist" :key="i">
+                        <el-row type="flex" >
+                            <el-col :span="4" align="middle">
+                                <div class="detail-table__image">
+                                    <ks-image :src="item.defaultpic" @click="open(item.view_url)" />                                
+                                </div>
+                            </el-col>
+                            <el-col :span="7" align="middle">                                 
+                                <div class="detail-table__course">
+                                    <h2 @click="open(item.view_url)">{{item.title}}</h2>
+                                </div> 
+                            </el-col>
+                            <el-col :span="3" align="middle"> 
+                                <div class="detail-table__mode">{{orderDetail.consumptionmode == 1 ? '快递' : ''}}</div>
+                            </el-col>
+                            <el-col :span="3" align="middle"> 
+                                <div class="detail-table__count">X&nbsp;1</div>
+                            </el-col>
+                            <el-col :span="3" align="middle"> 
+                                <div class="detail-table__price">{{item.price}}</div>
+                            </el-col>
+                            <el-col :span="2">
+                                <div class="detail-table__data">{{orderDetail.freight}}</div>
+                            </el-col>
+                            <el-col :span="2">
+                                <div class="detail-table__tax">{{item.item_total_price}}</div>
+                            </el-col>
+                        </el-row>
+                    </div>
+                    <div class="detail-table__pay">
+                        <div style="float:right;text-align:right;padding-right: 20px;">
+                            <div class="detail-table__paybox">
+                                <span>总商品金额：<i>{{orderDetail.goodsmoney}}</i></span>
+                                <span>优惠券抵扣：<i>{{orderDetail.use_couponmoney}}</i></span>
+                                <span>红包抵扣：<i>{{orderDetail.user_hongbaomoney}}</i></span>
+                                <span>可得积分：<i>{{orderDetail.orderscore}}</i></span>
+                                <span>订单总金额：<i>{{orderDetail.pay_amount}}</i></span>
+                            </div>
+                            <div class="detail-table__btn">
+                                <el-button size="medium" @click="printOrder">打印订单</el-button>
+                                <el-button size="medium" v-if="orderDetail.del_button" style="font-size: 14px;color:#606367" @click="deleteUserShopOrder(orderDetail)">删除订单</el-button>
+                                <el-button size="medium" v-if="orderDetail.pay_button" type="warning" @click="openPay(orderDetail)">立即支付</el-button>
+                                <el-button size="medium" v-if="orderDetail.receipt_button" type="primary" plain @click="receiptUserShopOrder(orderDetail)">确认收货</el-button>
+                                <el-button size="medium" v-if="orderDetail.refund_button" type="primary" plain @click="returnUserShopOrder(orderDetail)">退货退款</el-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="userorder-detailinfo " v-if="orderDetail.ordertracking_list.length> 0">
+                <div class="userorder-detail__title">
+                    跟踪物流信息
+                </div>
+                <div class="userorder-detail__table">
+                    <div class="detail-table__wltitle">
+                        <span style="width: 200px;padding-left:20px;">处理时间</span>
+                        <span style="width:300px;">处理信息</span>
+                        <span style="width:100px;">操作人</span>
+                        <span style="width:100px;">详情</span>
+                    </div>
+                    <div class="detail-table__site" v-for="(item,i) in orderDetail.ordertracking_list" :key="i">
+                        <div class="detail-table__time">{{item.adddate}}</div>
+                        <div class="detail-table__info">{{item.remark}}</div>
+                        <div class="detail-table__man">{{item.inputer}}</div>
+                        <div class="detail-table__detail">{{item.logistics_button == true ? '查看物流' : '- -'}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="userorder-detailinfo" v-if="orderDetail.refund_list.length > 0">
+                <div class="userorder-detail__title">
+                    退款退货处理记录
+                </div>
+                <div class="userorder-detail__refunditem" v-for="(item,i) in orderDetail.refund_list" :key="i">
+                    <span>时间：{{item.deliverdate}}</span>
+                    <span>状态：{{item.status_str}}</span>
+                    <span>备注：{{item.remark}}</span>
+                    <span>货款退回方式：{{item.returntype}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="position: relative" v-else-if="visible == 2">
+        <ks-title title="评价" />
+        <el-button class="userorder-detail__retrun" @click="visible = 0">返回</el-button>
+        <div class="userorder-comment">
+            <div class="userorder-comment__item">
+                {{activeName == 'first' ? '课程名称：' : '商品名称：'}}{{commentData.coursename}}
+            </div>
+            <div class="userorder-comment__item">
+                <span style="float: left">星级评分:</span>
+                <el-rate style="float: left;line-height: 2;margin-left: 10px" v-model="star"></el-rate>
+
+            </div>
+            <el-input style="margin-top: 20px;" type="textarea" placeholder="请输入评价内容" :autosize="{ minRows: 8, maxRows: 10}" v-model="textarea" maxlength="300" show-word-limit>
+            </el-input>
+            <el-button size="medium" type="primary" style="margin-top: 20px" :disabled="star == 0" @click="saveUserComment()">发表评价</el-button>
+        </div>
+    </div>
+    <!-- 课程订单退款 -->
+    <el-dialog title="申请退款" :visible.sync="courseDialogVisible" width="800px">
+        <div class="detail-dialog">
+            <el-form ref="form" :model="form" :rules="rules" status-icon label-width="111px">
+                <el-form-item label="订单编号：">
+                    {{refundDetail.orderid}}
+                </el-form-item>
+                <el-form-item label="退款金额：">
+                    <span>{{refundDetail.moneyreceipt}}元</span>
+                    
+                </el-form-item>
+                <el-form-item label="退款方式：">
+                    <el-radio v-model="radio" label="1">账户余额</el-radio>
+                    <el-radio v-model="radio" label="2">银行账号</el-radio>
+                    <el-radio v-model="radio" label="3">原路退回(只支持微信付款）</el-radio>
+                </el-form-item>
+                <div v-if='radio == 2'>
+                    <el-form-item label="银行名称： " prop="bank">
+                        <el-input type="text " v-model="form.bank" placeholder="如中国工商银行某某分行处 "></el-input>
+                    </el-form-item>
+                    <el-form-item label="银行帐户： " prop="account">
+                        <el-input type="text " v-model="form.account" placeholder="请正确填写银行卡号 "></el-input>
+                    </el-form-item>
+                    <el-form-item label="银行户名：" prop="name">
+                        <el-input type="text " v-model="form.name" placeholder="请正确填写银行卡户主 "></el-input>
+                    </el-form-item>
+                </div>
+                <el-form-item label="退款原因：">
+                    <ks-editor v-model="content" />
+                </el-form-item>
+            </el-form>
+            <div style="margin-top: 20px;text-align: center">
+                <el-button type="primary" size="medium" @click="saveReturnUserCourseOrder(refundDetail)">确定申请</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <!-- 商城订单退款 -->
+    <el-dialog title="退货退款申请" :visible.sync="shopDialogVisible" width="800px">
+        <div class="detail-dialog">
+            <el-form ref="form" :model="form" :rules="rules" status-icon label-width="111px">
+                <el-form-item label="订单编号：">
+                    {{refundDetail.orderid}}
+                </el-form-item>
+                <el-form-item label="订单费用：">
+                    {{refundDetail.order_fee}}元
+                </el-form-item>
+                <el-form-item label="货款退回方式：">
+                    <el-radio v-model="radio" label="1">退回我的会员预付款中</el-radio>
+                    <el-radio v-model="radio" label="2">退回到指定的银行帐号</el-radio>
+                    <el-radio v-model="radio" label="3">原路退回</el-radio>
+                </el-form-item>
+                <div v-if='radio == 2'>
+                    <el-form-item label="银行名称： " prop="bank">
+                        <el-input type="text " v-model="form.bank" placeholder="如中国工商银行某某分行处 "></el-input>
+                    </el-form-item>
+                    <el-form-item label="银行帐户： " prop="account">
+                        <el-input type="text " v-model="form.account" placeholder="请正确填写银行卡号 "></el-input>
+                    </el-form-item>
+                    <el-form-item label="银行户名：" prop="name">
+                        <el-input type="text " v-model="form.name" placeholder="请正确填写银行卡户主 "></el-input>
+                    </el-form-item>
+                </div>
+                <el-form-item label="退换货原因：">
+                    <ks-editor v-model="content" />
+                </el-form-item>
+                <el-form-item label="上传凭证：">
+                    <img src="/ks_inc/member-center/images/order/common_btn_up.png" @click="upload" />
+                    <input style="display: none;" type="file" ref="file_image" @change="uploadImage">
+                    <div>
+                        <div style="display: inline-block;position:relative;width:100px;height:100px;margin-right: 20px;" v-for="(item,i) in fileUrlList" :key="i">
+                            <div style="position: absolute;font-size:20px;top:-10px;right:-10px;color:#E91C35;" class="el-icon-circle-close" @click="delPhoto(item)"></div>
+                            <img style="width: 100%;height:100%;position: absolute;top: 0" :src="item" />
+                        </div>
+                    </div>
+                    
+                </el-form-item>
+            </el-form>
+            <div style="margin-top: 20px;text-align: center">
+                <el-button type="primary" size="medium" @click="saveReturnUserShopOrder(refundDetail)">确定申请</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <el-dialog title="支付订单" :visible.sync="payDialogVisible" width="800px">
+        <div class="ks-pay">
+            <div class="ks-pay__row">
+                <el-form>
+                    <el-form-item label="订单编号：">
+                        <span>{{initPayData.orderid}}</span>
+                    </el-form-item>
+                    <el-form-item label="订单费用：">
+                        <span><i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">￥{{price}}</i>元</span>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <h1>选择支付方式：</h1>
+            <div class="ks-pay__list">
+                <div class="ks-pay__item" :class="{'active-pay':activePay == -1}" @click="payType(-1)">
+                    <span>余额支付</span>
+                    <i v-if="activePay == -1"></i>
+                </div>
+                <div></div>
+                <div class="ks-pay__item" v-for="(item,i) in initPayData.payment_list" :key="i" :class="{'active-pay':activePay == i}" @click="payType(i)">
+                    <img :src="item.logo" />
+                    <i v-if="activePay == i"></i>
+                </div>
+            </div>
+            <div class="ks-used">可用余额￥{{userInfo.Money}}</div>
+            <div v-if="activePay == -1">
+                <span>余额支付:<i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{price}}</i>元</span>
+            </div>
+            <div v-else>
+                <span>余额支付</span>
+                <el-input size="medium" style="width: 80px;" v-model="money"></el-input>
+                <span>元,剩余</span>
+                <span>{{payId == 8 ? '支付宝支付' : '微信支付'}}：</span>
+                <span><i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{price - money}}</i>元</span>
+            </div>
+            <div class="ks-pay__btn">
+                <el-button type="warning" @click="pay()">立即支付</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

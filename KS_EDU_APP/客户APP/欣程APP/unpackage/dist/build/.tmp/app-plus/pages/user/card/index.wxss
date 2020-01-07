@@ -1,0 +1,56 @@
+
+.card-list.data-v-0c3645ff{
+	padding: 1px 15px 0 15px;
+}
+.card-item.data-v-0c3645ff {
+    border-radius: 10px;
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 30vh;
+    margin-top:15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.card-expiredate.data-v-0c3645ff {
+    text-align: right;
+    color: #fff;
+    font-size: 12px;
+    line-height: 2.5;
+    margin-right: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    height: 24px;
+    line-height: 24px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.card-title.data-v-0c3645ff {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 30px;
+}
+.card-tab.data-v-0c3645ff {
+    width: 42px;
+    padding: 0 8px;
+    height: 24px;
+    border-radius: 0 10px 10px 0;
+    line-height: 24px;
+    color: #fff;
+    font-size: 14px;
+    background: #2987EE;
+}
+.disabled.data-v-0c3645ff {
+      color: #999;
+      background: #eee;
+}
+
+

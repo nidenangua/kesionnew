@@ -1,0 +1,16 @@
+{
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "管理",
+        "fontSize": "16px",
+        "width": "auto"
+      }
+    ]
+  },
+  "navigationBarTitleText": "离线缓存",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ks-empty": "/components/ks-components/empty/empty"
+  }
+}

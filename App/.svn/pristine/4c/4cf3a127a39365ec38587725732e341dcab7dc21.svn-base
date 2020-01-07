@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>教师直播端</title><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=2,user-scalable=no"><link rel=stylesheet href=//g.alicdn.com/de/prismplayer/2.7.2/skins/default/aliplayer-min.css><script src=//www.ketangjie.com/Public/common/js/aliyun/alioss/lib/plupload-2.1.2/js/plupload.full.min.js></script><script src=//g.alicdn.com/de/prismplayer/2.7.1/aliplayer-min.js></script><script src=//www.ketangjie.com/Public/common/js/aliyun/es6-promise.min.js></script><script src=//www.ketangjie.com/Public/common/js/aliyun/aliyun-oss-sdk4.13.2.min.js></script><script src=//www.ketangjie.com/Public/common/js/aliyun/aliyun-upload-sdk1.3.1.min.js></script><script src=//www.ketangjie.com/Public/common/js/aliyun/alioss/upload-pc.js?4f4h827jxhl28sg2x></script><script>function getConfig(){
+        return{
+          wxid:'2',
+          userid:'4',
+          classid:'848',
+          chapterid:'848',
+          token:'',
+          shareUrl:'/home.html/class/Index/share/848?classlevel-1,appid-30',
+        }
+      }</script><link href=/App/View/class/home.interactlive/static/css/app.f56abdf9bb9340f7fe25295d172216bb.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/App/View/class/home.interactlive/static/js/manifest.872b40ea5ee01a39c984.js></script><script type=text/javascript src=/App/View/class/home.interactlive/static/js/vendor.0e5f4d47ae5c1daff991.js></script><script type=text/javascript src=/App/View/class/home.interactlive/static/js/app.5017c983a17d429ebc96.js></script></body></html>

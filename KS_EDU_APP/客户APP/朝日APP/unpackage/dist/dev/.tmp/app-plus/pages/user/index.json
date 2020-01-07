@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "我的",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ks-image": "/components/ks-components/image/Image",
+    "ks-cell-group": "/components/ks-components/cell-group/cell-group",
+    "ks-cell": "/components/ks-components/cell/cell",
+    "uni-tag": "/components/uni/uni-tag/uni-tag",
+    "uni-badge": "/components/uni/uni-badge/uni-badge"
+  }
+}

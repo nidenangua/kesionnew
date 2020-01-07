@@ -1,0 +1,82 @@
+
+.van-icon-arrow-left.data-v-e3318684 {
+  color: #4d4c4c !important;
+}
+.practice-record.data-v-e3318684 {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+/* 间距 */
+.practice-record .margin20.data-v-e3318684 {
+  width: 100%;
+  height: 10px;
+  background: #f5f5f5;
+}
+/* 练习记录列表 */
+.practice-record-item.data-v-e3318684 {
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+}
+.practice-record-box.data-v-e3318684 {
+  margin-bottom: 13px;
+  border-bottom: 1px solid #ebedef;
+}
+.practice-record-box_top.data-v-e3318684 {
+  margin-top: 3px;
+  width: 100%;
+  min-height: 16px;
+}
+.practice-record-box_title.data-v-e3318684 {
+  width: 75%;
+  font-size: 14px;
+  color: #333;
+  float: left;
+}
+.practice-record-box_title ._ul ._li.data-v-e3318684 {
+  list-style: disc inside none;
+}
+.practice-record-box_top text.data-v-e3318684 {
+  width: 25%;
+  float: right;
+  text-align: right;
+}
+.practice-record-box_bottom.data-v-e3318684 {
+  margin-top: 6px;
+  width: 100%;
+  height: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.practice-record-box_type.data-v-e3318684 {
+  width: 75%;
+  font-size: 10px;
+  color: #999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.practice-record-box_see.data-v-e3318684 {
+  font-size: 11px;
+  color: #fff;
+  width: 58px;
+  height: 18px;
+  border-radius: 9px;
+  background: #ff663d;
+  text-align: center;
+  line-height: 18px;
+}
+.practice-record-box__type-flex.data-v-e3318684 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+

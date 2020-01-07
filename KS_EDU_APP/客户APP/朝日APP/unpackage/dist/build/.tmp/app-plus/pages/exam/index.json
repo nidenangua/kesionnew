@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的考试",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "ucharts": "/components/ks-components/ucharts/ucharts"
+  }
+}

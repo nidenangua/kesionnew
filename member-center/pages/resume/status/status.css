@@ -1,0 +1,83 @@
+.status {
+    padding-bottom: 20px;
+}
+
+.status-title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.status-dialog .el-input {
+    width: 350px;
+}
+
+.status-list {
+    padding-bottom: 20px;
+}
+
+.status-list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 20px 0;
+}
+
+.status-list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.status-list span {
+    display: block;
+    line-height: 40px;
+}
+
+.status-list span i {
+    font-style: normal;
+    margin: 0 10px;
+}
+
+.status-title {
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    background: #F5F7FA;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(120, 124, 130, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.status-form__list {
+    padding-bottom: 20px;
+}
+
+.status-form__list .el-row {
+    text-align: center;
+    border-bottom: 1px solid #E6E9ED;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(96, 99, 103, 1);
+    padding: 20px 0;
+}
+
+.status-form__list .el-row .el-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

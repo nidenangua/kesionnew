@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>科汛V名师API接口开发文档</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta charset="utf-8">
+	<!-- <link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="<?php echo UOOT; ?>Public/common/css/api.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/mpres/zh_CN/htmledition/comm_htmledition/style/page/resource/res_search3a7b39.css">
+	<link charset="utf-8" rel="stylesheet" href="https://res.wx.qq.com/c/=/mpres/zh_CN/htmledition/comm_htmledition/style/widget/pagination3a7b39.css">	
+
+</head>
+<style type="text/css">
+	.result_content{
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+	}
+</style>
+<body class="page_search screen_small" style="background: #fff;border: 0">    
+	<div class="weui-desktop-layout__main__hd">        
+		<div class="weui-desktop-layout__main__hd_opr">            
+			<a id="goback" href="javascript:;" class="back_opr_btn">                
+				<i class="icon_back"></i>                
+				<span onclick="history.go(-1)">返回</span>            
+			</a>            
+			<p id="count" class="search_result_total"><?php echo count($info); ?>条结果"<?php echo $keyword ?>"</p>        
+		</div>    
+	</div>    
+	<div id="main" class="weui-desktop-layout__main__bd weui-desktop-panel main_bd">
+    	<div class="search_result_box">
+        	<ul id="list" class="result_list">
+        		<?php foreach($info as $k =>$v){ ?>
+		        <li class="result_item">
+		            <a onclick="top.window.scrollTo( 0,-100000000000000000000); " class="result_item_link" href="<?php echo M_URL('home','apiwordinfo',$v['apiid']); ?>&keyword=<?php echo $keyword ?>">
+		                <h3 class="result_title">
+		                    <?php echo keywordbright($keyword,$v['title']); ?>
+		                </h3>
+		                <p class="result_content">
+		                     <?php echo  keywordbright($keyword,$v['content']); ?>....
+		                </p>
+		            </a>
+		        </li>
+		       	<?php } ?> 
+		    </ul>
+    	</div>
+    </div>    
+</body>
+</html>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>

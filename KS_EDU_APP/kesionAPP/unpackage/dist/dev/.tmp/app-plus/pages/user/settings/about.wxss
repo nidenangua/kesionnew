@@ -1,0 +1,23 @@
+
+.ks-image.data-v-72f75380{
+	width: 60px;
+	height: 60px;
+	border-radius:8px;
+	overflow: hidden;
+}
+.title.data-v-72f75380{
+	font-size:20px;
+	font-weight:500;
+	color:rgba(26,26,26,1);
+	margin-top: 15px;
+}
+.version.data-v-72f75380{
+	font-size:14px;
+	color:rgba(136,136,136,1);
+	margin-top: 15px;
+}
+.companyintro.data-v-72f75380{
+	line-height:24px;
+	margin-top: 25px;
+}
+

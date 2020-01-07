@@ -1,0 +1,27 @@
+
+.course-item.data-v-1203e9fb{
+	background: #fff;
+	padding: 10px;
+}
+.course-image.data-v-1203e9fb{
+	padding: 0 0 0 130px;
+	position: relative;
+	min-height: 80px;
+}
+.course-image .ks-image.data-v-1203e9fb{
+	position: absolute;
+	top:0;
+	left: 0;
+	height: 80px;
+	width: 120px;
+	border-radius:4px;
+}
+.course-costype.data-v-1203e9fb{	
+	font-size:14px;
+	color:rgba(136,136,136,1);
+}
+.item-date.data-v-1203e9fb{
+	font-size:12px;
+	color:rgba(146,150,153,1);
+}
+

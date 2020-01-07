@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit"> 
+    <title>收益提现</title>
+	<link href="<?php echo UOOT ?>Public/common/drag/css/reset.css" rel="stylesheet">
+	
+	<link href="<?php echo UOOT ?>Public/wechat/css/spread.css" rel="stylesheet">
+</head>
+<body style="background: #f3f4f5">
+		
+	<div class="extend-banner">
+		<div class="extend-title">
+			知识付费</br>
+			轻松推广赚外快
+		</div>
+		<div class="extend-s-title extend-s-t">
+		<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/title_icon_dec.png">	产品介绍	<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/title_icon_dec.png" class="extend-tran">		
+		</div>	
+		<div class="extend-info-box">
+			科汛V名师是基于微信端的全民知识付费平台，支持上架图文、音频、视频、直播、互动、试卷六大知识商品。致力打造“互联网+教育”的全民生态圈，在微门户，从课程的选择、购买到学习，都可以手机端轻松完成。
+			<a>查看视频介绍</a>
+		</div>
+		<div class="extend-s-title">
+			<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/title_icon_dec.png" style="padding-right: 0.5rem">如何推广赚钱	<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/title_icon_dec.png" class="extend-tran">
+		</div>	
+		<div class="extend-task">
+			<div class="extend-sign">
+				领取推广页专属链接通过分享转发的形式，推广更多的人来使用科汛V名师。
+			</div>
+			<div class="extend-task-title">
+				具体任务
+			</div>
+			<div class="extend-goad extend-po1">
+				<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_curve.png">
+			</div>
+			<div class="extend-goad extend-po2">
+				<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold1.png">
+			</div>
+			<div class="extend-goad extend-po3">
+				<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold2.png">
+			</div>
+			<div class="extend-txt1">
+				<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/task1.png">
+				<ul>
+					<?php foreach($taskinfo as $k =>$v){ ?>
+					<li>
+						<div class="ext-title">
+							<font class="ext-code"><?php echo $k+1; ?>.</font><?php echo $v['title']; ?>
+						</div>
+						<div class="exe-icon-box">
+							<div class="exe-icon">
+								<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold3.png">
+							</div>
+							佣金<?php echo $v['money']; ?>元（每天上限<?php echo $v['num'];?>次）
+						</div>
+					</li>
+					<?php } ?>	
+					<!-- <li>
+						<div class="ext-title">
+							<font class="ext-code">2.</font>推荐好友完成第一次课程上传
+						</div>
+						<div class="exe-icon-box">
+							<div class="exe-icon">
+								<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold3.png">
+							</div>
+							佣金1元
+						</div>
+					</li>
+					<li>
+						<div class="ext-title">
+							<font class="ext-code">3.</font>推荐好友微门户完成第一笔交易
+						</div>
+						<div class="exe-icon-box">
+							<div class="exe-icon">
+								<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold3.png">
+							</div>
+							佣金1元
+						</div>
+					</li>
+					<li>
+						<div class="ext-title">
+							<font class="ext-code">4.</font>推荐好友微门户
+						</div>
+						<div class="exe-icon-box">
+							<div class="exe-icon">
+								<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold3.png">
+							</div>
+							佣金3元
+						</div>
+					</li><li>
+						<div class="ext-title">
+							<font class="ext-code">5.</font>推荐好友微门户学员数量突破10人
+						</div>
+						<div class="exe-icon-box">
+							<div class="exe-icon">
+								<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold3.png">
+							</div>
+							佣金5元
+						</div>
+					</li><li>
+						<div class="ext-title">
+							<font class="ext-code">6.</font>推荐好友微门户后台连续登陆7天
+						</div>
+						<div class="exe-icon-box">
+							<div class="exe-icon">
+								<img src="<?php echo UOOT ?>Public/wechat/images/stuclass/icon_gold3.png">
+							</div>
+							佣金10元
+						</div>
+					</li> -->	
+				</ul>
+			</div>
+			
+			<div class="extend-link-box">
+				<button class="extend-link" onclick="window.location.href='<?php echo M_URL('h5market','spreadinfo'); ?>'">
+					我的推广中心
+				</button>
+			</div>
+			
+		</div>
+		<div class="extend-rule">
+			<div class="textend-rule-title">
+				规则说明：
+			</div>
+			<ul>
+				<li>
+					1、推广员通过微门户推广中心生成专属的推广链接，通过该链接注册的微门户自动归属于该推广员
+				</li>
+				<li>
+					2、推广注册的微门户完成指定任务后，系统会自动把佣金添加到所属推广员的推广中心“我的佣金”
+				</li>
+				<li>
+					3、我的佣金超过10元后，可以在推广中心申请提现，工作人员会在3个工作日内完成操作，佣金提现至个人微信钱包内。
+				</li>
+			</ul>
+			
+			
+		</div>	
+		
+		<!-- <div class="extend-link2">
+				<button class="extend-link" onclick="window.location.href='<?php echo M_URL('h5market','spreadinfo'); ?>'">
+					我的收益
+				</button>
+		</div> -->
+	</div>
+	
+
+</body>
+<script src="https://ks.kesion.com/Public/common/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

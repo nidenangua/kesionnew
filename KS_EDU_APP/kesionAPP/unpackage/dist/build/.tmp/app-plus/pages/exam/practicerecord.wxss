@@ -1,0 +1,95 @@
+
+.van-icon-arrow-left.data-v-7aedf69e {
+  color: #4d4c4c !important;
+}
+.practice-record.data-v-7aedf69e {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+/* 间距 */
+.practice-record .margin20.data-v-7aedf69e {
+  width: 100%;
+  height: 10px;
+  background: #f5f5f5;
+}
+/* 练习记录列表 */
+.practice-record-item.data-v-7aedf69e {
+  padding: 0 15px;
+  background: #fff;
+}
+.practice-record-box.data-v-7aedf69e {
+  padding-top: 13px;
+  border-bottom: 1px solid #ebedef;
+}
+.practice-record-box_top.data-v-7aedf69e {
+  margin-top: 3px;
+  width: 100%;
+  min-height: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.practice-record-box_title.data-v-7aedf69e {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+  font-size: 14px;
+  color: #333;
+}
+.practice-record-box_title ._ul ._li.data-v-7aedf69e {
+  list-style: disc inside none;
+}
+.practice-record-box_top text.data-v-7aedf69e {
+ 
+  text-align: right;
+}
+.practice-record-box_bottom.data-v-7aedf69e {
+  margin-top: 6px;
+  width: 100%;
+  height: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.practice-record-box_type.data-v-7aedf69e {
+  width: 75%;
+  font-size: 10px;
+  color: #999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.practice-record-box_see.data-v-7aedf69e {
+  font-size: 11px;
+  color: #fff;
+  width: 58px;
+  height: 18px;
+  border-radius: 9px;
+  background: #2987ee;
+  text-align: center;
+  line-height: 18px;
+}
+.practice-record__type-flex.data-v-7aedf69e {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+

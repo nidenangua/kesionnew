@@ -1,0 +1,214 @@
+[{
+        "name": "主页",
+        "url": "/",
+        "enable": true
+    },
+    {
+        "name": "店铺管理",
+        "childs": [{
+                "name": "公众号店铺",
+                "url": "/store",
+                "enable": true
+            },
+            {
+                "name": "电脑端店铺",
+                "url": "/pcStore",
+                "enable": true
+            },
+            {
+                "name": "店铺设置",
+                "url": "/store/setup",
+                "appid": 36,
+                "enable": true
+            },
+            {
+                "name": "店铺分类",
+                "url": "/?url=/home.html/category/Index?appid-2",
+                "appid": 2,
+                "enable": true
+            }
+        ],
+        "unfold": true
+    },
+    {
+        "name": "课程管理",
+        "childs": [{
+                "name": "视频",
+                "url": "/?url=/home.html/course/Index/index?appid-6",
+                "appid": 6,
+                "subappid": 1,
+                "enable": true
+            },
+            {
+                "name": "音频",
+                "url": "/?url=/home.html/course/Index/index?appid-6,courseType-3",
+                "appid": 6,
+                "subappid": 3,
+                "enable": true
+            },
+            {
+                "name": "图文",
+                "url": "/?url=/home.html/course/Index/index?appid-6,courseType-4",
+                "appid": 6,
+                "subappid": 4,
+                "enable": true
+            },
+            {
+                "name": "直播",
+                "url": "/?url=/home.html/course/Index/index?livetype-4,appid-6,courseType-2",
+                "appid": 6,
+                "subappid": 2,
+                "enable": true
+            },
+            {
+                "name": "专栏",
+                "url": "/?url=/home.html/column/Index?appid-106",
+                "appid": 106,
+                "enable": true
+            },
+            {
+                "name": "训练营",
+                "url": "/traincamp",
+                "enable": false
+            }
+        ],
+        "unfold": true,
+        "typesetting": 2
+    },
+    {
+        "name": "教学工具",
+        "childs": [{
+                "name": "考试系统",
+                "url": "/?url=/home.html/exam/Index?appid-10",
+                "appid": 10,
+                "enable": true
+            },
+            {
+                "name": "社群管理",
+                "url": "/?url=/home.html/team/Index?appid-35",
+                "appid": 35,
+                "enable": true
+            },
+            {
+                "name": "活动管理",
+                "url": "/?url=/home.html/course/Index/index?appid-6,courseType-6",
+                "enable": true
+            },
+            {
+                "name": "讲师管理",
+                "url": "/?url=/home.html/users/Index?appid-11",
+                "appid": 11,
+                "enable": true
+            },
+            {
+                "name": "新闻资讯",
+                "url": "/?url=/home.html/article/Index?appid-101",
+                "appid": 101,
+                "enable": true
+            },
+            {
+                "name": "资料列表",
+                "url": "/?url=/home.html/materials/Index?appid-14",
+                "appid": 14,
+                "enable": true
+            }
+        ],
+        "unfold": true
+    },
+    {
+        "name": "用户管理",
+        "childs": [{
+                "name": "学员管理",
+                "url": "/?url=/home.html/users/Index?appid-3",
+                "appid": 3,
+                "enable": true
+            },
+            {
+                "name": "用户分组",
+                "url": "/?url=/home.html/group/Index?appid-5",
+                "appid": 5,
+                "enable": true
+            },
+            {
+                "name": "评论管理",
+                "url": "/?url=/home.html/interact/Index?appid-8",
+                "appid": 8,
+                "enable": true
+            }
+        ],
+        "unfold": false
+    },
+    {
+        "name": "运营管理",
+        "childs": [{
+                "name": "公告管理",
+                "url": "/?url=/home.html/default/Massage/postlist?appid-8",
+                "appid": 8,
+                "enable": true
+            },
+            {
+                "name": "发送公告",
+                "url": "/?url=/home.html/default/Massage/postmassage?appid-8,option-1",
+                "appid": 8,
+                "enable": true
+            }
+        ],
+        "unfold": false
+    },
+    {
+        "name": "财务管理",
+        "childs": [{
+                "name": "订单管理",
+                "url": "/?url=/home.html/order/Index?appid-4",
+                "appid": 4,
+                "enable": true
+            },
+            {
+                "name": "结算中心",
+                "url": "/?url=/home.html/default/Capital/withdrawbill",
+                "enable": true
+            },
+            {
+                "name": "收款设置",
+                "url": "/receipt",
+                "enable": true
+            }
+        ],
+        "unfold": false
+    },
+    {
+        "name": "营销工具",
+        "childs": [{
+                "name": "分销管理",
+                "url": "/?url=/home.html/default/Distribution/index",
+                "appid": 105,
+                "enable": true
+            },
+            {
+                "name": "优惠券",
+                "url": "/?url=/home.html/voucher/Index?appid-31",
+                "appid": 31,
+                "enable": true
+            },
+            {
+                "name": "好友助力",
+                "url": "/friendhelp",
+                "appid": 108,
+                "enable": true
+            },
+            {
+                "name": "意向通",
+                "url": "/?url=/home.html/consultation/Index?appid-33",
+                "appid": 33,
+                "enable": true
+            },
+            {
+                "name": "折扣卡",
+                "url": "/?url=/home.html/users/Index/showgroup?appid-3",
+                "appid": 3,
+                "enable": true
+            }
+        ],
+        "unfold": false
+    }
+]

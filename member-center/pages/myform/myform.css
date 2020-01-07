@@ -1,0 +1,116 @@
+.form {
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+}
+
+.active-msg {
+  background: #409eff;
+  color: #fff;
+}
+
+.form-title {
+  overflow: hidden;
+  background: #f5f7fa;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(120, 124, 130, 1);
+  text-align: center;
+  margin-top: 20px;
+}
+.form-title th{
+  background: #f5f7fa;
+}
+
+.form-list {
+  padding-bottom: 20px;
+}
+
+.form-list .el-row {
+  text-align: center;
+  border-bottom: 1px solid #e6e9ed;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  padding: 20px 0;
+}
+
+.form-list .el-row .el-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-list .el-row .el-checkbox__label {
+  display: none;
+}
+
+.form-list__pldelete {
+  padding: 20px 43px;
+  overflow: hidden;
+}
+
+.form-list__pldelete .el-button {
+  margin-left: 10px;
+}
+
+.form .el-dialog__body {
+  padding: 10px 20px 30px 20px;
+}
+
+.form-msg {
+  border-top: 1px solid #e6e9ed;
+}
+
+.form-msg__btn {
+  text-align: center;
+}
+
+.form .el-form {
+  margin-top: 20px;
+  padding-right: 100px;
+}
+
+.form-sort {
+  /* position: absolute;
+  right: 40px;
+  z-index: 10;
+  line-height: 55px; */
+  float: right;
+  margin-top: 12px;
+}
+
+.form-sort span {
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(96, 99, 103, 1);
+  line-height: 36px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.form-sort .el-select > .el-input {
+  min-width: 130px;
+}
+.el-table__empty-text{
+  background-image: url(/ks_inc/member-center/images/common/nodata.png);
+  text-align: center;
+  color: #b5b5b5;
+  background-repeat: no-repeat;
+  background-size: auto 140px;
+  background-position: 50% 40px;
+  padding: 200px 0 30px 0;
+  font-size: 14px;
+}
+
+.red-font{
+  color: crimson;
+}
+
+.green-font{
+  color:green;
+}

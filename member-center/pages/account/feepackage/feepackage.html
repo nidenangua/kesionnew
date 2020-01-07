@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<div class="feepackage">
+    <ks-title title="我的营销卡" @click="retrunView" :underline="false" />
+    <el-button class="feepackage-retrun" @click="retrunView">返回</el-button>
+    <div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我的营销卡" name="first">
+                <div class="feepackage-title">
+                    <el-row>
+                        <el-col :span="4" style="text-align: left"><span style="margin-left: 20px">营销卡名称</span></el-col>
+                        <el-col :span="2"><span>类型</span></el-col>
+                        <el-col :span="3"><span>激活时间</span></el-col>
+                        <el-col :span="4"><span>使用期限</span></el-col>
+                        <el-col :span="5" style="text-align: left"><span>使用条件</span></el-col>
+                        <el-col :span="2"><span>原价</span></el-col>
+                        <el-col :span="2"><span>价格</span></el-col>
+                        <el-col :span="2"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="feepackage-list">
+                    <el-row type="flex" v-for="(item,i) in feePackageList" :key="i">
+                        <el-col :span="4" align="middle" style="text-align: left"><span style="margin-left: 20px">{{item.title}}</span></el-col>
+                        <el-col :span="2" align="middle"> <span>{{item.cardtype_str}}</span> </el-col>
+                        <el-col :span="3" align="middle"> <span>{{item.packbegindate}}</span> </el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.packdays}}天<i style="font-style: normal" v-if="item.givevip_str != ''">（{{item.givevip_str}}）</i></span></el-col>
+                        <el-col :span="5" align="middle" style="text-align: left"> <span>{{item.use_condition}}</span> </el-col>
+                        <el-col :span="2" align="middle"> <span>{{item.price_market}}</span></el-col>
+                        <el-col :span="2" align="middle"> <span>{{item.price}}</span> </el-col>
+                        <el-col :span="2" align="middle">
+                            <span style="color: #3C81F9;cursor: pointer;" @click="openMyDetail(item)">查看</span>
+                        </el-col>
+                    </el-row>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserFeePackageList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="购买营销卡" name="second">
+                <div class="feepackage-title">
+                    <el-row>
+                        <el-col :span="4" style="text-align: left"><span style="margin-left: 20px">营销卡名称</span></el-col>
+                        <el-col :span="3"><span>类型</span></el-col>
+                        <el-col :span="4"><span>使用期限</span></el-col>
+                        <el-col :span="6" style="text-align: left"><span>使用条件</span></el-col>
+                        <el-col :span="2"><span>原价</span></el-col>
+                        <el-col :span="2"><span>价格</span></el-col>
+                        <el-col :span="3"><span>操作</span></el-col>
+                    </el-row>
+                </div>
+                <div class="feepackage-list">
+                    <el-row type="flex" v-for="(item,i) in buyList" :key="i">
+                        <el-col :span="4" align="middle" style="text-align: left"><span style="margin-left: 20px">{{item.title}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span>{{item.cardtype_str}}</span> </el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.days}}天<i style="font-style: normal" v-if="item.givevip_str != ''">（{{item.givevip_str}}）</i></span></el-col>
+                        <el-col :span="6" align="middle" style="text-align: left"> <span>{{item.use_condition}}</span> </el-col>
+                        <el-col :span="2" align="middle"> <span>{{item.price_market}}</span> </el-col>
+                        <el-col :span="2" align="middle"> <span>{{item.price}}</span> </el-col>
+                        <el-col :span="3" align="middle">
+                            <div><span style="color: #3C81F9;cursor: pointer;" @click="openBuyDetailView(item)">查看</span><i style="margin: 0 10px;font-style:normal;">|</i><span style="color: #3C81F9;cursor: pointer;" @click="initialPayUserFeePackage(item)">购买</span></div>
+                        </el-col>
+                    </el-row>
+                    <el-pagination style="text-align: center;background: #fff;margin-top:20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCount" @current-change="getUserFeePackageBuyList" v-if="pageCount > 0" />
+                    <ks-empty msg="该分类下暂无内容" v-else />
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="线下激活" name="third">
+                <div style="padding: 0 90px 0 20px">
+                    <el-form label-width="114px">
+                        <el-form-item label="营销卡号：">
+                            <el-input v-model="form.num" type="text" placeholder="请输入卡号"></el-input>
+                        </el-form-item>
+                        <el-form-item label="营销卡密码：">
+                            <el-input v-model="form.password" placeholder="请输入密码" type="text"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" round @click="active()">确定激活</el-button>
+                        </el-form-item>
+                    </el-form>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+    <!-- 我的营销卡使用详情 -->
+    <el-dialog title="营销卡使用详情" :visible.sync="myDetailDialogVisible" width="800px">
+        <div>
+            <div class="feepackage-card">
+                <img src="/ks_inc/member-center/images/account/rechargepsck_bg@2x.png" v-if="myDetailData.cardtype == 1" />
+                <img src="/ks_inc/member-center/images/account/marketpsck_bg@2x.png" v-else />
+                <div v-if="myDetailData.cardtype != 1">
+                    <span style="background: #F5891E" v-if="myDetailData.is_exprise == 0">使用中</span>
+                    <span style="background: #BCC3CC" v-else>已过期</span>
+                </div>
+            </div>
+            <div class="feepackage-buydetail__title">
+                {{myDetailData.title}}
+            </div>
+            <div class="feepackage-buydetail__used" v-if="myDetailData.cardtype != 1">
+                <span :style="{color:myDetailData.is_exprise == 0 ? '#2BC152' :'#BCC3CC' }">（{{(myDetailData.is_exprise == 0 ? '使用中' : '已过期')}} 激活时间：{{myDetailData.packbegindate}} 有效期{{myDetailData.packdays}}天<i style="font-style: normal" v-if="myDetailData.givevipday >= 1">(赠送VIP:{{myDetailData.givevipday}}天)</i>）</span>
+            </div>
+            <div class="feepackage-buydetail__content">
+                <span style="color:#888888;">价格：<i style="font-size: 18px;color:#E91C35;font-style:normal">￥{{myDetailData.price}}</i>（原价：<s>￥{{myDetailData.price_market}}</s>）</span>
+                <span>营销卡点数、资金：{{myDetailData.pointnumber}}{{myDetailData.pointtype_str}}</i></span>
+                <span>营销卡简介：{{myDetailData.descript}}</span>
+                <div class="feepackage-buydetail__setting" v-if="myDetailData.cardtype != 1">
+                    <span style="float: left">权限设置：</span>
+                    <div class="feepackage-buydetail__box" v-if="myDetailData.limit == 1">在有效期内可以查看所有需要收费的内容</div>
+                    <div class="feepackage-buydetail__box" v-else>
+                        <div style="overflow: hidden">
+                            <span style="float: left">内容模块权限：{{myDetailData.content_use_condition?myDetailData.content_use_condition:'无权限'}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in myDetailData.content_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                        <div style="overflow: hidden">
+                            <span style="float: left">考试系统权限：{{myDetailData.exam_use_condition?myDetailData.exam_use_condition:'无权限'}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in myDetailData.paper_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                        <div style="overflow: hidden">
+                            <span style="float: left">练习系统权限：{{myDetailData.practice_use_condition?myDetailData.practice_use_condition:'无权限'}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in myDetailData.practice_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                        <div style="overflow: hidden">
+                            <span style="float: left">课程系统权限：{{myDetailData.course_use_condition?myDetailData.course_use_condition:'无权限'}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in myDetailData.course_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feepackage-buydetail__setting" v-else>
+                    <span style="float: left">用户组设置：</span>
+                    <div class="feepackage-buydetail__box">
+                        <span>使用升级：{{myDetailData.user_up_groupname}}</span>
+                        <span>到期降级：{{myDetailData.user_down_groupname}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="feepackage-buydetail__btn">
+                <el-button round type="primary" size="medium" @click="initialPayUserFeePackage(myDetailData)" v-if="!myDetailData.is_exprise == 0">重新购买</el-button>
+                <el-button style="padding: 10px 34px;" size="medium" @click="myDetailDialogVisible = false" round>返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+    <!-- 购买营销卡详情 -->
+    <el-dialog title="营销卡详情" :visible.sync="buyDetailDialogVisible" width="800px">
+        <div>
+            <div class="feepackage-card">
+                <img src="/ks_inc/member-center/images/account/rechargepsck_bg@2x.png" v-if="buyDetailData.cardtype == 1" />
+                <img src="/ks_inc/member-center/images/account/marketpsck_bg@2x.png" v-else />
+            </div>
+            <div class="feepackage-buydetail__title">
+                {{buyDetailData.title}}
+            </div>
+            <div class="feepackage-buydetail__content">
+                <span style="color:#888888;">价格：<i style="font-size: 18px;color:#E91C35;font-style:normal">￥{{buyDetailData.price}}</i>（原价:<s>￥{{buyDetailData.price_market}}</s>）</span>
+                <span>营销卡点数、资金：{{buyDetailData.pointnumber}}{{buyDetailData.pointtype_str}}&nbsp;&nbsp;有效期：{{buyDetailData.packdays}}天（赠送VIP：{{buyDetailData.givevipday}}天）</i></span>
+                <span>营销卡简介：{{buyDetailData.descript}}</span>
+                <div class="feepackage-buydetail__setting" v-if="buyDetailData.cardtype != 1">
+                    <span style="float: left">权限设置：</span>
+                    <div class="feepackage-buydetail__box" v-if="buyDetailData.limit == 1">在有效期内可以查看所有需要收费的内容</div>
+                    <div class="feepackage-buydetail__box" v-else>
+                        <div style="overflow: hidden">
+                            <span style="float: left">内容模块权限：{{buyDetailData.content_use_condition}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in buyDetailData.content_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                        <div style="overflow: hidden">
+                            <span style="float: left">考试系统权限：{{buyDetailData.exam_use_condition}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in buyDetailData.paper_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                        <div style="overflow: hidden">
+                            <span style="float: left">练习系统权限：{{buyDetailData.practice_use_condition}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in buyDetailData.practice_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                        <div style="overflow: hidden">
+                            <span style="float: left">课程系统权限：{{buyDetailData.course_use_condition}}</span>
+                            <div class="feepackage-buydetail__item" v-for="(item,i) in buyDetailData.course_list" :key="i" @click="openCourse(item)">{{item.title}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feepackage-buydetail__setting" v-else>
+                    <span style="float: left">用户组设置：</span>
+                    <div class="feepackage-buydetail__box">
+                        <span>使用升级：{{buyDetailData.user_up_groupname}}</span>
+                        <span>到期降级：{{buyDetailData.user_down_groupname}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="feepackage-buydetail__btn">
+                <el-button round type="primary" size="medium" @click="initialPayUserFeePackage(buyDetailData)">立即购买</el-button>
+                <el-button style="padding: 10px 34px;" size="medium" @click="buyDetailDialogVisible = false" round>返回</el-button>
+            </div>
+        </div>
+    </el-dialog>
+
+    <el-dialog title="支付订单" :visible.sync="buyDialogVisible" width="800px">
+        <div class="feepackage-buy">
+            <div class="feepackage-buy__row">
+                <el-row :gutter="20">
+                    <el-col :span='4' style="width:180px">
+                        <img style="width: 100%;height:100%" src="/ks_inc/member-center/images/account/rechargepsck_bg@2x.png" v-if="initBuyData.cardtype == 1" />
+                        <img style="width: 100%;height:100%" src="/ks_inc/member-center/images/account/marketpsck_bg@2x.png" v-else />
+                    </el-col>
+                    <el-col :span='18'>
+                        <p style="color: #2F3133">
+                            {{initBuyData.title}}
+                        </p>
+                        <p style="font-size: 14px;color:#888888;" v-if="type==1">
+                            价格：<i style="font-size: 18px;color:#E91C35;font-style:normal">￥{{initBuyData.price}}</i>（原价:<i style="text-decoration:line-through;font-style:normal">{{initBuyData.price_market}}</i>）
+                        </p>
+                        <p style="font-size: 14px;color:#888888;" v-else-if="type==2">
+                            早鸟票：<i style="font-size: 18px;color:#E91C35;font-style:normal">￥{{initBuyData.price}}</i>（活动报名）
+                        </p>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20" style="text-align: right;border-bottom: 1px solid #E6E9ED">
+                    <el-col :span='8' :offset="8">
+                        <div v-if="type==1">
+                            <p>金额：</p>
+                            <p>订单总额：</p>
+                        </div>
+                        <div v-else-if="type==2">
+                            <p>票务金额：</p>
+                            <p>预付保证金<i style="font-style: normal;color:#cccccc">（签到后可线下退）</i>：</p>
+                            <p>可用优惠券：</p>
+                            <p v-if="exchange">&nbsp;</p>
+                            <p>订单总额：</p>
+                        </div>
+                    </el-col>
+                    <el-col :span='5'>
+                        <div v-if="type==1">
+                            <p>￥{{initBuyData.price}}</p>
+                            <p style="color: #E91C35;font-size:24px">￥{{initBuyData.price}}</p>
+                        </div>
+                        <div v-else-if="type==2">
+                            <p>￥{{initBuyData.price}}</p>
+                            <p>￥{{initBuyData.price}}</p>
+                            <el-select style="line-height: 40px" v-model="value" placeholder="选择优惠券" size="medium">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                                </el-option>
+                            </el-select>
+                            <el-input v-if="exchange" style="line-height: 40px" placeholder="输入券号" size="medium"></el-input>
+                            <p style="color: #E91C35;font-size:22px">￥{{initBuyData.price}}</p>
+                        </div>
+                    </el-col>
+                    <el-col :span='3' v-if="type==2">
+                        <p style="margin-top: 80px;text-align: left;color: #3C81F9;cursor: pointer;" @click="exchange = exchange ? false : true">输入券号</p>
+                        <el-button style="margin-top: 2px;" type="primary" size="medium" v-if="exchange">使用</el-button>
+                    </el-col>
+                </el-row>
+            </div>
+            <h1>选择支付方式：</h1>
+            <div class="feepackage-buy__list">
+                <div class="feepackage-buy__item" :class="{'active-pay':activePay == -1}" @click="payType(-1)">
+                    <span>余额支付</span>
+                    <i v-if="activePay == -1"></i>
+                </div>
+                <div></div>
+                <div class="feepackage-buy__item" v-for="(item,i) in initBuyData.payment_list" :key="i" :class="{'active-pay':activePay == i}" @click="payType(i)">
+                    <img style="width: 100%;height:100%;object-fit:contain;" :src="item.logo" />
+                    <i v-if="activePay == i"></i>
+                </div>
+            </div>
+            <div class="feepackage-used">可用余额￥{{userInfo.Money}}</div>
+            <div v-if="activePay == -1">
+                <span>余额支付:<i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{initBuyData.price}}</i>元</span>
+            </div>
+            <div v-else>
+                <span>余额支付</span>
+                <el-input size="medium" style="width: 80px;" v-model="money"></el-input>
+                <span>元,剩余</span>
+                <span>{{payId == 8 ? '支付宝支付' : '微信支付'}}：</span>
+                <span><i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{initBuyData.price - money}}</i>元</span>
+            </div>
+            <!-- <div class="feepackage-checkbox" v-if="initBuyData.isidentity == 1">
+                <el-checkbox v-model="checked">我已阅读并接受以下协议</el-checkbox>
+                <div class="feepackage-buy__text" v-html="initBuyData.agreement
+">
+                </div>
+            </div> -->
+            <div class="feepackage-buy__btn">
+                <el-button type="warning" @click="pay()">立即支付</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

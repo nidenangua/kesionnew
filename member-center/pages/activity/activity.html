@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<div class="useractivity">
+    <ks-title title="我的活动" :underline="false" />
+    <div style="position: relative">
+        <!-- 多选框 -->
+        <div class="useractivity-checkbox" v-if="activeName === 'second'">
+            <el-checkbox v-model="chargetype" @change="change">只看免费</el-checkbox>
+            <el-checkbox v-model="isexprise" @change="change">只看未过期</el-checkbox>
+        </div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我参与的活动" name="first">
+                <div class="useractivity-list">
+                    <div class="box" v-for="(item,i) in activityList" :key="i">
+                        <div class="date">
+                            <i></i>
+                            <img src="/ks_inc/member-center/images/activity/me_icon_triangle.png" />
+                            <span>{{item.effective_begin}}</span>
+                        </div>
+                        <div class="useractivity-item">
+                            <img style="position: absolute;top:0;left:10px" :src="(item.activity_status == 0 && '/ks_inc/member-center/images/activity/me_icon_a_opening.png') || (item.activity_status == 1 && '/ks_inc/member-center/images/activity/me_icon_a_going.png') || (item.activity_status == 2 && '/ks_inc/member-center/images/activity/me_icon_a_close.png')"
+                            />
+                            <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                            <div class="useractivity-item__word">
+                                <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                                <span>{{item.effective_begin}}-{{item.effective_end}}</span>
+                                <p><img src="/ks_inc/member-center/images/activity/common_icon_address.png" />{{item.address}}</p>
+                            </div>
+                            <div class="useractivity-item__right">
+                                <h2>{{item.ticket_info.title}}</h2>
+                                <div class="useractivity-item__ticket" v-for="(ticket,t) in item.ticket_info.number" :key="t">
+                                    <span>票号：<i :id="ticket">{{ticket}}</i></span>
+                                    <p @click="copyText(ticket)">复制票号</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <el-pagination style="text-align: center;padding:20px 0;background: #fff" background layout="prev, pager, next" :total="pageCount" @current-change="getUserActivityList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下没有活动" v-else />
+            </el-tab-pane>
+
+            <el-tab-pane label="所有活动" name="second">
+                <!-- 排序和搜索 -->
+                <div class="usercourse-sort">
+                    <el-input placeholder="请输入想要搜索的课程" size="medium" v-model="keyWord" @change="change">
+                        <i slot="suffix" class="el-input__icon el-icon-search" @click="change"></i>
+                    </el-input>
+                    <el-select v-model="sort" placeholder="请选择" size="medium" @change="change">
+                        <el-option v-for="item in sortList" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                    <span>排序：</span>
+                </div>
+                <div class="useractivity-item useractivity-item2" v-for="(item,i) in allActivityList" :key="i">
+                    <img style="position: absolute;top:30px;left:10px" :src="(item.activity_status == 0 && '/ks_inc/member-center/images/activity/me_icon_a_opening.png') || (item.activity_status == 1 && '/ks_inc/member-center/images/activity/me_icon_a_going.png') || (item.activity_status == 2 && '/ks_inc/member-center/images/activity/me_icon_a_close.png')"
+                    />
+                    <ks-image :src="item.photourl" @click="open(item.view_url)" />
+                    <div class="useractivity-item__word">
+                        <h2 @click="open(item.view_url)">{{item.name}}</h2>
+                        <span style="margin-top: 10px">报名时间：{{item.bmbegintime}}</span>
+                        <span style="margin-top: 10px">有效期：{{item.effective_begin}}-{{item.effective_end}}</span>
+                        <p style="margin-top: 10px">
+                            <i>参加人：{{item.ticket_info.form[0].key_value[0]}}</i>
+                            <i>手机号码：{{item.ticket_info.form[1].key_value[0]}}</i>
+                        </p>
+                    </div>
+                    <div class="useractivity-item__right">
+                        <h1>状态：<i :style="{color:(item.bm_status == 1 && '#2BC152') || (item.bm_status == 0 && '#F5891E') || (item.bm_status == 3 && '#E91C35') || (item.bm_status == 4 && '#BCC3CC')}">{{item.bm_statutitle}}</i></h1>
+                        <h2>{{item.ticket_info.title}}<i v-show="Math.ceil(item.price) > 0">(￥{{item.price}}+保证金￥{{item.cash_deposit}}</i></h2>
+                        <div v-if="item.bm_status == 1">
+                            <div class="useractivity-item__ticket" v-for="(ticket,t) in item.ticket_info.number" :key="t">
+                                <span>票号：<i :id="ticket">{{ticket}}</i></span>
+                                <p @click="copyText(ticket)">复制票号</p>
+                            </div>
+                        </div>
+                        <div class="useractivity-item__order">
+                            <el-button size="medium" @click="delUserActivity(item.signid)" v-if="item.bm_status == 0">取消报名</el-button>
+                            <span @click="delUserActivity(item.signid)" v-else-if="item.del_button">取消报名</span>
+                            <el-button type="warning" size="medium" @click="iframeUrl = item.pay_url ,dialogVisible = true" v-if="item.bm_status == 3">立即支付</el-button>                           
+                        </div>
+                    </div>
+                </div>
+                <el-pagination style="text-align: center;padding:20px 0;background: #fff" background layout="prev, pager, next" :total="pageCount" @current-change="getUserAllActivityList" v-if="pageCount > 0" />
+                <ks-empty msg="该分类下没有活动" v-else />
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+    <el-dialog title="支付订单" :visible.sync="dialogVisible" width="1040px">
+            <div class="userbasicinfo-address__dialog">
+                    <iframe name="activity" frameborder="0" scrolling="no" @load="changeFrameHeight" id="iframe" class="activity-iframe" :src="iframeUrl"></iframe>
+            </div>
+    </el-dialog>
+</div>

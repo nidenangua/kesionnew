@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<div class="package">
+    <ks-title title="题库购买" :underline="false" />
+    <div style="position: relative">
+        <div class="package-sort" v-if="activeName != 'second'">
+            <el-select style="width: 130px;" v-model="status" placeholder="请选择" size="medium" @change="change">
+                <el-option v-for="item in statusList" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+        </div>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我的考试包" name="first">
+                <el-row :gutter="40">
+                    <el-col style="padding: 20px 40px;text-align: center" :span="8" v-for="(my,i) in myData" :key="i">
+                        <div class="package-my__box">
+                            <div class="package-image">
+                                <ks-image type="exam" :src="my.photourl"></ks-image>
+                           
+                                <h1 :class="{disabled:my.use_flag==2}">{{my.user_title}}</h1>
+                            </div>
+                            <p>{{my.title}}</p>
+                            <h2>有效期至：{{my.expiredate}}</h2>
+                            <el-button type="primary" size="medium" round @click="openPopup(my,'my')">查看套餐包</el-button>
+                        </div>
+                    </el-col>
+                </el-row>
+                <el-pagination v-if="pageCountMy > 0" style="text-align: center;margin-top: 20px;" :current-page="currentPage" @current-change="myFeeSellList" background layout="prev, pager, next" :total="pageCountMy">
+                </el-pagination>
+                <ks-empty msg="该分类下无数据" v-else />
+            </el-tab-pane>
+            <el-tab-pane label="购买考试包" name="second">
+                <el-row :gutter="40">
+                    <el-col style="padding: 20px 40px;text-align: center" :span="8" v-for="(buy,n) in buyData" :key="n">
+                        <div class="package-my__box">
+                            <div class="package-image">
+                                <ks-image type="exam" :src="buy.photourl" />
+                                <h1 v-if="buy.isuser==1">已拥有</h1>
+                            </div>
+                            <p>{{buy.title}}</p>
+                            <div class="package-buy__day">
+                                <i>有效期：{{buy.days}}天</i>
+                                <h1>价格：<span>￥{{buy.price}}</span></h1>
+                            </div>
+                            <div class="package-buy__btn">
+                                <el-button type="primary" size="medium" round v-if="buy.isuser==0" @click="onBuy(buy)">立即购买</el-button>
+                                <el-button size="medium" round @click="openPopup(buy,'buy')">查看套餐包</el-button>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+                <el-pagination v-if="pageCountBuy > 0" style="text-align: center;margin-top: 20px;" @current-change="getFeePackagesList" :current-page="currentPage" background layout="prev, pager, next" :total="pageCountBuy">
+                </el-pagination>
+                <ks-empty msg="该分类下无数据" v-else />
+            </el-tab-pane>
+            <el-tab-pane label="购买明细" name="third">
+                <div class="package-detail__title">
+                    <el-row>
+                        <el-col :span="3">序号</el-col>
+                        <el-col :span="7"><span>考试包名称</span></el-col>
+                        <el-col :span="3"><span>价格</span></el-col>
+                        <el-col :span="4"><span>购买时间</span></el-col>
+                        <el-col :span="4"><span>有效期</span></el-col>
+                        <el-col :span="3"><span>状态</span></el-col>
+                    </el-row>
+                </div>
+                <div class="package-detail__main">
+                    <el-row type="flex" v-for="(item,i) in myData" :key="i">
+                        <el-col :span="3" align="middle"><span>{{i+1}}</span></el-col>
+                        <el-col :span="7" align="middle"><span>{{item.title}}</span></el-col>
+                        <el-col :span="3" align="middle"> <span>{{item.price}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.adddate}}</span></el-col>
+                        <el-col :span="4" align="middle"> <span>{{item.expiredate}}</span> </el-col>
+                        <el-col :span="3" align="middle"> <span :class="{disabled2:item.use_flag==2}">{{item.user_title}}</span> </el-col>
+                    </el-row>
+                </div>
+                <el-pagination v-if="pageCountDetail > 0" style="text-align: center; margin-top: 20px;" background layout="prev, pager, next" :current-page="currentPage" :total="pageCountDetail" @current-change="myFeeSellList" />
+                <ks-empty msg="该分类下暂无内容" v-else />
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+
+    <!-- 套餐包明细 -->
+    <el-dialog title="查看套餐包" :visible.sync="showPopup" width="850px">
+        <div class="popupPackage">
+            <div class="popupPackage-box">
+                <div class="popupPackage-box__item">
+                    <div class="popupPackage-box__image">
+                        <ks-image type="exam" :src="detailData.photourl" />
+                        <h2 :class="{disabled:detailData.user_status==2}" v-if="type=='my'">{{detailData.user_title}}</h2>
+                    </div>
+                    <h1>{{detailData.title}}</h1>
+                    <p v-if="detailData.user_status==1">(使用中 有效期至{{detailData.expiredate}})</p>
+                    <p v-else-if="detailData.user_status==2" style="color: #999;">(已过期 有效期至{{detailData.expiredate}})</p>
+                    <div class="popupPackage-box__item-price">价格：<i>￥{{detailData.price}}</i></div>
+                    <span>套餐包有效天数：{{type=='my' ?detailData.packdays :detailData.days}}天</span>
+                </div>
+                <div class="popupPackage-box__text">
+                    <div class="popupPackage-box__text-box">
+                        <div class="popupPackage-box__class">考试权限：</div>
+                        <div class="popupPackage-box__left">{{detailData.examtf_name}}</div>
+                        <div class="popupPackage-box__right">
+                            <a v-for="(item,i) in detailData.examtf_list" :key="i">{{item.title}}</a>
+                        </div>
+                    </div>
+                    <div class="popupPackage-box__text-box">
+                        <div class="popupPackage-box__class">练习权限：</div>
+                        <div class="popupPackage-box__left">{{detailData.trangtf_name}}</div>
+                        <div class="popupPackage-box__right">
+                            <a v-for="(item,i) in detailData.trangtf_list" :key="i">{{item.title}}</a>
+                        </div>
+                    </div>
+                    <div class="popupPackage-box__text-box">
+                        <div class="popupPackage-box__class">查看解析权限：</div>
+                        <div class="popupPackage-box__left">{{detailData.analysistf_name}}</div>
+                        <div class="popupPackage-box__right">
+                            <a v-for="(item,i) in detailData.analysistf_list" :key="i">{{item.title}}</a>
+                        </div>
+                    </div>
+                    <p>套餐包介绍：{{detailData.descript}}</p>
+                </div>
+                <div class="popupPackage-box__btn" v-if="type=='my'">
+                    <el-button type="primary" size="medium" round v-if="detailData.user_title=='已过期'" @click="onBuy(detailData)">重新购买</el-button>
+                    <el-button style="padding: 10px 34px" size="medium" round @click="showPopup = false">返回</el-button>
+                </div>
+                <div class="popupPackage-box__btn" v-else-if="type=='buy'">
+                    <el-button type="primary" size="medium" round v-if="detailData.isuser==0" @click="onBuy(detailData)">立即购买</el-button>
+                    <el-button style="padding: 10px 34px" size="medium" round @click="showPopup = false">返回</el-button>
+                </div>
+            </div>
+        </div>
+    </el-dialog>
+    
+    <el-dialog title="支付订单" :visible.sync="buyDialogVisible" width="800px">
+        <div class="feepackage-buy">
+            <div class="feepackage-buy__row">
+                <el-row :gutter="20">
+                    <el-col :span='4' style="width:180px;height: 105px;">
+                        <ks-image style="width: 100%;height:100%" :src="initBuyData.photourl" type="exam" />
+                    </el-col>
+                    <el-col :span='18'>
+                        <p style="color: #2F3133">
+                            {{initBuyData.title}}
+                        </p>
+                        <p style="font-size: 14px;color:#888888;">
+                            价格：<i style="font-size: 18px;color:#E91C35;font-style:normal">￥{{initBuyData.price}}</i>
+                        </p>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20" style="text-align: right;border-bottom: 1px solid #E6E9ED">
+                    <el-col :span='8' :offset="8">
+                        <div>
+                            <p>金额：</p>
+                            <p>订单总额：</p>
+                        </div>
+                    </el-col>
+                    <el-col :span='5'>
+                        <div>
+                            <p>￥{{initBuyData.price}}</p>
+                            <p style="color: #E91C35;font-size:24px">￥{{initBuyData.price}}</p>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+            <h1>选择支付方式：</h1>
+            <div class="feepackage-buy__list">
+                <div class="feepackage-buy__item" :class="{'active-pay':activePay == -1}" @click="payType(-1)">
+                    <span>余额支付</span>
+                    <i v-if="activePay == -1"></i>
+                </div>
+                <div></div>
+                <div class="feepackage-buy__item" v-for="(item,i) in initBuyData.payment_list" :key="i" :class="{'active-pay':activePay == i}" @click="payType(i)">
+                    <img style="object-fit: contain;width: 100%;height: 100%;" :src="item.logo" />
+                    <i v-if="activePay == i"></i>
+                </div>
+            </div>
+            <div class="feepackage-used">可用余额￥{{userInfo.Money}}</div>
+            <div v-if="activePay == -1">
+                <span>余额支付:<i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{initBuyData.price}}</i>元</span>
+            </div>
+            <div v-else>
+                <span>余额支付</span>
+                <el-input size="medium" style="width: 80px;" v-model="money"></el-input>
+                
+                <span>元,剩余</span>
+                <span>{{payId == 8 ? '支付宝支付' : '微信支付'}}：</span>
+                <span><i style="color: #E91C35;font-size:22px;font-style: normal;margin:0 5px;">{{initBuyData.price - money}}</i>元</span>
+            </div>
+            <div class="feepackage-buy__btn">
+                <el-button type="warning" @click="buyPackage(initBuyData)">立即支付</el-button>
+            </div>
+        </div>
+    </el-dialog>
+</div>

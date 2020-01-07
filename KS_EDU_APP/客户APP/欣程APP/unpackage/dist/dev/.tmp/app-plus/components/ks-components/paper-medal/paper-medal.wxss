@@ -1,0 +1,38 @@
+
+.paper-medal.data-v-0f6dacb3 {
+    background: #fff;
+    padding: 20px 0;
+}
+.paper-medal__img.data-v-0f6dacb3 {
+    height: 160px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    background-size: contain;
+    position: relative;
+}
+.paper-medal__img ._img.data-v-0f6dacb3{
+	width: 177px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -88.5px;
+}
+.paper-medal__value.data-v-0f6dacb3 {
+    text-align: center;
+    padding-top: 22px;
+    font-weight: bold;
+}
+.paper-medal__value text.data-v-0f6dacb3 {
+    font-size: 36px;
+    color: #FE7925;
+}
+.paper-medal__info.data-v-0f6dacb3 {
+    position: absolute;
+    bottom: 35px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 13px;
+}
+

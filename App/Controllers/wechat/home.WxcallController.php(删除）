@@ -1,0 +1,19 @@
+<?php
+use Kesion\Controller;
+class WxcallController extends CommonController
+{
+
+//    public function getUserInfoAction()
+//    {
+//        $access_token = getAccessToken($this->wxid);
+//        $userurl = " https:api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token;
+//        $userarr  = (array)json_decode(curlGet($userurl));
+//        $useropenidarr = (array)$userarr['date'];
+//         foreach ($useropenidarr["openid"] as $value){
+//            $infourl =  "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=".$value."&lang=zh_CN";
+//             $infoarr = (array)json_decode(curlGet($infourl));
+//         }
+//        return $infoarr;
+//    }
+
+}

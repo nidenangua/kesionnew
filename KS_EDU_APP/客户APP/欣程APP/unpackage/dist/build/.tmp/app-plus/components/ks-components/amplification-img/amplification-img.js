@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/ks-components/amplification-img/amplification-img"],{"0a4b":function(t,n,i){},"0be2":function(t,n,i){"use strict";i.r(n);var e=i("397e"),o=i.n(e);for(var s in e)"default"!==s&&function(t){i.d(n,t,function(){return e[t]})}(s);n["default"]=o.a},"397e":function(t,n,i){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var e=function(){return i.e("components/ks-components/image/Image").then(i.bind(null,"cc49"))},o={name:"KsAmplification",props:{src:String,index:0,imgArr:Array},data:function(){return{baseUrl:this.$store.state.SRC+"/config/app",indicatorDots:!1,autoplay:!1,interval:2e3,duration:500,curr:this.index,isShow:!1}},components:{KsImage:e},methods:{isShowImg:function(){this.isShow=!0,this.$emit("isShowStatus",this.isShow)},close:function(){this.isShow=!1,this.curr=this.index,this.$emit("isShowStatus",this.isShow)},setIndex:function(t){this.curr=t.detail.current}},watch:{index:function(){this.curr=this.index}}};n.default=o},"626a":function(t,n,i){"use strict";i.r(n);var e=i("c6ce"),o=i("0be2");for(var s in o)"default"!==s&&function(t){i.d(n,t,function(){return o[t]})}(s);i("af78");var a=i("2877"),r=Object(a["a"])(o["default"],e["a"],e["b"],!1,null,"3fdd088e",null);n["default"]=r.exports},af78:function(t,n,i){"use strict";var e=i("0a4b"),o=i.n(e);o.a},c6ce:function(t,n,i){"use strict";var e=function(){var t=this,n=t.$createElement;t._self._c},o=[];i.d(n,"a",function(){return e}),i.d(n,"b",function(){return o})}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/ks-components/amplification-img/amplification-img-create-component',
+    {
+        'components/ks-components/amplification-img/amplification-img-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("626a"))
+        })
+    },
+    [['components/ks-components/amplification-img/amplification-img-create-component']]
+]);
